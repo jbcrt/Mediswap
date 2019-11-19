@@ -1,0 +1,16 @@
+footer.footer {
+    // position: absolute;
+    // bottom: 0;
+    width: 100%;
+    padding: 3rem 2rem;
+    background-color: $white;
+
+    ul {
+        padding: 0;
+
+        li {
+            list-style-type: none;
+        }
+
+    }
+}

@@ -1,2 +1,165 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-xs-12 col-xl-6">
+        <h1 class="display-5">Gérez vos remplacements en un instant !</h1>
+        <p class="lead">Que vous soyez un praticien installé à la recherche d’un remplacant ou un candidat à la recherche d’un poste, Mediswap vous permet de trouver ce que vous cherchez tout en automatisant toutes vos formalités et ce, en toute simplicité !</p>
+        <div class="d-lg-none d-xl-none">
+          <%= image_tag("landing.svg", class: "img-fluid", alt: "Landing image") %>
+        </div>
+        <hr class="my-4">
+        <p class="lead">
+          <div class="row">
+            <div class="col-xl-6">
+              <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Inscrivez-vous !</a>
+            </div>
+          </div>
+        </p>
+      </div>
+      <div class="d-none d-xl-block col-xl-6">
+        <%= image_tag("landing.svg", size: "auto", alt: "Landing image") %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="d-none d-xl-block col-xl-6">
+        <%= image_tag("search.svg", size: "img-fluid", alt: "Illustration de recherche") %>
+      </div>
+      <div class="col-xs-12 col-xl-6">
+        <div class="d-xl-none d-xl-none text-center">
+          <%= image_tag("search.svg", class: "img-fluid", alt: "Illustration de recherche") %>
+        </div>
+        <h2 class="display-6 mt-4 mt-xl-0">Trouvez rapidement ce que vous cherchez 🔎</h2>
+        <hr class="my-4">
+        <p class="lead">Mediswap vous apporte toutes les solutions pour trouver ce que vous cherchez !</p>
+        <ul class="fa-ul">
+          <li class="lead font-weight-bold"><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Des suggestions de profils succeptibles d’être intéressés par votre annonce</li>
+          <li class="lead font-weight-bold"><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Des notifications pour chaque nouvelles annonces postées répondant à vos critères de recherche</li>
+          <li class="lead font-weight-bold"><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Un outil de recherche précis et facile d’utilisation</li>
+        </ul>
+        <p class="lead">La recherche, c’est aussi simple que ça !</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-xs-12 col-xl-6">
+        <div class="d-xl-none d-xl-none text-center">
+          <%= image_tag("contrat.svg", class: "img-fluid", alt: "Illustration du contrat") %>
+        </div>
+        <h2 class="display-6 mt-4 mt-xl-0">Votre contrat d’un claquement de doigts ✍️</h2>
+        <hr class="my-4">
+        <p class="lead">Oubliez la rédaction, les impressions, les scans et toutes ces choses qui vous font perdre votre temps ...</p>
+        <ul class="fa-ul">
+          <li class="lead font-weight-bold"><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Génération automatique de vos contrats dans les respect des termes prévus par votre ordre</li>
+          <li class="lead font-weight-bold"><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Signature éléctronique de vos contrats respectant la législation en vigueur en matière de dématérialisation des documents</li>
+          <li class="lead font-weight-bold"><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Envoi automatique de vos contrats à votre ordre</li>
+        </ul>
+        <p class="lead">Tout est automatisé et effectué dans les règles de l’art.</p>
+      </div>
+      <div class="d-none d-xl-block col-xl-6">
+        <%= image_tag("contrat.svg", size: "img-fluid", alt: "Illustration du contrat") %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="d-none d-xl-block col-xl-6">
+        <%= image_tag("mobile.svg", size: "img-fluid", alt: "Illustration du mobile") %>
+      </div>
+      <div class="col-xs-12 col-xl-6">
+        <div class="d-xl-none d-xl-none text-center">
+          <%= image_tag("mobile.svg", class: "img-fluid", alt: "Illustration du mobile") %>
+        </div>
+        <h2 class="display-6 mt-4 mt-xl-0">Accessible partout, tout le temps 📱</h2>
+        <hr class="my-4">
+        <p class="lead">Au bureau, à la maison ou en déplacement et quelque soit votre support de préférence, Mediswap est disponible partout.</p>
+        <ul class="fa-ul">
+          <li class="lead font-weight-bold"><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Sur votre navigateur web (Chrome, Firefox, Safari, Edge, Opera, etc)</li>
+          <li class="lead font-weight-bold"><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Sur mobile et tablette grâce aux applications iOS et Android</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron bg-primary-lightest mb-0">
+  <div class="container">
+    <h2 class="display-6 text-center">Une offre adaptée à vos besoins</h2>
+    <hr class="my-4">
+    <p class="lead text-center">Que vous souhaitiez profiter d’une dématérialisation complète de votre recrutement ou simplement de nos services de mise en relation avancés, nous avons une offre pour vous.</p>
+    <div class="row mt-4">
+      <div class="d-flex justify-content-center col-lg-4 my-3 my-lg-0">
+        <div class="price-card">
+          <div class="price-card-header">
+            <div class="price-card-title">Postulation</div>
+          </div>
+          <div class="price-card-body">
+            <div class="price-card-price">Gratuit</div>
+            <div class="price-card-content">
+              <ul>
+                <li>Profil personnalisé</li>
+                <li>Notification d’offres</li>
+                <li>+</li>
+                <li>Avantages <span>Medi+</span> si annonce correspondante</li>
+              </ul>
+            </div>
+            <div class="price-card-cta btn btn-primary btn-block"><i class="fas fa-search"></i> Trouver une annonce</div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center col-lg-4 my-3 my-lg-0">
+        <div class="price-card">
+          <div class="price-card-header">
+            <div class="price-card-title">Annonce standard</div>
+          </div>
+          <div class="price-card-body">
+            <div class="price-card-price">Gratuit</div>
+            <div class="price-card-content">
+              <ul>
+                <li>Dépôt d’annonce</li>
+                <li>Suggestion de profils</li>
+                <li>Gestion des candidatures</li>
+              </ul>
+            </div>
+            <div class="price-card-cta">
+              <div class="btn btn-outline-primary btn-block"><i class="fas fa-plus"></i> Déposer une annonce</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center col-lg-4 my-3 my-lg-0">
+        <div class="price-card">
+          <div class="price-card-header">
+            <div class="price-card-title">Annonce Medi+</div>
+          </div>
+          <div class="price-card-body">
+            <div class="price-card-price">14.99€ <span>/ contrat</span></div>
+            <div class="price-card-content">
+              <ul>
+                <li>Annonce mise en avant</li>
+                <li>Contrat original dématérialisé</li>
+                <li>Signature électronique certifiée</li>
+                <li>Transmission du contrat</li>
+              </ul>
+              <span><i class="fas fa-gift"></i> Le premier contrat est offert</span>
+            </div>
+            <div class="price-card-cta">
+              <div class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Essayer Medi+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

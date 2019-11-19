@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Mediswap Landing Page</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm justify-content-between">
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <%= image_tag("logo.svg", class: "mr-2",alt: "Mediswap logo") %>
+        <span class="logo-title">MEDISWAP</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to 'Features', features_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item my-1 my-lg-0 mx-0 mx-lg-2">
+            <div class="btn btn-outline-primary btn-block">Connexion</div>
+          </li>
+          <li class="nav-item my-1 my-lg-0 mx-0 ml-lg-2">
+            <div class="btn btn-primary btn-block">Inscription</div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <%= yield %>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-logo d-flex align-items-center justify-content-center">
+          <%= image_tag("logo.svg", class: "mr-2",alt: "Mediswap logo") %>
+          <span class="logo-title">MEDISWAP</span>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-xl-6 d-flex justify-content-center justify-content-xl-start">
+            <ul class="d-flex">
+              <li>
+                <%= link_to 'Terms', terms_path, class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to 'Privacy', privacy_path, class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to 'Contact', contact_path, class: "nav-link" %>
+              </li>
+            </ul>
+          </div>
+          <div class="col-xl-6 d-flex justify-content-center justify-content-xl-end">
+            <ul class="d-flex">
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fab fa-linkedin-in nav-link"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fab fa-twitter nav-link"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fab fa-youtube nav-link"></i>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

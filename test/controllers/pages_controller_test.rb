@@ -21,9 +21,4 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get features" do
-    get pages_features_url
-    assert_response :success
-  end
-
 end

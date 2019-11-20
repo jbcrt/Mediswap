@@ -10,7 +10,4 @@ class PagesController < ApplicationController
 
   def privacy
   end
-
-  def features
-  end
 end

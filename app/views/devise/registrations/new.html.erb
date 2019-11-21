@@ -1,0 +1,100 @@
+<div class="container mt-4">
+  <h2>Créer un compte</h2>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-lg-6">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Identifiants</legend>
+            <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Informations personnelles</legend>
+            <%= f.input :title, as: :radio_buttons, required: true, collection: [['0', 'Monsieur'], ['1', 'Madame']], label_method: :second, value_method: :first %>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :first_name, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+              <%= f.input :last_name, required: true %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :birth_date, as: :date, html5: true, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :birth_place, required: true %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Coordonnées personnelles</legend>
+            <%= f.input :personnal_phone_number, required: true %>
+            <%= f.input :personnal_address, required: true %>
+            <%= f.input :personnal_additional_address %>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :personnal_postal_code_address, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :personnal_city_address, required: true %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Informations professionnelles</legend>
+            <%= f.input :profession, collection: [['1', 'Kinésithérapeute'], ['2', 'Infirmier']], label_method: :second, value_method: :first, required: true %>
+            <%= f.input :status, collection: [['1', 'Diplomé'], ['2', 'Etudiant']], label_method: :second, value_method: :first, required: true %>
+            <%= f.input :rpps_number, required: true %>
+            <%= f.input :adeli_number %>
+            <%= f.input :urssaf_number, required: true %>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :council_number, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :council_location, required: true %>
+              </div>
+            </div>
+            <%= f.input :council_email, required: true %>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Coordonnées professionnelles</legend>
+            <%= f.input :structure_name, required: true %>
+            <%= f.input :professionnal_phone_number, required: true %>
+            <%= f.input :professionnal_address, required: true %>
+            <%= f.input :professionnal_additional_address %>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :professionnal_postal_code_address, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :professionnal_city_address, required: true %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Termes et conditions</legend>
+          </fieldset>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Créer mon compte", :class => "btn btn-primary btn-block btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-lg-6 d-none d-lg-block">
+      <div class="alert alert-secondary" role="alert">
+        <h4 class="alert-heading">Informations relatives aux données à caractère personnel</h4>
+        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+<div class="container mt-4">
+
+  <div class="js-profileMenu">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white d-block d-lg-none my-3 p-0">
+      <button class="btn btn-light btn-block dropdown-toggle" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        Menu du profil
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav p-2">
+          <li class="nav-item js-profileMenuMinEditBtn active">
+            <div class="nav-link">Modifier vos informations</div>
+          </li>
+          <li class="nav-item js-profileMenuMinManageBtn">
+            <div class="nav-link">Gérer votre compte</div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="my-4 d-none d-lg-block">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <div class="nav-link btn btn-link js-profileMenuMaxEditBtn active">Modifier vos informations</div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link btn btn-link js-profileMenuMaxManageBtn">Gérer votre compte</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-xs-12 col-lg-6 js-profileEditDiv">
+      <h3>Modifier vos informations</h3>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Identifiants</legend>
+            <%= f.input :email, required: true, autofocus: true %>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+
+            <%= f.input :password, hint: "Ne remplissez pas ce champ si vous ne voulez pas modifier votre mot de passe", required: false, input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation, hint: "Ne remplissez pas ce champ si vous ne voulez pas modifier votre mot de passe", required: false, input_html: { autocomplete: "new-password" } %>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Informations personnelles</legend>
+            <%= f.input :title, as: :radio_buttons, required: true, collection: [['0', 'Monsieur'], ['1', 'Madame']], label_method: :second, value_method: :first %>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :first_name, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+              <%= f.input :last_name, required: true %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :birth_date, as: :date, html5: true, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :birth_place, required: true %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Coordonnées personnelles</legend>
+            <%= f.input :personnal_phone_number, required: true %>
+            <%= f.input :personnal_address, required: true %>
+            <%= f.input :personnal_additional_address %>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :personnal_postal_code_address, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :personnal_city_address, required: true %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Informations professionnelles</legend>
+            <%= f.input :profession, collection: [['1', 'Kinésithérapeute'], ['2', 'Infirmier']], label_method: :second, value_method: :first, required: true %>
+            <%= f.input :status, collection: [['1', 'Diplomé'], ['2', 'Etudiant']], label_method: :second, value_method: :first, required: true %>
+            <%= f.input :rpps_number, required: true %>
+            <%= f.input :adeli_number %>
+            <%= f.input :urssaf_number, required: true %>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :council_number, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :council_location, required: true %>
+              </div>
+            </div>
+            <%= f.input :council_email, required: true %>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Coordonnées professionnelles</legend>
+            <%= f.input :structure_name, required: true %>
+            <%= f.input :professionnal_phone_number, required: true %>
+            <%= f.input :professionnal_address, required: true %>
+            <%= f.input :professionnal_additional_address %>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :professionnal_postal_code_address, required: true %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :professionnal_city_address, required: true %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend">Valider</legend>
+            <%= f.input :current_password, hint: "Vous devez saisir votre mot de passe actuel pour valider vos modifications", required: true, input_html: { autocomplete: "current-password" } %>
+          </fieldset>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Modifier", :class => "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12 col-lg-6 js-profileManageDiv d-none">
+      <h3>Gérer votre compte</h3>
+        <p>Vous ne désirez plus utiliser nos service ?</p>
+        <%= link_to "Supprimer mon compte", registration_path(current_user), data: { confirm: "Etes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible" }, method: :delete, :class => "btn btn-danger" %>
+    </div>
+
+  </div>
+</div>

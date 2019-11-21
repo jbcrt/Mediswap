@@ -1,0 +1,48 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm justify-content-between">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+    <%= image_tag("logo.svg", class: "mr-2",alt: "Mediswap logo") %>
+    <span class="logo-title">MEDISWAP</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+        <li class="nav-item dropdown d-none d-lg-block my-1 my-lg-0 mx-0 ml-lg-2">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <%= link_to "Mon Profil", edit_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+        </li>
+        <li class="nav-item d-lg-none">
+            <%= link_to "Mon Profil", edit_user_registration_path, class: "dropdown-item" %>
+        </li>
+        <li class="nav-item d-lg-none">
+            <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </li>
+        <% else %>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Fonctionnalités
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Mise en relation', root_path(anchor: 'search'), class: "dropdown-item" %>
+            <%= link_to 'Contrat et signature', root_path(anchor: 'contract'), class: "dropdown-item" %>
+            <%= link_to 'Applications mobiles', root_path(anchor: 'mobile-app'), class: "dropdown-item" %>
+            </div>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Prix', root_path(anchor: 'prices'), class: "nav-link" %>
+        </li>
+        <li class="nav-item my-1 my-lg-0 mx-0 mx-lg-2">
+            <%= link_to 'Connexion', new_user_session_path, class: "btn btn-outline-primary btn-block" %>
+        </li>
+        <li class="nav-item my-1 my-lg-0 mx-0 ml-lg-2">
+            <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-primary btn-block" %>
+        </li>
+        <% end %>
+    </ul>
+    </div>
+</nav>

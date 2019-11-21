@@ -1,0 +1,43 @@
+<footer class="footer">
+    <div class="container">
+    <div class="footer-logo d-flex align-items-center justify-content-center">
+        <%= image_tag("logo.svg", class: "mr-2",alt: "Mediswap logo") %>
+        <span class="logo-title">MEDISWAP</span>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-xl-6 d-flex justify-content-center justify-content-xl-start">
+        <ul class="d-flex">
+            <li>
+            <%= link_to 'Mentions légales', terms_path, class: "nav-link" %>
+            </li>
+            <li>
+            <%= link_to 'Vie privée', privacy_path, class: "nav-link" %>
+            </li>
+            <li>
+            <%= link_to 'Contact', contact_path, class: "nav-link" %>
+            </li>
+        </ul>
+        </div>
+        <div class="col-xl-6 d-flex justify-content-center justify-content-xl-end">
+        <ul class="d-flex">
+            <li>
+            <%= link_to root_path do %>
+                <i class="fab fa-linkedin-in nav-link"></i>
+            <% end %>
+            </li>
+            <li>
+            <%= link_to root_path do %>
+                <i class="fab fa-twitter nav-link"></i>
+            <% end %>
+            </li>
+            <li>
+            <%= link_to root_path do %>
+                <i class="fab fa-youtube nav-link"></i>
+            <% end %>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </div>
+</footer>

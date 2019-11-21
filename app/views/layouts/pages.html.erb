@@ -12,81 +12,9 @@
   </head>
 
   <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm justify-content-between">
-      <a class="navbar-brand d-flex align-items-center" href="/">
-        <%= image_tag("logo.svg", class: "mr-2",alt: "Mediswap logo") %>
-        <span class="logo-title">MEDISWAP</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Fonctionnalités
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'Mise en relation', root_path(anchor: 'search'), class: "dropdown-item" %>
-            <%= link_to 'Contrat et signature', root_path(anchor: 'contract'), class: "dropdown-item" %>
-            <%= link_to 'Applications mobiles', root_path(anchor: 'mobile-app'), class: "dropdown-item" %>
-            </div>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Prix', root_path(anchor: 'prices'), class: "nav-link" %>
-          </li>
-          <li class="nav-item my-1 my-lg-0 mx-0 mx-lg-2">
-            <div class="btn btn-outline-primary btn-block"><i class="fas fa-plus"></i> Publier une annonce</div>
-          </li>
-          <li class="nav-item my-1 my-lg-0 mx-0 ml-lg-2">
-            <div class="btn btn-primary btn-block"><i class="fas fa-search"></i> Chercher une annonce</div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
     <%= yield %>
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-logo d-flex align-items-center justify-content-center">
-          <%= image_tag("logo.svg", class: "mr-2",alt: "Mediswap logo") %>
-          <span class="logo-title">MEDISWAP</span>
-        </div>
-        <hr class="my-4">
-        <div class="row">
-          <div class="col-xl-6 d-flex justify-content-center justify-content-xl-start">
-            <ul class="d-flex">
-              <li>
-                <%= link_to 'Mentions légales', terms_path, class: "nav-link" %>
-              </li>
-              <li>
-                <%= link_to 'Vie privée', privacy_path, class: "nav-link" %>
-              </li>
-              <li>
-                <%= link_to 'Contact', contact_path, class: "nav-link" %>
-              </li>
-            </ul>
-          </div>
-          <div class="col-xl-6 d-flex justify-content-center justify-content-xl-end">
-            <ul class="d-flex">
-              <li>
-                <%= link_to root_path do %>
-                  <i class="fab fa-linkedin-in nav-link"></i>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to root_path do %>
-                  <i class="fab fa-twitter nav-link"></i>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to root_path do %>
-                  <i class="fab fa-youtube nav-link"></i>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <%= render 'shared/footer' %>
   </body>
 </html>

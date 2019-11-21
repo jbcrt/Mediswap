@@ -16,3 +16,8 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 import 'bootstrap';
+import { profileEditNavbar } from '../components/nav';
+
+document.addEventListener('turbolinks:load', function() {
+    profileEditNavbar();
+})

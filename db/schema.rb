@@ -10,10 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_104716) do
+ActiveRecord::Schema.define(version: 2019_11_20_133022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.boolean "admin", default: false, null: false
+    t.string "title"
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birth_date"
+    t.string "birth_place"
+    t.string "personnal_phone_number"
+    t.string "personnal_address"
+    t.string "personnal_additional_address"
+    t.string "personnal_postal_code_address"
+    t.string "personnal_city_address"
+    t.string "profession"
+    t.string "status"
+    t.string "structure_name"
+    t.string "rpps_number"
+    t.string "adeli_number"
+    t.string "urssaf_number"
+    t.string "council_number"
+    t.string "council_location"
+    t.string "council_email"
+    t.string "professionnal_phone_number"
+    t.string "professionnal_address"
+    t.string "professionnal_additional_address"
+    t.string "professionnal_postal_code_address"
+    t.string "professionnal_city_address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  end
 
 end

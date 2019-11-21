@@ -1,0 +1,40 @@
+fr:
+  simple_form:
+    labels:
+      user:
+        email: 'Adresse email'
+        password: 'Mot de passe'
+        password_confirmation: 'Confirmez le mot de passe'
+        title: 'Titre'
+        first_name: 'Prénom'
+        last_name: 'Nom'
+        birth_date: 'Date de naissance'
+        birth_place: 'Lieu de naissance'
+        personnal_phone_number: 'Numéro de téléphone'
+        personnal_address: 'Adresse'
+        personnal_additional_address: "Complément d'adresse"
+        personnal_postal_code_address: 'Code postal'
+        personnal_city_address: 'Ville'
+        profession: 'Profession'
+        status: 'Statut'
+        rpps_number: 'Numéro RPPS'
+        adeli_number: 'Numéro ADELI'
+        urssaf_number: 'Numéro URSSAF'
+        council_number: "Numéro à l'Ordre"
+        council_location: "Ville de votre l'Ordre"
+        council_email: "Adresse email de votre conseiller à l'Ordre"
+        structure_name: "Nom de la structure d'exercice"
+        professionnal_phone_number: 'Numéro de téléphone professionnel'
+        professionnal_address: "Adresse de la structure d'exercice"
+        professionnal_additional_address: "Complément d'adresse"
+        professionnal_postal_code_address: 'Code postal'
+        professionnal_city_address: 'Ville'
+        edit:
+          email: "Changer l'adresse email"
+          password: 'Changer le mot de passe'
+          current_password: 'Mot de passe actuel'
+    errors:
+      user:
+        email: "L'email doit obligatoirement être renseigné"
+    error_notification:
+      default_message: "Certains champs sont incorrects, veuillez corriger les erreurs."

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :registrations => :registrations }
   root to: 'pages#home'
   get 'contact', to: 'pages#contact', as: :contact
   get 'terms', to: 'pages#terms', as: :terms

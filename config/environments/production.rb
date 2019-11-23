@@ -121,4 +121,6 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
+  # Force HTTPS connections
+  config.force_ssl = true
 end

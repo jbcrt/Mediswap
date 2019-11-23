@@ -8,6 +8,10 @@ body {
     display: flex;
     flex-direction: column;
 
+    .navbar {
+        flex-shrink: 0;
+    }
+
     .content {
         flex: 1 0 auto;
     }

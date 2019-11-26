@@ -17,7 +17,9 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import 'bootstrap';
 import { profileEditNavbar } from '../components/nav';
+import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', function() {
     profileEditNavbar();
+    initMapbox();
 })

@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Offers#index</h1>
+    <hr>
+    <ul>
+        <% @offers.each do |offer| %>
+            <li>
+                <%= link_to offer.title, edit_my_offer_path(offer) %>
+            </li>
+        <% end %>
+    </ul>
+</div>

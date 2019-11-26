@@ -1,0 +1,6 @@
+fr:
+ pundit:
+   default: 'Vous ne pouvez pas effectuer cette action.'
+   offer_policy:
+     update?: 'Vous ne pouvez pas modifier cette annonce !'
+     create?: 'Vous ne pouvez pas publier une annonce !'

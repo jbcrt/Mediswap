@@ -1,0 +1,12 @@
+<div class="container">
+    <h1><%= @offer.title %></h1>
+    <p>postée par <%= @offer.user.first_name %></p>
+    <p><%= @offer.starts_at %></p>
+    <p><%= @offer.ends_at %></p>
+    <p><%= @offer.contract_type %></p>
+    <p><%= @offer.description %></p>
+    <p><%= @offer.retrocession %> / <%= 100 - @offer.retrocession.to_i %></p>
+    <p><%= @offer.vehicle %></p>
+    <p><%= @offer.housing %></p>
+    <p><%= @offer.secretariat %></p>
+</div>

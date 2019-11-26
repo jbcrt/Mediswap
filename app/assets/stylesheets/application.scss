@@ -1,13 +1,14 @@
 // Graphical variables
-@import "config/layout";
-@import "config/fonts";
 @import "config/colors";
+@import "config/fonts";
+@import "config/layout";
 @import "config/bootstrap_variables";
 @import "config/turbolinks";
 @import "config/helpers";
 
 // External libraries
 @import "bootstrap/scss/bootstrap"; // from the node_modules
+@import 'mapbox-gl/dist/mapbox-gl.css'; // from the node_modules
 @import "font-awesome-sprockets";
 @import "font-awesome";
 

@@ -1,0 +1,58 @@
+<div class="container-fluid m-0 p-0 offers-index-layout">
+    <div class="filters-bar d-none d-md-block">
+        <h4>Filtres</h4>
+        <hr>
+        <div class="my-2">
+            <h6>Type de contrat</h6>
+            <select class="form-control" placeholder="Type d'annonce">
+                <option>Remplacement</option>
+                <option>Assistanat</option>
+                <option>Collaboration</option>
+            </select>
+        </div>
+        <div class="my-2">
+            <h6>Date de début</h6>
+            <input type="date" class="form-control" placeholder="jj / mm / aaaa" aria-label="Date de début" aria-describedby="basic-addon2">
+        </div>
+        <div class="my-2">
+            <h6>Date de fin</h6>
+            <input type="date" class="form-control" placeholder="jj / mm / aaaa" aria-label="Date de fin" aria-describedby="basic-addon2">
+        </div>
+        <div class="my-2">
+            <h6>Localisation</h6>
+            <input type="text" class="form-control" placeholder="Localisation" aria-label="Localisation" aria-describedby="basic-addon2">
+        </div>
+        <div class="my-2">
+            <h6>Distance</h6>
+        </div>
+    </div>
+
+    <main class="cards-container">
+        <h2><%= @offers.count %> <%= @offers.count > 1 ? "annonces disponibles" : "annonce disponible" %></h2>
+        <hr>
+        <div class="row mx-0">
+            <% @offers.each do |offer| %>
+                <%= link_to offer_path(offer), :action => 'go', :class => "offer-card col-12" do %>
+                    <h5 class="offer-card-title">
+                        <%= offer.title %>
+                    </h5>
+                    <div class="offer-card-information">
+                        <%= offer.contract_type %>
+                        <% if offer.ends_at != nil %>
+                        du <%= l offer.starts_at, format: :long %> au <%= l offer.ends_at, format: :long  %>
+                        <% else %>
+                        à partir du <%= l offer.starts_at, format: :long %>
+                        <% end %>
+                        à <%= offer.user.professionnal_city_address %>
+                    </div>
+                    <hr class="my-2">
+                    <div class="offer-card-description">
+                        <%= offer.description.truncate_words(25) %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </main>
+
+    <div id="map" class="map d-none d-xl-block" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+</div>

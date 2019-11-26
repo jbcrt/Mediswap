@@ -11,4 +11,6 @@ validates_uniqueness_of :rpps_number
 validates_uniqueness_of :urssaf_number
 validates_uniqueness_of :council_number
 
+has_many :offers, dependent: :destroy
+
 end

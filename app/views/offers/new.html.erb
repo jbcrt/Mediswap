@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <h1>Offers#new</h1>
+    <%= simple_form_for @offer, url: offers_path do |f| %>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <%= f.error_notification %>
+                
+                <%= f.input :title %>
+
+                <%= f.input :starts_at, as: :date, html5: true, required: true %>
+
+                <%= f.input :ends_at, as: :date, html5: true %>
+
+                <%= f.input :contract_type %>
+
+                <%= f.input :description %>
+
+                <%= f.input :retrocession %>
+
+                <%= f.input :vehicle %>
+
+                <%= f.input :housing %>
+
+                <%= f.input :secretariat %>
+
+                <%= f.submit %>
+            </div>
+        </div>
+    <% end %>
+
+</div>

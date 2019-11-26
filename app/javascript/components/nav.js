@@ -9,31 +9,25 @@ const profileEditNavbar = () => {
         const editDiv = document.querySelector('.js-profileEditDiv');
         const manageDiv = document.querySelector('.js-profileManageDiv');
 
-        console.log("Pwait Pwait")
-
-        editBtnMin.addEventListener('click', (event) => {
-            console.log(event.currentTarget)
+        editBtnMin.addEventListener('click', () => {
             editBtnMin.classList.add("active");
             manageBtnMin.classList.remove("active");
             editDiv.classList.remove("d-none");
             manageDiv.classList.add("d-none");
         });
-        manageBtnMin.addEventListener('click', (event) => {
-            console.log(event.currentTarget)
+        manageBtnMin.addEventListener('click', () => {
             manageBtnMin.classList.add("active");
             editBtnMin.classList.remove("active");
             manageDiv.classList.remove("d-none");
             editDiv.classList.add("d-none");
         });
-        editBtnMax.addEventListener('click', (event) => {
-            console.log(event.currentTarget)
+        editBtnMax.addEventListener('click', () => {
             editBtnMax.classList.add("active");
             manageBtnMax.classList.remove("active");
             editDiv.classList.remove("d-none");
             manageDiv.classList.add("d-none");
         });
-        manageBtnMax.addEventListener('click', (event) => {
-            console.log(event.currentTarget)
+        manageBtnMax.addEventListener('click', () => {
             manageBtnMax.classList.add("active");
             editBtnMax.classList.remove("active");
             manageDiv.classList.remove("d-none");

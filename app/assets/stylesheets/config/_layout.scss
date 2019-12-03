@@ -1,24 +1,6 @@
-html, body {
-    // height: 100%;
-}
-
 body {
     overflow-x: hidden;
     overflow-y: scroll;
-    // display: flex;
-    // flex-direction: column;
-
-    // .navbar {
-    //     flex-shrink: 0;
-    // }
-
-    // .content {
-    //     flex: 1 0 auto;
-    // }
-
-    // .footer {
-    //     flex-shrink: 0;
-    // }
 }
 
 .offers-index-layout {
@@ -31,14 +13,12 @@ body {
         flex: 0 0 250px;
         height: calc(100vh - 74px);
         padding: 1rem;
-        // border: 1px solid red;
     }
     
     .cards-container {
         flex-grow: 1;
         padding: 1rem;
         border-left: 1px solid $lightest-gray;
-        // border: 1px solid blue;
     }
     
     .map {

@@ -40,30 +40,31 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :first_name
       t.string :last_name
+      t.string :avatar_id
       t.date :birth_date
       t.string :birth_place
+      t.string :account_type
       ## Personnal Address
       t.string :personnal_phone_number
       t.string :personnal_address
       t.string :personnal_additional_address
       t.string :personnal_postal_code_address
       t.string :personnal_city_address
-      ## Professionnal informations
+      ## professional informations
       t.string :profession
-      t.string :status
+      t.string :professional_status
       t.string :structure_name
-      t.string :rpps_number
-      t.string :adeli_number
+      t.string :professional_id_number
       t.string :urssaf_number
       t.string :council_number
       t.string :council_location
       t.string :council_email
-      ## Professionnal address
-      t.string :professionnal_phone_number
-      t.string :professionnal_address
-      t.string :professionnal_additional_address
-      t.string :professionnal_postal_code_address
-      t.string :professionnal_city_address
+      ## professional address
+      t.string :professional_phone_number
+      t.string :professional_address
+      t.string :professional_additional_address
+      t.string :professional_postal_code_address
+      t.string :professional_city_address
 
       ## Created at & Updated at
       t.timestamps null: false

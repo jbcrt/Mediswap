@@ -1,31 +1,60 @@
-<div class="container mt-4">
-    <h1>Offers#new</h1>
-    <%= simple_form_for @offer, url: offers_path do |f| %>
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
+<div class="container mt-4 mb-5">
+    <h2>Publier une annonce</h2>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-lg-8">
+            <%= simple_form_for @offer, url: offers_path do |f| %>
                 <%= f.error_notification %>
-                
-                <%= f.input :title %>
 
-                <%= f.input :starts_at, as: :date, html5: true, required: true %>
+                <div class="form-inputs">
 
-                <%= f.input :ends_at, as: :date, html5: true %>
+                    <fieldset class="custom-fieldset">
+                        <legend class="custom-legend"><i class="far fa-newspaper"></i> Votre annonce</legend>
+                        <%= f.input :title %>
 
-                <%= f.input :contract_type %>
+                        <%= f.input :offer_type, collection: @offer_type, input_html: { class: "custom-select" } %>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <%= f.input :starts_at, as: :date, html5: true, required: true %>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <%= f.input :ends_at, as: :date, html5: true %>
+                            </div>
+                        </div>
 
-                <%= f.input :description %>
+                        <%= f.input :retrocession, hint: true %>
 
-                <%= f.input :retrocession %>
+                        <%= f.input :vehicle, hint: true %>
 
-                <%= f.input :vehicle %>
+                        <%= f.input :housing, hint: true %>
 
-                <%= f.input :housing %>
+                        <%= f.input :secretariat, hint: true %>
 
-                <%= f.input :secretariat %>
+                        <%= f.input :description %>
+                    </fieldset>
 
-                <%= f.submit %>
-            </div>
+                    <fieldset class="custom-fieldset">
+                        <legend class="custom-legend"><i class="fas fa-map-marker-alt"></i> Localisation</legend>
+                        <%= f.input :offer_address, input_html: { value: "#{current_user.professional_address}" } %>
+
+                        <%= f.input :offer_additional_address, input_html: { value: "#{current_user.professional_additional_address}" } %>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <%= f.input :offer_postal_code_address, input_html: { value: "#{current_user.professional_postal_code_address}" } %>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <%= f.input :offer_city_address, input_html: { value: "#{current_user.professional_city_address}" } %>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <%= f.button :submit, "Publier mon annonce", :class => "btn btn-primary btn-block btn-lg" %>
+                    </div>
+
+                </div>
+            <% end %>
         </div>
-    <% end %>
-
+    </div>
 </div>

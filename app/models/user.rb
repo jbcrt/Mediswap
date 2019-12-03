@@ -4,13 +4,24 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :lockable, :confirmable
+  
+  mount_uploader :avatar_id, PhotoUploader
 
-validates_presence_of :title, :first_name, :last_name, :birth_date, :birth_place, :personnal_address, :personnal_postal_code_address, :personnal_city_address, :personnal_phone_number, :professionnal_phone_number, :profession, :status, :structure_name, :rpps_number, :urssaf_number, :council_number, :council_location, :council_email, :professionnal_address, :professionnal_postal_code_address, :professionnal_city_address
-validates_uniqueness_of :personnal_phone_number
-validates_uniqueness_of :rpps_number
-validates_uniqueness_of :urssaf_number
-validates_uniqueness_of :council_number
+  validates_presence_of :title, :first_name, :last_name, :profession, :account_type, :personnal_phone_number
+  validates_uniqueness_of :personnal_phone_number, :professional_id_number, :urssaf_number, :council_number
 
-has_many :offers, dependent: :destroy
+  has_many :offers, dependent: :destroy
+
+  def self.professions
+    ["Masseur-kinésithérapeute", "Chirurgien dentiste", "Infirmier", "Médecin généraliste"].sort
+  end
+
+  def self.account_types
+    ["Praticien remplaçant", "Praticien installé"].sort
+  end
+
+  def self.status
+    ["Étudiant", "Diplomé"].sort
+  end
 
 end

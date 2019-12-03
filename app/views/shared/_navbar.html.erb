@@ -1,69 +1,107 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm justify-content-between">
+<nav class="navbar sticky-top navbar-expand-xl navbar-light bg-white shadow-sm justify-content-between">
     <a class="navbar-brand d-flex align-items-center" href="/">
-    <%= image_tag("logo.svg", class: "mr-2",alt: "Mediswap logo") %>
+    <%= image_tag("logo.svg", class: "mr-2 d-none d-md-block",alt: "Mediswap logo") %>
     <span class="logo-title">MEDISWAP</span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form class="form-inline my-1 mx-1 d-none d-lg-block">
-        <input id="js-offersLocalization" type="text" placeholder="Localisation des annonces" aria-label="Localisation des annonces" class="form-control">
-        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-    </form>
-    <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-        <li class="nav-item my-1 mx-1 d-none d-lg-block">
-            <%= link_to 'Publier une annonce', new_offer_path, class: "btn btn-link" %>
-        </li>
-        <li class="nav-item my-1 mx-1 d-none d-lg-block">
-            <%= link_to 'Consulter les annonces', offers_path, class: "btn btn-primary" %>
-        </li>
-        <li class="nav-item dropdown d-none d-lg-block my-1 my-lg-0 mx-0 ml-lg-2">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to 'Mes annonces', my_offers_path, class: "dropdown-item" %>
-                <%= link_to "Mon Profil", edit_user_registration_path, class: "dropdown-item" %>
-                <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+    <!-- <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "form-inline d-none d-xl-flex" } do |f| %>
+        <%= f.input :location, input_html: { id: "js-navbarAddressSearch", class: "navbar-search", name: "location", placeholder: "Ville ou adresse", value: "" } %>
+        <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary ml-1" %>
+    <% end  %> -->
+
+    <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "d-none d-xl-flex" } do |f| %>
+            <div class="mr-2">
+                <%= f.input :profession, collection: User.professions, prompt: "Profession", input_html: { class: "custom-select mr-2", name: "profession", placeholder: "", value: "" } %>
             </div>
-        </li>
-        <li class="nav-item d-lg-none">
-            <%= link_to 'Publier une annonce', new_offer_path, class: "dropdown-item" %>
-        </li>
-        <li class="nav-item d-lg-none">
-            <%= link_to 'Consulter les annonces', offers_path, class: "dropdown-item" %>
-        </li>
-        <div class="dropdown-divider"></div>
-        <li class="nav-item d-lg-none">
-            <%= link_to "Mes annonces", my_offers_path, class: "dropdown-item" %>
-        </li>
-        <li class="nav-item d-lg-none">
-            <%= link_to "Mon Profil", edit_user_registration_path, class: "dropdown-item" %>
-        </li>
-        <li class="nav-item d-lg-none">
-            <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-        </li>
+            <div class="mr-2">
+                <%= f.input :location, input_html: { class: "js-navbarAddressSearch form-control mr-2", name: "location", placeholder: "Ville ou adresse", value: "" } %>
+            </div>
+            <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary" %>
+    <% end  %>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+
+        <% if user_signed_in? %>
+
+            <li class="nav-item my-1 mx-1 d-none d-xl-block">
+                <%= link_to 'Publier une annonce', new_offer_path, class: "btn btn-link" %>
+            </li>
+            
+            <li class="nav-item dropdown d-none d-xl-block my-1 my-xl-0 mx-0 ml-xl-2">
+                <% if current_user.avatar_id.present? %>
+                    <%= cl_image_tag current_user.avatar_id, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% elsif current_user.title == 0 %>
+                    <%= image_tag "avatars/doctor_f", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% else %>
+                    <%= image_tag "avatars/doctor_m", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% end %>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <%= link_to 'Mes annonces', my_offers_path, class: "dropdown-item" %>
+                    <%= link_to "Mon Profil", edit_user_registration_path, class: "dropdown-item" %>
+                    <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </div>
+            </li>
+
+            <li class="nav-item d-xl-none">
+                <%= link_to 'Publier une annonce', new_offer_path, class: "dropdown-item" %>
+            </li>
+
+            <li class="nav-item d-xl-none">
+                <%= link_to 'Consulter les annonces', offers_path, class: "dropdown-item" %>
+            </li>
+
+            <div class="dropdown-divider"></div>
+
+            <li class="nav-item d-xl-none">
+                <%= link_to "Mon Profil", edit_user_registration_path, class: "dropdown-item" %>
+            </li>
+
+            <li class="nav-item d-xl-none">
+                <%= link_to "Mes annonces", my_offers_path, class: "dropdown-item" %>
+            </li>
+
+            <li class="nav-item d-xl-none">
+                <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </li>
 
         <% else %>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Fonctionnalités
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'Mise en relation', root_path(anchor: 'search'), class: "dropdown-item" %>
-            <%= link_to 'Contrat et signature', root_path(anchor: 'contract'), class: "dropdown-item" %>
-            <%= link_to 'Applications mobiles', root_path(anchor: 'mobile-app'), class: "dropdown-item" %>
-            </div>
-        </li>
-        <li class="nav-item">
-            <%= link_to 'Prix', root_path(anchor: 'prices'), class: "nav-link" %>
-        </li>
-        <li class="nav-item my-1 my-lg-0 mx-0 mx-lg-2">
-            <%= link_to 'Connexion', new_user_session_path, class: "btn btn-outline-primary btn-block" %>
-        </li>
-        <li class="nav-item my-1 my-lg-0 mx-0 ml-lg-2">
-            <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-primary btn-block" %>
-        </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Fonctionnalités
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'Mise en relation', root_path(anchor: 'search'), class: "dropdown-item" %>
+                <%= link_to 'Contrat et signature', root_path(anchor: 'contract'), class: "dropdown-item" %>
+                <%= link_to 'Applications mobiles', root_path(anchor: 'mobile-app'), class: "dropdown-item" %>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <%= link_to 'Prix', root_path(anchor: 'prices'), class: "nav-link" %>
+            </li>
+
+            <div class="dropdown-divider"></div>
+
+            <li class="nav-item d-xl-none">
+                <%= link_to 'Connexion', new_user_session_path, class: "nav-link" %>
+            </li>
+
+            <li class="nav-item d-xl-none">
+                <%= link_to 'Inscription', new_user_registration_path, class: "nav-link" %>
+            </li>
+
+            <li class="nav-item d-none d-xl-block ml-1 mr-2">
+                <%= link_to 'Connexion', new_user_session_path, class: "nav-link" %>
+            </li>
+
+            <li class="nav-item d-none d-xl-block">
+                <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-primary" %>
+            </li>
+
         <% end %>
 
     </ul>

@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
 
   <div class="js-profileMenu">
     <nav class="navbar navbar-expand-lg navbar-light bg-white d-block d-lg-none my-3 p-0">
@@ -31,95 +31,111 @@
 
   <div class="row">
 
-    <div class="col-xs-12 col-lg-6 js-profileEditDiv">
+    <div class="col-xs-12 col-lg-8 js-profileEditDiv">
       <h3>Modifier vos informations</h3>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
         <div class="form-inputs">
           <fieldset class="custom-fieldset">
-            <legend class="custom-legend">Identifiants</legend>
-            <%= f.input :email, required: true, autofocus: true %>
+            <legend class="custom-legend"><i class="fas fa-at"></i> Identifiants</legend>
+            <%= f.input :email, autofocus: true %>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %>
 
-            <%= f.input :password, hint: "Ne remplissez pas ce champ si vous ne voulez pas modifier votre mot de passe", required: false, input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation, hint: "Ne remplissez pas ce champ si vous ne voulez pas modifier votre mot de passe", required: false, input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password, hint: true, required: false, input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation, hint: true, required: false, input_html: { autocomplete: "new-password" } %>
           </fieldset>
           <fieldset class="custom-fieldset">
-            <legend class="custom-legend">Informations personnelles</legend>
-            <%= f.input :title, as: :radio_buttons, required: true, collection: [['0', 'Monsieur'], ['1', 'Madame']], label_method: :second, value_method: :first %>
-            <div class="row">
+            <legend class="custom-legend"><i class="far fa-id-card"></i> Informations personnelles</legend>
+            <%= f.input :title, as: :radio_buttons, collection: [['0', 'Monsieur'], ['1', 'Madame']], label_method: :second, value_method: :first %>
+            <div class="form-row">
               <div class="col-xs-12 col-md-6">
-                <%= f.input :first_name, required: true %>
+                <%= f.input :first_name %>
               </div>
               <div class="col-xs-12 col-md-6">
-              <%= f.input :last_name, required: true %>
+              <%= f.input :last_name %>
               </div>
             </div>
-            <div class="row">
+            <div class="form-row">
               <div class="col-xs-12 col-md-6">
-                <%= f.input :birth_date, as: :date, html5: true, required: true %>
+                <%= f.input :birth_date, as: :date, html5: true %>
               </div>
               <div class="col-xs-12 col-md-6">
-                <%= f.input :birth_place, required: true %>
+                <%= f.input :birth_place %>
               </div>
             </div>
           </fieldset>
           <fieldset class="custom-fieldset">
-            <legend class="custom-legend">Coordonnées personnelles</legend>
-            <%= f.input :personnal_phone_number, required: true %>
-            <%= f.input :personnal_address, required: true %>
+            <legend class="custom-legend"><i class="fas fa-portrait"></i> Avatar</legend>
+            <div class="form-row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :avatar_id %>
+                <%= f.input :avatar_id_cache, as: :hidden %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <% if @user.avatar_id?  %>
+                  <%= f.check_box :remove_avatar_id %>
+                  <label class="file optional" for="user_remove_avatar_id">Supprimer l'avatar ?</label>
+                  <%= cl_image_tag @user.avatar_id, height: 48, width: 48, crop: :thumb, gravity: :face %>
+                <% end %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend"><i class="fas fa-home"></i> Coordonnées personnelles</legend>
+            <%= f.input :personnal_phone_number %>
+            <%= f.input :personnal_address %>
             <%= f.input :personnal_additional_address %>
-            <div class="row">
+            <div class="form-row">
               <div class="col-xs-12 col-md-6">
-                <%= f.input :personnal_postal_code_address, required: true %>
+                <%= f.input :personnal_postal_code_address %>
               </div>
               <div class="col-xs-12 col-md-6">
-                <%= f.input :personnal_city_address, required: true %>
-              </div>
-            </div>
-          </fieldset>
-          <fieldset class="custom-fieldset">
-            <legend class="custom-legend">Informations professionnelles</legend>
-            <%= f.input :profession, collection: [['1', 'Kinésithérapeute'], ['2', 'Infirmier']], label_method: :second, value_method: :first, required: true %>
-            <%= f.input :status, collection: [['1', 'Diplomé'], ['2', 'Etudiant']], label_method: :second, value_method: :first, required: true %>
-            <%= f.input :rpps_number, required: true %>
-            <%= f.input :adeli_number %>
-            <%= f.input :urssaf_number, required: true %>
-            <div class="row">
-              <div class="col-xs-12 col-md-6">
-                <%= f.input :council_number, required: true %>
-              </div>
-              <div class="col-xs-12 col-md-6">
-                <%= f.input :council_location, required: true %>
-              </div>
-            </div>
-            <%= f.input :council_email, required: true %>
-          </fieldset>
-          <fieldset class="custom-fieldset">
-            <legend class="custom-legend">Coordonnées professionnelles</legend>
-            <%= f.input :structure_name, required: true %>
-            <%= f.input :professionnal_phone_number, required: true %>
-            <%= f.input :professionnal_address, required: true %>
-            <%= f.input :professionnal_additional_address %>
-            <div class="row">
-              <div class="col-xs-12 col-md-6">
-                <%= f.input :professionnal_postal_code_address, required: true %>
-              </div>
-              <div class="col-xs-12 col-md-6">
-                <%= f.input :professionnal_city_address, required: true %>
+                <%= f.input :personnal_city_address %>
               </div>
             </div>
           </fieldset>
           <fieldset class="custom-fieldset">
-            <legend class="custom-legend">Valider</legend>
-            <%= f.input :current_password, hint: "Vous devez saisir votre mot de passe actuel pour valider vos modifications", required: true, input_html: { autocomplete: "current-password" } %>
+            <legend class="custom-legend"><i class="fas fa-user-md"></i> Informations professionnelles</legend>
+            <%= f.input :account_type, collection: User.account_types, input_html: { class: "custom-select" } %>
+            <%= f.input :profession, collection: User.professions, input_html: { class: "custom-select" } %>
+            <%= f.input :professional_status, collection: User.status, input_html: { class: "custom-select" } %>
+            <%= f.input :professional_id_number %>
+            <%= f.input :urssaf_number %>
+            <div class="form-row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :council_number %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :council_location %>
+              </div>
+            </div>
+            <%= f.input :council_email %>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend"><i class="fas fa-hospital"></i> Coordonnées professionnelles</legend>
+            <%= f.input :structure_name %>
+            <%= f.input :professional_phone_number %>
+            <%= f.input :professional_address %>
+            <%= f.input :professional_additional_address %>
+            <div class="form-row">
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :professional_postal_code_address %>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <%= f.input :professional_city_address %>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="custom-fieldset">
+            <legend class="custom-legend"><i class="fas fa-check"></i> Valider</legend>
+            <%= f.input :current_password, hint: "Vous devez saisir votre mot de passe actuel pour valider vos modifications", input_html: { autocomplete: "current-password" } %>
           </fieldset>
         </div>
         <div class="form-actions">
-          <%= f.button :submit, "Modifier", :class => "btn btn-primary btn-block" %>
+          <%= f.button :submit, "Modifier vos informations", :class => "btn btn-primary btn-block" %>
         </div>
       <% end %>
     </div>

@@ -134,11 +134,11 @@ fr:
       council_number: Le numéro d'Ordre
       council_location: La localisation de l'Ordre
       council_email: L'email de l'Ordre
-      professionnal_phone_number: Le numéro de téléphone professionnel
-      professionnal_address: L'adresse professionnelle
-      professionnal_additional_address: Le complément d'adresse
-      professionnal_postal_code_address: Le code postal
-      professionnal_city_address: La ville
+      professional_phone_number: Le numéro de téléphone professionnel
+      professional_address: L'adresse professionnelle
+      professional_additional_address: Le complément d'adresse
+      professional_postal_code_address: Le code postal
+      professional_city_address: La ville
     messages:
       accepted: doit être accepté(e)
       blank: doit être rempli(e)

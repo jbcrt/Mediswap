@@ -1,15 +1,23 @@
 fieldset.custom-fieldset {
     // border: 1px solid $light-gray;
+    background-color: white;
     padding: 1rem;
     border-radius: 2px;
     margin: 1rem 0;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-
+    
     legend.custom-legend {
         width: auto;
-        padding: 0 0.5rem;
+        padding: 0.25rem 0.5rem;
         font-size: 1.25rem;
         font-weight: 600;
         background-color: $white;
+        border-radius: 4px;
+        // border: 1px solid $primary;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+        i {
+            color: $primary;
+        }
     }
 } 

@@ -1,17 +1,36 @@
 // Define variables for your color scheme
+$darkest-medigreen: hsl(178,40%,13%);
+$dark-medigreen: hsl(178,40%,35%);
+$medigreen: hsl(178,40%,47%);
+$light-medigreen: hsl(178,40%,85%);
+$lightest-medigreen: hsl(178,40%,97%);
 
-$medigreen-lightest: #EAF6F6;
-$medigreen-light: #8ac8c6;
-$medigreen: #48A9A6;
-$medigreen-dark: #2e6c6a;
-$medigreen-darkest: #142f2e;
+$darkest-gray: hsl(0, 0%, 13%);
+$dark-gray: hsl(0, 0%, 35%);
+$gray: hsl(0, 0%, 55%);
+$light-gray: hsl(0, 0%, 85%);
+$lightest-gray: hsl(0, 0%, 97%);
 
-// For example:
-// $red: #FD1015;
-// $blue: #167FFB;
-// $yellow: #FFC65A;
-// $orange: #E67E22;
-// $green: green;
-$gray: #0E0000;
-$light-gray: rgba(0, 0, 0, 0.1);
-$lightest-gray: #F4F4F4;
+$darkest-green: hsl(170, 97%, 15%);
+$dark-green: hsl(166, 72%, 28%);
+$green: hsl(161, 57%, 45%);
+$light-green: hsl(156, 73%, 74%);
+$lightest-green: hsl(152, 68%, 96%);
+
+$darkest-blue: hsl(218, 100%, 17%);
+$dark-blue: hsl(215, 96%, 32%);
+$blue: hsl(211, 86%, 48%);
+$light-blue: hsl(206, 93%, 73%);
+$lightest-blue: hsl(202, 100%, 95%);
+
+$darkest-red: hsl(348, 94%, 20%);
+$dark-red: hsl(352, 90%, 35%);
+$red: hsl(358, 79%, 57%);
+$light-red: hsl(360, 100%, 80%);
+$lightest-red: hsl(360, 100%, 95%);
+
+$darkest-yellow: hsl(15, 86%, 30%);
+$dark-yellow: hsl(29, 80%, 44%);
+$yellow: hsl(43, 90%, 60%);
+$light-yellow: hsl(48, 95%, 76%);
+$lightest-yellow: hsl(49, 100%, 96%);

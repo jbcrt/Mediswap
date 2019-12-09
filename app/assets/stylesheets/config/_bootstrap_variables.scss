@@ -7,17 +7,17 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 #FCFCFC;
+$body-bg:                 #fbfbfb;
 $font-size-base: 1rem;
 $enable-gradients: true;
 
 // Colors
-// $body-color: $gray;
+$body-color: $darkest-gray;
 $primary:    $medigreen;
-// $success:    $green;
-// $info:       $yellow;
-// $danger:     $red;
-// $warning:    $orange;
+$success:    $green;
+$info:       $blue;
+$danger:     $red;
+$warning:    $yellow;
 
 // Buttons & inputs' radius
 $border-radius:    2px;
@@ -26,6 +26,6 @@ $border-radius-sm: 2px;
 
 // Jumbotron
 
-$jumbotron-bg: #FCFCFC;
+$jumbotron-bg: #fbfbfb;
 
 // Override other variables below!

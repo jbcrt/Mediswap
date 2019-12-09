@@ -1,6 +1,7 @@
 // Graphical variables
 @import "config/colors";
 @import "config/fonts";
+@import "config/typography";
 @import "config/layout";
 @import "config/bootstrap_variables";
 @import "config/turbolinks";
@@ -15,3 +16,4 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "offers/index";

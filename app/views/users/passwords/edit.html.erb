@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-xs-12 col-lg-6 offset-lg-3">
+      <h2>Changez votre mot de passe</h2>
+
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+
+        <%= f.input :reset_password_token, as: :hidden %>
+        <%= f.full_error :reset_password_token %>
+
+        <div class="form-inputs">
+          <%= f.input :password, label: "Nouveau mot de passe", required: true, autofocus: true, hint: ("#{@minimum_password_length} caractères au minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation, label: "Confirmez votre nouveau mot de passe", required: true, input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Enregistrer mon nouveau mot de passe", :class => "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
+
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>

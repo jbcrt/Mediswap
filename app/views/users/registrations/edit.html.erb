@@ -1,0 +1,322 @@
+<div class="container mt-4 mb-5">
+
+  <h1 class="h2">Gérer votre compte</h1>
+
+  <div class="js-profileMenu">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white d-block d-lg-none my-3 p-0">
+      <button class="btn btn-light btn-block dropdown-toggle" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        Menu du profil
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav p-2">
+          <li class="nav-item js-profileMenuMinEditBtn active">
+            <div class="nav-link">Modifier vos informations</div>
+          </li>
+          <li class="nav-item js-profileMenuMinManageBtn">
+            <div class="nav-link">Supprimer votre compte</div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="my-4 d-none d-lg-block">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <div class="nav-link btn btn-link js-profileMenuMaxEditBtn active">Modifier vos informations</div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link btn btn-link js-profileMenuMaxManageBtn">Supprimer votre compte</div>
+        </li>
+      </ul>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-12 js-profileEditDiv">
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+
+          <div class="row">
+
+              <div class="col-12">
+                  <legend class="h5"><i class="fas fa-at"></i> Identifiants</legend>
+                  <hr>
+              </div>
+
+              <div class="col-xs-12 col-md-4">
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+              </div>
+
+              <div class="col-xs-12 col-md-8">
+                  <%= f.input :email, autofocus: true %>
+
+                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                  <% end %>
+
+                  <%= f.input :password, hint: true, required: false, input_html: { autocomplete: "new-password" } %>
+                  <%= f.input :password_confirmation, hint: true, required: false, input_html: { autocomplete: "new-password" } %>
+              </div>
+
+          </div>
+
+          <div class="row mt-4">
+
+              <div class="col-12">
+                  <legend class="h5"><i class="far fa-id-card"></i> Informations personnelles</legend>
+                  <hr>
+              </div>
+
+              <div class="col-xs-12 col-md-4">
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+              </div>
+
+              <div class="col-xs-12 col-md-8">
+                  <%= f.input :title, as: :radio_buttons, collection: [['0', 'Monsieur'], ['1', 'Madame']], label_method: :second, value_method: :first %>
+
+                  <div class="row form-row">
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :first_name %>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                    <%= f.input :last_name %>
+                    </div>
+                  </div>
+
+                  <div class="row form-row">
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :birth_date, as: :date, html5: true %>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :birth_place %>
+                    </div>
+                  </div>
+
+              </div>
+
+          </div>
+
+          <div class="row mt-4">
+
+              <div class="col-12">
+                  <legend class="h5"><i class="fas fa-portrait"></i> Avatar</legend>
+                  <hr>
+              </div>
+
+              <div class="col-xs-12 col-md-4">
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+              </div>
+
+              <div class="col-xs-12 col-md-8">
+
+                  <div class="row form-row align-items-center">
+
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :avatar_id %>
+                      <%= f.input :avatar_id_cache, as: :hidden %>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6">
+                      <% if @user.avatar_id?  %>
+                        <%= f.check_box :remove_avatar_id %>
+                        <label class="file optional" for="user_remove_avatar_id">Supprimer l'avatar ?</label>
+                        <%= cl_image_tag @user.avatar_id, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar" %>
+                      <% end %>
+                    </div>
+                    
+                  </div>
+
+              </div>
+
+          </div>
+
+          <div class="row mt-4">
+
+              <div class="col-12">
+                  <legend class="h5"><i class="fas fa-home"></i> Coordonnées personnelles</legend>
+                  <hr>
+              </div>
+
+              <div class="col-xs-12 col-md-4">
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+              </div>
+
+              <div class="col-xs-12 col-md-8">
+
+                  <%= f.input :personnal_phone_number %>
+
+                  <%= f.input :personnal_address %>
+
+                  <%= f.input :personnal_additional_address %>
+
+                  <div class="row form-row">
+
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :personnal_postal_code_address %>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :personnal_city_address %>
+                    </div>
+
+                  </div>
+
+              </div>
+
+          </div>
+
+          <div class="row mt-4">
+
+              <div class="col-12">
+                  <legend class="h5"><i class="fas fa-user-md"></i> Informations professionnelles</legend>
+                  <hr>
+              </div>
+
+              <div class="col-xs-12 col-md-4">
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+              </div>
+
+              <div class="col-xs-12 col-md-8">
+
+                  <%= f.input :account_type, collection: User.account_types, input_html: { class: "custom-select" } %>
+
+                  <%= f.input :profession, collection: User.professions, input_html: { class: "custom-select" } %>
+
+                  <%= f.input :professional_status, collection: User.status, input_html: { class: "custom-select" } %>
+
+                  <%= f.input :professional_id_number %>
+
+                  <%= f.input :urssaf_number %>
+
+                  <div class="form-row">
+
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :council_number %>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :council_location %>
+                    </div>
+                    
+                  </div>
+
+                  <%= f.input :council_email %>
+
+              </div>
+
+          </div>
+
+          <div class="row mt-4">
+
+              <div class="col-12">
+                  <legend class="h5"><i class="fas fa-hospital"></i> Coordonnées professionnelles</legend>
+                  <hr>
+              </div>
+
+              <div class="col-xs-12 col-md-4">
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+              </div>
+
+              <div class="col-xs-12 col-md-8">
+
+                  <%= f.input :structure_name %>
+
+                  <%= f.input :professional_phone_number %>
+
+                  <%= f.input :professional_address %>
+
+                  <%= f.input :professional_additional_address %>
+
+                  <div class="form-row">
+
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :professional_postal_code_address %>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6">
+                      <%= f.input :professional_city_address %>
+                    </div>
+                    
+                  </div>
+
+              </div>
+
+          </div>
+
+          <div class="row mt-4">
+
+              <div class="col-12">
+                  <legend class="h5"><i class="fas fa-check"></i> Valider vos modifications</legend>
+                  <hr>
+              </div>
+
+              <div class="col-xs-12 col-md-4">
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+              </div>
+
+              <div class="col-xs-12 col-md-8">
+
+                  <%= f.input :current_password, hint: "Vous devez saisir votre mot de passe actuel pour valider vos modifications", input_html: { autocomplete: "current-password" } %>
+
+              </div>
+
+          </div>
+
+          <div class="form-actions">
+          </div>
+
+          <div class="form-actions d-none d-lg-flex justify-content-end">
+            <%= f.button :submit, "Modifier vos informations", :class => "btn btn-primary" %>
+          </div>
+
+          <div class="form-actions d-block d-lg-none">
+            <%= f.button :submit, "Modifier vos informations", :class => "btn btn-primary btn-block btn-lg" %>
+          </div>
+
+      <% end %>
+
+    </div>
+
+    <div class="col-12 js-profileManageDiv d-none">
+
+      <div class="row">
+
+        <div class="col-12">
+            <div class="h5"><i class="fas fa-user-slash"></i> Vous ne désirez plus utiliser nos service ?</div>
+            <hr>
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+
+        <div class="col-xs-12 col-md-4 d-flex align-items-center justify-content-center">
+          <%= link_to "Supprimer mon compte", registration_path(current_user), data: { confirm: "Etes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible" }, method: :delete, :class => "btn btn-danger btn-block" %>
+        </div>
+
+      </div>
+    
+    </div>
+
+  </div>
+
+</div>

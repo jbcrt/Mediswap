@@ -71,23 +71,25 @@
                     <div class="offer-card-avatar mr-2">
                     <% if offer.user.avatar_id.present? %>
                         <%= cl_image_tag offer.user.avatar_id, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar" %>
-                    <% elsif offer.user.title == 0 %>
-                        <%= image_tag "avatars/doctor_f", class: "avatar" %>
-                    <% else %>
+                    <% elsif offer.user.title == "0" %>
                         <%= image_tag "avatars/doctor_m", class: "avatar" %>
+                    <% else %>
+                        <%= image_tag "avatars/doctor_f", class: "avatar" %>
                     <% end %>
                     </div>
 
                     <div class="ml-2 w-100">
 
                         <h5 class="offer-card-title">
+                            <% if offer.urgent? %>
+                            <span class="badge badge-warning">
+                                <i class="fas fa-exclamation-circle"></i> Urgent
+                            </span>
+                            <% end %>
                             <%= offer.title %>
                         </h5>
 
                         <h6>
-                            <span class="badge badge-warning">
-                                <i class="fas fa-exclamation-circle"></i> Urgent
-                            </span>
                             <span class="badge badge-light">
                                 <i class="fas fa-file-contract"></i> <%= offer.offer_type %>
                             </span>
@@ -105,11 +107,12 @@
                             </span>
                         </h6>
 
-                        <!-- <hr class="my-2">
+                        <hr class="my-2">
 
                         <div class="offer-card-description text-muted">
                             <%= offer.description.truncate_words(25) %>
                         </div>
+                        
                         <span class="offer-card-bottom">
                             <% if offer.created_at.to_date == Date.today  %>
                             Postée aujourd'hui
@@ -118,7 +121,7 @@
                             <% else %>
                             Postée le <%= l offer.created_at.to_date, format: :long %>
                             <% end %>
-                        </span> -->
+                        </span>
 
                     </div>
 

@@ -1,8 +1,138 @@
-<div class="container mt-4 mb-5">
+<div class="container my-4">
     <h2>Publier une annonce</h2>
-    <hr>
     <div class="row">
-        <div class="col-xs-12 col-lg-8">
+        <div class="col-12">
+            <%= simple_form_for @offer, url: offers_path do |f| %>
+
+                <%= f.error_notification %>
+
+                <div class="row mt-4">
+
+                    <div class="col-12">
+                        <legend class="h5"><i class="far fa-newspaper"></i> Votre annonce</legend>
+                        <hr>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-8">
+                        <%= f.input :title %>
+
+                        <%= f.input :offer_type, collection: @offer_type, input_html: { class: "custom-select" } %>
+                        <div class="row form-row">
+                            <div class="col-xs-12 col-md-6">
+                                <%= f.input :starts_at, as: :date, html5: true, required: true %>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <%= f.input :ends_at, as: :date, html5: true %>
+                            </div>
+                        </div>
+
+                        <%= f.input :retrocession, hint: true %>
+
+                        <%= f.input :description %>
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+
+                    <div class="col-12">
+                        <legend class="h5"><i class="fas fa-map-marker-alt"></i> Localisation</legend>
+                        <hr>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <div class="alert alert-primary">
+                            <div class="h6 alert-heading mt-1"><i class="far fa-lightbulb"></i> Bon à savoir</div>
+                            <hr class="my-2">
+                            <p>Remplissez vos coordonnées professionnelles dans votre profil afin de ne pas avoir à renseigner ces champs à chaque dépôt d'annonce. 😉</p>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-8">
+                        <%= f.input :offer_address, input_html: { value: "#{current_user.professional_address}" } %>
+
+                        <%= f.input :offer_additional_address, input_html: { value: "#{current_user.professional_additional_address}" } %>
+                        <div class="row form-row">
+                            <div class="col-xs-12 col-md-4">
+                                <%= f.input :offer_postal_code_address, input_html: { value: "#{current_user.professional_postal_code_address}" } %>
+                            </div>
+                            <div class="col-xs-12 col-md-8">
+                                <%= f.input :offer_city_address, input_html: { value: "#{current_user.professional_city_address}" } %>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+
+                    <div class="col-12">
+                        <legend class="h5"><i class="fas fa-info-circle"></i> Informations complémentaires</legend>
+                        <hr>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-8">
+                        <%= f.input :vehicle, hint: true %>
+
+                        <%= f.input :home_visiting %>
+
+                        <%= f.input :medical_institution_visiting %>
+
+                        <%= f.input :housing, hint: true %>
+
+                        <%= f.input :secretariat, hint: true %>
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+
+                    <div class="col-12">
+                        <legend class="h5"><i class="fas fa-certificate"></i> Options</legend>
+                        <hr>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-8">
+                        <%= f.input :urgent, hint: true %>
+
+                        <%= f.input :premium, hint: true %>
+                    </div>
+
+                </div>
+
+                <div class="form-actions d-none d-lg-flex justify-content-end">
+                    <%= f.button :submit, "Publier mon annonce", :class => "btn btn-primary" %>
+                </div>
+
+                <div class="form-actions d-block d-lg-none">
+                    <%= f.button :submit, "Publier mon annonce", :class => "btn btn-primary btn-block btn-lg" %>
+                </div>
+
+            <% end %>
+        </div>
+        
+        <!--<div class="col-xs-12 col-lg-8">
             <%= simple_form_for @offer, url: offers_path do |f| %>
                 <%= f.error_notification %>
 
@@ -25,6 +155,10 @@
                         <%= f.input :retrocession, hint: true %>
 
                         <%= f.input :vehicle, hint: true %>
+
+                        <%= f.input :home_visiting %>
+
+                        <%= f.input :medical_institution_visiting %>
 
                         <%= f.input :housing, hint: true %>
 
@@ -49,12 +183,21 @@
 
                     </fieldset>
 
+                    <fieldset class="custom-fieldset">
+                        <legend class="custom-legend"><i class="fas fa-certificate"></i> Options</legend>
+                        <%= f.input :urgent, hint: true %>
+
+                        <%= f.input :premium, hint: true %>
+
+                    </fieldset>
+
                     <div class="form-actions">
                         <%= f.button :submit, "Publier mon annonce", :class => "btn btn-primary btn-block btn-lg" %>
                     </div>
 
                 </div>
             <% end %>
-        </div>
+        </div>-->
+
     </div>
 </div>

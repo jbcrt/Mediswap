@@ -1,21 +1,18 @@
-<div class="container my-4 my-md-5">
+<div class="container my-4 offer-show">
+
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <h3><%= @offer.title %></h3>
-        <div class="text-muted">
-            <span class="badge badge-warning"><i class="fas fa-exclamation-circle"></i> Urgent</span> | 
-            <i class="fas fa-file-contract"></i> <%= @offer.offer_type %> | 
-            <i class="fas fa-map-marker-alt"></i> <%= @offer.offer_city_address %> | 
-            <% if @offer.ends_at != nil %>
-                <i class="far fa-calendar-alt"></i> du <%= l @offer.starts_at, format: :default %> au <%= l @offer.ends_at, format: :default %>
-            <% else %>
-                <i class="far fa-calendar-alt"></i> à partir du <%= l @offer.starts_at, format: :default %>
-            <% end %>
-        </div>
+        <% if @offer.urgent? %>
+            <div class="h5"><span class="badge badge-warning"><i class="fas fa-exclamation-circle"></i> Urgent</span></div>
+        <% end %>
+        <h1 class="h3 text-center">
+            <%= @offer.title %>
+        </h1>
     </div>
+
     <hr class="mb-2">
 
-    <div class="d-flex justify-content-between align-items-center text-muted">
-        <div>
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="text-light-gray">
             <% if @offer.created_at.to_date == Date.today  %>
                 Postée aujourd'hui
             <% elsif @offer.created_at.to_date == Date.today - 1 %>
@@ -24,94 +21,312 @@
                 Postée il y a <%= (Date.today - @offer.created_at.to_date).to_i %> jours
             <% end %>
         </div>
-        <div><span class="badge badge-pill badge-primary">6</span> candidats</div>
+        <div class="text-gray"><span class="badge badge-pill badge-primary">6</span> candidats</div>
     </div>
 
-
-    <div class="container-fluid my-4">
-        <div class="row">
-
-            <div class="col-xs-12 col-md-6 pl-0 px-xs-0 py-xs-1">
-                <div class="view-card">
-                    <h5>Informations</h5>
-                    <hr>
-                    <div class="px-2">
-
-                        <h6><i class="fas fa-wallet"></i> Rétrocession</h6>
-                        <ul>
-                            <li>
-                                <span class="text-muted"><i class="fas fa-percent"></i> <%= @offer.retrocession %> / <%= 100 - @offer.retrocession %></span>
-                            </li>
-                        </ul>
-
-                        <h6><i class="fas fa-route"></i> Déplacements</h6>
-                        <ul>
-                            <% if @offer.vehicle == true %>
-                                <li>
-                                    <span class="text-muted"><i class="fas fa-car"></i> Véhicule obligatoire</span>
-                                </li>
-                            <% else %>
-                                <li>
-                                    <span class="text-muted"><i class="fas fa-car"></i> Véhicule facultatif</span>
-                                </li>
-                            <% end %>
-                        </ul>
-
-                        <% if @offer.housing == true || @offer.secretariat == true %>
-                        <h6><i class="fas fa-thumbs-up"></i> Commodités</h6>
-                        <ul>
-                            <% if @offer.housing == true %>
-                                <li>
-                                    <span class="text-muted"><i class="fas fa-bed"></i> Logement fourni</span>
-                                </li>
-                            <% end %>
-
-                            <% if @offer.secretariat == true %>
-                                <li>
-                                    <span class="text-muted"><i class="fas fa-phone"></i> Avec secrétariat</span>
-                                </li>
-                            <% end %>
-                        </ul>
+    <div class="custom-card mt-4">
+        <div class="row align-items-center">
+            <div class="col-xs-12 col-md-6 ">
+                <div class="d-flex align-items-center px-2">
+                    <div class="mr-3">
+                        <% if @offer.user.avatar_id.present? %>
+                            <%= cl_image_tag @offer.user.avatar_id, height: 75, width: 75, crop: :thumb, gravity: :face, class: "avatar-show" %>
+                        <% elsif @offer.user.title == "0" %>
+                            <%= image_tag "avatars/doctor_m", class: "avatar-show" %>
+                        <% else %>
+                            <%= image_tag "avatars/doctor_f", class: "avatar-show" %>
                         <% end %>
-
+                    </div>
+                    <div class="author-info">
+                        <div class="author-name"><%= @offer.user.first_name %> <%= @offer.user.last_name %></div>
+                        <div class="author-description"><%= @offer.user.profession %></div>
+                        <% if User.rpps_professions.include? @offer.user.profession  %>
+                            <div class="author-id">RPPS : <%= @offer.user.professional_id_number %></div>
+                        <% elsif User.adeli_professions.include? @offer.user.profession  %>
+                            <div class="author-id">ADELI : <%= @offer.user.professional_id_number %></div>
+                        <% end %>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-md-6 pr-0 px-xs-0 py-xs-1">
-                <div class="view-card">
-                    <h5>Praticien</h5>
-                    <hr>
-                    <div class="d-flex px-2">
-                        <div class="mr-3">
-                            <% if @offer.user.avatar_id.present? %>
-                                <%= cl_image_tag @offer.user.avatar_id, height: 75, width: 75, crop: :thumb, gravity: :face, class: "avatar-show" %>
-                            <% elsif @offer.user.title == 0 %>
-                                <%= image_tag "avatars/doctor_f", class: "avatar-show" %>
-                            <% else %>
-                                <%= image_tag "avatars/doctor_m", class: "avatar-show" %>
-                            <% end %>
-                        </div>
-                        <div>
-                            <h6 class="mb-0"><%= @offer.user.first_name %> <%= @offer.user.last_name[0] %>.</h6>
-                            <span class="text-muted">membre depuis <%= (Date.today - @offer.user.created_at.to_date).to_i %> jours</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-xs-12 col-lg-4 offset-lg-1 text-center mt-3 mt-lg-0">
+                <div class="text-gray mb-1">Cette annonce vous intéresse ?</div>
+                <div class="btn btn-primary btn-block">Postuler</div>
             </div>
-
         </div>
     </div>
 
-    <div class="offer-description view-card my-4">
-        <h5>Description</h5>
-        <hr>
-        <p class="text-muted"><%= @offer.description %></p>
-    </div>
+    <div class="row my-4">
 
-    <div class="row justify-content-center">
-        <div class="col-xs-12 col-md-6 col-lg-5 col-xl-4">
-            <div class="btn btn-primary btn-lg btn-block">Postuler</div>
+        <div class="col-xs-12 col-lg-6">
+                <h2 class="h5">Informations</h2>
+                <hr>
+
+                <div class="row form-row">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="card-item d-flex align-items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-content-label">Type</div>
+                                <div class="card-content-value"><%= @offer.offer_type %></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
+                        <div class="card-item d-flex align-items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-content-label">Rétrocession</div>
+                                <div class="card-content-value"><%= @offer.retrocession %> / <%= 100 - @offer.retrocession %></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 mt-2">
+                        <div class="card-item d-flex align-items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-content-label">Localisation</div>
+                                <div class="card-content-value"><%= @offer.offer_city_address %></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="h5 mt-3">Dates</h2>
+                <hr>
+
+                <div class="row form-row">
+
+                    <% if @offer.ends_at != nil %>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Du</div>
+                                    <div class="card-content-value"><%= l @offer.starts_at, format: :default %></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Au</div>
+                                    <div class="card-content-value"><%= l @offer.ends_at, format: :default %></div>
+                                </div>
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">À partir du</div>
+                                    <div class="card-content-value"><%= l @offer.starts_at, format: :default %></div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+
+                </div>
+
+                <h2 class="h5 mt-3">Déplacements</h2>
+                <hr>
+
+                <div class="row form-row">
+                    <% if @offer.vehicle == true %>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Véhicule</div>
+                                    <div class="card-content-value">Requis</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Véhicule</div>
+                                    <div class="card-content-value">Non requis</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+
+                    <% if @offer.home_visiting == true %>
+                        <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Domicile</div>
+                                    <div class="card-content-value">Oui</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Domicile</div>
+                                    <div class="card-content-value">Non</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+
+                    <% if @offer.medical_institution_visiting == true %>
+                        <div class="col-xs-12 col-md-6 mt-2">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Établissement de santé</div>
+                                    <div class="card-content-value">Oui</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="col-xs-12 col-md-6 mt-2">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Établissement de santé</div>
+                                    <div class="card-content-value">Non</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+
+                <h2 class="h5 mt-3">Commodités</h2>
+                <hr>
+
+                <div class="row form-row">
+
+                    <% if @offer.housing == true %>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Logement</div>
+                                    <div class="card-content-value">Oui</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Logement</div>
+                                    <div class="card-content-value">Non</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+
+                    <% if @offer.secretariat == true %>
+                        <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Secrétariat</div>
+                                    <div class="card-content-value">Oui</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="col-xs-12 col-md-6 mt-2 mt-md-0">
+                            <div class="card-item d-flex align-items-center">
+                                <div class="card-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-content-label">Secrétariat</div>
+                                    <div class="card-content-value">Non</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+
+                </div>
+        </div>
+
+        <div class="col-xs-12 col-lg-6 mt-4 mt-lg-0">
+
+            <h2 class="h5">Description</h2>
+            <hr>
+            <div class="custom-card mt-2 mt-md-3 mb-4">
+                <p><%= @offer.description %></p>
+            </div>
+
+            <h2 class="h5">Photos</h2>
+            <hr>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item text-center active">
+                    <%= image_tag("https://libeal.fr/wp-content/uploads/2016/12/Cabinet-Bleu-Panoramique-Novembre-2018-Centre-Lib%C3%A9al-location-bureaux-et-cabinets-1.jpg", height: "300", alt: "Edit Entry") %>
+                    <%# <img src="https://libeal.fr/wp-content/uploads/2016/12/Cabinet-Bleu-Panoramique-Novembre-2018-Centre-Lib%C3%A9al-location-bureaux-et-cabinets-1.jpg" class="d-block rounded w-100" alt="..."> %>
+                    </div>
+                    <div class="carousel-item text-center">
+                    <%= image_tag("http://www.cabinetkinerepublique.fr/s/cc_images/teaserbox_4963679.JPG?t=1480239857", height: "300", alt: "Edit Entry") %>
+                    <%# <img src="http://www.cabinetkinerepublique.fr/s/cc_images/teaserbox_4963679.JPG?t=1480239857" class="d-block rounded w-100" alt="..."> %>
+                    </div>
+                    <div class="carousel-item text-center">
+                    <%= image_tag("https://res.cloudinary.com/doctolib/image/upload/w_1024,h_700,c_limit/reix0fk15ukyzn8kg8iu.jpg", height: "300", alt: "Edit Entry") %>
+                    <%# <img src="https://res.cloudinary.com/doctolib/image/upload/w_1024,h_700,c_limit/reix0fk15ukyzn8kg8iu.jpg" class="d-block rounded w-100" alt="..."> %>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
     </div>
 

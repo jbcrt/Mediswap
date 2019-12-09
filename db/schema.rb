@@ -32,8 +32,12 @@ ActiveRecord::Schema.define(version: 2019_11_23_233322) do
     t.text "description"
     t.integer "retrocession"
     t.boolean "vehicle"
+    t.boolean "home_visiting"
+    t.boolean "medical_institution_visiting"
     t.boolean "housing"
     t.boolean "secretariat"
+    t.boolean "urgent"
+    t.boolean "premium"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_offers_on_user_id"

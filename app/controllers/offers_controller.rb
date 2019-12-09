@@ -63,8 +63,12 @@ class OffersController < ApplicationController
         :description,
         :retrocession,
         :vehicle,
+        :home_visiting,
+        :medical_institution_visiting,
         :housing,
-        :secretariat
+        :secretariat,
+        :urgent,
+        :premium
       )
     end
 

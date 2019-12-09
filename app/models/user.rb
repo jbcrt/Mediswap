@@ -4,20 +4,74 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :lockable, :confirmable
-  
-  mount_uploader :avatar_id, PhotoUploader
-
-  validates_presence_of :title, :first_name, :last_name, :profession, :account_type, :personnal_phone_number
-  validates_uniqueness_of :personnal_phone_number, :professional_id_number, :urssaf_number, :council_number
-
+         
   has_many :offers, dependent: :destroy
 
+  mount_uploader :avatar_id, PhotoUploader
+
+  validates :professional_id_number, format: { with: /\A[0-9]{11}\z/, message: "Le numéro RPPS indiqué n'est pas correct" }, if: Proc.new { |a| User.rpps_professions.include? a.profession }
+  validates :professional_id_number, format: { with: /\A[0-9]{9}\z/, message: "Le numéro ADELI indiqué n'est pas correct" }, if: Proc.new { |a| User.adeli_professions.include? a.profession }
+  validates_presence_of :title, :first_name, :last_name, :account_type, :profession, :professional_id_number
+
   def self.professions
-    ["Masseur-kinésithérapeute", "Chirurgien dentiste", "Infirmier", "Médecin généraliste"].sort
+    [
+      "Médecin généraliste",
+      "Chirurgien dentiste",
+      "Sage-femme",
+      "Pharmacien",
+      "Masseur-kinésithérapeute",
+      "Pédicure podologue",
+      "Audioprothésiste",
+      "Diététicien",
+      "Epithésiste",
+      "Ergothérapeute",
+      "Infirmier",
+      "Manipulateur en radiologie",
+      "Oculariste",
+      "Opticien-lunetier",
+      "Orthpédiste-orthésiste",
+      "Orthophoniste",
+      "Orthoprothésiste",
+      "Orthoptiste",
+      "Podo-orthésiste",
+      "Psychomotricien",
+      "Technicien de laboratoire"
+    ].sort
+  end
+
+  def self.rpps_professions
+    [
+      "Médecin généraliste",
+      "Chirurgien dentiste",
+      "Sage-femme",
+      "Pharmacien",
+      "Masseur-kinésithérapeute",
+      "Pédicure podologue"
+    ].sort
+  end
+
+  def self.adeli_professions 
+    [
+      "Audioprothésiste",
+      "Diététicien",
+      "Epithésiste",
+      "Ergothérapeute",
+      "Infirmier",
+      "Manipulateur en radiologie",
+      "Oculariste",
+      "Opticien-lunetier",
+      "Orthpédiste-orthésiste",
+      "Orthophoniste",
+      "Orthoprothésiste",
+      "Orthoptiste",
+      "Podo-orthésiste",
+      "Psychomotricien",
+      "Technicien de laboratoire"
+    ].sort
   end
 
   def self.account_types
-    ["Praticien remplaçant", "Praticien installé"].sort
+    ["Praticien libéral remplaçant", "Praticien libéral installé"].sort
   end
 
   def self.status

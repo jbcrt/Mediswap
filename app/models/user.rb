@@ -7,8 +7,10 @@ class User < ApplicationRecord
          
   has_many :offers, dependent: :destroy
 
+  # Avatar upload
   mount_uploader :avatar_id, PhotoUploader
 
+  # Validations
   validates :professional_id_number, format: { with: /\A[0-9]{11}\z/, message: "Le numéro RPPS indiqué n'est pas correct" }, if: Proc.new { |a| User.rpps_professions.include? a.profession }
   validates :professional_id_number, format: { with: /\A[0-9]{9}\z/, message: "Le numéro ADELI indiqué n'est pas correct" }, if: Proc.new { |a| User.adeli_professions.include? a.profession }
   validates_presence_of :title, :first_name, :last_name, :account_type, :profession, :professional_id_number

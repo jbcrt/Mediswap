@@ -1,18 +1,25 @@
 class OffersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-      @location = params["location"]
-      @distance = params["distance"]
-      if @location.present? && @distance.present?
-        @offers = policy_scope(Offer).near(@location, @distance).order(created_at: :desc)
-      elsif @location.present?
-        @offers = policy_scope(Offer).near(@location, 20).order(created_at: :desc)
-      else
-        @offers = policy_scope(Offer).all.order(created_at: :desc)
+      @premium_offers = policy_scope(Offer).profession(current_user.profession).where(premium: true).order(created_at: :desc)
+      @offers = policy_scope(Offer).profession(current_user.profession).where(premium: false).order(created_at: :desc)
+      
+      if params[:location].present? && params[:distance].present? && params[:distance] != "0"
+        @premium_offers = @premium_offers.near(params[:location], params[:distance])
+        @offers = @offers.near(params[:location], params[:distance])
+      elsif params[:location].present?
+        @premium_offers = @premium_offers.location(params[:location])
+        @offers = @offers.location(params[:location])
+      end
+      
+      filtering_params(params).each do |key, value|
+        @premium_offers = @premium_offers.public_send(key, value) if value.present?
+        @offers = @offers.public_send(key, value) if value.present?
       end
 
-      @markers = @offers.map do |offer|
+      @all_offers = @offers + @premium_offers
+      
+      @markers = @all_offers.map do |offer|
         {
           lat: offer.latitude,
           lng: offer.longitude,
@@ -28,14 +35,12 @@ class OffersController < ApplicationController
 
     def new
       @offer = Offer.new
-      # Get contrat types linked to the current user's profession
-      @offer_type = Offer.offer_types(current_user.profession)
       authorize @offer
     end
 
     def create
-      @offer = current_user.offers.build(offer_params)
       @offer.profession = current_user.profession
+      @offer = current_user.offers.build(offer_params)
       authorize @offer
 
       if @offer.save
@@ -70,6 +75,10 @@ class OffersController < ApplicationController
         :urgent,
         :premium
       )
+    end
+
+    def filtering_params(params)
+      params.slice(:type, :begins, :ends, :urgent)
     end
 
 end

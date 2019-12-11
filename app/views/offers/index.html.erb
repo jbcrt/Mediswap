@@ -6,36 +6,28 @@
             <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "form" } do |f| %>
                 <div class="my-2">
                     <h6><i class="fas fa-map-marker-alt"></i> Localisation</h6>
-                    <%= f.input :location, hint: "Ville ou adresse", input_html: { name: "location", class: "js-navbarAddressSearch", value: "" } %>
+                    <%= f.input :location, hint: "Ville ou adresse", input_html: { name: "location", class: "js-autoCitySearch", value: "#{params[:location]}" } %>
                 </div>
                 <div class="my-2">
                     <h6><i class="fas fa-route"></i> Distance</h6>
-                    <%= f.input :distance, hint: "En kilomètres", input_html: { name: "distance", value: "", class: "" } %>
+                    <%= f.input :distance, hint: "En kilomètres", input_html: { name: "distance", value: "#{params[:distance]}", class: "" } %>
+                </div>
+                <div class="my-3">
+                    <h6><i class="far fa-newspaper"></i> Type d'annonce</h6>
+                    <%= f.input :type, collection: Offer.offer_types, selected: params[:type], input_html: { name: "type", class: "custom-select" } %>
+                </div>
+                <div class="my-3">
+                    <h6><i class="far fa-calendar-alt"></i> À partir du</h6>
+                    <%= f.input :begins, as: :date, label: false, html5: true, input_html: { name: "begins", value: "#{params[:begins]}", class: "mx-0" } %>
+                </div>
+                <div class="my-3">
+                    <h6><i class="far fa-calendar-alt"></i> Jusqu'au</h6>
+                    <%= f.input :ends, as: :date, label: false, html5: true, input_html: { name: "ends", value: "#{params[:ends]}", class: "mx-0" } %>
                 </div>
                 <div class="my-3">
                 <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary btn-block" %>
                 </div>
             <% end %>
-        </div>
-        <h5>Filtres</h5>
-        <hr class="mt-1">
-        <div class="my-2">
-            <div class="my-2">
-                <h6><i class="far fa-newspaper"></i> Type d'annonce</h6>
-                <select class="form-control" placeholder="Type d'annonce">
-                    <option>Remplacement</option>
-                    <option>Assistanat</option>
-                    <option>Collaboration</option>
-                </select>
-            </div>
-            <div class="my-2">
-                <h6><i class="far fa-calendar-alt"></i> À partir du</h6>
-                <input type="date" class="form-control" placeholder="jj / mm / aaaa" aria-label="Date de début" aria-describedby="basic-addon2">
-            </div>
-            <div class="my-2">
-                <h6><i class="far fa-calendar-alt"></i> Jusqu'au</h6>
-                <input type="date" class="form-control" placeholder="jj / mm / aaaa" aria-label="Date de fin" aria-describedby="basic-addon2">
-            </div>
         </div>
     </div>
 
@@ -49,7 +41,7 @@
                     <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "form mb-2" } do |f| %>
                         <div class="my-2">
                             <h6><i class="fas fa-map-marker-alt"></i> Localisation</h6>
-                            <%= f.input :location, hint: "Ville ou adresse", input_html: { name: "location", class: "js-navbarAddressSearch", value: "" } %>
+                            <%= f.input :location, hint: "Ville ou adresse", input_html: { name: "location", class: "js-autoCitySearch", value: "" } %>
                         </div>
                         <div class="my-2">
                             <h6><i class="fas fa-route"></i> Distance</h6>
@@ -62,72 +54,16 @@
                 </ul>
             </div>
         </nav>
-        <h3><%= @offers.length %> <%= @offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></h3>
+        <h3><%= @offers.length + @premium_offers.length %> <%= @offers.length + @premium_offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></h3>
         <hr>
         <div class="row mx-0">
-            <% @offers.each do |offer| %>
-                <%= link_to offer_path(offer), :action => 'go', :class => "offer-card col-12 d-inline-flex" do %>
 
-                    <div class="offer-card-avatar mr-2">
-                    <% if offer.user.avatar_id.present? %>
-                        <%= cl_image_tag offer.user.avatar_id, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar" %>
-                    <% elsif offer.user.title == "0" %>
-                        <%= image_tag "avatars/doctor_m", class: "avatar" %>
-                    <% else %>
-                        <%= image_tag "avatars/doctor_f", class: "avatar" %>
-                    <% end %>
-                    </div>
-
-                    <div class="ml-2 w-100">
-
-                        <h5 class="offer-card-title">
-                            <% if offer.urgent? %>
-                            <span class="badge badge-warning">
-                                <i class="fas fa-exclamation-circle"></i> Urgent
-                            </span>
-                            <% end %>
-                            <%= offer.title %>
-                        </h5>
-
-                        <h6>
-                            <span class="badge badge-light">
-                                <i class="fas fa-file-contract"></i> <%= offer.offer_type %>
-                            </span>
-                            <% if offer.ends_at != nil %>
-                                <span class="badge badge-light">
-                                    <i class="far fa-calendar-alt"></i> du <%= l offer.starts_at, format: :default %> au <%= l offer.ends_at, format: :default %>
-                                </span>
-                            <% else %>
-                                <span class="badge badge-light">
-                                    <i class="far fa-calendar-alt"></i> à partir du <%= l offer.starts_at, format: :default %>
-                                </span>
-                            <% end %>
-                            <span class="badge badge-light">
-                                <i class="fas fa-map-marker-alt"></i> <%= offer.offer_city_address %>
-                            </span>
-                        </h6>
-
-                        <hr class="my-2">
-
-                        <div class="offer-card-description text-muted">
-                            <%= offer.description.truncate_words(25) %>
-                        </div>
-                        
-                        <span class="offer-card-bottom">
-                            <% if offer.created_at.to_date == Date.today  %>
-                            Postée aujourd'hui
-                            <% elsif offer.created_at.to_date == Date.today %>
-                            Postée hier
-                            <% else %>
-                            Postée le <%= l offer.created_at.to_date, format: :long %>
-                            <% end %>
-                        </span>
-
-                    </div>
-
-                <% end %>
+            <% @premium_offers.each do |offer| %>
+                <%= render 'offers/partials/index_card', offer: offer %>
             <% end %>
-
+            <% @offers.each do |offer| %>
+                <%= render 'offers/partials/index_card', offer: offer %>
+            <% end %>
 
         </div>
     </main>

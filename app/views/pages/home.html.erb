@@ -14,7 +14,7 @@
                     <%= f.input :profession, collection: User.professions, prompt: "Profession", input_html: { class: "custom-select", name: "profession", placeholder: "", value: "" } %>
                 </div>
                 <div class="col-xl-6 mt-3 mt-xl-0">
-                    <%= f.input :location, input_html: { class: "js-navbarAddressSearch form-control", name: "location", placeholder: "Ville ou adresse", value: "" } %>
+                    <%= f.input :location, input_html: { class: "js-autoCitySearch form-control", name: "location", placeholder: "Ville ou adresse", value: "" } %>
                 </div>
               <div class="col-12 mt-3">
                 <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary btn-block" %>

@@ -6,17 +6,13 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "form-inline d-none d-xl-flex" } do |f| %>
-        <%= f.input :location, input_html: { id: "js-navbarAddressSearch", class: "navbar-search", name: "location", placeholder: "Ville ou adresse", value: "" } %>
-        <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary ml-1" %>
-    <% end  %> -->
 
     <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "d-none d-xl-flex" } do |f| %>
             <div class="mr-2">
-                <%= f.input :profession, collection: User.professions, prompt: "Profession", input_html: { class: "custom-select mr-2", name: "profession", placeholder: "", value: "" } %>
+                <%= f.input :profession, collection: User.professions, prompt: "Profession", input_html: { class: "custom-select", name: "profession" } %>
             </div>
             <div class="mr-2">
-                <%= f.input :location, input_html: { class: "js-navbarAddressSearch form-control mr-2", name: "location", placeholder: "Ville ou adresse", value: "" } %>
+                <%= f.input :location, input_html: { class: "js-autoCitySearch form-control mr-2", name: "location", placeholder: "Ville", value: "#{params[:location]}" } %>
             </div>
             <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary" %>
     <% end  %>
@@ -26,7 +22,7 @@
 
         <% if user_signed_in? %>
 
-            <li class="nav-item my-1 mx-1 d-none d-xl-block">
+            <li class="nav-item my-1 d-none d-xl-block">
                 <%= link_to 'Publier une annonce', new_offer_path, class: "btn btn-link" %>
             </li>
             

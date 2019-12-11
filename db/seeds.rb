@@ -25,7 +25,7 @@ kine_employeur_1 = User.new(
 offer_kine_1 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Masseur-kinésithérapeute",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "1 rue de la Guignette",
@@ -38,7 +38,8 @@ offer_kine_1 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
 )
 
 offer_kine_1.user = kine_employeur_1
@@ -62,7 +63,7 @@ kine_employeur_2 = User.new(
 offer_kine_2 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Masseur-kinésithérapeute",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "1 rue du Noroit",
@@ -75,7 +76,8 @@ offer_kine_2 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
   )
 
 offer_kine_2.user = kine_employeur_2
@@ -99,7 +101,7 @@ kine_employeur_3 = User.new(
 offer_kine_3 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Masseur-kinésithérapeute",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "52 rue de La Rochelle",
@@ -112,7 +114,8 @@ offer_kine_3 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
 )
 
 offer_kine_3.user = kine_employeur_3
@@ -136,7 +139,7 @@ kine_employeur_4 = User.new(
 offer_kine_4 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Masseur-kinésithérapeute",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "4 Rue Valpastour",
@@ -149,7 +152,8 @@ offer_kine_4 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
 )
 
 offer_kine_4.user = kine_employeur_4
@@ -173,7 +177,7 @@ kine_employeur_5 = User.new(
 offer_kine_5 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Masseur-kinésithérapeute",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "25 Avenue Edmond Grasset",
@@ -186,7 +190,8 @@ offer_kine_5 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
 )
 
 offer_kine_5.user = kine_employeur_5
@@ -215,7 +220,7 @@ med_gen_employeur_1 = User.new(
 offer_med_gen_1 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Médecin généraliste",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "Place des Chênes Verts",
@@ -228,7 +233,8 @@ offer_med_gen_1 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
 )
 
 offer_med_gen_1.user = med_gen_employeur_1
@@ -252,7 +258,7 @@ med_gen_employeur_2 = User.new(
 offer_med_gen_2 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Médecin généraliste",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "3 Rue de la Désirée",
@@ -265,7 +271,8 @@ offer_med_gen_2 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
 )
 
 offer_med_gen_2.user = med_gen_employeur_2
@@ -289,7 +296,7 @@ med_gen_employeur_3 = User.new(
 offer_med_gen_3 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Médecin généraliste",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "14 Rue de Valençay",
@@ -302,7 +309,8 @@ offer_med_gen_3 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
 )
 
 offer_med_gen_3.user = med_gen_employeur_3
@@ -326,7 +334,7 @@ med_gen_employeur_4 = User.new(
 offer_med_gen_4 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Médecin généraliste",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "2 Rue des Marmottes",
@@ -339,7 +347,8 @@ offer_med_gen_4 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
 )
 
 offer_med_gen_4.user = med_gen_employeur_4
@@ -363,7 +372,7 @@ med_gen_employeur_5 = User.new(
 offer_med_gen_5 = Offer.new(
     title: Faker::Lorem.sentence,
     profession: "Médecin généraliste",
-    offer_type: ["Remplacement libéral", "Collaboration libérale", "Assistanat libéral"].sample,
+    offer_type: ["Remplacement occasionnel", "Remplacement régulier", "Collaboration", "Association", "Cession"].sample,
     starts_at: Faker::Date.between(from: Date.today, to: 1.month.from_now),
     ends_at: Faker::Date.between(from: 1.month.from_now, to: 2.month.from_now),
     offer_address: "97 Rue nationale",
@@ -376,7 +385,8 @@ offer_med_gen_5 = Offer.new(
     medical_institution_visiting: Faker::Boolean.boolean,
     housing: Faker::Boolean.boolean,
     secretariat: Faker::Boolean.boolean,
-    urgent: Faker::Boolean.boolean 
+    urgent: Faker::Boolean.boolean, 
+    premium: Faker::Boolean.boolean 
 )
 
 offer_med_gen_5.user = med_gen_employeur_5

@@ -46,9 +46,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :title,
       :first_name,
       :last_name,
-      :account_type,
+      :user_type,
       :profession,
-      :professional_id_number
+      :facility_name,
+      :facility_type
     ])
   end
 
@@ -58,29 +59,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :title,
       :first_name,
       :last_name,
+      :birth_date,
       :avatar_id,
       :remove_avatar_id,
-      :birth_date,
-      :birth_place,
-      :account_type,
-      :personnal_phone_number,
-      :personnal_address,
-      :personnal_additional_address,
-      :personnal_postal_code_address,
-      :personnal_city_address,
+      :phone_number,
+      :user_type,
+      :candidate,
       :profession,
-      :professional_status,
-      :structure_name,
       :professional_id_number,
-      :urssaf_number,
-      :council_number,
-      :council_location,
-      :council_email,
-      :professional_phone_number,
-      :professional_address,
-      :professional_additional_address,
-      :professional_postal_code_address,
-      :professional_city_address
+      :mssante_email,
+      :council_id_number,
+      :council_department,
+      :facility_name,
+      :facility_type,
+      :facility_description,
+      :facility_contact_email,
+      :facility_contact_phone_number,
+      :facility_street,
+      :facility_additional_address,
+      :facility_department,
+      :facility_zipcode,
+      :facility_city
     ])
   end
 

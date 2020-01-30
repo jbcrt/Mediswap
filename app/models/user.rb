@@ -1,83 +1,41 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :trackable, :lockable, :confirmable
-         
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :trackable, :lockable, :confirmable
+  attr_readonly :profession, :user_type
   has_many :offers, dependent: :destroy
 
-  # Avatar upload
   mount_uploader :avatar_id, PhotoUploader
 
-  # Validations
-  validates :professional_id_number, format: { with: /\A[0-9]{11}\z/, message: "Le numéro RPPS indiqué n'est pas correct" }, if: Proc.new { |a| User.rpps_professions.include? a.profession }
-  validates :professional_id_number, format: { with: /\A[0-9]{9}\z/, message: "Le numéro ADELI indiqué n'est pas correct" }, if: Proc.new { |a| User.adeli_professions.include? a.profession }
-  validates_presence_of :title, :first_name, :last_name, :account_type, :profession, :professional_id_number
+  enum user_type: { 
+    health_professional: "Health professional",
+    health_facility: "Health facility"
+  }
 
-  def self.professions
-    [
-      "Médecin généraliste",
-      "Chirurgien dentiste",
-      "Sage-femme",
-      "Pharmacien",
-      "Masseur-kinésithérapeute",
-      "Pédicure podologue",
-      "Audioprothésiste",
-      "Diététicien",
-      "Epithésiste",
-      "Ergothérapeute",
-      "Infirmier",
-      "Manipulateur en radiologie",
-      "Oculariste",
-      "Opticien-lunetier",
-      "Orthpédiste-orthésiste",
-      "Orthophoniste",
-      "Orthoprothésiste",
-      "Orthoptiste",
-      "Podo-orthésiste",
-      "Psychomotricien",
-      "Technicien de laboratoire"
-    ].sort
+  enum title: {
+    mr: "Mister",
+    mme: "Madam"
+  }
+
+  validates :title, presence: true, inclusion: { in: User.titles.keys }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :user_type, presence: true, inclusion: { in: User.user_types.keys }
+
+  # Validations spécifiques pour les professionnels de santé
+  with_options if: Proc.new { |a| a.user_type == "health_professional" } do |professional_user|
+
+    professional_user.validates :profession, presence: true, inclusion: { in: PROFESSIONS.keys }
+    professional_user.validates :facility_type, inclusion: { in: FACILITY_TYPES.keys }, allow_blank: true
+
   end
 
-  def self.rpps_professions
-    [
-      "Médecin généraliste",
-      "Chirurgien dentiste",
-      "Sage-femme",
-      "Pharmacien",
-      "Masseur-kinésithérapeute",
-      "Pédicure podologue"
-    ].sort
-  end
-
-  def self.adeli_professions 
-    [
-      "Audioprothésiste",
-      "Diététicien",
-      "Epithésiste",
-      "Ergothérapeute",
-      "Infirmier",
-      "Manipulateur en radiologie",
-      "Oculariste",
-      "Opticien-lunetier",
-      "Orthpédiste-orthésiste",
-      "Orthophoniste",
-      "Orthoprothésiste",
-      "Orthoptiste",
-      "Podo-orthésiste",
-      "Psychomotricien",
-      "Technicien de laboratoire"
-    ].sort
-  end
-
-  def self.account_types
-    ["Praticien libéral remplaçant", "Praticien libéral installé"].sort
-  end
-
-  def self.status
-    ["Étudiant", "Diplomé"].sort
+  # Validations spécifiques pour les établissements de santé
+  with_options if: Proc.new { |a| a.user_type == "health_facility" } do |facility_user|
+    facility_user.validates :profession, absence: true
+    facility_user.validates :candidate, absence: true
+    facility_user.validates :facility_name, presence: true
+    facility_user.validates :facility_type, presence: true, inclusion: { in: FACILITY_TYPES.keys }
   end
 
 end

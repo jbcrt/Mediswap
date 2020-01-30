@@ -1,4 +1,3 @@
----
 fr:
   activerecord:
     errors:
@@ -9,6 +8,52 @@ fr:
             dépendant(e) existe
           has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
             dépendants existent
+    models:
+      attributes:
+        user:
+          email: "Adresse email"
+          password: "Mot de passe"
+          password_confirmation: "Mot de passe"
+          avatar_id: "Avatar"
+          title: "Titre"
+          first_name: "Prénom"
+          last_name: "Nom"
+          birth_date: "Date de naissance"
+          phone_number: "Numéro de téléphone"
+          user_type: "Type de compte"
+          candidate: 'Candidat'
+          profession: "Profession"
+          professional_id_number: "Numéro d'indentification professionnel (RPPS, ADELI, etc)"
+          mssante_email: "Adresse email MSSanté"
+          council_id_number: "Numéro ordinal"
+          council_department: "Département de l'Ordre"
+          facility_name: "Nom de l'établissement"
+          facility_type: "Type d'établissement"
+          facility_description: "Description de l'établissement"
+          facility_contact_email: "Adresse email de contact"
+          facility_contact_phone_number: "Numéro de téléphone de contact"
+          facility_street: "Adresse"
+          facility_additional_address: "Complément d'adresse"
+          facility_department: "Département"
+          facility_zipcode: "Code postal"
+          facility_city: "Ville"
+        offer:
+          title: "Titre de l'annonce"
+          offer_type: "Type d'annonce"
+          starts_at: "À partir du"
+          ends_at: "Jusqu'au"
+          profession: "Profession"
+          location: "Localisation"
+          distance: "Distance"
+          offer_address: "Adresse"
+          offer_additional_address: "Complément d'adresse"
+          offer_postal_code_address: "Code postal"
+          offer_city_address: "Ville"
+          description: "Description de l'annonce"
+          retrocession: "Taux de rétrocession"
+          vehicle: "Véhicule obligatoire ?"
+          housing: "Logement fourni ?"
+          secretariat: "Secrétariat de cabinet ?"
   date:
     abbr_day_names:
     - dim
@@ -111,34 +156,7 @@ fr:
       month: Mois
       year: Année
   errors:
-    format: "%{attribute} %{message}"
-    attribute:
-      email: L'adresse email
-      password: Le mot de passe
-      title: Le titre
-      first_name: Le prénom
-      last_name: Le nom
-      birth_date: La date de naissance
-      birth_place: Le lieu de naissance
-      personnal_phone_number: Le numéro de téléphone
-      personnal_address: L'adresse
-      personnal_additional_address: Le complément d'adresse
-      personnal_postal_code_address: Le code postal
-      personnal_city_address: La ville
-      profession: La profession
-      status: Le statut
-      structure_name: Le nom de la structure
-      rpps_number: Le numéro RPPS
-      adeli_number: Le numéro Adeli
-      urssaf_number: Le numéro URSSAF
-      council_number: Le numéro d'Ordre
-      council_location: La localisation de l'Ordre
-      council_email: L'email de l'Ordre
-      professional_phone_number: Le numéro de téléphone professionnel
-      professional_address: L'adresse professionnelle
-      professional_additional_address: Le complément d'adresse
-      professional_postal_code_address: Le code postal
-      professional_city_address: La ville
+    format: "%{message}"
     messages:
       accepted: doit être accepté(e)
       blank: doit être rempli(e)
@@ -149,7 +167,7 @@ fr:
       exclusion: n'est pas disponible
       greater_than: doit être supérieur à %{count}
       greater_than_or_equal_to: doit être supérieur ou égal à %{count}
-      inclusion: n'est pas inclus(e) dans la liste
+      inclusion: doit faire parti des valeurs proposées
       invalid: n'est pas valide
       less_than: doit être inférieur à %{count}
       less_than_or_equal_to: doit être inférieur ou égal à %{count}

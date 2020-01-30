@@ -5,7 +5,35 @@ body {
 
 .offers-index-layout {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+
+    .filters-sidebar {
+        padding: 1rem;
+        min-width: 300px;
+        max-width: 300px;
+        margin-left: -300px;
+        transition: all 0.3s;
+
+        &.active {
+            margin-left: 0px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .filters-sidebar {
+            padding: 1rem;
+            min-width: 100%;
+            max-width: 100%;
+            margin-left: -100%;
+            transition: all 0.3s;
+    
+            &.active {
+                margin-left: 0px;
+            }
+        }
+    }
 
     .filters-bar {
         position: sticky;

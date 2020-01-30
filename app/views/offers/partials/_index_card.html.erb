@@ -28,6 +28,9 @@
 
         <h6>
             <span class="badge badge-light">
+                <i class="fas fa-user-md"></i> <%= PROFESSIONS[offer.profession] %>
+            </span>
+            <span class="badge badge-light">
                 <i class="fas fa-file-contract"></i> <%= offer.offer_type %>
             </span>
             <% if offer.ends_at != nil %>

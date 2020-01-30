@@ -112,25 +112,3 @@
         color: $dark-gray;
     }
 }
-
-.card-item {
-    @include card;
-    padding: 0.75rem;
-    padding-left: 1rem;
-    .card-icon {
-        font-size: 2rem;
-        margin-right: 1rem;
-        color: $primary;
-    }
-    .card-content {
-        .card-content-label {
-            text-transform: uppercase;
-            font-weight: 500;
-            font-size: 0.75rem;
-            color: $gray;
-        }
-        .card-content-value {
-            font-weight: 600;
-        }
-    }
-}

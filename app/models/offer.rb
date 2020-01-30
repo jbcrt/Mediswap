@@ -34,7 +34,7 @@ class Offer < ApplicationRecord
   validates :offer_type, presence: true
 
   # Validations spécifiques pour les offres des kinés
-  with_options if: Proc.new { |a| a.profession == "Masseur-kinésithérapeute" } do |kine_offer|
+  with_options if: Proc.new { |a| a.profession == "physiotherapist" } do |kine_offer|
 
     kine_offer.validates :offer_type, inclusion: { in: Offer.kine_offer_types }
     kine_offer.validates :retrocession, presence: true

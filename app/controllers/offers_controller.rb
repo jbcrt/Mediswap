@@ -39,8 +39,9 @@ class OffersController < ApplicationController
     end
 
     def create
+      @offer = current_user.offers.create(offer_params)
       @offer.profession = current_user.profession
-      @offer = current_user.offers.build(offer_params)
+      @offer.save
       authorize @offer
 
       if @offer.save

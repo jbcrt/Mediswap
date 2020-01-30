@@ -1,6 +1,12 @@
 <div class="container-fluid m-0 p-0 offers-index-layout">
-    <div class="filters-bar d-none d-md-block">
-        <h5>Recherche</h5>
+
+    <div id="sidebar" class="filters-sidebar js-offersFiltersSidebar">
+        <div class="d-flex">
+            <h5>Recherche</h5>
+            <button type="button" class="close js-closeFiltersSidebarButton" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <hr class="mt-1">
         <div class="my-2">
             <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "form" } do |f| %>
@@ -56,6 +62,10 @@
         </nav>
         <h3><%= @offers.length + @premium_offers.length %> <%= @offers.length + @premium_offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></h3>
         <hr>
+        <button type="button" id="sidebarCollapse" class="btn btn-link mr-2">
+            <i class="fas fa-align-left"></i>
+            Afficher les filtres
+        </button>
         <div class="row mx-0">
 
             <% @premium_offers.each do |offer| %>

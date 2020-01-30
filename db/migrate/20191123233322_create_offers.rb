@@ -9,10 +9,11 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.date :starts_at
       t.date :ends_at
       # Offer's location
-      t.string :offer_address
-      t.string :offer_additional_address
-      t.string :offer_postal_code_address
-      t.string :offer_city_address
+      t.string :street
+      t.string :additional_address
+      t.string :department
+      t.string :zipcode
+      t.string :city
       t.float :latitude
       t.float :longitude
       # Offer's content

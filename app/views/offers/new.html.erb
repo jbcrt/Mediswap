@@ -58,15 +58,15 @@
                     </div>
 
                     <div class="col-xs-12 col-md-8">
-                        <%= f.input :offer_address, input_html: { value: "#{current_user.professional_address}" } %>
+                        <%= f.input :offer_address %>
 
-                        <%= f.input :offer_additional_address, input_html: { value: "#{current_user.professional_additional_address}" } %>
+                        <%= f.input :offer_additional_address %>
                         <div class="row form-row">
                             <div class="col-xs-12 col-md-4">
-                                <%= f.input :offer_postal_code_address, input_html: { value: "#{current_user.professional_postal_code_address}" } %>
+                                <%= f.input :offer_postal_code_address %>
                             </div>
                             <div class="col-xs-12 col-md-8">
-                                <%= f.input :offer_city_address, input_html: { value: "#{current_user.professional_city_address}" } %>
+                                <%= f.input :offer_city_address %>
                             </div>
                         </div>
                     </div>

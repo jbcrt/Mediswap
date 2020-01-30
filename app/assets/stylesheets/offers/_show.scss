@@ -1,4 +1,6 @@
 .offer-show {
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
     
     .author-info {
         .author-name {
@@ -12,6 +14,30 @@
             color: $gray;
             font-size: 0.9rem;
             font-weight: 300;
+        }
+    }
+
+    .offer-data {
+        .offer-data-icon {
+            display:inline-block;
+            font-size: 1.3rem;
+            color: $primary;
+            line-height: 50px;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            vertical-align: bottom;
+        }
+        .offer-data-content {
+            .offer-data-content-label {
+                text-transform: uppercase;
+                font-weight: 400;
+                font-size: 0.75rem;
+                color: $gray;
+            }
+            .offer-data-content-value {
+                font-weight: 500;
+            }
         }
     }
 

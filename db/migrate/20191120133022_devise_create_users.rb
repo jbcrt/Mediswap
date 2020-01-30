@@ -35,36 +35,33 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       ## Admin
       t.boolean :admin, null: false, default: false
       
-      ### User informations
+      ## User informations
+      t.string :avatar_id
+      t.string :user_type
+      t.boolean :candidate
       ## Personnal informations
       t.string :title
       t.string :first_name
       t.string :last_name
-      t.string :avatar_id
       t.date :birth_date
-      t.string :birth_place
-      t.string :account_type
-      ## Personnal Address
-      t.string :personnal_phone_number
-      t.string :personnal_address
-      t.string :personnal_additional_address
-      t.string :personnal_postal_code_address
-      t.string :personnal_city_address
+      t.string :phone_number
       ## professional informations
       t.string :profession
-      t.string :professional_status
-      t.string :structure_name
       t.string :professional_id_number
-      t.string :urssaf_number
-      t.string :council_number
-      t.string :council_location
-      t.string :council_email
-      ## professional address
-      t.string :professional_phone_number
-      t.string :professional_address
-      t.string :professional_additional_address
-      t.string :professional_postal_code_address
-      t.string :professional_city_address
+      t.string :mssante_email
+      t.string :council_id_number
+      t.string :council_department
+      ## facility informations
+      t.string :facility_name
+      t.string :facility_type
+      t.string :facility_description
+      t.string :facility_contact_email
+      t.string :facility_contact_phone_number
+      t.string :facility_street
+      t.string :facility_additional_address
+      t.string :facility_department
+      t.string :facility_zipcode
+      t.string :facility_city
 
       ## Created at & Updated at
       t.timestamps null: false

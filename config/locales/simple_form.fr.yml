@@ -9,35 +9,36 @@ fr:
         first_name: 'Prénom'
         last_name: 'Nom'
         birth_date: 'Date de naissance'
-        birth_place: 'Ville de naissance'
-        account_type: 'Situation professionnelle'
-        personnal_phone_number: 'Numéro de téléphone'
-        personnal_address: 'Adresse'
-        personnal_additional_address: "Complément d'adresse"
-        personnal_postal_code_address: 'Code postal'
-        personnal_city_address: 'Ville'
+        phone_number: "Numéro de téléphone"
+        user_type: "Vous êtes ?"
+        candidate: 'Vous êtes candidat ?'
         profession: 'Profession'
-        professional_status: 'Statut professionnel'
-        professional_id_number: "Numéro d'identification professionnel (RPPS, ADELI)"
-        urssaf_number: 'Numéro URSSAF'
-        council_number: "Numéro ordinal"
-        council_location: "Département de votre Ordre"
-        council_email: "Adresse email de votre contact à l'Ordre"
-        structure_name: "Nom de la structure d'exercice"
-        professional_phone_number: 'Numéro de téléphone professionnel'
-        professional_address: "Adresse de la structure d'exercice"
-        professional_additional_address: "Complément d'adresse"
-        professional_postal_code_address: 'Code postal'
-        professional_city_address: 'Ville'
+        professional_id_number: "Numéro d'indentification professionnel (RPPS, ADELI, etc)"
+        mssante_email: "Adresse email MSSanté"
+        council_id_number: "Numéro ordinal"
+        council_department: "Département de l'Ordre"
+        facility_name: "Nom de l'établissement"
+        facility_type: "Type d'établissement"
+        facility_description: "Description de l'établissement"
+        facility_contact_email: "Adresse email de contact"
+        facility_contact_phone_number: "Numéro de téléphone de contact"
+        facility_street: "Adresse"
+        facility_additional_address: "Complément d'adresse"
+        facility_department: "Département"
+        facility_zipcode: "Code postal"
+        facility_city: "Ville"
         edit:
-          email: "Changer l'adresse email"
-          password: 'Changer le mot de passe'
+          password: 'Nouveau mot de passe'
+          password_confirmation: 'Retapez le nouveau mot de passe'
           current_password: 'Mot de passe actuel'
       offer:
         title: "Titre de l'annonce"
         offer_type: "Type d'annonce"
         starts_at: "À partir du"
         ends_at: "Jusqu'au"
+        profession: "Profession"
+        location: "Localisation"
+        distance: "Distance"
         offer_address: "Adresse"
         offer_additional_address: "Complément d'adresse"
         offer_postal_code_address: "Code postal"
@@ -47,6 +48,14 @@ fr:
         vehicle: "Véhicule obligatoire ?"
         housing: "Logement fourni ?"
         secretariat: "Secrétariat de cabinet ?"
+    options:
+      user:
+        title:
+          mr: "Monsieur"
+          mme: "Madame"
+        user_type:
+          health_professional: "Un(e) professionnel(le) de santé"
+          health_facility: "Un établissement de santé"
     hints:
       user:
         password: '8 caractères minimum'

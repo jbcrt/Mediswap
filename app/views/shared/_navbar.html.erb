@@ -1,105 +1,107 @@
 <nav class="navbar sticky-top navbar-expand-xl navbar-light bg-white shadow-sm justify-content-between">
+
     <a class="navbar-brand d-flex align-items-center" href="/">
-    <%= image_tag("logo.svg", class: "mr-2 d-none d-md-block",alt: "Mediswap logo") %>
-    <span class="logo-title">MEDISWAP</span>
+        <%= image_tag("logo.svg", class: "mr-2 d-none d-md-block",alt: "Mediswap logo") %>
+        <span class="logo-title">MEDISWAP</span>
     </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "d-none d-xl-flex" } do |f| %>
-            <div class="mr-2">
-                <%= f.input :profession, collection: User.professions, prompt: "Profession", input_html: { class: "custom-select", name: "profession" } %>
-            </div>
-            <div class="mr-2">
-                <%= f.input :location, input_html: { class: "js-autoCitySearch form-control mr-2", name: "location", placeholder: "Ville", value: "#{params[:location]}" } %>
-            </div>
-            <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary" %>
+        <div class="mr-2">
+            <%= f.input :profession, collection: PROFESSIONS, prompt: "Profession", input_html: { class: "custom-select", name: "profession" }, label_method: :second, value_method: :first %>
+        </div>
+        <div class="mr-2">
+            <%= f.input :location, input_html: { class: "js-autoCitySearch form-control mr-2", name: "location", placeholder: "Ville", value: "#{params[:location]}" } %>
+        </div>
+        <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary" %>
     <% end  %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">
 
-        <% if user_signed_in? %>
+            <% if user_signed_in? %>
 
-            <li class="nav-item my-1 d-none d-xl-block">
-                <%= link_to 'Publier une annonce', new_offer_path, class: "btn btn-link" %>
-            </li>
-            
-            <li class="nav-item dropdown d-none d-xl-block my-1 my-xl-0 mx-0 ml-xl-2">
-                <% if current_user.avatar_id.present? %>
-                    <%= cl_image_tag current_user.avatar_id, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                <% elsif current_user.title == 0 %>
-                    <%= image_tag "avatars/doctor_f", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                <% else %>
-                    <%= image_tag "avatars/doctor_m", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                <% end %>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <%= link_to 'Mes annonces', my_offers_path, class: "dropdown-item" %>
-                    <%= link_to "Mon Profil", edit_user_registration_path, class: "dropdown-item" %>
+                <li class="nav-item my-1 d-none d-xl-block">
+                    <%= link_to 'Publier une annonce', new_offer_path, class: "btn btn-link" %>
+                </li>
+                
+                <li class="nav-item dropdown d-none d-xl-block my-1 my-xl-0 mx-0 ml-xl-2">
+                    <% if current_user.avatar_id.present? %>
+                        <%= cl_image_tag current_user.avatar_id, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% elsif current_user.title == "mme" %>
+                        <%= image_tag "avatars/doctor_f", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% else %>
+                        <%= image_tag "avatars/doctor_m", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% end %>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <%= link_to 'Mes annonces', my_offers_path, class: "dropdown-item" %>
+                        <%= link_to "Mon Compte", edit_user_registration_path, class: "dropdown-item" %>
+                        <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                    </div>
+                </li>
+
+                <li class="nav-item d-xl-none">
+                    <%= link_to 'Publier une annonce', new_offer_path, class: "dropdown-item" %>
+                </li>
+
+                <li class="nav-item d-xl-none">
+                    <%= link_to 'Consulter les annonces', offers_path, class: "dropdown-item" %>
+                </li>
+
+                <div class="dropdown-divider"></div>
+
+                <li class="nav-item d-xl-none">
+                    <%= link_to "Mon Compte", edit_user_registration_path, class: "dropdown-item" %>
+                </li>
+
+                <li class="nav-item d-xl-none">
+                    <%= link_to "Mes annonces", my_offers_path, class: "dropdown-item" %>
+                </li>
+
+                <li class="nav-item d-xl-none">
                     <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                </div>
-            </li>
+                </li>
 
-            <li class="nav-item d-xl-none">
-                <%= link_to 'Publier une annonce', new_offer_path, class: "dropdown-item" %>
-            </li>
+            <% else %>
 
-            <li class="nav-item d-xl-none">
-                <%= link_to 'Consulter les annonces', offers_path, class: "dropdown-item" %>
-            </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Fonctionnalités
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%= link_to 'Mise en relation', root_path(anchor: 'search'), class: "dropdown-item" %>
+                    <%= link_to 'Contrat et signature', root_path(anchor: 'contract'), class: "dropdown-item" %>
+                    <%= link_to 'Applications mobiles', root_path(anchor: 'mobile-app'), class: "dropdown-item" %>
+                    </div>
+                </li>
 
-            <div class="dropdown-divider"></div>
+                <li class="nav-item">
+                    <%= link_to 'Prix', root_path(anchor: 'prices'), class: "nav-link" %>
+                </li>
 
-            <li class="nav-item d-xl-none">
-                <%= link_to "Mon Profil", edit_user_registration_path, class: "dropdown-item" %>
-            </li>
+                <div class="dropdown-divider"></div>
 
-            <li class="nav-item d-xl-none">
-                <%= link_to "Mes annonces", my_offers_path, class: "dropdown-item" %>
-            </li>
+                <li class="nav-item d-xl-none">
+                    <%= link_to 'Connexion', new_user_session_path, class: "nav-link" %>
+                </li>
 
-            <li class="nav-item d-xl-none">
-                <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </li>
+                <li class="nav-item d-xl-none">
+                    <%= link_to 'Inscription', new_user_registration_path, class: "nav-link" %>
+                </li>
 
-        <% else %>
+                <li class="nav-item d-none d-xl-block ml-1 mr-2">
+                    <%= link_to 'Connexion', new_user_session_path, class: "nav-link" %>
+                </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Fonctionnalités
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to 'Mise en relation', root_path(anchor: 'search'), class: "dropdown-item" %>
-                <%= link_to 'Contrat et signature', root_path(anchor: 'contract'), class: "dropdown-item" %>
-                <%= link_to 'Applications mobiles', root_path(anchor: 'mobile-app'), class: "dropdown-item" %>
-                </div>
-            </li>
+                <li class="nav-item d-none d-xl-block">
+                    <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-primary" %>
+                </li>
 
-            <li class="nav-item">
-                <%= link_to 'Prix', root_path(anchor: 'prices'), class: "nav-link" %>
-            </li>
+            <% end %>
 
-            <div class="dropdown-divider"></div>
-
-            <li class="nav-item d-xl-none">
-                <%= link_to 'Connexion', new_user_session_path, class: "nav-link" %>
-            </li>
-
-            <li class="nav-item d-xl-none">
-                <%= link_to 'Inscription', new_user_registration_path, class: "nav-link" %>
-            </li>
-
-            <li class="nav-item d-none d-xl-block ml-1 mr-2">
-                <%= link_to 'Connexion', new_user_session_path, class: "nav-link" %>
-            </li>
-
-            <li class="nav-item d-none d-xl-block">
-                <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-primary" %>
-            </li>
-
-        <% end %>
-
-    </ul>
+        </ul>
     </div>
 </nav>

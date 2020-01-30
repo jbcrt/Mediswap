@@ -6,7 +6,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def create?
-    return true # All users can create a new offer view
+    return true
   end
 
   def show?
@@ -14,10 +14,10 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == current_user
   end
 
   def destroy?
-    record.user == user
+    record.user == current_user
   end
 end

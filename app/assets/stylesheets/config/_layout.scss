@@ -5,19 +5,29 @@ body {
 
 .offers-index-layout {
     display: flex;
-    // justify-content: space-between;
     align-items: stretch;
     width: 100%;
 
     .filters-sidebar {
-        padding: 1rem;
-        min-width: 300px;
-        max-width: 300px;
-        margin-left: -300px;
+        overflow: auto;
+        padding: 1rem;        
+        position: fixed;
+        z-index: 3;
+        min-width: 40%;
+        max-width: 40%;
+        height: 100vh;
+        margin-left: -40%;
         transition: all 0.3s;
-
+        background-color: white;
+    
         &.active {
             margin-left: 0px;
+        }
+
+        .filters-sidebar-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     }
     
@@ -33,14 +43,7 @@ body {
                 margin-left: 0px;
             }
         }
-    }
 
-    .filters-bar {
-        position: sticky;
-        top: 74px;
-        flex: 0 0 250px;
-        height: calc(100vh - 74px);
-        padding: 1rem;
     }
     
     .cards-container {
@@ -52,7 +55,7 @@ body {
     .map {
         position: sticky;
         top: 74px;
-        flex: 0 0 30%;
+        flex: 0 0 60%;
         height: calc(100vh - 74px);
     }
 }

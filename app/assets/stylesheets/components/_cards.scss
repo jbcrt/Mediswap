@@ -79,26 +79,65 @@
 
 .offer-card {
     @include card;
+    display: flex;
     margin-bottom: 1rem;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     &:hover {
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         text-decoration: none;
+    }
+
+    .offer-card-badges {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+    }
+
+    .offer-card-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100px;
+    }
+
+    .offer-card-content-top {
+        display: flex;
+        flex-direction: column;
+
         .offer-card-title {
-            color: $primary;
+            color: $darkest-gray;
+            margin-bottom: 0.15rem;
+        }
+
+        .offer-card-facility-info {
+            color: $gray;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
     }
     
-    .offer-card-title {
+    .offer-card-content-middle {
         color: $darkest-gray;
-        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+        .offer-card-data-icon {
+            display:inline-block;
+            font-size: 1.2rem;
+            color: $dark-gray;
+            flex: 0 0 36px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            vertical-align: bottom;
+        }
+
+        .offer-card-data-content {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
     }
 
-    .offer-card-description {
-        color: $gray;
-    }
-
-    .offer-card-bottom {
+    .offer-card-content-bottom {
         color: $light-gray;
         font-size: 0.75rem;
     }

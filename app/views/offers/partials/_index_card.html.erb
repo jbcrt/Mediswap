@@ -1,68 +1,121 @@
-<%= link_to offer_path(offer), :action => 'go', :class => "offer-card col-12 d-inline-flex" do %>
 
-    <div class="offer-card-avatar mr-2">
-    <% if offer.user.avatar_id.present? %>
-        <%= cl_image_tag offer.user.avatar_id, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar" %>
-    <% elsif offer.user.title == "0" %>
-        <%= image_tag "avatars/doctor_m", class: "avatar" %>
-    <% else %>
-        <%= image_tag "avatars/doctor_f", class: "avatar" %>
-    <% end %>
-    </div>
+    <%= link_to offer_path(offer), :action => 'go', :class => "offer-card flex-column flex-sm-row col-12 w-100" do %>
 
-    <div class="ml-2 w-100">
+        <div class="offer-card-badges d-flex d-sm-none flex-column">
+            <% if offer.premium? %>
+                    <span class="badge badge-primary-alt mb-1">
+                        <i class="fas fa-star"></i> Premium
+                    </span> 
+                <% end %>
+                <% if offer.urgent? %>
+                    <span class="badge badge-warning-alt">
+                        <i class="fas fa-exclamation-circle"></i> Urgent
+                    </span>
+            <% end %>
+        </div>
+        
+        <div class="offer-card-left d-flex d-sm-none w-100">
 
-        <h5 class="offer-card-title">
+            <% if offer.user.avatar_id.present? %>
+                <%= cl_image_tag offer.user.avatar_id, height: 72, width: 72, crop: :thumb, gravity: :face, class: "avatar-big mb-3" %>
+            <% elsif offer.user.title == "mr" %>
+                <%= image_tag "avatars/doctor_m", class: "avatar-big mb-3" %>
+            <% else %>
+                <%= image_tag "avatars/doctor_f", class: "avatar-big mb-3" %>
+            <% end %>
+
+        </div>
+
+        <div class="offer-card-left d-none d-sm-flex mr-3">
+
+            <% if offer.user.avatar_id.present? %>
+                <%= cl_image_tag offer.user.avatar_id, height: 72, width: 72, crop: :thumb, gravity: :face, class: "avatar-big mb-3" %>
+            <% elsif offer.user.title == "mr" %>
+                <%= image_tag "avatars/doctor_m", class: "avatar-big mb-3" %>
+            <% else %>
+                <%= image_tag "avatars/doctor_f", class: "avatar-big mb-3" %>
+            <% end %>
+
+            <% if offer.premium? %>
+                <span class="badge badge-primary-alt mb-1">
+                    <i class="fas fa-star"></i> Premium
+                </span> 
+            <% end %>
             <% if offer.urgent? %>
-                <span class="badge badge-warning">
+                <span class="badge badge-warning-alt">
                     <i class="fas fa-exclamation-circle"></i> Urgent
                 </span>
             <% end %>
-            <%= offer.title %>
-            <% if offer.premium? %>
-                <span class="">
-                    <i class="fas fa-award"></i>
-                </span> 
-            <% end %>
-        </h5>
 
-        <h6>
-            <span class="badge badge-light">
-                <i class="fas fa-user-md"></i> <%= PROFESSIONS[offer.profession] %>
-            </span>
-            <span class="badge badge-light">
-                <i class="fas fa-file-contract"></i> <%= offer.offer_type %>
-            </span>
-            <% if offer.ends_at != nil %>
-                <span class="badge badge-light">
-                    <i class="far fa-calendar-alt"></i> du <%= l offer.starts_at, format: :default %> au <%= l offer.ends_at, format: :default %>
-                </span>
-            <% else %>
-                <span class="badge badge-light">
-                    <i class="far fa-calendar-alt"></i> à partir du <%= l offer.starts_at, format: :default %>
-                </span>
-            <% end %>
-            <span class="badge badge-light">
-                <i class="fas fa-map-marker-alt"></i> <%= offer.offer_city_address %>
-            </span>
-        </h6>
-
-        <hr class="my-2">
-
-        <div class="offer-card-description text-muted">
-            <%= offer.description.truncate_words(25) %>
         </div>
-        
-        <span class="offer-card-bottom">
-            <% if offer.created_at.to_date == Date.today  %>
-            Postée aujourd'hui
-            <% elsif offer.created_at.to_date == Date.today %>
-            Postée hier
-            <% else %>
-            Postée le <%= l offer.created_at.to_date, format: :long %>
-            <% end %>
-        </span>
 
-    </div>
 
-<% end %>
+
+        <div class="offer-card-content w-100">
+
+            <div class="offer-card-content-top mb-1">
+
+                <div class="h4 offer-card-title">
+                    <%= offer.title %>
+                </div>
+
+                <div class="offer-card-facility-info">
+                    <%= offer.facility_name %> - <%= offer.city %>
+                </div>
+
+            </div>
+
+            <div class="offer-card-content-middle">
+
+                <div class="d-flex align-items-center">
+                    <div class="offer-card-data-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="offer-card-data-content">
+                        <%= PROFESSIONS[offer.profession] %>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <div class="offer-card-data-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="offer-card-data-content">
+                        <%= offer.offer_type %>
+                    </div>
+                </div>
+
+                <% if offer.ends_at != nil %>
+                    <div class="d-flex align-items-center">
+                        <div class="offer-card-data-icon">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                        <div class="offer-card-data-content">
+                            du <%= l offer.starts_at, format: :default %> au <%= l offer.ends_at, format: :default %>
+                        </div>
+                    </div>
+                <% else %>
+                    <div class="d-flex align-items-center">
+                        <div class="offer-card-data-icon">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                        <div class="offer-card-data-content">
+                            à partir du <%= l offer.starts_at, format: :default %>
+                        </div>
+                    </div>
+                <% end %>
+
+            </div>
+            
+            <span class="offer-card-content-bottom">
+                <% if offer.created_at.to_date == Date.today  %>
+                Postée aujourd'hui
+                <% elsif offer.created_at.to_date == Date.today %>
+                Postée hier
+                <% else %>
+                Postée le <%= l offer.created_at.to_date, format: :long %>
+                <% end %>
+            </span>
+
+        </div>
+    <% end %>

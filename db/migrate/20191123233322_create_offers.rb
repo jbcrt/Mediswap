@@ -8,7 +8,10 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.string :offer_type
       t.date :starts_at
       t.date :ends_at
-      # Offer's location
+      # Offer's facility
+      t.string :facility_name
+      t.string :facility_type
+      t.string :facility_description
       t.string :street
       t.string :additional_address
       t.string :department

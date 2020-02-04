@@ -1,8 +1,8 @@
 <div class="container-fluid m-0 p-0 offers-index-layout">
 
     <div id="sidebar" class="filters-sidebar js-offersFiltersSidebar">
-        <div class="d-flex">
-            <h5>Recherche</h5>
+        <div class="filters-sidebar-title">
+            <h5>Filtres</h5>
             <button type="button" class="close js-closeFiltersSidebarButton" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -38,33 +38,22 @@
     </div>
 
     <main class="cards-container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white d-block d-md-none mb-3 mt-2 p-0">
-            <button class="btn btn-light btn-block dropdown-toggle" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                Recherche
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav p-2">
-                    <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "form mb-2" } do |f| %>
-                        <div class="my-2">
-                            <h6><i class="fas fa-map-marker-alt"></i> Localisation</h6>
-                            <%= f.input :location, hint: "Ville ou adresse", input_html: { name: "location", class: "js-autoCitySearch", value: "" } %>
-                        </div>
-                        <div class="my-2">
-                            <h6><i class="fas fa-route"></i> Distance</h6>
-                            <%= f.input :distance, hint: "En kilomètres", input_html: { name: "distance", value: "", class: "" } %>
-                        </div>
-                        <div class="my-3">
-                        <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary btn-block" %>
-                        </div>
-                    <% end %>
-                </ul>
+
+        <% if false %>
+            <div class="mr-2">
+                <%= f.input :profession, collection: PROFESSIONS, prompt: "Profession", input_html: { class: "custom-select form-control", name: "profession" }, label_method: :second, value_method: :first %>
             </div>
-        </nav>
+            <div class="mr-2">
+                <%= f.input :location, input_html: { class: "js-autoCitySearch form-control mr-2", name: "location", placeholder: "Ville", value: "#{params[:location]}" } %>
+            </div>
+            <%= f.button :submit, "Filtrer", name: nil, class: "btn btn-primary" %>
+        <% end %>
+
         <h3><%= @offers.length + @premium_offers.length %> <%= @offers.length + @premium_offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></h3>
         <hr>
-        <button type="button" id="sidebarCollapse" class="btn btn-link mr-2">
+        <button type="button" id="sidebarCollapse" class="btn btn-light btn-block mb-3">
             <i class="fas fa-align-left"></i>
-            Afficher les filtres
+            Filtres
         </button>
         <div class="row mx-0">
 
@@ -79,4 +68,5 @@
     </main>
 
     <div id="map" class="map d-none d-xl-block" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
 </div>

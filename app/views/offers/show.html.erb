@@ -1,10 +1,7 @@
-<div class="container offer-show">
+<div class="container offer-show my-3">
 
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <% if @offer.urgent? %>
-            <div class="h5"><span class="badge badge-warning"><i class="fas fa-exclamation-circle"></i> Urgent</span></div>
-        <% end %>
-        <h1 class="h3 text-center">
+        <h1 class="h2 text-center">
             <%= @offer.title %>
         </h1>
     </div>
@@ -30,21 +27,17 @@
                 <div class="d-flex align-items-center px-2">
                     <div class="mr-3">
                         <% if @offer.user.avatar_id.present? %>
-                            <%= cl_image_tag @offer.user.avatar_id, height: 75, width: 75, crop: :thumb, gravity: :face, class: "avatar-show" %>
-                        <% elsif @offer.user.title == "mister" %>
-                            <%= image_tag "avatars/doctor_m", class: "avatar-show" %>
+                            <%= cl_image_tag @offer.user.avatar_id, height: 75, width: 75, crop: :thumb, gravity: :face, class: "avatar-big" %>
+                        <% elsif @offer.user.title == "mr" %>
+                            <%= image_tag "avatars/doctor_m", class: "avatar-big" %>
                         <% else %>
-                            <%= image_tag "avatars/doctor_f", class: "avatar-show" %>
+                            <%= image_tag "avatars/doctor_f", class: "avatar-big" %>
                         <% end %>
                     </div>
                     <div class="author-info">
                         <div class="author-name"><%= @offer.user.first_name %> <%= @offer.user.last_name %></div>
                         <div class="author-description"><%= PROFESSIONS[@offer.user.profession] %></div>
-                        <% if User.rpps_professions.include? @offer.user.profession  %>
-                            <div class="author-id">RPPS : <%= @offer.user.rpps_number %></div>
-                        <% elsif User.adeli_professions.include? @offer.user.profession  %>
-                            <div class="author-id">ADELI : <%= @offer.user.adeli_number %></div>
-                        <% end %>
+                        <div class="author-id">Numéro RPPS/ADELI : <%= @offer.user.professional_id_number %></div>
                     </div>
                 </div>
             </div>
@@ -87,7 +80,7 @@
                     </div>
                     <div class="offer-data-content">
                         <div class="offer-data-content-label">Localisation</div>
-                        <div class="offer-data-content-value"><%= @offer.offer_city_address %></div>
+                        <div class="offer-data-content-value"><%= @offer.city %></div>
                     </div>
                 </div>
                 <h3 class="h6 mt-3">Dates</h2>

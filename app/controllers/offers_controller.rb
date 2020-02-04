@@ -40,7 +40,9 @@ class OffersController < ApplicationController
 
     def create
       @offer = current_user.offers.create(offer_params)
-      @offer.profession = current_user.profession
+      if current_user.user_type == "health_professional"
+        @offer.profession = current_user.profession
+      end
       @offer.save
       authorize @offer
 
@@ -60,10 +62,14 @@ class OffersController < ApplicationController
         :offer_type,
         :starts_at,
         :ends_at,
-        :offer_address,
-        :offer_additional_address,
-        :offer_postal_code_address,
-        :offer_city_address,
+        :facility_name,
+        :facility_type,
+        :facility_description,
+        :street,
+        :additional_address,
+        :department,
+        :zipcode,
+        :city,
         :latitude,
         :longitude,
         :description,

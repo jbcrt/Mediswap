@@ -20,12 +20,10 @@ import { profileEditNavbar } from '../components/nav';
 import { dynamicsSignUpFormFields } from '../components/sign_up_form';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
-import { offersFiltersSidebar } from '../components/offers_filters_sidebar';
 
 document.addEventListener('turbolinks:load', function() {
     profileEditNavbar();
     dynamicsSignUpFormFields();
-    offersFiltersSidebar();
     initAutocomplete();
     initMapbox();
 })

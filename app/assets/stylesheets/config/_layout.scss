@@ -7,44 +7,6 @@ body {
     display: flex;
     align-items: stretch;
     width: 100%;
-
-    .filters-sidebar {
-        overflow: auto;
-        padding: 1rem 1rem 3rem 1rem;        
-        position: fixed;
-        z-index: 3;
-        min-width: 40%;
-        max-width: 40%;
-        height: 100%;
-        margin-left: -40%;
-        transition: all 0.3s;
-        background-color: white;
-    
-        &.active {
-            margin-left: 0px;
-        }
-
-        .filters-sidebar-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    }
-    
-    @media (max-width: 1200px) {
-        .filters-sidebar {
-            padding: 1rem;
-            min-width: 100%;
-            max-width: 100%;
-            margin-left: -100%;
-            transition: all 0.3s;
-    
-            &.active {
-                margin-left: 0px;
-            }
-        }
-
-    }
     
     .cards-container {
         flex-grow: 1;

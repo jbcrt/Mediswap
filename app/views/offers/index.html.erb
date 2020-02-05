@@ -1,60 +1,54 @@
 <div class="container-fluid m-0 p-0 offers-index-layout">
 
-    <div id="sidebar" class="filters-sidebar js-offersFiltersSidebar">
-        <div class="filters-sidebar-title">
-            <h5>Filtres</h5>
-            <button type="button" class="close js-closeFiltersSidebarButton" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <hr class="mt-1">
-        <div class="my-2">
-            <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "form" } do |f| %>
-                <div class="my-2">
-                    <h6><i class="fas fa-map-marker-alt"></i> Localisation</h6>
-                    <%= f.input :location, hint: "Ville ou adresse", input_html: { name: "location", class: "js-autoCitySearch", value: "#{params[:location]}" } %>
-                </div>
-                <div class="my-2">
-                    <h6><i class="fas fa-route"></i> Distance</h6>
-                    <%= f.input :distance, hint: "En kilomètres", input_html: { name: "distance", value: "#{params[:distance]}", class: "" } %>
-                </div>
-                <div class="my-3">
-                    <h6><i class="far fa-newspaper"></i> Type d'annonce</h6>
-                    <%= f.input :type, collection: Offer.offer_types, selected: params[:type], input_html: { name: "type", class: "custom-select" } %>
-                </div>
-                <div class="my-3">
-                    <h6><i class="far fa-calendar-alt"></i> À partir du</h6>
-                    <%= f.input :begins, as: :date, label: false, html5: true, input_html: { name: "begins", value: "#{params[:begins]}", class: "mx-0" } %>
-                </div>
-                <div class="my-3">
-                    <h6><i class="far fa-calendar-alt"></i> Jusqu'au</h6>
-                    <%= f.input :ends, as: :date, label: false, html5: true, input_html: { name: "ends", value: "#{params[:ends]}", class: "mx-0" } %>
-                </div>
-                <div class="my-3">
-                <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary btn-block" %>
-                </div>
-            <% end %>
-        </div>
-    </div>
-
     <main class="cards-container">
-
-        <% if false %>
-            <div class="mr-2">
-                <%= f.input :profession, collection: PROFESSIONS, prompt: "Profession", input_html: { class: "custom-select form-control", name: "profession" }, label_method: :second, value_method: :first %>
-            </div>
-            <div class="mr-2">
-                <%= f.input :location, input_html: { class: "js-autoCitySearch form-control mr-2", name: "location", placeholder: "Ville", value: "#{params[:location]}" } %>
-            </div>
-            <%= f.button :submit, "Filtrer", name: nil, class: "btn btn-primary" %>
-        <% end %>
 
         <h3><%= @offers.length + @premium_offers.length %> <%= @offers.length + @premium_offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></h3>
         <hr>
-        <button type="button" id="sidebarCollapse" class="btn btn-light btn-block mb-3">
-            <i class="fas fa-align-left"></i>
+
+        <button type="button" class="btn btn-light btn-block mb-3" data-toggle="modal" data-target="#offersFiltersModal">
             Filtres
         </button>
+
+        <div class="modal fade" id="offersFiltersModal" tabindex="-1" role="dialog" aria-labelledby="offersFiltersModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="offersFiltersModalLabel">Filtres</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "form" } do |f| %>
+                        <div class="modal-body">
+                            <div class="my-2">
+                                <h6><i class="fas fa-map-marker-alt"></i> Localisation</h6>
+                                <%= f.input :location, hint: "Ville ou adresse", input_html: { name: "location", class: "js-autoCitySearch", value: "#{params[:location]}" } %>
+                            </div>
+                            <div class="my-2">
+                                <h6><i class="fas fa-route"></i> Distance</h6>
+                                <%= f.input :distance, hint: "En kilomètres", input_html: { name: "distance", value: "#{params[:distance]}", class: "" } %>
+                            </div>
+                            <div class="my-3">
+                                <h6><i class="far fa-newspaper"></i> Type d'annonce</h6>
+                                <%= f.input :type, collection: Offer.offer_types, selected: params[:type], input_html: { name: "type", class: "custom-select" } %>
+                            </div>
+                            <div class="my-3">
+                                <h6><i class="far fa-calendar-alt"></i> À partir du</h6>
+                                <%= f.input :begins, as: :date, label: false, html5: true, input_html: { name: "begins", value: "#{params[:begins]}", class: "mx-0" } %>
+                            </div>
+                            <div class="my-3">
+                                <h6><i class="far fa-calendar-alt"></i> Jusqu'au</h6>
+                                <%= f.input :ends, as: :date, label: false, html5: true, input_html: { name: "ends", value: "#{params[:ends]}", class: "mx-0" } %>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <%= f.button :submit, "Afficher les résultats", name: nil, class: "btn btn-primary btn-block" %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
         <div class="row mx-0">
 
             <% @premium_offers.each do |offer| %>

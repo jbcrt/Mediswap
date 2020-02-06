@@ -2,15 +2,38 @@
 
     <main class="cards-container">
 
-        <h3><%= @offers.length + @premium_offers.length %> <%= @offers.length + @premium_offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></h3>
-        <hr>
+        <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form do |f| %>
+            <div class="form-row p-2 mb-3">
+                <div class="col-12 col-md-4 col-xl-5 mb-2 mb-md-0">
+                    <%= f.input :profession, collection: PROFESSIONS, prompt: "Profession", input_html: { class: "custom-select", name: "profession" }, label_method: :second, value_method: :first %>
+                </div>
+                <div class="col-12 col-md-4 col-xl-5 mb-2 mb-md-0">
+                    <%= f.input :location, input_html: { class: "js-autoCitySearch form-control mr-2", name: "location", placeholder: "Ville", value: "#{params[:location]}" } %>
+                </div>
+                <div class="col-6 col-md-2 d-xl-none">
+                    <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary btn-block" %>
+                </div>
+                <div class="col-6 col-md-2 d-xl-none">
+                    <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#offersFiltersModal">
+                        Filtrer
+                    </button>
+                </div>
+                <div class="col-1 d-none d-xl-block">
+                    <%= button_tag(type: 'submit', class: "btn btn-primary btn-block") do %>
+                        <i class="fas fa-search"></i>
+                    <% end %>
+                </div>
+                <div class="col-1 d-none d-xl-block">
+                    <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#offersFiltersModal">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                </div>
+            </div>
+        <% end %>
 
-        <button type="button" class="btn btn-light btn-block mb-3" data-toggle="modal" data-target="#offersFiltersModal">
-            Filtres
-        </button>
-
+        
         <div class="modal fade" id="offersFiltersModal" tabindex="-1" role="dialog" aria-labelledby="offersFiltersModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="offersFiltersModalLabel">Filtres</h5>
@@ -48,6 +71,9 @@
                 </div>
             </div>
         </div>
+
+        <h3><%= @offers.length + @premium_offers.length %> <%= @offers.length + @premium_offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></h3>
+        <hr>
 
         <div class="row mx-0">
 

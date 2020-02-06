@@ -1,8 +1,8 @@
 class OffersController < ApplicationController
 
     def index
-      @premium_offers = policy_scope(Offer).profession(current_user.profession).where(premium: true).order(created_at: :desc)
-      @offers = policy_scope(Offer).profession(current_user.profession).where(premium: false).order(created_at: :desc)
+      @premium_offers = policy_scope(Offer).where(premium: true).order(created_at: :desc)
+      @offers = policy_scope(Offer).where(premium: false).order(created_at: :desc)
       
       if params[:location].present? && params[:distance].present? && params[:distance] != "0"
         @premium_offers = @premium_offers.near(params[:location], params[:distance])

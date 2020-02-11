@@ -25,7 +25,7 @@
                             <%= f.input :profession, collection: PROFESSIONS, input_html: { class: "custom-select" }, label_method: :second, value_method: :first, required: true %>
                         <% end %>
 
-                        <%= f.input :offer_type, collection: Offer.offer_types, input_html: { class: "custom-select" } %>
+                        <%= f.input :offer_type, collection: OFFER_TYPES, prompt: "Selectionner un type d'offre", input_html: { class: "custom-select" }, label_method: :second, value_method: :first %>
                         <div class="row form-row">
                             <div class="col-xs-12 col-md-6">
                                 <%= f.input :starts_at, as: :date, html5: true, required: true %>

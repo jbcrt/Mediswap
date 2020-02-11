@@ -18,12 +18,14 @@ require("channels")
 import 'bootstrap';
 import { profileEditNavbar } from '../components/nav';
 import { dynamicsSignUpFormFields } from '../components/sign_up_form';
+import { cleanOffersFiltersForm } from '../components/offers_filters_form';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
 document.addEventListener('turbolinks:load', function() {
     profileEditNavbar();
     dynamicsSignUpFormFields();
+    cleanOffersFiltersForm();
     initAutocomplete();
     initMapbox();
 })

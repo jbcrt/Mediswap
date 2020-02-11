@@ -1,30 +1,24 @@
 class Offer < ApplicationRecord
+  include Filterable
   belongs_to :user
 
   # Filtres de recherche
-  scope :profession, -> (profession) { where profession: profession }
-  scope :type, -> (type) { where offer_type: type }
-  scope :begins, -> (begins) { where("starts_at >= ?", begins) }
-  scope :ends, -> (ends) { where("ends_at <= ?", ends) }
-  scope :location, -> (location) { where city: location }
-  scope :urgent, -> (urgent) { where urgent: urgent }
+  scope :filter_by_profession, -> (profession) { where profession: profession }
+  scope :filter_by_type, -> (type) { where offer_type: type }
+  scope :filter_by_begins, -> (begins) { where("starts_at >= ?", begins) }
+  scope :filter_by_ends, -> (ends) { where("ends_at <= ?", ends) }
 
   # Géolocalisation
   geocoded_by :address
   after_validation :geocode
   # after_validation :geocode, if: :will_save_change_to_address?
 
-  # Méthode de classe utilisées pour les validations spécifiques et dans les vues
-  def self.offer_types
-    ["Remplacement libéral occasionnel", "Remplacement libéral régulier", "Collaboration", "Assistanat", "Association", "Cession"]
-  end
-
   # Validations
   validates :title, presence: true
   validates :profession, presence: true
   validates :starts_at, presence: true
   validates :description, presence: true
-  validates :offer_type, presence: true, inclusion: { in: Offer.offer_types }
+  validates :offer_type, presence: true, inclusion: { in: OFFER_TYPES.keys }
   validates :facility_name, presence: true
   validates :facility_type, presence: true, inclusion: { in: FACILITY_TYPES.keys }
   validates :facility_description, presence: true

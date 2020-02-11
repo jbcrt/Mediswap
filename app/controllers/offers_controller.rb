@@ -1,31 +1,30 @@
 class OffersController < ApplicationController
 
     def index
-      @premium_offers = policy_scope(Offer).where(premium: true).order(created_at: :desc)
-      @offers = policy_scope(Offer).where(premium: false).order(created_at: :desc)
-      
+
+      @offers = Offer.filter(filter_params).order(premium: :desc, created_at: :desc)
+
       if params[:location].present? && params[:distance].present? && params[:distance] != "0"
-        @premium_offers = @premium_offers.near(params[:location], params[:distance])
         @offers = @offers.near(params[:location], params[:distance])
       elsif params[:location].present?
-        @premium_offers = @premium_offers.location(params[:location])
-        @offers = @offers.location(params[:location])
-      end
-      
-      filtering_params(params).each do |key, value|
-        @premium_offers = @premium_offers.public_send(key, value) if value.present?
-        @offers = @offers.public_send(key, value) if value.present?
+        @offers = @offers.near(params[:location])
       end
 
-      @all_offers = @offers + @premium_offers
+      @offers = policy_scope(@offers)
       
-      @markers = @all_offers.map do |offer|
+      @markers = @offers.map do |offer|
         {
           lat: offer.latitude,
           lng: offer.longitude,
           infoWindow: render_to_string(partial: "info_window", locals: { offer: offer })
         }
       end
+
+      # respond_to do |format|
+      #   format.html
+      #   format.js
+      # end
+
     end
   
     def show
@@ -84,8 +83,8 @@ class OffersController < ApplicationController
       )
     end
 
-    def filtering_params(params)
-      params.slice(:type, :begins, :ends, :urgent)
+    def filter_params
+      params.slice(:profession, :type, :begins, :ends)
     end
 
 end

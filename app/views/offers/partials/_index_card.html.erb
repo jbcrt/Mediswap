@@ -1,4 +1,6 @@
 
+    
+<% offers.each do |offer| %>
     <%= link_to offer_path(offer), :action => 'go', :class => "offer-card flex-column flex-sm-row col-12 w-100" do %>
 
         <div class="offer-card-badges d-flex d-sm-none flex-column">
@@ -81,7 +83,7 @@
                         <i class="fas fa-file-contract"></i>
                     </div>
                     <div class="offer-card-data-content">
-                        <%= offer.offer_type %>
+                        <%= OFFER_TYPES[offer.offer_type] %>
                     </div>
                 </div>
 
@@ -119,3 +121,4 @@
 
         </div>
     <% end %>
+<% end %>

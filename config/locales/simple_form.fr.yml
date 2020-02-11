@@ -59,9 +59,6 @@ fr:
     hints:
       user:
         password: '8 caractères minimum'
-        edit:
-          password: "Ne remplissez pas ce champ si vous ne voulez pas modifier votre mot de passe"
-          password_confirmation: "Ne remplissez pas ce champ si vous ne voulez pas modifier votre mot de passe"
       offer:
         retrocession: "Représente la part qui sera reversé au remplaçant en %"
         vehicle: "Cochez la case si un véhicule est nécessaire"

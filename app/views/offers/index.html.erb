@@ -2,21 +2,22 @@
 
     <main class="cards-container">
 
-        <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form do |f| %>
+        <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "js-offersFiltersForm" } do |f| %>
+        
             <div class="form-row p-2 mb-3">
                 <div class="col-12 col-md-4 col-xl-5 mb-2 mb-md-0">
-                    <%= f.input :profession, collection: PROFESSIONS, prompt: "Profession", input_html: { class: "custom-select", name: "profession" }, label_method: :second, value_method: :first %>
+                    <%= f.input :profession, collection: PROFESSIONS, prompt: "Selectionner une profession", selected: params[:profession], input_html: { name: "profession", class: "custom-select" }, label_method: :second, value_method: :first %>
                 </div>
                 <div class="col-12 col-md-4 col-xl-5 mb-2 mb-md-0">
-                    <%= f.input :location, input_html: { class: "js-autoCitySearch form-control mr-2", name: "location", placeholder: "Ville", value: "#{params[:location]}" } %>
+                    <%= f.input :location, input_html: { name: "location", class: "js-autoCitySearch form-control mr-2", placeholder: "Ville", value: "#{params[:location]}" } %>
                 </div>
                 <div class="col-6 col-md-2 d-xl-none">
                     <%= f.button :submit, "Rechercher", name: nil, class: "btn btn-primary btn-block" %>
                 </div>
                 <div class="col-6 col-md-2 d-xl-none">
-                    <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#offersFiltersModal">
+                    <div class="btn btn-light btn-block" data-toggle="modal" data-target="#offersFiltersModal">
                         Filtrer
-                    </button>
+                    </div>
                 </div>
                 <div class="col-1 d-none d-xl-block">
                     <%= button_tag(type: 'submit', class: "btn btn-primary btn-block") do %>
@@ -24,67 +25,60 @@
                     <% end %>
                 </div>
                 <div class="col-1 d-none d-xl-block">
-                    <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#offersFiltersModal">
+                    <div class="btn btn-light btn-block" data-toggle="modal" data-target="#offersFiltersModal">
                         <i class="fas fa-sliders-h"></i>
-                    </button>
+                    </div>
                 </div>
             </div>
+        
+            <div class="modal fade" id="offersFiltersModal" tabindex="-1" role="dialog" aria-labelledby="offersFiltersModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="offersFiltersModalLabel"><i class="fas fa-sliders-h"></i> Filtres</h5>
+                            <div class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <%= f.label :distance, "Périmètre de recherche" %>
+                                <%= f.input :distance, hint: "En kilomètres", label: "Périmètre de recherche", input_html: { name: "distance", value: "#{params[:distance]}" } %>
+                            </div>
+                            <div class="form-group">
+                                <%= f.label :type, "Type d'annonce" %>
+                                <%= f.input :type, collection: OFFER_TYPES, prompt: "Selectionner un type d'offre", selected: params[:type], input_html: { name: "type", class: "custom-select" }, label_method: :second, value_method: :first %>
+                            </div>
+                            <div class="form-group">
+                                <%= f.label :begins, "A partir du" %>
+                                <%= f.input :begins, as: :date, label: false, html5: true, input_html: { name: "begins", value: "#{params[:begins]}" } %>
+                            </div>
+                            <div class="form-group">
+                                <%= f.label :ends, "Jusqu'au" %>
+                                <%= f.input :ends, as: :date, label: false, html5: true, input_html: { name: "ends", value: "#{params[:ends]}" } %>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex flex-column">
+                            <%= f.button :submit, "Afficher les résultats", name: nil, class: "btn btn-primary btn-block" %>
+                            <div class="btn btn-link btn-block mx-0 js-resetOffersFiltersFormBtn">
+                                Réinitialiser les filtres
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         <% end %>
 
-        
-        <div class="modal fade" id="offersFiltersModal" tabindex="-1" role="dialog" aria-labelledby="offersFiltersModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="offersFiltersModalLabel">Filtres</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "form" } do |f| %>
-                        <div class="modal-body">
-                            <div class="my-2">
-                                <h6><i class="fas fa-map-marker-alt"></i> Localisation</h6>
-                                <%= f.input :location, hint: "Ville ou adresse", input_html: { name: "location", class: "js-autoCitySearch", value: "#{params[:location]}" } %>
-                            </div>
-                            <div class="my-2">
-                                <h6><i class="fas fa-route"></i> Distance</h6>
-                                <%= f.input :distance, hint: "En kilomètres", input_html: { name: "distance", value: "#{params[:distance]}", class: "" } %>
-                            </div>
-                            <div class="my-3">
-                                <h6><i class="far fa-newspaper"></i> Type d'annonce</h6>
-                                <%= f.input :type, collection: Offer.offer_types, selected: params[:type], input_html: { name: "type", class: "custom-select" } %>
-                            </div>
-                            <div class="my-3">
-                                <h6><i class="far fa-calendar-alt"></i> À partir du</h6>
-                                <%= f.input :begins, as: :date, label: false, html5: true, input_html: { name: "begins", value: "#{params[:begins]}", class: "mx-0" } %>
-                            </div>
-                            <div class="my-3">
-                                <h6><i class="far fa-calendar-alt"></i> Jusqu'au</h6>
-                                <%= f.input :ends, as: :date, label: false, html5: true, input_html: { name: "ends", value: "#{params[:ends]}", class: "mx-0" } %>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <%= f.button :submit, "Afficher les résultats", name: nil, class: "btn btn-primary btn-block" %>
-                        </div>
-                    <% end %>
-                </div>
-            </div>
-        </div>
-
-        <h3><%= @offers.length + @premium_offers.length %> <%= @offers.length + @premium_offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></h3>
+        <div class="h5"><%= @offers.length %> <%= @offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></div>
         <hr>
 
-        <div class="row mx-0">
+        <div id="offersList" class="row mx-0">
 
-            <% @premium_offers.each do |offer| %>
-                <%= render 'offers/partials/index_card', offer: offer %>
-            <% end %>
-            <% @offers.each do |offer| %>
-                <%= render 'offers/partials/index_card', offer: offer %>
-            <% end %>
+            <%= render 'offers/partials/index_card', offers: @offers %>
 
         </div>
+        
     </main>
 
     <div id="map" class="map d-none d-xl-block" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>

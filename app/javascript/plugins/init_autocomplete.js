@@ -8,12 +8,7 @@ const initAutocomplete = () => {
         container: addressInput,
         language: 'fr',
         countries: 'fr',
-        type: 'city',
-        templates: {
-          value: function(suggestion) {
-            return suggestion.name;
-          }
-        }
+        type: 'city'
       })
     );
   }

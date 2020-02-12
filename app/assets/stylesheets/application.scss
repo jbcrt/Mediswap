@@ -12,6 +12,9 @@
 @import 'mapbox-gl/dist/mapbox-gl.css'; // from the node_modules
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "select2/dist/css/select2.css";
+@import "select2-theme-bootstrap4/dist/select2-bootstrap.css";
+@import "config/select2_custom";
 
 // Your CSS partials
 @import "components/index";

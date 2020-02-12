@@ -22,9 +22,9 @@
                 </div>
               </div>
               <%= f.input :user_type, as: :radio_buttons, collection: User.user_types.symbolize_keys.keys, input_html: { class: "js-userTypeRadio" } %>
-              <%= f.input :profession, collection: PROFESSIONS, input_html: { class: "custom-select js-userProfessionField" }, label_method: :second, value_method: :first, required: true %>
+              <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), input_html: { class: "js-select2Searchable js-userProfessionField", data: { placeholder: "Selectionner une profession" } }, label_method: :second, value_method: :first, required: true %>
               <%= f.input :facility_name, input_html: { class: "js-userFacilityNameField" }, required: true %>
-              <%= f.input :facility_type, collection: FACILITY_TYPES, input_html: { class: "custom-select js-userFacilityTypeField" }, label_method: :second, value_method: :first, required: true %>
+              <%= f.input :facility_type, collection: {"" => ""}.merge(FACILITY_TYPES), input_html: { class: "js-select2Searchable js-userFacilityTypeField", data: { placeholder: "Selectionner un type d'établissement" } }, label_method: :second, value_method: :first, required: true %>
 
           </div>
 

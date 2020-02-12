@@ -228,7 +228,7 @@
 
               <div class="col-xs-12 col-lg-8">
 
-                  <%= f.input :profession, collection: PROFESSIONS, input_html: { class: "custom-select" }, label_method: :second, value_method: :first, required: true, disabled: true %>
+                  <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession "} }, label_method: :second, value_method: :first, required: true, disabled: true %>
 
                   <%= f.input :professional_id_number %>
 
@@ -310,7 +310,7 @@
 
                   <%= f.input :facility_name %>
 
-                  <%= f.input :facility_type, collection: FACILITY_TYPES, input_html: { class: "custom-select" }, label_method: :second, value_method: :first %>
+                  <%= f.input :facility_type, collection: {"" => ""}.merge(FACILITY_TYPES), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner un type d'établissement" } }, label_method: :second, value_method: :first %>
 
                   <%= f.input :facility_description %>
 

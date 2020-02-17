@@ -34,7 +34,7 @@ class Offer < ApplicationRecord
   end
 
   def address
-    [street, zipcode, city].compact.join(', ')
+    [street, department, zipcode, city].compact.join(', ')
   end
 
 end

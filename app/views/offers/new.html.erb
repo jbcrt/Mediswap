@@ -22,10 +22,10 @@
                     <div class="col-xs-12 col-md-8">
                         <%= f.input :title %>
                         <% if current_user.user_type == "health_facility" %>
-                            <%= f.input :profession, collection: PROFESSIONS, input_html: { class: "custom-select" }, label_method: :second, value_method: :first, required: true %>
+                            <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, label_method: :second, value_method: :first, required: true %>
                         <% end %>
 
-                        <%= f.input :offer_type, collection: OFFER_TYPES, prompt: "Selectionner un type d'offre", input_html: { class: "custom-select" }, label_method: :second, value_method: :first %>
+                        <%= f.input :offer_type, collection: {"" => ""}.merge(OFFER_TYPES), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner un type d'offre" } }, label_method: :second, value_method: :first %>
                         <div class="row form-row">
                             <div class="col-xs-12 col-md-6">
                                 <%= f.input :starts_at, as: :date, html5: true, required: true %>
@@ -64,21 +64,21 @@
 
                         <%= f.input :facility_name, required: true %>
 
-                        <%= f.input :facility_type, collection: FACILITY_TYPES, input_html: { class: "custom-select" }, label_method: :second, value_method: :first, required: true %>
+                        <%= f.input :facility_type, collection: {"" => ""}.merge(FACILITY_TYPES), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner un type d'établissement" } }, label_method: :second, value_method: :first, required: true %>
 
                         <%= f.input :facility_description, required: true %>
 
-                        <%= f.input :street %>
+                        <%= f.input :street, input_html: { class: "js-streetInput" } %>
 
                         <%= f.input :additional_address %>
 
-                        <%= f.input :department %>
+                        <%= f.input :department, input_html: { class: "js-departmentInput" } %>
                         <div class="row form-row">
                             <div class="col-xs-12 col-md-4">
-                                <%= f.input :zipcode %>
+                                <%= f.input :zipcode, input_html: { class: "js-zipcodeInput" } %>
                             </div>
                             <div class="col-xs-12 col-md-8">
-                                <%= f.input :city %>
+                                <%= f.input :city, input_html: { class: "js-cityInput" } %>
                             </div>
                         </div>
                     </div>

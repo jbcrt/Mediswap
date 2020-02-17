@@ -223,7 +223,7 @@
 
                   <%= f.input :facility_name, required: true %>
 
-                  <%= f.input :facility_type, collection: FACILITY_TYPES, input_html: { class: "custom-select" }, label_method: :second, value_method: :first, required: true %>
+                  <%= f.input :facility_type, collection: {"" => ""}.merge(FACILITY_TYPES), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner un type d'établissement" } }, label_method: :second, value_method: :first, required: true %>
 
                   <%= f.input :facility_description %>
 
@@ -239,20 +239,20 @@
                     
                   </div>
 
-                  <%= f.input :facility_street %>
+                  <%= f.input :facility_street, input_html: { class: "js-streetInput" } %>
 
                   <%= f.input :facility_additional_address %>
 
-                  <%= f.input :facility_department %>
+                  <%= f.input :facility_department, input_html: { class: "js-departmentInput" } %>
                   
                   <div class="form-row">
 
                       <div class="col-xs-12 col-md-6">
-                        <%= f.input :facility_zipcode %>
+                        <%= f.input :facility_zipcode, input_html: { class: "js-zipcodeInput" } %>
                       </div>
 
                       <div class="col-xs-12 col-md-6">
-                        <%= f.input :facility_city %>
+                        <%= f.input :facility_city, input_html: { class: "js-cityInput" } %>
                       </div>
                       
                   </div>

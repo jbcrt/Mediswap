@@ -20,14 +20,15 @@ import { profileEditNavbar } from '../components/nav';
 import { dynamicsSignUpFormFields } from '../components/sign_up_form';
 import { cleanOffersFiltersForm } from '../components/offers_filters_form';
 import { initMapbox } from '../plugins/init_mapbox';
-import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initAddressSearch, initAddressAutocomplete } from '../plugins/init_algolia_places';
 import { initSelect2Searchable, initSelect2 } from '../plugins/init_select2';
 
 document.addEventListener('turbolinks:load', function() {
     profileEditNavbar();
     dynamicsSignUpFormFields();
     cleanOffersFiltersForm();
-    initAutocomplete();
+    initAddressSearch();
+    initAddressAutocomplete();
     initSelect2();
     initSelect2Searchable();
     initMapbox();

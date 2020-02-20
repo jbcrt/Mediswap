@@ -56,7 +56,7 @@ fr:
           mme: "Madame"
         user_type:
           health_professional: "Un(e) professionnel(le) de santé"
-          health_facility: "Un établissement de santé"
+          health_facility_recruiter: "Une(e) recruteur(euse) pour un établissement de santé"
     hints:
       user:
         password: '8 caractères minimum'

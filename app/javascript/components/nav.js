@@ -5,32 +5,27 @@ const profileEditNavbar = () => {
         const credentialsBtnMin = document.querySelector('.js-profileMenuMinCredentialsBtn');
         const personalInformationsBtnMin = document.querySelector('.js-profileMenuMinPersonalInformationsBtn');
         const professionalInformationsBtnMin = document.querySelector('.js-profileMenuMinProfessionalInformationsBtn');
-        const facilityInformationsBtnMin = document.querySelector('.js-profileMenuMinFacilityInformationsBtn');
         const manageAccountBtnMin = document.querySelector('.js-profileMenuMinManageAccountBtn');
 
         const credentialsBtnMax = document.querySelector('.js-profileMenuMaxCredentialsBtn');
         const personalInformationsBtnMax = document.querySelector('.js-profileMenuMaxPersonalInformationsBtn');
         const professionalInformationsBtnMax = document.querySelector('.js-profileMenuMaxProfessionalInformationsBtn');
-        const facilityInformationsBtnMax = document.querySelector('.js-profileMenuMaxFacilityInformationsBtn');
         const manageAccountBtnMax = document.querySelector('.js-profileMenuMaxManageAccountBtn');
 
         const credentialsDiv = document.querySelector('.js-profileCredentialsDiv');
         const personalInformationsDiv = document.querySelector('.js-profilePersonalInformationsDiv');
         const professionalInformationsDiv = document.querySelector('.js-profileProfessionalInformationsDiv');
-        const facilityInformationsDiv = document.querySelector('.js-profileFacilityInformationsDiv');
         const manageAccountDiv = document.querySelector('.js-profileManageAccountDiv');
 
         credentialsBtnMin.addEventListener('click', () => {
             credentialsBtnMin.classList.add("active");
             personalInformationsBtnMin.classList.remove("active");
             professionalInformationsBtnMin.classList.remove("active");
-            facilityInformationsBtnMin.classList.remove("active");
             manageAccountBtnMin.classList.remove("active");
 
             credentialsDiv.classList.remove("d-none");
             personalInformationsDiv.classList.add("d-none");
             professionalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
@@ -38,13 +33,11 @@ const profileEditNavbar = () => {
             personalInformationsBtnMin.classList.add("active");
             credentialsBtnMin.classList.remove("active");
             professionalInformationsBtnMin.classList.remove("active");
-            facilityInformationsBtnMin.classList.remove("active");
             manageAccountBtnMin.classList.remove("active");
 
             personalInformationsDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
             professionalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
@@ -52,27 +45,11 @@ const profileEditNavbar = () => {
             professionalInformationsBtnMin.classList.add("active");
             credentialsBtnMin.classList.remove("active");
             personalInformationsBtnMin.classList.remove("active");
-            facilityInformationsBtnMin.classList.remove("active");
             manageAccountBtnMin.classList.remove("active");
 
             professionalInformationsDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
             personalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
-            manageAccountDiv.classList.add("d-none");
-        });
-
-        facilityInformationsBtnMin.addEventListener('click', () => {
-            facilityInformationsBtnMin.classList.add("active");
-            credentialsBtnMin.classList.remove("active");
-            personalInformationsBtnMin.classList.remove("active");
-            professionalInformationsBtnMin.classList.remove("active");
-            manageAccountBtnMin.classList.remove("active");
-
-            facilityInformationsDiv.classList.remove("d-none");
-            credentialsDiv.classList.add("d-none");
-            personalInformationsDiv.classList.add("d-none");
-            professionalInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
@@ -80,13 +57,11 @@ const profileEditNavbar = () => {
             manageAccountBtnMin.classList.add("active");
             credentialsBtnMin.classList.remove("active");
             personalInformationsBtnMin.classList.remove("active");
-            facilityInformationsBtnMin.classList.remove("active");
             professionalInformationsBtnMin.classList.remove("active");
 
             manageAccountDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
             personalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
             professionalInformationsDiv.classList.add("d-none");
         });
         
@@ -94,13 +69,11 @@ const profileEditNavbar = () => {
             credentialsBtnMax.classList.add("active");
             personalInformationsBtnMax.classList.remove("active");
             professionalInformationsBtnMax.classList.remove("active");
-            facilityInformationsBtnMax.classList.remove("active");
             manageAccountBtnMax.classList.remove("active");
 
             credentialsDiv.classList.remove("d-none");
             personalInformationsDiv.classList.add("d-none");
             professionalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
@@ -108,13 +81,11 @@ const profileEditNavbar = () => {
             personalInformationsBtnMax.classList.add("active");
             credentialsBtnMax.classList.remove("active");
             professionalInformationsBtnMax.classList.remove("active");
-            facilityInformationsBtnMax.classList.remove("active");
             manageAccountBtnMax.classList.remove("active");
 
             personalInformationsDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
             professionalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
@@ -122,27 +93,11 @@ const profileEditNavbar = () => {
             professionalInformationsBtnMax.classList.add("active");
             credentialsBtnMax.classList.remove("active");
             personalInformationsBtnMax.classList.remove("active");
-            facilityInformationsBtnMax.classList.remove("active");
             manageAccountBtnMax.classList.remove("active");
 
             professionalInformationsDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
             personalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
-            manageAccountDiv.classList.add("d-none");
-        });
-        
-        facilityInformationsBtnMax.addEventListener('click', () => {
-            facilityInformationsBtnMax.classList.add("active");
-            credentialsBtnMax.classList.remove("active");
-            personalInformationsBtnMax.classList.remove("active");
-            professionalInformationsBtnMax.classList.remove("active");
-            manageAccountBtnMax.classList.remove("active");
-
-            facilityInformationsDiv.classList.remove("d-none");
-            credentialsDiv.classList.add("d-none");
-            personalInformationsDiv.classList.add("d-none");
-            professionalInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
@@ -151,63 +106,42 @@ const profileEditNavbar = () => {
             credentialsBtnMax.classList.remove("active");
             personalInformationsBtnMax.classList.remove("active");
             professionalInformationsBtnMax.classList.remove("active");
-            facilityInformationsBtnMax.classList.remove("active");
 
             manageAccountDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
             personalInformationsDiv.classList.add("d-none");
             professionalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
         });
     } else if (document.body.contains(facilityUserEditMenu)) {
         const credentialsBtnMin = document.querySelector('.js-profileMenuMinCredentialsBtn');
         const personalInformationsBtnMin = document.querySelector('.js-profileMenuMinPersonalInformationsBtn');
-        const facilityInformationsBtnMin = document.querySelector('.js-profileMenuMinFacilityInformationsBtn');
         const manageAccountBtnMin = document.querySelector('.js-profileMenuMinManageAccountBtn');
 
         const credentialsBtnMax = document.querySelector('.js-profileMenuMaxCredentialsBtn');
         const personalInformationsBtnMax = document.querySelector('.js-profileMenuMaxPersonalInformationsBtn');
-        const facilityInformationsBtnMax = document.querySelector('.js-profileMenuMaxFacilityInformationsBtn');
         const manageAccountBtnMax = document.querySelector('.js-profileMenuMaxManageAccountBtn');
 
         const credentialsDiv = document.querySelector('.js-profileCredentialsDiv');
         const personalInformationsDiv = document.querySelector('.js-profilePersonalInformationsDiv');
-        const facilityInformationsDiv = document.querySelector('.js-profileFacilityInformationsDiv');
         const manageAccountDiv = document.querySelector('.js-profileManageAccountDiv');
 
         credentialsBtnMin.addEventListener('click', () => {
             credentialsBtnMin.classList.add("active");
             personalInformationsBtnMin.classList.remove("active");
-            facilityInformationsBtnMin.classList.remove("active");
             manageAccountBtnMin.classList.remove("active");
 
             credentialsDiv.classList.remove("d-none");
             personalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
         personalInformationsBtnMin.addEventListener('click', () => {
             personalInformationsBtnMin.classList.add("active");
             credentialsBtnMin.classList.remove("active");
-            facilityInformationsBtnMin.classList.remove("active");
             manageAccountBtnMin.classList.remove("active");
 
             personalInformationsDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
-            manageAccountDiv.classList.add("d-none");
-        });
-
-        facilityInformationsBtnMin.addEventListener('click', () => {
-            facilityInformationsBtnMin.classList.add("active");
-            credentialsBtnMin.classList.remove("active");
-            personalInformationsBtnMin.classList.remove("active");
-            manageAccountBtnMin.classList.remove("active");
-
-            facilityInformationsDiv.classList.remove("d-none");
-            credentialsDiv.classList.add("d-none");
-            personalInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
@@ -215,47 +149,29 @@ const profileEditNavbar = () => {
             manageAccountBtnMin.classList.add("active");
             credentialsBtnMin.classList.remove("active");
             personalInformationsBtnMin.classList.remove("active");
-            facilityInformationsBtnMin.classList.remove("active");
 
             manageAccountDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
             personalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
         });
         
         credentialsBtnMax.addEventListener('click', () => {
             credentialsBtnMax.classList.add("active");
             personalInformationsBtnMax.classList.remove("active");
-            facilityInformationsBtnMax.classList.remove("active");
             manageAccountBtnMax.classList.remove("active");
 
             credentialsDiv.classList.remove("d-none");
             personalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
         personalInformationsBtnMax.addEventListener('click', () => {
             personalInformationsBtnMax.classList.add("active");
             credentialsBtnMax.classList.remove("active");
-            facilityInformationsBtnMax.classList.remove("active");
             manageAccountBtnMax.classList.remove("active");
 
             personalInformationsDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
-            manageAccountDiv.classList.add("d-none");
-        });
-
-        facilityInformationsBtnMax.addEventListener('click', () => {
-            facilityInformationsBtnMax.classList.add("active");
-            credentialsBtnMax.classList.remove("active");
-            personalInformationsBtnMax.classList.remove("active");
-            manageAccountBtnMax.classList.remove("active");
-
-            facilityInformationsDiv.classList.remove("d-none");
-            credentialsDiv.classList.add("d-none");
-            personalInformationsDiv.classList.add("d-none");
             manageAccountDiv.classList.add("d-none");
         });
 
@@ -263,12 +179,10 @@ const profileEditNavbar = () => {
             manageAccountBtnMax.classList.add("active");
             credentialsBtnMax.classList.remove("active");
             personalInformationsBtnMax.classList.remove("active");
-            facilityInformationsBtnMax.classList.remove("active");
 
             manageAccountDiv.classList.remove("d-none");
             credentialsDiv.classList.add("d-none");
             personalInformationsDiv.classList.add("d-none");
-            facilityInformationsDiv.classList.add("d-none");
         });
     }
 }

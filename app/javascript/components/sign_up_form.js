@@ -3,7 +3,7 @@ const dynamicsSignUpFormFields = () => {
         const userTypeRadios = document.querySelectorAll('.js-userTypeRadio');
         const userProfessionField = document.querySelector('.js-userProfessionField');
         const userFacilityNameField = document.querySelector('.js-userFacilityNameField');
-        const userFacilityTypeField = document.querySelector('.js-userFacilityTypeField');
+        const userFacilityCategoryField = document.querySelector('.js-userFacilityCategoryField');
         
         const displayProfessionField = () => {
             userProfessionField.parentNode.classList.remove("d-none");
@@ -31,32 +31,32 @@ const dynamicsSignUpFormFields = () => {
             userFacilityNameField.value = "";
         };
         
-        const displayFacilityTypeField = () => {
-            userFacilityTypeField.parentNode.classList.remove("d-none");
-            userFacilityTypeField.parentNode.classList.add("d-block");
-            userFacilityTypeField.required = true;
+        const displayFacilityCategoryField = () => {
+            userFacilityCategoryField.parentNode.classList.remove("d-none");
+            userFacilityCategoryField.parentNode.classList.add("d-block");
+            userFacilityCategoryField.required = true;
         };
         
-        const hideFacilityTypeField = () => {
-            userFacilityTypeField.parentNode.classList.add("d-none");
-            userFacilityTypeField.parentNode.classList.remove("d-block");
-            userFacilityTypeField.required = false;
-            userFacilityTypeField.value = "";
+        const hideFacilityCategoryField = () => {
+            userFacilityCategoryField.parentNode.classList.add("d-none");
+            userFacilityCategoryField.parentNode.classList.remove("d-block");
+            userFacilityCategoryField.required = false;
+            userFacilityCategoryField.value = "";
         };
         
         // Affichage initial ou après un render "new" du formulaire d'inscription
         if ((userTypeRadios[0].checked === false) && (userTypeRadios[1].checked === false)) { // Si aucun type n'est selectionné
             hideProfessionField();
             hideFacilityNameField();
-            hideFacilityTypeField();
+            hideFacilityCategoryField();
         } else if (userTypeRadios[0].checked) { // Si professionnel médical est selectionné
             displayProfessionField();
             hideFacilityNameField();
-            hideFacilityTypeField();
+            hideFacilityCategoryField();
         } else if (userTypeRadios[1].checked) { // Si établissement médical est selectionné
             hideProfessionField();
             displayFacilityNameField();
-            displayFacilityTypeField();
+            displayFacilityCategoryField();
         }
 
         let prevType = null;
@@ -68,11 +68,11 @@ const dynamicsSignUpFormFields = () => {
                 if (this.value === "health_professional") {
                     displayProfessionField();
                     hideFacilityNameField();
-                    hideFacilityTypeField();
-                } else if (this.value === "health_facility") {
+                    hideFacilityCategoryField();
+                } else if (this.value === "health_facility_recruiter") {
                     hideProfessionField();
                     displayFacilityNameField();
-                    displayFacilityTypeField();
+                    displayFacilityCategoryField();
                 }
             });
         }

@@ -5,13 +5,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    # super
+    build_resource({})
+    self.resource.facility = Facility.new
+    respond_with self.resource
+  end
 
   # POST /resource
   # def create
-  #   super
+    # super
   # end
 
   # GET /resource/edit
@@ -48,8 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :last_name,
       :user_type,
       :profession,
-      :facility_name,
-      :facility_type
+      facility_attributes: [:id, :name, :category]
     ])
   end
 
@@ -69,17 +71,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :professional_id_number,
       :mssante_email,
       :council_id_number,
-      :council_department,
-      :facility_name,
-      :facility_type,
-      :facility_description,
-      :facility_contact_email,
-      :facility_contact_phone_number,
-      :facility_street,
-      :facility_additional_address,
-      :facility_department,
-      :facility_zipcode,
-      :facility_city
+      :council_department
     ])
   end
 

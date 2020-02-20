@@ -51,17 +51,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :mssante_email
       t.string :council_id_number
       t.string :council_department
-      ## facility informations
-      t.string :facility_name
-      t.string :facility_type
-      t.string :facility_description
-      t.string :facility_contact_email
-      t.string :facility_contact_phone_number
-      t.string :facility_street
-      t.string :facility_additional_address
-      t.string :facility_department
-      t.string :facility_zipcode
-      t.string :facility_city
 
       ## Created at & Updated at
       t.timestamps null: false

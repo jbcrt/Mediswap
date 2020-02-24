@@ -1,4 +1,4 @@
-class My::OffersController < ApplicationController
+class Account::OffersController < ApplicationController
   before_action :set_offer, only: [:edit, :update, :destroy]
 
   def index

@@ -4,7 +4,6 @@ one:
   name: MyString
   category: MyString
   finess_number: MyString
-  siret_number: MyString
   description: MyText
   phone_number: MyString
   email_address: MyString
@@ -18,7 +17,6 @@ two:
   name: MyString
   category: MyString
   finess_number: MyString
-  siret_number: MyString
   description: MyText
   phone_number: MyString
   email_address: MyString

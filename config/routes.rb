@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   
   resources :offers , only: [:index, :show, :new, :create]
 
-  namespace :my do
+  namespace :account do
     resources :offers,  only: [:index, :edit, :update, :destroy]
+    resources :facilities,  only: [:edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

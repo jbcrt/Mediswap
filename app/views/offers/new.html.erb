@@ -37,7 +37,7 @@
 
                         <%= f.input :retrocession, hint: true %>
 
-                        <%= f.input :description %>
+                        <%= f.input :description, as: :text %>
                     </div>
 
                 </div>
@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="form-actions d-block d-lg-none">
-                    <%= f.button :submit, "Publier mon annonce", :class => "btn btn-primary btn-block btn-lg" %>
+                    <%= f.button :submit, "Publier mon annonce", :class => "btn btn-primary btn-block" %>
                 </div>
 
             <% end %>

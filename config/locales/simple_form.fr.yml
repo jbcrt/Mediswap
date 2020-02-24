@@ -49,6 +49,18 @@ fr:
         vehicle: "Véhicule obligatoire ?"
         housing: "Logement fourni ?"
         secretariat: "Secrétariat de cabinet ?"
+      facility:
+        name: "Raison sociale"
+        category: "Catégorie d'établissement"
+        finess_number: "Numéro FINESS"
+        description: "Description"
+        phone_number: "Numéro de téléphone"
+        email_address: "Adresse email"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
     options:
       user:
         title:

@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2020_02_20_082947) do
 
   create_table "facilities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
+    t.boolean "completed", default: false
     t.string "name"
     t.string "category"
     t.string "finess_number"
-    t.string "siret_number"
     t.text "description"
     t.string "phone_number"
     t.string "email_address"

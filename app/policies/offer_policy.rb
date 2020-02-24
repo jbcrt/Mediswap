@@ -10,7 +10,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    user.facility.completed == true
   end
 
   def show?
@@ -18,10 +18,10 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == current_user
+    record.user == user
   end
 
   def destroy?
-    record.user == current_user
+    record.user == user
   end
 end

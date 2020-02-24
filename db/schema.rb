@@ -10,11 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_23_233322) do
+ActiveRecord::Schema.define(version: 2020_02_20_082947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "facilities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.boolean "completed", default: false
+    t.string "name"
+    t.string "category"
+    t.string "finess_number"
+    t.text "description"
+    t.string "phone_number"
+    t.string "email_address"
+    t.string "street"
+    t.string "additional_address"
+    t.string "department"
+    t.string "zipcode"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_facilities_on_user_id"
+  end
 
   create_table "offers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
@@ -79,16 +98,6 @@ ActiveRecord::Schema.define(version: 2019_11_23_233322) do
     t.string "mssante_email"
     t.string "council_id_number"
     t.string "council_department"
-    t.string "facility_name"
-    t.string "facility_type"
-    t.string "facility_description"
-    t.string "facility_contact_email"
-    t.string "facility_contact_phone_number"
-    t.string "facility_street"
-    t.string "facility_additional_address"
-    t.string "facility_department"
-    t.string "facility_zipcode"
-    t.string "facility_city"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -97,5 +106,6 @@ ActiveRecord::Schema.define(version: 2019_11_23_233322) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "facilities", "users"
   add_foreign_key "offers", "users"
 end

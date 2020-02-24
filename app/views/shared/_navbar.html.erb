@@ -30,7 +30,8 @@
                         <%= image_tag "avatars/doctor_m", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                     <% end %>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <%= link_to 'Mes annonces', my_offers_path, class: "dropdown-item" %>
+                        <%= link_to 'Mes annonces', account_offers_path, class: "dropdown-item" %>
+                        <%= link_to "Mon établissement", edit_account_facility_path(current_user.facility.id), class: "dropdown-item" %>
                         <%= link_to "Mon Compte", edit_user_registration_path, class: "dropdown-item" %>
                         <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                     </div>
@@ -51,7 +52,7 @@
                 </li>
 
                 <li class="nav-item d-xl-none">
-                    <%= link_to "Mes annonces", my_offers_path, class: "dropdown-item" %>
+                    <%= link_to "Mes annonces", account_offers_path, class: "dropdown-item" %>
                 </li>
 
                 <li class="nav-item d-xl-none">

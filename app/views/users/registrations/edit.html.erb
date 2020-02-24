@@ -3,8 +3,8 @@
   <h1 class="h2">Mon compte</h1>
   <% if current_user.user_type == "health_professional" %>
     <%= render 'users/registrations/partials/health_professional_edit' %>
-  <% elsif current_user.user_type == "health_facility" %>
-    <%= render 'users/registrations/partials/health_facility_edit' %>
+  <% elsif current_user.user_type == "health_facility_recruiter" %>
+    <%= render 'users/registrations/partials/health_facility_recruiter_edit' %>
   <% end %>
 
 </div>

@@ -19,6 +19,7 @@ import 'bootstrap';
 import { profileEditNavbar } from '../components/nav';
 import { dynamicsSignUpFormFields } from '../components/sign_up_form';
 import { cleanOffersFiltersForm } from '../components/offers_filters_form';
+import { autoResizeTextarea } from '../components/auto_resize_textarea';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAddressSearch, initAddressAutocomplete } from '../plugins/init_algolia_places';
 import { initSelect2Searchable, initSelect2 } from '../plugins/init_select2';
@@ -31,5 +32,6 @@ document.addEventListener('turbolinks:load', function() {
     initAddressAutocomplete();
     initSelect2();
     initSelect2Searchable();
+    autoResizeTextarea();
     initMapbox();
 })

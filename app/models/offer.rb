@@ -20,7 +20,7 @@ class Offer < ApplicationRecord
   validates :description, presence: true
   validates :offer_type, presence: true, inclusion: { in: OFFER_TYPES.keys }
   validates :facility_name, presence: true
-  validates :facility_type, presence: true, inclusion: { in: FACILITY_TYPES.keys }
+  validates :facility_type, presence: true, inclusion: { in: FACILITY_CATEGORIES.keys }
   validates :facility_description, presence: true
   validates :street, presence: true
   validates :zipcode, presence: true

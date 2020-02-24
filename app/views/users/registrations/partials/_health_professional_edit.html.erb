@@ -15,9 +15,6 @@
           <li class="nav-item js-profileMenuMinProfessionalInformationsBtn">
             <div class="nav-link">Mes informations professionnelles</div>
           </li>
-          <li class="nav-item js-profileMenuMinFacilityInformationsBtn">
-            <div class="nav-link">Mon établissement</div>
-          </li>
           <li class="nav-item js-profileMenuMinManageAccountBtn">
             <div class="nav-link">Gérer mon compte</div>
           </li>
@@ -35,9 +32,6 @@
         </li>
         <li class="nav-item">
           <div class="nav-link btn btn-link js-profileMenuMaxProfessionalInformationsBtn">Mes informations professionnelles</div>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link btn btn-link js-profileMenuMaxFacilityInformationsBtn">Mon établissement</div>
         </li>
         <li class="nav-item">
           <div class="nav-link btn btn-link js-profileMenuMaxManageAccountBtn">Gérer mon compte</div>
@@ -287,103 +281,6 @@
 
       <% end %>
 
-    </div>
-
-    <div class="col-12 js-profileFacilityInformationsDiv d-none">
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= f.error_notification %>
-
-          <div class="row">
-
-              <div class="col-12">
-                  <legend class="h5"><i class="far fa-hospital"></i> Mon établissement</legend>
-                  <hr>
-              </div>
-
-                <div class="col-xs-12 col-lg-4">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-
-              <div class="col-xs-12 col-lg-8">
-
-                  <%= f.input :facility_name %>
-
-                  <%= f.input :facility_type, collection: {"" => ""}.merge(FACILITY_TYPES), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner un type d'établissement" } }, label_method: :second, value_method: :first %>
-
-                  <%= f.input :facility_description %>
-
-                  <div class="form-row">
-
-                    <div class="col-xs-12 col-md-6">
-                      <%= f.input :facility_contact_email %>
-                    </div>
-
-                    <div class="col-xs-12 col-md-6">
-                      <%= f.input :facility_contact_phone_number %>
-                    </div>
-                    
-                  </div>
-
-                  <%= f.input :facility_street, input_html: { class: "js-streetInput" } %>
-
-                  <%= f.input :facility_additional_address %>
-
-                  <%= f.input :facility_department, input_html: { class: "js-departmentInput" } %>
-                  
-                  <div class="form-row">
-
-                      <div class="col-xs-12 col-md-6">
-                        <%= f.input :facility_zipcode, input_html: { class: "js-zipcodeInput" } %>
-                      </div>
-
-                      <div class="col-xs-12 col-md-6">
-                        <%= f.input :facility_city, input_html: { class: "js-cityInput" } %>
-                      </div>
-                      
-                  </div>
-
-              </div>
-
-          </div>
-
-          <div class="form-actions d-none d-lg-flex justify-content-end">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProfessionalInformationsModal">
-              Modifier vos informations
-            </button>
-          </div>
-
-          <div class="form-actions d-block d-lg-none">
-            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#editProfessionalInformationsModal">
-              Modifier vos informations
-            </button>
-          </div>
-
-
-          <!-- Modal -->
-          <div class="modal fade" id="editProfessionalInformationsModal" tabindex="-1" role="dialog" aria-labelledby="editProfessionalInformationsModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="editProfessionalInformationsModalLabel">Validez vos modifications</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Pour des raisons de sécurité, veuillez renseigner votre mot de passe actuel pour valider vos modifications.</p>
-                  <%= f.input :current_password, input_html: { autocomplete: "current-password" }, required: true %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                  <%= f.button :submit, "Valider", :class => "btn btn-primary" %>
-                </div>
-              </div>
-            </div>
-          </div>
-
-      <% end %>
     </div>
 
     <div class="col-12 js-profileManageAccountDiv d-none">

@@ -14,7 +14,7 @@ fr:
           email: "Adresse email"
           password: "Mot de passe"
           password_confirmation: "Mot de passe"
-          avatar_id: "Avatar"
+          avatar: "Avatar"
           title: "Titre"
           first_name: "Prénom"
           last_name: "Nom"

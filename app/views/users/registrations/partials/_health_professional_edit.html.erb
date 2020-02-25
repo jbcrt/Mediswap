@@ -133,15 +133,15 @@
 
               <div class="col-xs-12 col-lg-8">
 
-                <% if @user.avatar_id?  %>
+                <% if resource.avatar.attached? %>
                   <label class="file optional">Avatar</label>
-                  <div>
-                    <%= f.check_box :remove_avatar_id %>
-                    <label class="file optional" for="user_remove_avatar_id">Supprimer votre avatar ?</label>
-                    <%= cl_image_tag @user.avatar_id, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar" %>
+                  <div class="mb-3">
+                    <%= cl_image_tag resource.avatar.key, height: 72, width: 72, crop: :thumb, gravity: :face, class: "avatar-big mr-3" %>
+                    <%= f.check_box :remove_avatar %>
+                    <label class="file optional" for="user_remove_avatar">Supprimer votre avatar ?</label>
                   </div>
                 <% else %>
-                  <%= f.input :avatar_id %>
+                  <%= f.input :avatar, as: :file %>
                 <% end %>
 
                 <%= f.input :title, as: :radio_buttons, collection: User.titles.symbolize_keys.keys %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, :controllers => {
     :confirmations => "users/confirmations",
     :passwords => "users/passwords",
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
     :sessions => "users/sessions",
     :unlocks => "users/unlocks",
   }
-  
+
   root to: 'pages#home'
   
   get 'contact', to: 'pages#contact', as: :contact

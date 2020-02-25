@@ -2,12 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :trackable, :lockable, :confirmable
-  attr_readonly :profession, :user_type
+  
   has_many :offers, dependent: :destroy
   has_one :facility, dependent: :destroy
   accepts_nested_attributes_for :facility
+  has_one_attached :avatar
 
-  mount_uploader :avatar_id, PhotoUploader
+  attr_accessor :remove_avatar
+  attr_readonly :profession, :user_type
 
   enum user_type: { 
     health_professional: "Health professional",
@@ -32,6 +34,14 @@ class User < ApplicationRecord
   # Validations spécifiques pour les établissements de santé
   with_options if: Proc.new { |a| a.user_type == "health_facility" } do |facility_user|
     facility_user.validates :profession, absence: true
+  end
+
+  after_save :purge_avatar, if: :remove_avatar
+  
+  private
+  
+  def purge_avatar
+    avatar.purge
   end
 
 end

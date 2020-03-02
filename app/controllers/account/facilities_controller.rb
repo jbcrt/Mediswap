@@ -1,5 +1,5 @@
 class Account::FacilitiesController < ApplicationController
-    before_action :set_facility, only: [:edit, :update]
+    before_action :set_facility, only: [:edit, :update, :delete_facility_attachment]
 
     def edit
         authorize @facility
@@ -7,14 +7,18 @@ class Account::FacilitiesController < ApplicationController
 
     def update
         authorize @facility
-        if @facility.valid?
-            @facility.completed = true
-        end
         if @facility.update(facility_params)
             redirect_to edit_account_facility_path(@facility)
         else
             render :edit
         end
+    end
+
+    def delete_facility_attachment
+        authorize @facility
+        @facility_image = ActiveStorage::Attachment.find(params[:attachment_id])
+        @facility_image.purge_later
+        redirect_to edit_account_facility_path(@facility)
     end
 
     private
@@ -24,6 +28,6 @@ class Account::FacilitiesController < ApplicationController
     end
 
     def facility_params
-        params.require(:facility).permit(:name, :category, :finess_number, :description, :phone_number, :email_address, :street, :additional_address, :department, :zipcode, :city)
+        params.require(:facility).permit(:name, :category, :finess_number, :description, :street, :additional_address, :department, :zipcode, :city, photos: [])
     end
 end

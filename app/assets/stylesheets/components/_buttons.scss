@@ -1,0 +1,21 @@
+.btn-circle {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 16px;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    &:hover {
+        border: none;
+    }
+
+}
+
+.btn-circle-tr {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+}

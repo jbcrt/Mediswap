@@ -54,13 +54,12 @@ fr:
         category: "Catégorie d'établissement"
         finess_number: "Numéro FINESS"
         description: "Description"
-        phone_number: "Numéro de téléphone"
-        email_address: "Adresse email"
         street: "Adresse"
         additional_address: "Complément d'adresse"
         department: "Département"
         zipcode: "Code postal"
         city: "Ville"
+        photos: "Photos"
     options:
       user:
         title:
@@ -77,6 +76,10 @@ fr:
         vehicle: "Cochez la case si un véhicule est nécessaire"
         housing: "Cochez la case si un logement est fourni"
         secretariat: "Cochez la case si un secrétariat est présent dans votre cabinet"
+      facility:
+        finess_number: "Numéro d'identification unique de votre établissement (9 chiffres)"
+        street: "Selectionnez une adresse suggerée par le moteur de recherche. Si votre adresse n'apparait pas, choisissez une adresse proche."
+        photos: "Vous pouvez ajouter jusqu'à 3 photos au format jpg, jpeg ou png."
     errors:
       user:
         email: "L'email doit obligatoirement être renseigné"

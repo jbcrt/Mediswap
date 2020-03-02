@@ -5,3 +5,9 @@
 .bg-primary-lightest {
     background-color: $lightest-medigreen !important;
 }
+
+// Helpers pour les positions
+
+.position-inherit {
+    position: inherit;
+}

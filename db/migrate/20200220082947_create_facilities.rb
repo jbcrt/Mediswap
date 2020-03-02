@@ -7,13 +7,13 @@ class CreateFacilities < ActiveRecord::Migration[6.0]
       t.string :category
       t.string :finess_number
       t.text :description
-      t.string :phone_number
-      t.string :email_address
       t.string :street
       t.string :additional_address
       t.string :department
       t.string :zipcode
       t.string :city
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

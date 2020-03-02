@@ -242,25 +242,22 @@
 
             <h2 class="h5">Photos</h2>
             <hr>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <%# <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item text-center active">
-                    <%= image_tag("https://libeal.fr/wp-content/uploads/2016/12/Cabinet-Bleu-Panoramique-Novembre-2018-Centre-Lib%C3%A9al-location-bureaux-et-cabinets-1.jpg", height: "300", alt: "Edit Entry") %>
-                    <%# <img src="https://libeal.fr/wp-content/uploads/2016/12/Cabinet-Bleu-Panoramique-Novembre-2018-Centre-Lib%C3%A9al-location-bureaux-et-cabinets-1.jpg" class="d-block rounded w-100" alt="..."> %>
-                    </div>
-                    <div class="carousel-item text-center">
-                    <%= image_tag("http://www.cabinetkinerepublique.fr/s/cc_images/teaserbox_4963679.JPG?t=1480239857", height: "300", alt: "Edit Entry") %>
-                    <%# <img src="http://www.cabinetkinerepublique.fr/s/cc_images/teaserbox_4963679.JPG?t=1480239857" class="d-block rounded w-100" alt="..."> %>
-                    </div>
-                    <div class="carousel-item text-center">
-                    <%= image_tag("https://res.cloudinary.com/doctolib/image/upload/w_1024,h_700,c_limit/reix0fk15ukyzn8kg8iu.jpg", height: "300", alt: "Edit Entry") %>
-                    <%# <img src="https://res.cloudinary.com/doctolib/image/upload/w_1024,h_700,c_limit/reix0fk15ukyzn8kg8iu.jpg" class="d-block rounded w-100" alt="..."> %>
-                    </div>
+                    <div class="carousel-item text-center active"> %>
+                    <%# image_tag("https://libeal.fr/wp-content/uploads/2016/12/Cabinet-Bleu-Panoramique-Novembre-2018-Centre-Lib%C3%A9al-location-bureaux-et-cabinets-1.jpg", height: "300", alt: "Edit Entry") %>
+                    <%# </div>
+                    <div class="carousel-item text-center"> %>
+                    <%# image_tag("http://www.cabinetkinerepublique.fr/s/cc_images/teaserbox_4963679.JPG?t=1480239857", height: "300", alt: "Edit Entry") %>
+                    <%# </div>
+                    <div class="carousel-item text-center"> %>
+                    <%# image_tag("https://res.cloudinary.com/doctolib/image/upload/w_1024,h_700,c_limit/reix0fk15ukyzn8kg8iu.jpg", height: "300", alt: "Edit Entry") %>
+                    <%# </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -270,7 +267,26 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
+            </div> %>
+            <% if @offer.user.facility.photos.attached? %>
+                <div id="facilityImagesCarouselControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                    <% @offer.user.facility.photos.each_with_index do |photo, index| %>
+                        <div class="carousel-item text-center <%= "active" if @offer.user.facility.photos.first == photo %>">
+                            <%= cl_image_tag photo.key, height: 300, alt: ["first slide", "second slide", "third slide"][index] %>
+                        </div>
+                    <% end %>
+                    </div>
+                    <a class="carousel-control-prev" href="#facilityImagesCarouselControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Précédent</span>
+                    </a>
+                    <a class="carousel-control-next" href="#facilityImagesCarouselControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Suivant</span>
+                    </a>
+                </div>
+            <% end %>
         </div>
     </div>
 

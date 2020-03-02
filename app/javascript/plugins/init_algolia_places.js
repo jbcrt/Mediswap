@@ -8,7 +8,8 @@ const initAddressSearch = () => {
         container: addressInput,
         language: 'fr',
         countries: 'fr',
-        type: 'city'
+        type: 'city',
+        useDeviceLocation: false
       })
     );
   }
@@ -27,10 +28,11 @@ const initAddressAutocomplete = () => {
     }).configure({
       language: 'fr',
       countries: 'fr',
-      type: 'address'
+      type: 'address',
+      useDeviceLocation: false
     });
     placesAutocomplete.on('change', function resultSelected(e) {
-      document.querySelector('.js-departmentInput').value = e.suggestion.county || '';
+      $('.js-departmentInput').val(e.suggestion.county || '').trigger('change');
       document.querySelector('.js-cityInput').value = e.suggestion.city || '';
       document.querySelector('.js-zipcodeInput').value = e.suggestion.postcode || '';
     });

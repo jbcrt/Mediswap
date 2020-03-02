@@ -27,6 +27,7 @@
               <%= f.fields_for :facility do |c| %>
                 <%= c.input :name, input_html: { class: "js-userFacilityNameField" }, required: true %>
                 <%= c.input :category, collection: {"" => ""}.merge(FACILITY_CATEGORIES), input_html: { class: "js-select2Searchable js-userFacilityCategoryField", data: { placeholder: "Selectionner une catégorie d'établissement" } }, label_method: :second, value_method: :first, required: true %>
+                <%= c.input :finess_number, input_html: { class: "js-userFacilityFinessNumberField" }, required: true %>
               <% end %>
           </div>
 

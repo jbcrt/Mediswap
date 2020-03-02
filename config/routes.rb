@@ -21,5 +21,7 @@ Rails.application.routes.draw do
     resources :facilities,  only: [:edit, :update]
   end
 
+  delete 'account/facilities/:id/delete_facility_attachment/:attachment_id', to: 'account/facilities#delete_facility_attachment', as: :delete_facility_attachment
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

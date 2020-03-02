@@ -28,9 +28,7 @@ class Offer < ApplicationRecord
 
   # Validations spécifiques pour les offres à durée déterminée
   with_options if: Proc.new { |a| a.offer_type == "Remplacement libéral occasionnel" } do |offer|
-
     offer.validates :ends_at, presence: true
-
   end
 
   def address

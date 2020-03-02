@@ -29,6 +29,8 @@ gem 'pundit'
 gem 'geocoder'
 # Image upload
 gem 'cloudinary', '~> 1.12.0'
+# Active Storage validations
+gem 'active_storage_validations'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

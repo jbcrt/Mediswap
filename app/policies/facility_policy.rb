@@ -8,4 +8,8 @@ class FacilityPolicy < ApplicationPolicy
   def update?
     record.user == user
   end
+
+  def delete_facility_attachment?
+    record.user == user
+  end
 end

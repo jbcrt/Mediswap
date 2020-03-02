@@ -51,7 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :last_name,
       :user_type,
       :profession,
-      facility_attributes: [:id, :name, :category]
+      facility_attributes: [:id, :name, :category, :finess_number]
     ])
   end
 

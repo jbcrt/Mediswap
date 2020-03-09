@@ -6,12 +6,24 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :profession
       t.string :offer_type
+      t.string :replacement_contract
+      t.string :employment_contract
+      t.string :other_contract
+      t.string :working_time
       t.date :starts_at
       t.date :ends_at
-      # Offer's facility
-      t.string :facility_name
-      t.string :facility_type
-      t.string :facility_description
+      t.string :duration_type
+      t.string :duration_day
+      t.string :duration_week
+      t.string :duration_month
+      t.string :duration_year
+      t.text :description
+      # Offer's remuneration
+      t.string :remuneration_type
+      t.string :salary
+      t.string :salary_period
+      t.string :retrocession
+      # Offer's location
       t.string :street
       t.string :additional_address
       t.string :department
@@ -19,15 +31,20 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.string :city
       t.float :latitude
       t.float :longitude
-      # Offer's content
-      t.text :description
-      t.integer :retrocession
+      # Offer's candidate profile
+      t.string :candidate_job_experience
+      t.text :candidate_description
+      # Offer's options
       t.boolean :vehicle
       t.boolean :home_visiting
-      t.boolean :medical_institution_visiting
+      t.boolean :health_facility_visiting
       t.boolean :housing
       t.boolean :secretariat
-      # Offer's options
+      # Sale offer
+      t.string :size
+      t.string :price
+      t.boolean :furnished
+      # Offer's premium options
       t.boolean :urgent
       t.boolean :premium
 

@@ -6,16 +6,16 @@ class Facility < ApplicationRecord
     geocoded_by :address
     after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
-    with_options if: Proc.new { |a| a.user.user_type == "health_professional" } do |facility|
-        facility.validates :name, presence: true, length: { in: 1..50 }, on: :update
-        facility.validates :category, presence: true, inclusion: { in: FACILITY_CATEGORIES.keys }, on: :update
-        facility.validates :finess_number, absence: true
+    with_options if: Proc.new { |a| a.user.user_type == "health_professional" } do |health_professional|
+        health_professional.validates :name, presence: true, length: { in: 1..50 }, on: :update
+        health_professional.validates :category, presence: true, inclusion: { in: FACILITY_CATEGORIES.keys }, on: :update
+        health_professional.validates :finess_number, absence: true
     end
     
-    with_options if: Proc.new { |a| a.user.user_type == "health_facility_recruiter" } do |facility|
-        facility.validates :name, presence: true, length: { in: 1..50 }
-        facility.validates :category, presence: true, inclusion: { in: FACILITY_CATEGORIES.keys }
-        facility.validates :finess_number, presence: true, length: { is: 9 }, numericality: { only_integer: true }
+    with_options if: Proc.new { |a| a.user.user_type == "health_facility_recruiter" } do |health_facility_recruiter|
+        health_facility_recruiter.validates :name, presence: true, length: { in: 1..50 }
+        health_facility_recruiter.validates :category, presence: true, inclusion: { in: FACILITY_CATEGORIES.keys }
+        health_facility_recruiter.validates :finess_number, presence: true, length: { is: 9 }, numericality: { only_integer: true }
     end
 
     validates :description, presence: true, length: { in: 1..10000 }, on: :update

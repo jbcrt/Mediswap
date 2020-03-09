@@ -35,15 +35,17 @@ fr:
       offer:
         title: "Titre de l'annonce"
         offer_type: "Type d'annonce"
+        working_time: "Temps de travail"
         starts_at: "À partir du"
         ends_at: "Jusqu'au"
         profession: "Profession"
         location: "Localisation"
         distance: "Distance"
-        offer_address: "Adresse"
-        offer_additional_address: "Complément d'adresse"
-        offer_postal_code_address: "Code postal"
-        offer_city_address: "Ville"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
         description: "Description de l'annonce"
         retrocession: "Taux de rétrocession"
         vehicle: "Véhicule obligatoire ?"
@@ -59,6 +61,7 @@ fr:
         department: "Département"
         zipcode: "Code postal"
         city: "Ville"
+        same_address: "Utiliser cette adresse dans toutes les offres"
         photos: "Photos"
     options:
       user:
@@ -68,6 +71,10 @@ fr:
         user_type:
           health_professional: "Un(e) professionnel(le) de santé"
           health_facility_recruiter: "Une(e) recruteur(euse) pour un établissement de santé"
+      offer:
+        working_time:
+          full_time: "Temps plein"
+          part_time:  "Temps partiel"
     hints:
       user:
         password: '8 caractères minimum'

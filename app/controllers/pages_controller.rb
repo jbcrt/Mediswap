@@ -12,4 +12,7 @@ class PagesController < ApplicationController
 
   def privacy
   end
+
+  def new_offer
+  end
 end

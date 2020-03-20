@@ -18,6 +18,7 @@ require("channels")
 import 'bootstrap';
 import { profileEditNavbar } from '../components/nav';
 import { dynamicsSignUpFormFields } from '../components/sign_up_form';
+import { dynamicsReplacementsOfferFormFields } from '../components/replacements_offer_form';
 import { cleanOffersFiltersForm } from '../components/offers_filters_form';
 import { autoResizeTextarea } from '../components/auto_resize_textarea';
 import { initMapbox } from '../plugins/init_mapbox';
@@ -27,6 +28,7 @@ import { initSelect2Searchable, initSelect2 } from '../plugins/init_select2';
 document.addEventListener('turbolinks:load', function() {
     profileEditNavbar();
     dynamicsSignUpFormFields();
+    dynamicsReplacementsOfferFormFields();
     cleanOffersFiltersForm();
     initAddressSearch();
     initAddressAutocomplete();

@@ -1,0 +1,243 @@
+<h2>Publier une annonce de remplacement libéral</h2>
+<div class="row">
+    <div class="col-12">
+        <%= simple_form_for offer, url: replacements_path, html: { class: "js-replacementsOfferForm" } do |f| %>
+
+            <%= f.error_notification %>
+
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="far fa-newspaper"></i> Votre annonce</legend>
+                    <hr>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+                    <%= f.input :title %>
+
+                    <% if current_user.user_type == "health_facility_recruiter" %>
+                        <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, label_method: :second, value_method: :first, required: true %>
+                    <% end %>
+                    
+                    <%= f.input :contract_type, as: :radio_buttons, collection: Replacement.contract_types.symbolize_keys.keys, input_html: { class: "js-contractTypeRadio" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
+                    
+                    <%= f.input :working_time, as: :radio_buttons, collection: Offer.working_times.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
+                    
+                    <div class="row form-row">
+                        <div class="col-xs-12 col-md-6">
+                            <%= f.input :starts_at, as: :date, html5: true, required: true %>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="js-endsAtFieldWrapper">
+                                <%= f.input :ends_at, as: :date, html5: true, input_html: { class: "js-endsAtField" }, required: true %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="fas fa-map-marker-alt"></i> Localisation</legend>
+                    <hr>
+                </div>
+
+                <% if current_user.facility.same_address? %>
+
+                    <div class="col-xs-12 col-md-4">
+                        <p>
+                            Conformément à votre choix, votre annonce apparaitra ici.
+                        </p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-8">
+
+                        <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+48A9A6(#{current_user.facility.longitude},#{current_user.facility.latitude})/#{current_user.facility.longitude},#{current_user.facility.latitude},14/600x450@2x?access_token=#{ENV['MAPBOX_API_KEY']}", class: "img-fluid img-thumbnail mb-2" %>
+                    
+                    </div>
+
+                <% else %>
+
+                    <div class="col-xs-12 col-md-4">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-8">
+
+                        <%= f.input :street, input_html: { class: "js-streetInput" } %>
+
+                        <%= f.input :additional_address %>
+
+                        <%= f.input :department, input_html: { class: "js-departmentInput" } %>
+                        <div class="row form-row">
+                            <div class="col-xs-12 col-md-4">
+                                <%= f.input :zipcode, input_html: { class: "js-zipcodeInput" } %>
+                            </div>
+                            <div class="col-xs-12 col-md-8">
+                                <%= f.input :city, input_html: { class: "js-cityInput" } %>
+                            </div>
+                        </div>
+                    </div>
+
+                <% end %>
+
+            </div>
+            
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="fas fa-wallet"></i> Rémunération</legend>
+                    <hr>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+
+                    <%= f.input :remuneration_type, as: :radio_buttons, collection: Offer.remuneration_types.symbolize_keys.keys, input_html: { class: "js-remunerationTypeRadio" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="js-salaryFieldWrapper">
+                                <%= f.input :salary, hint: true, input_html: { class: "js-salaryField" }, required: true %>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="js-salaryPeriodFieldWrapper">
+                                <%= f.input :salary_period, hint: true, as: :radio_buttons, collection: Offer.salary_periods.symbolize_keys.keys, input_html: { class: "js-salaryPeriodField" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="js-retrocessionFieldWrapper">
+                        <%= f.input :retrocession, hint: true, input_html: { class: "js-retrocessionField" }, required: true %>
+                    </div>
+
+                </div>
+
+            </div>
+            
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="fas fa-user-md"></i> Candidat</legend>
+                    <hr>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+
+                    <%= f.input :candidate_job_experience, as: :radio_buttons, collection: Offer.candidate_job_experiences.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
+
+                    <%= f.input :candidate_description, as: :text, input_html: { class: "js-autoResizeTextarea"} %>
+
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="fas fa-info-circle"></i> Informations complémentaires</legend>
+                    <hr>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+                    <%= f.input :vehicle, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :home_visiting, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :health_facility_visiting, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :housing, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :secretariat, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="fas fa-certificate"></i> Options</legend>
+                    <hr>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+
+                    <fieldset class="form-group radio_buttons required replacement_offer_type">
+                        <legend class="col-form-label pt-0">Type d'offre <abbr title="required">*</abbr></legend>
+                        <input type="hidden" name="replacement[offer_type]" value="">
+                        <label for="replacement_offer_type_standard" class="radio-btn-card mb-1">
+                            <input type="radio" name="replacement[offer_type]" value="standard" id="replacement_offer_type_standard" class="card-input-element d-none required">
+                            <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                                <div>
+                                    <div class="radio-btn-card-title">Annonce standard</div>
+                                    <div class="radio-btn-card-price">Gratuite</div>
+                                </div>
+                                <div>
+                                    <i class="far fa-circle"></i>
+                                    <i class="far fa-check-circle"></i>
+                                </div>
+                            </div>
+                        </label>
+                        <label for="replacement_offer_type_premium" class="radio-btn-card">
+                            <input type="radio" name="replacement[offer_type]" value="premium" id="replacement_offer_type_premium" class="card-input-element d-none required">
+                            <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                                <div>
+                                    <div class="radio-btn-card-title">Annonce premium</div>
+                                    <div class="radio-btn-card-price">24.99€</div>
+                                </div>
+                                <div>
+                                    <i class="far fa-circle"></i>
+                                    <i class="far fa-check-circle"></i>
+                                </div>
+                            </div>
+                        </label>
+                        <%= f.full_error :offer_type, class: "invalid-feedback d-block" %>
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+            <div class="form-actions d-none d-lg-flex justify-content-end">
+                <%= f.button :submit, "Publier mon annonce", :class => "btn btn-primary" %>
+            </div>
+
+            <div class="form-actions d-block d-lg-none">
+                <%= f.button :submit, "Publier mon annonce", :class => "btn btn-primary btn-block" %>
+            </div>
+
+        <% end %>
+    </div>
+
+</div>

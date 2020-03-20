@@ -4,15 +4,10 @@
     <%= link_to offer_path(offer), :action => 'go', :class => "offer-card flex-column flex-sm-row col-12 w-100" do %>
 
         <div class="offer-card-badges d-flex d-sm-none flex-column">
-            <% if offer.premium? %>
-                    <span class="badge badge-primary-alt mb-1">
-                        <i class="fas fa-star"></i> Premium
-                    </span> 
-                <% end %>
-                <% if offer.urgent? %>
-                    <span class="badge badge-warning-alt">
-                        <i class="fas fa-exclamation-circle"></i> Urgent
-                    </span>
+            <% if offer.offer_type == "premium" %>
+                <span class="badge badge-primary-alt mb-1">
+                    <i class="fas fa-star"></i> Premium
+                </span>
             <% end %>
         </div>
         
@@ -38,15 +33,10 @@
                 <%= image_tag "avatars/doctor_f", class: "avatar-big mb-3" %>
             <% end %>
 
-            <% if offer.premium? %>
+            <% if offer.offer_type == "premium" %>
                 <span class="badge badge-primary-alt mb-1">
                     <i class="fas fa-star"></i> Premium
                 </span> 
-            <% end %>
-            <% if offer.urgent? %>
-                <span class="badge badge-warning-alt">
-                    <i class="fas fa-exclamation-circle"></i> Urgent
-                </span>
             <% end %>
 
         </div>
@@ -62,7 +52,7 @@
                 </div>
 
                 <div class="offer-card-facility-info">
-                    <%= offer.facility_name %> - <%= offer.city %>
+                    <%= offer.user.facility.name %> - <%= offer.city %>
                 </div>
 
             </div>
@@ -83,7 +73,7 @@
                         <i class="fas fa-file-contract"></i>
                     </div>
                     <div class="offer-card-data-content">
-                        <%= OFFER_TYPES[offer.offer_type] %>
+                        <%= offer.contract_type %>
                     </div>
                 </div>
 

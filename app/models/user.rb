@@ -3,9 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :trackable, :lockable, :confirmable
   
-  has_many :offers, dependent: :destroy
+  has_many :replacements, class_name: 'Replacement', dependent: :destroy
+  has_many :employments, class_name: 'Employment', dependent: :destroy
+  has_many :collaborations, class_name: 'Collaboration', dependent: :destroy
+  has_many :sales, class_name: 'Sale', dependent: :destroy
+
   has_one :facility, dependent: :destroy
   accepts_nested_attributes_for :facility
+  
   has_one_attached :avatar
 
   attr_accessor :remove_avatar

@@ -32,9 +32,9 @@ fr:
           password: 'Nouveau mot de passe'
           password_confirmation: 'Retapez le nouveau mot de passe'
           current_password: 'Mot de passe actuel'
-      offer:
+      replacement:
         title: "Titre de l'annonce"
-        offer_type: "Type d'annonce"
+        contract_type: "Type de remplacement"
         working_time: "Temps de travail"
         starts_at: "À partir du"
         ends_at: "Jusqu'au"
@@ -47,8 +47,15 @@ fr:
         zipcode: "Code postal"
         city: "Ville"
         description: "Description de l'annonce"
+        remuneration_type: "Type de rémunération"
+        salary: "Salaire"
+        salary_period: "Par"
         retrocession: "Taux de rétrocession"
+        candidate_job_experience: "Expérience requise"
+        candidate_description: "Profil du candidat"
         vehicle: "Véhicule obligatoire ?"
+        home_visiting: "Visite à domicile ?"
+        health_facility_visiting: "Visite en établissement de santé ?"
         housing: "Logement fourni ?"
         secretariat: "Secrétariat de cabinet ?"
       facility:
@@ -71,10 +78,46 @@ fr:
         user_type:
           health_professional: "Un(e) professionnel(le) de santé"
           health_facility_recruiter: "Une(e) recruteur(euse) pour un établissement de santé"
-      offer:
+      replacement:
+        contract_type:
+          remplacement_liberal_occasionnel: "Remplacement libéral occasionnel"
+          remplacement_liberal_regulier: "Remplacement libéral régulier"
         working_time:
           full_time: "Temps plein"
           part_time:  "Temps partiel"
+        remuneration_type:
+          salary: "Salaire"
+          retrocession: "Rétrocession"
+        salary_period:
+          hour: "Heure"
+          day: "Jour"
+          week: "Semaine"
+          month: "Mois"
+          year: "An"
+        candidate_job_experience:
+          junior: "Débutant (0 à 2 ans)"
+          intermediate: "Intermédiaire (entre 2 et 5 ans)"
+          senior: "Confirmé (5 ans et plus)"
+        vehicle:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
+        home_visiting:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
+        health_facility_visiting:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
+        housing:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
+        secretariat:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
     hints:
       user:
         password: '8 caractères minimum'

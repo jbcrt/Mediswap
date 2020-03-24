@@ -19,6 +19,7 @@ import 'bootstrap';
 import { profileEditNavbar } from '../components/nav';
 import { dynamicsSignUpFormFields } from '../components/sign_up_form';
 import { dynamicsReplacementsOfferFormFields } from '../components/replacements_offer_form';
+import { dynamicsEmploymentOfferFormFields } from '../components/employment_offer_form';
 import { cleanOffersFiltersForm } from '../components/offers_filters_form';
 import { autoResizeTextarea } from '../components/auto_resize_textarea';
 import { initMapbox } from '../plugins/init_mapbox';
@@ -29,6 +30,7 @@ document.addEventListener('turbolinks:load', function() {
     profileEditNavbar();
     dynamicsSignUpFormFields();
     dynamicsReplacementsOfferFormFields();
+    dynamicsEmploymentOfferFormFields();
     cleanOffersFiltersForm();
     initAddressSearch();
     initAddressAutocomplete();

@@ -32,6 +32,9 @@ fr:
           password: 'Nouveau mot de passe'
           password_confirmation: 'Retapez le nouveau mot de passe'
           current_password: 'Mot de passe actuel'
+      offer:
+        location: "Localisation"
+        distance: "Distance"
       replacement:
         title: "Titre de l'annonce"
         contract_type: "Type de remplacement"
@@ -39,8 +42,6 @@ fr:
         starts_at: "À partir du"
         ends_at: "Jusqu'au"
         profession: "Profession"
-        location: "Localisation"
-        distance: "Distance"
         street: "Adresse"
         additional_address: "Complément d'adresse"
         department: "Département"
@@ -51,13 +52,29 @@ fr:
         salary: "Salaire"
         salary_period: "Par"
         retrocession: "Taux de rétrocession"
-        candidate_job_experience: "Expérience requise"
-        candidate_description: "Profil du candidat"
         vehicle: "Véhicule obligatoire ?"
         home_visiting: "Visite à domicile ?"
         health_facility_visiting: "Visite en établissement de santé ?"
         housing: "Logement fourni ?"
         secretariat: "Secrétariat de cabinet ?"
+        offer_type: "Type d'offre"
+      employment:
+        title: "Titre de l'annonce"
+        contract_type: "Type de remplacement"
+        working_time: "Temps de travail"
+        profession: "Profession"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
+        description: "Description de l'annonce"
+        has_salary_set: "Le salaire est-il déterminé ?"
+        salary: "Salaire brut"
+        salary_period: "Par"
+        candidate_job_experience: "Expérience requise"
+        candidate_description: "Profil du candidat"
+        offer_type: "Type d'offre"
       facility:
         name: "Raison sociale"
         category: "Catégorie d'établissement"
@@ -95,6 +112,7 @@ fr:
           month: "Mois"
           year: "An"
         candidate_job_experience:
+          without_preference: "Sans préférence"
           junior: "Débutant (0 à 2 ans)"
           intermediate: "Intermédiaire (entre 2 et 5 ans)"
           senior: "Confirmé (5 ans et plus)"
@@ -118,6 +136,29 @@ fr:
           irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
           required: "Oui"
           optional: "Non"
+      employment:
+        contract_type:
+          contrat_assitant_hopitaux: "Assistant des hopitaux"
+          contrat_duree_determinee: "Contrat à durée déterminée"
+          contrat_duree_indeterminee: "Contrat à durée indéterminée"
+          contrat_clinicien_hospitalier: "Clinicien hospitalier"
+          contrat_exercice_liberal: "Exercice à titre libéral"
+          contrat_assitant_hopitaux: "Praticien attaché"
+          contrat_praticien_hospitalier_contractuel: "Praticien hospitalier contractuel"
+        working_time:
+          full_time: "Temps plein"
+          part_time:  "Temps partiel"
+        salary_period:
+          hour: "Heure"
+          day: "Jour"
+          week: "Semaine"
+          month: "Mois"
+          year: "An"
+        candidate_job_experience:
+          without_preference: "Sans préférence"
+          junior: "Débutant (0 à 2 ans)"
+          intermediate: "Intermédiaire (entre 2 et 5 ans)"
+          senior: "Confirmé (5 ans et plus)"
     hints:
       user:
         password: '8 caractères minimum'
@@ -126,6 +167,8 @@ fr:
         vehicle: "Cochez la case si un véhicule est nécessaire"
         housing: "Cochez la case si un logement est fourni"
         secretariat: "Cochez la case si un secrétariat est présent dans votre cabinet"
+      employment:
+        has_salary_set: "En activant ce bouton, vous pourrez définir le salaire. À défaut, le salaire apparaitra comme étant \"à négocier\"."
       facility:
         finess_number: "Numéro d'identification unique de votre établissement (9 chiffres)"
         street: "Selectionnez une adresse suggerée par le moteur de recherche. Si votre adresse n'apparait pas, choisissez une adresse proche."

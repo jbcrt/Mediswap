@@ -23,19 +23,13 @@ class Replacement < Offer
     validates :housing, presence: true, inclusion: { in: Replacement.options.keys }
     validates :secretariat, presence: true, inclusion: { in: Replacement.options.keys }
 
-    ## Les champs optionnels pour les offres de remplacement
-    validates :candidate_job_experience, inclusion: { in: Offer.candidate_job_experiences.keys }, allow_blank: true
-    validates :candidate_description, length: { in: 1..10000 }, allow_blank: true
-
+    
     ## Les champs qui ne doivent pas apparaitre dans les offres de remplacement
+    validates :candidate_job_experience, absence: true
+    validates :candidate_description, absence: true
     validates :size, absence: true
     validates :price, absence: true
     validates :furnished, absence: true
-    validates :duration_type, absence: true
-    validates :number_of_days, absence: true
-    validates :number_of_weeks, absence: true
-    validates :number_of_months, absence: true
-    validates :number_of_years, absence: true
 
     ## Les validations qui sont conditionnées au type de de contrat de remplacement selectionné
     with_options if: Proc.new { |a| a.contract_type == "remplacement_liberal_occasionnel" } do |replacement_offer|

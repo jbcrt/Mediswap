@@ -131,29 +131,6 @@
                 </div>
 
             </div>
-            
-            <div class="row mt-4">
-
-                <div class="col-12">
-                    <legend class="h5"><i class="fas fa-user-md"></i> Candidat</legend>
-                    <hr>
-                </div>
-
-                <div class="col-xs-12 col-md-4">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-
-                <div class="col-xs-12 col-md-8">
-
-                    <%= f.input :candidate_job_experience, as: :radio_buttons, collection: Offer.candidate_job_experiences.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
-
-                    <%= f.input :candidate_description, as: :text, input_html: { class: "js-autoResizeTextarea"} %>
-
-                </div>
-
-            </div>
 
             <div class="row mt-4">
 
@@ -181,7 +158,7 @@
             <div class="row mt-4">
 
                 <div class="col-12">
-                    <legend class="h5"><i class="fas fa-certificate"></i> Options</legend>
+                    <legend class="h5"><i class="fas fa-certificate"></i> Formule</legend>
                     <hr>
                 </div>
 
@@ -194,9 +171,8 @@
                 <div class="col-xs-12 col-md-8">
 
                     <fieldset class="form-group radio_buttons required replacement_offer_type">
-                        <legend class="col-form-label pt-0">Type d'offre <abbr title="required">*</abbr></legend>
                         <input type="hidden" name="replacement[offer_type]" value="">
-                        <label for="replacement_offer_type_standard" class="radio-btn-card mb-1">
+                        <label for="replacement_offer_type_standard" class="radio-btn-card mb-2">
                             <input type="radio" name="replacement[offer_type]" value="standard" id="replacement_offer_type_standard" class="card-input-element d-none required">
                             <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
                                 <div>
@@ -222,7 +198,7 @@
                                 </div>
                             </div>
                         </label>
-                        <%= f.full_error :offer_type, class: "invalid-feedback d-block" %>
+                        <%= f.error :offer_type, class: "invalid-feedback d-block" %>
                     </fieldset>
 
                 </div>

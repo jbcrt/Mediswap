@@ -34,9 +34,7 @@ class OffersController < ApplicationController
 
     def create
       @offer = current_user.send(set_type.pluralize).create(offer_params(set_type))
-      if current_user.user_type == "health_professional"
-        @offer.profession = current_user.profession
-      end
+
       authorize @offer, policy_class: OfferPolicy
       if @offer.save
         redirect_to offer_path(@offer)
@@ -80,10 +78,6 @@ class OffersController < ApplicationController
           :department,
           :zipcode,
           :city,
-          :latitude,
-          :longitude,
-          :candidate_job_experience,
-          :candidate_description,
           :vehicle,
           :home_visiting,
           :health_facility_visiting,
@@ -92,29 +86,22 @@ class OffersController < ApplicationController
           :offer_type
         )
       when "employment"
-        params.require(:employment).permit(:title,
+        params.require(:employment).permit(
+          :title,
           :profession,
           :contract_type,
           :working_time,
-          :starts_at,
-          :ends_at,
           :description,
-          :remuneration_type,
+          :has_salary_set,
           :salary,
           :salary_period,
-          :retrocession,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
-          :latitude,
-          :longitude,
-          :vehicle,
-          :home_visiting,
-          :medical_institution_visiting,
-          :housing,
-          :secretariat,
+          :candidate_job_experience,
+          :candidate_description,
           :offer_type
         )
       end

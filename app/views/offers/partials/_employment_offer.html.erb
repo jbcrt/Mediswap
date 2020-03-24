@@ -1,7 +1,7 @@
 <h2>Publier une annonce d'emploi salarié</h2>
 <div class="row">
     <div class="col-12">
-        <%= simple_form_for offer, url: employments_path do |f| %>
+        <%= simple_form_for offer, url: employments_path, html: { class: "js-EmploymentOfferForm" } do |f| %>
 
             <%= f.error_notification %>
 
@@ -29,19 +29,7 @@
                     
                     <%= f.input :working_time, as: :radio_buttons, collection: Offer.working_times.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
 
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <%= f.input :duration_type, as: :radio_buttons, collection: Offer.duration_types.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <%= f.input :number_of_days %>
-                            <%= f.input :number_of_weeks %>
-                            <%= f.input :number_of_months %>
-                            <%= f.input :number_of_years %>
-                        </div>
-                    </div>
-
-                    <%= f.input :description, as: :text %>
+                    <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"} %>
                 </div>
 
             </div>
@@ -111,18 +99,20 @@
 
                 <div class="col-xs-12 col-md-8">
 
-                    <%= f.input :remuneration_type, as: :radio_buttons, collection: Offer.remuneration_types.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
+                    <%= f.input :has_salary_set, hint: true, input_html: { class: "js-hasSalarySetBool" }, wrapper: :custom_boolean_switch, item_wrapper_class: 'custom-control custom-radio' %>
 
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
-                            <%= f.input :salary, hint: true %>
+                            <div class="js-salaryFieldWrapper">
+                                <%= f.input :salary, hint: true, input_html: { class: "js-salaryField" }, required: true %>
+                            </div>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <%= f.input :salary_period, hint: true, as: :radio_buttons, collection: Offer.salary_periods.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
+                            <div class="js-salaryPeriodFieldWrapper">
+                                <%= f.input :salary_period, hint: true, as: :radio_buttons, collection: Offer.salary_periods.symbolize_keys.keys, input_html: { class: "js-salaryPeriodField" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                            </div>
                         </div>
                     </div>
-
-                    <%= f.input :retrocession, hint: true %>
 
                 </div>
 
@@ -145,7 +135,7 @@
 
                     <%= f.input :candidate_job_experience, as: :radio_buttons, collection: Offer.candidate_job_experiences.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
 
-                    <%= f.input :candidate_description, as: :text %>
+                    <%= f.input :candidate_description, as: :text, input_html: { class: "js-autoResizeTextarea"} %>
 
                 </div>
 
@@ -154,34 +144,7 @@
             <div class="row mt-4">
 
                 <div class="col-12">
-                    <legend class="h5"><i class="fas fa-info-circle"></i> Informations complémentaires</legend>
-                    <hr>
-                </div>
-
-                <div class="col-xs-12 col-md-4">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-
-                <div class="col-xs-12 col-md-8">
-                    <%= f.input :vehicle, hint: true, input_html: { class: "custom-switch" } %>
-
-                    <%= f.input :home_visiting, input_html: { class: "custom-switch" } %>
-
-                    <%= f.input :health_facility_visiting, input_html: { class: "custom-switch" } %>
-
-                    <%= f.input :housing, hint: true, input_html: { class: "custom-switch" } %>
-
-                    <%= f.input :secretariat, hint: true, input_html: { class: "custom-switch" } %>
-                </div>
-
-            </div>
-
-            <div class="row mt-4">
-
-                <div class="col-12">
-                    <legend class="h5"><i class="fas fa-certificate"></i> Options</legend>
+                    <legend class="h5"><i class="fas fa-certificate"></i> Formule</legend>
                     <hr>
                 </div>
 
@@ -193,7 +156,37 @@
 
                 <div class="col-xs-12 col-md-8">
 
-                    <%= f.input :premium, hint: true %>
+                    <fieldset class="form-group radio_buttons required employment_offer_type">
+                        <input type="hidden" name="employment[offer_type]" value="">
+                        <label for="employment_offer_type_standard" class="radio-btn-card mb-2">
+                            <input type="radio" name="employment[offer_type]" value="standard" id="employment_offer_type_standard" class="card-input-element d-none required">
+                            <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                                <div>
+                                    <div class="radio-btn-card-title">Annonce standard</div>
+                                    <div class="radio-btn-card-price">24.99€</div>
+                                </div>
+                                <div>
+                                    <i class="far fa-circle"></i>
+                                    <i class="far fa-check-circle"></i>
+                                </div>
+                            </div>
+                        </label>
+                        <label for="employment_offer_type_premium" class="radio-btn-card">
+                            <input type="radio" name="employment[offer_type]" value="premium" id="employment_offer_type_premium" class="card-input-element d-none required">
+                            <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                                <div>
+                                    <div class="radio-btn-card-title">Annonce premium</div>
+                                    <div class="radio-btn-card-price">49.99€</div>
+                                </div>
+                                <div>
+                                    <i class="far fa-circle"></i>
+                                    <i class="far fa-check-circle"></i>
+                                </div>
+                            </div>
+                        </label>
+                        <%= f.error :offer_type, class: "invalid-feedback d-block" %>
+                    </fieldset>
+
                 </div>
 
             </div>

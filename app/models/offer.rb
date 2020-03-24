@@ -12,22 +12,18 @@ class Offer < ApplicationRecord
   scope :collaborations, -> { where(type: "Collaboration") }
   scope :sales, -> { where(type: "Sale") }
 
+  before_validation :set_profession, if: ->(obj){ obj.set_profession? }
+  before_validation :set_remuneration_type, if: ->(obj){ obj.set_remuneration_type? }
+
   # Géolocalisation
+  before_validation :set_location, if: ->(obj){ obj.same_address? }
   geocoded_by :address
-  before_validation :set_location
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   # Valeurs précises
   enum working_time: { 
     full_time: "Full time",
     part_time: "Part time"
-  }
-
-  enum duration_type: { 
-    days_number: "Day(s)",
-    weeks_number: "Week(s)",
-    months_number: "Month(s)",
-    years_number: "Year(s)"
   }
 
   enum remuneration_type: { 
@@ -44,6 +40,7 @@ class Offer < ApplicationRecord
   }
 
   enum candidate_job_experience: { 
+    without_preference: "Sans préférence",
     junior: "Junior",
     intermediate: "Intermediate",
     senior: "Senior"
@@ -72,16 +69,44 @@ class Offer < ApplicationRecord
     street_changed? || department_changed? || zipcode_changed? || city_changed?
   end
 
+  def same_address?
+    self.user.facility.same_address
+  end
+
+  def set_profession?
+    (self.user.user_type == "health_professional") && (self.profession.nil?)
+  end
+
+  def set_remuneration_type?
+    (self.type == "Employment") && (self.remuneration_type.nil?)
+  end
+
+  def check_salary?
+    self.salary == "" && self.salary_period != ""
+  end
+
+
+
   private
 
   def set_location
-    if self.user.facility.same_address
-      self.street = self.user.facility.street
-      self.additional_address = self.user.facility.additional_address
-      self.department = self.user.facility.department
-      self.zipcode = self.user.facility.zipcode
-      self.city = self.user.facility.city
-    end
+    self.street = self.user.facility.street
+    self.additional_address = self.user.facility.additional_address
+    self.department = self.user.facility.department
+    self.zipcode = self.user.facility.zipcode
+    self.city = self.user.facility.city
+  end
+
+  def set_profession
+    self.profession = self.user.profession
+  end
+
+  def set_remuneration_type
+    self.remuneration_type = "salary"
+  end
+
+  def check_salary
+    self.salary_period = ""
   end
 
 end

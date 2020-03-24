@@ -10,14 +10,10 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.string :working_time
       t.date :starts_at
       t.date :ends_at
-      t.string :duration_type
-      t.string :number_of_days
-      t.string :number_of_weeks
-      t.string :number_of_months
-      t.string :number_of_years
       t.text :description
       # Offer's remuneration
       t.string :remuneration_type
+      t.boolean :has_salary_set
       t.string :salary
       t.string :salary_period
       t.string :retrocession

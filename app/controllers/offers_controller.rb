@@ -69,9 +69,6 @@ class OffersController < ApplicationController
           :starts_at,
           :ends_at,
           :description,
-          :remuneration_type,
-          :salary,
-          :salary_period,
           :retrocession,
           :street,
           :additional_address,
@@ -102,6 +99,24 @@ class OffersController < ApplicationController
           :city,
           :candidate_job_experience,
           :candidate_description,
+          :offer_type
+        )
+      when "collaboration"
+        params.require(:collaboration).permit(
+          :title,
+          :contract_type,
+          :description,
+          :retrocession,
+          :street,
+          :additional_address,
+          :department,
+          :zipcode,
+          :city,
+          :vehicle,
+          :home_visiting,
+          :health_facility_visiting,
+          :housing,
+          :secretariat,
           :offer_type
         )
       end

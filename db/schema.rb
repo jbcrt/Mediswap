@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2020_02_24_190824) do
     t.date "starts_at"
     t.date "ends_at"
     t.text "description"
-    t.string "remuneration_type"
     t.boolean "has_salary_set"
     t.string "salary"
     t.string "salary_period"

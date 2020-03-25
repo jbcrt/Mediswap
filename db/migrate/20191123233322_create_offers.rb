@@ -12,7 +12,6 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.date :ends_at
       t.text :description
       # Offer's remuneration
-      t.string :remuneration_type
       t.boolean :has_salary_set
       t.string :salary
       t.string :salary_period

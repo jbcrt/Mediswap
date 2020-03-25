@@ -14,37 +14,34 @@ class Employment < Offer
     # Les champs obligatoires pour les offres de salariat
     validates :contract_type, presence: true, inclusion: { in: Employment.contract_types.keys }
     validates :working_time, presence: true, inclusion: { in: Offer.working_times.keys }
-    validates :remuneration_type, presence: true, inclusion: { in: Offer.remuneration_types.keys }
     validates :has_salary_set, presence: true, allow_blank: true
     
     # Les champs optionnels pour les offres de salariat
-    validates :salary, numericality: { only_integer: true, greater_than: 0 }, allow_blank: true
-    validates :salary_period, inclusion: { in: Offer.salary_periods.keys }, allow_blank: true
     validates :candidate_job_experience, inclusion: { in: Offer.candidate_job_experiences.keys }, allow_blank: true
     validates :candidate_description, length: { in: 1..10000 }, allow_blank: true
     
     # Les champs qui ne doivent pas apparaitre dans les offres de salariat
     validates :starts_at, absence: true
     validates :ends_at, absence: true
-    validates :size, absence: true
-    validates :price, absence: true
-    validates :furnished, absence: true
     validates :retrocession, absence: true
     validates :vehicle, absence: true
     validates :home_visiting, absence: true
     validates :health_facility_visiting, absence: true
     validates :housing, absence: true
     validates :secretariat, absence: true
+    validates :size, absence: true
+    validates :price, absence: true
+    validates :furnished, absence: true
 
     # Les validations qui sont conditionnées à la valeur de "has_salary_set"
-    with_options if: Proc.new { |a| a.has_salary_set } do |employment_offer|
-        employment_offer.validates :salary, presence: true, numericality: { only_integer: true, greater_than: 0 }
-        employment_offer.validates :salary_period, presence: true, inclusion: { in: Offer.salary_periods.keys }
+    with_options if: Proc.new { |a| a.has_salary_set } do |employment_offer_with_salary_set|
+        employment_offer_with_salary_set.validates :salary, presence: true, numericality: { only_integer: true, greater_than: 0 }
+        employment_offer_with_salary_set.validates :salary_period, presence: true, inclusion: { in: Offer.salary_periods.keys }
     end
   
-    with_options if: Proc.new { |a| a.has_salary_set == false } do |employment_offer|
-        employment_offer.validates :salary, absence: true
-        employment_offer.validates :salary_period, absence: true
+    with_options if: Proc.new { |a| a.has_salary_set == false } do |employment_offer_without_salary_set|
+        employment_offer_without_salary_set.validates :salary, absence: true
+        employment_offer_without_salary_set.validates :salary_period, absence: true
     end
 
 end

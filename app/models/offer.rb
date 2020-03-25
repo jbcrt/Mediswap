@@ -7,16 +7,17 @@ class Offer < ApplicationRecord
   scope :filter_by_begins, -> (begins) { where("starts_at >= ?", begins) }
   scope :filter_by_ends, -> (ends) { where("ends_at <= ?", ends) }
 
+  # Scopes liés aux types d'offre
   scope :replacements, -> { where(type: "Replacement") }
   scope :employments, -> { where(type: "Employment") }
   scope :collaborations, -> { where(type: "Collaboration") }
   scope :sales, -> { where(type: "Sale") }
 
+  # Before validation communs
   before_validation :set_profession, if: ->(obj){ obj.set_profession? }
-  before_validation :set_remuneration_type, if: ->(obj){ obj.set_remuneration_type? }
+  before_validation :set_location, if: ->(obj){ obj.same_address? }
 
   # Géolocalisation
-  before_validation :set_location, if: ->(obj){ obj.same_address? }
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
@@ -24,11 +25,6 @@ class Offer < ApplicationRecord
   enum working_time: { 
     full_time: "Full time",
     part_time: "Part time"
-  }
-
-  enum remuneration_type: { 
-    salary: "Salary",
-    retrocession: "Retrocession"
   }
 
   enum salary_period: {
@@ -44,6 +40,12 @@ class Offer < ApplicationRecord
     junior: "Junior",
     intermediate: "Intermediate",
     senior: "Senior"
+  }
+
+  enum option: {
+    required: "Oui",
+    optional: "Non",
+    irrelevant: "Non concerné"
   }
 
   enum offer_type: { 
@@ -77,16 +79,6 @@ class Offer < ApplicationRecord
     (self.user.user_type == "health_professional") && (self.profession.nil?)
   end
 
-  def set_remuneration_type?
-    (self.type == "Employment") && (self.remuneration_type.nil?)
-  end
-
-  def check_salary?
-    self.salary == "" && self.salary_period != ""
-  end
-
-
-
   private
 
   def set_location
@@ -99,14 +91,6 @@ class Offer < ApplicationRecord
 
   def set_profession
     self.profession = self.user.profession
-  end
-
-  def set_remuneration_type
-    self.remuneration_type = "salary"
-  end
-
-  def check_salary
-    self.salary_period = ""
   end
 
 end

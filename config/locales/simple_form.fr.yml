@@ -60,7 +60,7 @@ fr:
         offer_type: "Type d'offre"
       employment:
         title: "Titre de l'annonce"
-        contract_type: "Type de remplacement"
+        contract_type: "Type de contrat"
         working_time: "Temps de travail"
         profession: "Profession"
         street: "Adresse"
@@ -74,6 +74,26 @@ fr:
         salary_period: "Par"
         candidate_job_experience: "Expérience requise"
         candidate_description: "Profil du candidat"
+        offer_type: "Type d'offre"
+      collaboration:
+        title: "Titre de l'annonce"
+        contract_type: "Type de contrat"
+        description: "Description de l'annonce"
+        remuneration_type: "Type de rémunération"
+        has_salary_set: "Le salaire est-il déterminé ?"
+        salary: "Salaire brut"
+        salary_period: "Par"
+        retrocession: "Taux de rétrocession"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
+        vehicle: "Véhicule obligatoire ?"
+        home_visiting: "Visite à domicile ?"
+        health_facility_visiting: "Visite en établissement de santé ?"
+        housing: "Logement fourni ?"
+        secretariat: "Secrétariat de cabinet ?"
         offer_type: "Type d'offre"
       facility:
         name: "Raison sociale"
@@ -159,6 +179,39 @@ fr:
           junior: "Débutant (0 à 2 ans)"
           intermediate: "Intermédiaire (entre 2 et 5 ans)"
           senior: "Confirmé (5 ans et plus)"
+      collaboration:
+        contract_type:
+          assistanat: "Assistanat libéral"
+          collaboration: "Collaboration"
+        remuneration_type:
+          salary: "Salaire"
+          retrocession: "Rétrocession"
+        salary_period:
+          hour: "Heure"
+          day: "Jour"
+          week: "Semaine"
+          month: "Mois"
+          year: "An"
+        vehicle:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
+        home_visiting:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
+        health_facility_visiting:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
+        housing:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
+        secretariat:
+          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
+          required: "Oui"
+          optional: "Non"
     hints:
       user:
         password: '8 caractères minimum'

@@ -1,11 +1,11 @@
 <div class="container my-4">
     <% if @offer.type == "Replacement" %>
-        <%= render 'offers/partials/replacement_offer', offer: @offer %>
+        <%= render 'offers/forms/replacement_offer', offer: @offer %>
     <% elsif @offer.type == "Employment" %>
-        <%= render 'offers/partials/employment_offer', offer: @offer %>
+        <%= render 'offers/forms/employment_offer', offer: @offer %>
     <% elsif @offer.type == "Collaboration" %>
-        <%= render 'offers/partials/collaboration_offer', offer: @offer %>
+        <%= render 'offers/forms/collaboration_offer', offer: @offer %>
     <% elsif @offer.type == "Sale" %>
-        <%= render 'offers/partials/sale_offer', offer: @offer %>
+        <%= render 'offers/forms/sale_offer', offer: @offer %>
     <% end %>
 </div>

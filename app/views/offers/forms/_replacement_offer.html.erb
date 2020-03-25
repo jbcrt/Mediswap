@@ -110,22 +110,15 @@
 
                 <div class="col-xs-12 col-md-8">
 
-                    <%= f.input :remuneration_type, as: :radio_buttons, collection: Offer.remuneration_types.symbolize_keys.keys, input_html: { class: "js-remunerationTypeRadio" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
-
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <div class="js-salaryFieldWrapper">
-                                <%= f.input :salary, hint: true, input_html: { class: "js-salaryField" }, required: true %>
-                            </div>
+                    <%= f.label :retrocession %>
+                    <div class="row form-row">
+                        <div class="col-5 col-sm-3 d-flex align-items-center">
+                            <%= f.input :retrocession, label: false, error: false, hint: true, input_html: { class: "js-retrocessionInput" },wrapper_html: { class: "mb-0" } %>
+                            <div class="mx-2">/</div>
+                            <div class="js-retrocessionRecruiterPart"></div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
-                            <div class="js-salaryPeriodFieldWrapper">
-                                <%= f.input :salary_period, hint: true, as: :radio_buttons, collection: Offer.salary_periods.symbolize_keys.keys, input_html: { class: "js-salaryPeriodField" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="js-retrocessionFieldWrapper">
-                        <%= f.input :retrocession, hint: true, input_html: { class: "js-retrocessionField" }, required: true %>
+                        <%= f.hint :retrocession %>
+                        <%= f.error :retrocession, class: "invalid-feedback d-block" %>
                     </div>
 
                 </div>
@@ -146,11 +139,11 @@
                 </div>
 
                 <div class="col-xs-12 col-md-8">
-                    <%= f.input :vehicle, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :home_visiting, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :health_facility_visiting, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :housing, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :secretariat, hint: true, as: :radio_buttons, collection: Replacement.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :vehicle, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :home_visiting, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :health_facility_visiting, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :housing, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :secretariat, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
                 </div>
 
             </div>

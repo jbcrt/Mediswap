@@ -22,6 +22,7 @@ import { dynamicsReplacementsOfferFormFields } from '../components/replacements_
 import { dynamicsEmploymentOfferFormFields } from '../components/employment_offer_form';
 import { cleanOffersFiltersForm } from '../components/offers_filters_form';
 import { autoResizeTextarea } from '../components/auto_resize_textarea';
+import { autoCalculateRetrocession } from '../components/auto_calculate_retrocession';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAddressSearch, initAddressAutocomplete } from '../plugins/init_algolia_places';
 import { initSelect2Searchable, initSelect2 } from '../plugins/init_select2';
@@ -37,5 +38,6 @@ document.addEventListener('turbolinks:load', function() {
     initSelect2();
     initSelect2Searchable();
     autoResizeTextarea();
+    autoCalculateRetrocession();
     initMapbox();
 })

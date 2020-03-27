@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :replacements, controller: :offers, type: 'Replacement', only: [:new, :create]
   resources :employments, controller: :offers, type: 'Employment', only: [:new, :create]
   resources :collaborations, controller: :offers, type: 'Collaboration', only: [:new, :create]
-  resources :sales, controller: :offers, type: 'Sale', only: [:new, :create]
+  resources :rooms, controller: :offers, type: 'Room', only: [:new, :create]
 
   namespace :account do
     resources :offers,  only: [:index, :edit, :update, :destroy]

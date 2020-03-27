@@ -95,6 +95,20 @@ fr:
         housing: "Logement fourni ?"
         secretariat: "Secrétariat de cabinet ?"
         offer_type: "Type d'offre"
+      room:
+        title: "Titre de l'annonce"
+        contract_type: "Type de contrat"
+        description: "Description de l'annonce"
+        size: "Surface du local"
+        price: "Prix de vente"
+        rent: "Prix du loyer"
+        furnished: "Le local est meublé"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
+        offer_type: "Type d'offre"
       facility:
         name: "Raison sociale"
         category: "Catégorie d'établissement"
@@ -212,6 +226,10 @@ fr:
           irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
           required: "Oui"
           optional: "Non"
+      room:
+        contract_type:
+          cession_local: "Cession de local"
+          location_local: "Location de local"
     hints:
       user:
         password: '8 caractères minimum'
@@ -226,6 +244,10 @@ fr:
         finess_number: "Numéro d'identification unique de votre établissement (9 chiffres)"
         street: "Selectionnez une adresse suggerée par le moteur de recherche. Si votre adresse n'apparait pas, choisissez une adresse proche."
         photos: "Vous pouvez ajouter jusqu'à 3 photos au format jpg, jpeg ou png."
+      room:
+        size: "En m²"
+        price: "En €"
+        rent: "En €/mois"
     errors:
       user:
         email: "L'email doit obligatoirement être renseigné"

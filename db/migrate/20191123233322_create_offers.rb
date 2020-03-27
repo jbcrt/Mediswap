@@ -33,11 +33,15 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.string :health_facility_visiting
       t.string :housing
       t.string :secretariat
-      # Sale offer
+      t.string :sector
+      t.string :software
+      t.string :on_call
       t.string :size
       t.string :price
+      t.string :rent
       t.boolean :furnished
-      # Offer's premium options
+      t.string :patients
+      # Offer's premium option
       t.string :offer_type
 
       t.timestamps

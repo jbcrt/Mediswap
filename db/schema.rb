@@ -85,9 +85,14 @@ ActiveRecord::Schema.define(version: 2020_02_24_190824) do
     t.string "health_facility_visiting"
     t.string "housing"
     t.string "secretariat"
+    t.string "sector"
+    t.string "software"
+    t.string "on_call"
     t.string "size"
     t.string "price"
+    t.string "rent"
     t.boolean "furnished"
+    t.string "patients"
     t.string "offer_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

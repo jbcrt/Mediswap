@@ -26,6 +26,8 @@ class Collaboration < Offer
     validates :candidate_description, absence: true
     validates :size, absence: true
     validates :price, absence: true
+    validates :rent, absence: true
     validates :furnished, absence: true
+    validates :patients, absence: true
 
 end

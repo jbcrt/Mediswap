@@ -31,7 +31,9 @@ class Employment < Offer
     validates :secretariat, absence: true
     validates :size, absence: true
     validates :price, absence: true
+    validates :rent, absence: true
     validates :furnished, absence: true
+    validates :patients, absence: true
 
     # Les validations qui sont conditionnées à la valeur de "has_salary_set"
     with_options if: Proc.new { |a| a.has_salary_set } do |employment_offer_with_salary_set|

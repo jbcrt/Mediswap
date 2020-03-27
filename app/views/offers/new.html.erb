@@ -5,7 +5,7 @@
         <%= render 'offers/forms/employment_offer', offer: @offer %>
     <% elsif @offer.type == "Collaboration" %>
         <%= render 'offers/forms/collaboration_offer', offer: @offer %>
-    <% elsif @offer.type == "Sale" %>
-        <%= render 'offers/forms/sale_offer', offer: @offer %>
+    <% elsif @offer.type == "Room" %>
+        <%= render 'offers/forms/room_offer', offer: @offer %>
     <% end %>
 </div>

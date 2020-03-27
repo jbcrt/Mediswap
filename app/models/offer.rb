@@ -11,11 +11,11 @@ class Offer < ApplicationRecord
   scope :replacements, -> { where(type: "Replacement") }
   scope :employments, -> { where(type: "Employment") }
   scope :collaborations, -> { where(type: "Collaboration") }
-  scope :sales, -> { where(type: "Sale") }
+  scope :rooms, -> { where(type: "Room") }
 
   # Before validation communs
-  before_validation :set_profession, if: ->(obj){ obj.set_profession? }
-  before_validation :set_location, if: ->(obj){ obj.same_address? }
+  before_validation :set_profession, on: :create, if: ->(obj){ obj.set_profession? }
+  before_validation :set_location, on: :create, if: ->(obj){ obj.same_address? }
 
   # Géolocalisation
   geocoded_by :address
@@ -56,7 +56,7 @@ class Offer < ApplicationRecord
   # Validations des champs obligatoires pour tous les types d'offre
   validates :title, presence: true, length: { in: 1..50 }
   validates :profession, presence: true, inclusion: { in: PROFESSIONS.keys }
-  validates :description, presence: true, length: { in: 1..10000 }
+  validates :description, presence: true, length: { in: 1..2500 }
   validates :street, presence: true, length: { in: 1..50 }
   validates :additional_address, length: { in: 1..50 }, allow_blank: true
   validates :department, presence: true, inclusion: { in: DEPARTMENTS }

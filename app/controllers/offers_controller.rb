@@ -53,8 +53,8 @@ class OffersController < ApplicationController
         "employment"
       when "Collaboration"
         "collaboration"
-      when "Sale"
-        "sale"
+      when "Room"
+        "room"
       end
     end
 
@@ -117,6 +117,22 @@ class OffersController < ApplicationController
           :health_facility_visiting,
           :housing,
           :secretariat,
+          :offer_type
+        )
+      when "room"
+        params.require(:room).permit(
+          :title,
+          :contract_type,
+          :description,
+          :size,
+          :price,
+          :rent,
+          :furnished,
+          :street,
+          :additional_address,
+          :department,
+          :zipcode,
+          :city,
           :offer_type
         )
       end

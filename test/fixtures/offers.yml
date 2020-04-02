@@ -8,8 +8,8 @@ one:
   offer_type: 
   description: MyText
   retrocession: MyString
-  vehicle: false
-  housing: false
+  vehicle_required: false
+  housing_possibility: false
   secretariat: false
 
 two:
@@ -20,6 +20,6 @@ two:
   offer_type: 
   description: MyText
   retrocession: MyString
-  vehicle: false
-  housing: false
+  vehicle_required: false
+  housing_possibility: false
   secretariat: false

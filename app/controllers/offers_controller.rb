@@ -63,7 +63,6 @@ class OffersController < ApplicationController
       when "replacement"
         params.require(:replacement).permit(
           :title,
-          :profession,
           :contract_type,
           :working_time,
           :starts_at,
@@ -75,11 +74,14 @@ class OffersController < ApplicationController
           :department,
           :zipcode,
           :city,
-          :vehicle,
-          :home_visiting,
-          :health_facility_visiting,
-          :housing,
+          :daily_medical_acts_number,
+          :on_call,
+          :vehicle_required,
+          :visit,
+          :sector,
           :secretariat,
+          :software_used,
+          :housing_possibility,
           :offer_type
         )
       when "employment"
@@ -112,11 +114,14 @@ class OffersController < ApplicationController
           :department,
           :zipcode,
           :city,
-          :vehicle,
-          :home_visiting,
-          :health_facility_visiting,
-          :housing,
+          :daily_medical_acts_number,
+          :on_call,
+          :vehicle_required,
+          :visit,
+          :sector,
           :secretariat,
+          :software_used,
+          :housing_possibility,
           :offer_type
         )
       when "room"

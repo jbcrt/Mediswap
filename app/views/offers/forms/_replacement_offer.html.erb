@@ -25,9 +25,9 @@
                         <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, label_method: :second, value_method: :first, required: true %>
                     <% end %>
                     
-                    <%= f.input :contract_type, as: :radio_buttons, collection: Replacement.contract_types.symbolize_keys.keys, input_html: { class: "js-contractTypeRadio" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
+                    <%= f.input :contract_type, as: :radio_buttons, collection: Replacement.contract_types.symbolize_keys.keys, input_html: { class: "js-contractTypeRadio" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
                     
-                    <%= f.input :working_time, as: :radio_buttons, collection: Offer.working_times.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio' %>
+                    <%= f.input :working_time, as: :radio_buttons, collection: Offer.working_times.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
                     
                     <div class="row form-row">
                         <div class="col-xs-12 col-md-6">
@@ -56,14 +56,21 @@
 
                     <div class="col-xs-12 col-md-4">
                         <p>
-                            Conformément à votre choix, votre annonce apparaitra ici.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
                     </div>
 
                     <div class="col-xs-12 col-md-8">
 
-                        <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+48A9A6(#{current_user.facility.longitude},#{current_user.facility.latitude})/#{current_user.facility.longitude},#{current_user.facility.latitude},14/600x450@2x?access_token=#{ENV['MAPBOX_API_KEY']}", class: "img-fluid img-thumbnail mb-2" %>
-                    
+                        <p>
+                            Conformément à vos préférences, votre annonce apparaitra au <b><%= current_user.facility.street %></b> à <b><%= current_user.facility.city %></b>.
+                        </p>
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+48A9A6(#{current_user.facility.longitude},#{current_user.facility.latitude})/#{current_user.facility.longitude},#{current_user.facility.latitude},14/600x450@2x?access_token=#{ENV['MAPBOX_API_KEY']}", class: "img-fluid img-thumbnail mb-2" %>
+                            </div>
+                        </div>
+
                     </div>
 
                 <% else %>
@@ -76,16 +83,19 @@
 
                     <div class="col-xs-12 col-md-8">
 
-                        <%= f.input :street, input_html: { class: "js-streetInput" } %>
+                        <div class="mb-3">
+                            <%= f.input :street, input_html: { class: "js-streetInput" }, wrapper_html: { class: "mb-0" }, error: false %>
+                            <%= f.error :street, class: "invalid-feedback d-block" %>
+                        </div>
 
                         <%= f.input :additional_address %>
 
-                        <%= f.input :department, input_html: { class: "js-departmentInput" } %>
+                        <%= f.input :department, collection: [""]+DEPARTMENTS, input_html: { class: "js-select2Searchable js-departmentInput", data: { placeholder: "Selectionner un département" } }, required: true %>
                         <div class="row form-row">
-                            <div class="col-xs-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <%= f.input :zipcode, input_html: { class: "js-zipcodeInput" } %>
                             </div>
-                            <div class="col-xs-12 col-md-8">
+                            <div class="col-12 col-md-9">
                                 <%= f.input :city, input_html: { class: "js-cityInput" } %>
                             </div>
                         </div>
@@ -112,14 +122,12 @@
 
                     <%= f.label :retrocession %>
                     <div class="row form-row">
-                        <div class="col-5 col-sm-3 d-flex align-items-center">
-                            <%= f.input :retrocession, label: false, error: false, hint: true, input_html: { class: "js-retrocessionInput" },wrapper_html: { class: "mb-0" } %>
-                            <div class="mx-2">/</div>
-                            <div class="js-retrocessionRecruiterPart"></div>
+                        <div class="col-6 col-sm-4 col-lg-3">
+                            <%= f.input :retrocession, label: false, error: false, hint: false, wrapper: :input_group, wrapper_html: { class: "mb-0" }, append: "%" %>
                         </div>
-                        <%= f.hint :retrocession %>
-                        <%= f.error :retrocession, class: "invalid-feedback d-block" %>
                     </div>
+                    <%= f.error :retrocession, class: "invalid-feedback d-block" %>
+                    <%= f.hint :retrocession %>
 
                 </div>
 
@@ -139,11 +147,31 @@
                 </div>
 
                 <div class="col-xs-12 col-md-8">
-                    <%= f.input :vehicle, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :home_visiting, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :health_facility_visiting, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :housing, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :secretariat, hint: true, as: :radio_buttons, collection: Offer.options.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+
+                    <div class="mb-3">
+                        <%= f.label :daily_medical_acts_number %>
+                        <div class="row">
+                            <div class="col-6 col-sm-4 col-lg-3">
+                                    <%= f.input :daily_medical_acts_number, label: false, error: false, wrapper_html: { class: "mb-0" } %>
+                            </div>
+                        </div>
+                        <%= f.error :daily_medical_acts_number, class: "invalid-feedback d-block" %>
+                    </div>
+
+                    <%= f.input :on_call, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :vehicle_required, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :visit, as: :radio_buttons, collection: Offer.visits.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :sector, as: :radio_buttons, collection: Offer.sectors.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :secretariat, as: :radio_buttons, collection: Offer.secretariats.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <%= f.input :software_used %>
+                        </div>
+                    </div>
+
+                    <%= f.input :housing_possibility, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+
                 </div>
 
             </div>

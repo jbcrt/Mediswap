@@ -1,5 +1,7 @@
 fr:
   simple_form:
+    "yes": "Oui"
+    "no": "Non"
     labels:
       user:
         email: 'Adresse email'
@@ -41,22 +43,21 @@ fr:
         working_time: "Temps de travail"
         starts_at: "À partir du"
         ends_at: "Jusqu'au"
-        profession: "Profession"
         street: "Adresse"
         additional_address: "Complément d'adresse"
         department: "Département"
         zipcode: "Code postal"
         city: "Ville"
         description: "Description de l'annonce"
-        remuneration_type: "Type de rémunération"
-        salary: "Salaire"
-        salary_period: "Par"
         retrocession: "Taux de rétrocession"
-        vehicle: "Véhicule obligatoire ?"
-        home_visiting: "Visite à domicile ?"
-        health_facility_visiting: "Visite en établissement de santé ?"
-        housing: "Logement fourni ?"
-        secretariat: "Secrétariat de cabinet ?"
+        daily_medical_acts_number: "Nombre d'actes journalier"
+        on_call: "Gardes"
+        vehicle_required: "Véhicule obligatoire ?"
+        visit: "Visites à domicile et/ou en établissement de santé ?"
+        sector: "Secteur"
+        secretariat: "Secrétariat"
+        software_used: "Logiciel utilisé"
+        housing_possibility: "Possibilité de logement ?"
         offer_type: "Type d'offre"
       employment:
         title: "Titre de l'annonce"
@@ -79,21 +80,20 @@ fr:
         title: "Titre de l'annonce"
         contract_type: "Type de contrat"
         description: "Description de l'annonce"
-        remuneration_type: "Type de rémunération"
-        has_salary_set: "Le salaire est-il déterminé ?"
-        salary: "Salaire brut"
-        salary_period: "Par"
         retrocession: "Taux de rétrocession"
         street: "Adresse"
         additional_address: "Complément d'adresse"
         department: "Département"
         zipcode: "Code postal"
         city: "Ville"
-        vehicle: "Véhicule obligatoire ?"
-        home_visiting: "Visite à domicile ?"
-        health_facility_visiting: "Visite en établissement de santé ?"
-        housing: "Logement fourni ?"
-        secretariat: "Secrétariat de cabinet ?"
+        daily_medical_acts_number: "Nombre d'actes journalier"
+        on_call: "Gardes"
+        vehicle_required: "Véhicule obligatoire ?"
+        visit: "Visites à domicile et/ou en établissement de santé ?"
+        sector: "Secteur"
+        secretariat: "Secrétariat"
+        software_used: "Logiciel utilisé"
+        housing_possibility: "Possibilité de logement ?"
         offer_type: "Type d'offre"
       room:
         title: "Titre de l'annonce"
@@ -102,7 +102,7 @@ fr:
         size: "Surface du local"
         price: "Prix de vente"
         rent: "Prix du loyer"
-        furnished: "Le local est meublé"
+        furnished: "Le local est-il meublé ?"
         street: "Adresse"
         additional_address: "Complément d'adresse"
         department: "Département"
@@ -136,40 +136,20 @@ fr:
         working_time:
           full_time: "Temps plein"
           part_time:  "Temps partiel"
-        remuneration_type:
-          salary: "Salaire"
-          retrocession: "Rétrocession"
-        salary_period:
-          hour: "Heure"
-          day: "Jour"
-          week: "Semaine"
-          month: "Mois"
-          year: "An"
-        candidate_job_experience:
-          without_preference: "Sans préférence"
-          junior: "Débutant (0 à 2 ans)"
-          intermediate: "Intermédiaire (entre 2 et 5 ans)"
-          senior: "Confirmé (5 ans et plus)"
-        vehicle:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
-        home_visiting:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
-        health_facility_visiting:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
-        housing:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
+        visit:
+          no_visits: "Aucune visite"
+          home_visits: "Visites à domicile"
+          facility_visits: "Visites en établissement de santé"
+          home_and_facility_visits: "Visites à domicile et en établissement de santé"
+        sector:
+          irrelevant: "Non concerné (ne pas afficher)"
+          sector_1: "Secteur 1"
+          sector_2: "Secteur 2"
+          sector_3: "Secteur 3"
         secretariat:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
+          no_secretariat: "Aucun secrétariat"
+          in_situ: "Sur place"
+          switchboard: "Standard téléphonique"
       employment:
         contract_type:
           contrat_assitant_hopitaux: "Assistant des hopitaux"
@@ -197,35 +177,20 @@ fr:
         contract_type:
           assistanat: "Assistanat libéral"
           collaboration: "Collaboration"
-        remuneration_type:
-          salary: "Salaire"
-          retrocession: "Rétrocession"
-        salary_period:
-          hour: "Heure"
-          day: "Jour"
-          week: "Semaine"
-          month: "Mois"
-          year: "An"
-        vehicle:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
-        home_visiting:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
-        health_facility_visiting:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
-        housing:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
+        visit:
+          no_visits: "Aucune visite"
+          home_visits: "Visites à domicile"
+          facility_visits: "Visites en établissement de santé"
+          home_and_facility_visits: "Visites à domicile et en établissement de santé"
+        sector:
+          irrelevant: "Non concerné (ne pas afficher)"
+          sector_1: "Secteur 1"
+          sector_2: "Secteur 2"
+          sector_3: "Secteur 3"
         secretariat:
-          irrelevant: "Non concerné (n'apparaitra pas sur votre annonce)"
-          required: "Oui"
-          optional: "Non"
+          no_secretariat: "Aucun secrétariat"
+          in_situ: "Sur place"
+          switchboard: "Standard téléphonique"
       room:
         contract_type:
           cession_local: "Cession de local"
@@ -235,19 +200,19 @@ fr:
         password: '8 caractères minimum'
       offer:
         retrocession: "Représente la part qui sera reversé au remplaçant en %"
-        vehicle: "Cochez la case si un véhicule est nécessaire"
-        housing: "Cochez la case si un logement est fourni"
+        vehicle_required: "Cochez la case si un véhicule est nécessaire"
+        housing_possibility: "Cochez la case si un logement est fourni"
         secretariat: "Cochez la case si un secrétariat est présent dans votre cabinet"
+      replacement:
+        retrocession: "Représente la part du remplaçant"
       employment:
         has_salary_set: "En activant ce bouton, vous pourrez définir le salaire. À défaut, le salaire apparaitra comme étant \"à négocier\"."
+      collaboration:
+        retrocession: "Représente la part du candidat"
       facility:
         finess_number: "Numéro d'identification unique de votre établissement (9 chiffres)"
         street: "Selectionnez une adresse suggerée par le moteur de recherche. Si votre adresse n'apparait pas, choisissez une adresse proche."
         photos: "Vous pouvez ajouter jusqu'à 3 photos au format jpg, jpeg ou png."
-      room:
-        size: "En m²"
-        price: "En €"
-        rent: "En €/mois"
     errors:
       user:
         email: "L'email doit obligatoirement être renseigné"

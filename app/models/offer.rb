@@ -27,25 +27,24 @@ class Offer < ApplicationRecord
     part_time: "Part time"
   }
 
-  enum salary_period: {
-    hour: "Hourly",
-    day: "Daily",
-    week: "Weekly",
-    month: "Monthly",
-    year: "Yearly"
+  enum visit: {
+    no_visits: "No visits",
+    home_visits: "Home visits",
+    facility_visits: "Health facility visits",
+    home_and_facility_visits: "Home and health facility visits"
   }
 
-  enum candidate_job_experience: { 
-    without_preference: "Sans préférence",
-    junior: "Junior",
-    intermediate: "Intermediate",
-    senior: "Senior"
+  enum sector: {
+    irrelevant: "Irrelevant",
+    sector_1: "Sector 1",
+    sector_2: "Sector 2",
+    sector_3: "Sector 3"
   }
 
-  enum option: {
-    required: "Oui",
-    optional: "Non",
-    irrelevant: "Non concerné"
+  enum secretariat: {
+    no_secretariat: "No secretariat",
+    in_situ: "In situ",
+    switchboard: "Switchboard"
   }
 
   enum offer_type: { 
@@ -55,13 +54,14 @@ class Offer < ApplicationRecord
 
   # Validations des champs obligatoires pour tous les types d'offre
   validates :title, presence: true, length: { in: 1..50 }
-  validates :profession, presence: true, inclusion: { in: PROFESSIONS.keys }
+  validates :profession, inclusion: { in: PROFESSIONS.keys }
   validates :description, presence: true, length: { in: 1..2500 }
   validates :street, presence: true, length: { in: 1..50 }
   validates :additional_address, length: { in: 1..50 }, allow_blank: true
-  validates :department, presence: true, inclusion: { in: DEPARTMENTS }
+  validates :department, inclusion: { in: DEPARTMENTS }
   validates :zipcode, presence: true, length: { is: 5 }, format: { with: /\A^(?:[0-8]\d|9[0-8])\d{3}$\z/ }
-  validates :offer_type, presence: true, inclusion: { in: Offer.offer_types.keys }
+  validates :city, presence: true, length: { in: 1..50 }
+  validates :offer_type, inclusion: { in: Offer.offer_types.keys }
 
   def address
     [street, department, zipcode, city].compact.join(', ')
@@ -76,7 +76,7 @@ class Offer < ApplicationRecord
   end
 
   def set_profession?
-    (self.user.user_type == "health_professional") && (self.profession.nil?)
+    self.user.user_type == "health_professional"
   end
 
   private

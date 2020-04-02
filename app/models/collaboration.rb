@@ -3,17 +3,22 @@ class Collaboration < Offer
 
     enum contract_type: { 
         assistanat: "Assistanat libéral",
-        collaboration: "Collaboration",
+        collaboration: "Collaboration"
     }
 
     ## Les champs obligatoires pour les offres de collaboration
-    validates :contract_type, presence: true, inclusion: { in: Collaboration.contract_types.keys }
+    validates :contract_type, inclusion: { in: Collaboration.contract_types.keys }
     validates :retrocession, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
-    validates :vehicle, presence: true, inclusion: { in: Offer.options.keys }
-    validates :home_visiting, presence: true, inclusion: { in: Offer.options.keys }
-    validates :health_facility_visiting, presence: true, inclusion: { in: Offer.options.keys }
-    validates :housing, presence: true, inclusion: { in: Offer.options.keys }
-    validates :secretariat, presence: true, inclusion: { in: Offer.options.keys }
+    validates :on_call, inclusion: [true, false]
+    validates :vehicle_required, inclusion: [true, false]
+    validates :visit, inclusion: { in: Offer.visits.keys }
+    validates :sector, inclusion: { in: Offer.sectors.keys }
+    validates :secretariat, inclusion: { in: Offer.secretariats.keys }
+    validates :housing_possibility, inclusion: [true, false]
+
+    ## Les champs optionnels pour les offres de collaboration
+    validates :daily_medical_acts_number, numericality: { greater_than: 0, only_integer: true }, allow_blank: true
+    validates :software_used, length: { in: 1..30 }, allow_blank: true
 
     ## Les champs qui ne doivent pas apparaitre dans les offres de collaboration
     validates :working_time, absence: true
@@ -28,6 +33,5 @@ class Collaboration < Offer
     validates :price, absence: true
     validates :rent, absence: true
     validates :furnished, absence: true
-    validates :patients, absence: true
 
 end

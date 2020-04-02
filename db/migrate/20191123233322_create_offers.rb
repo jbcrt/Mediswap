@@ -28,19 +28,18 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.string :candidate_job_experience
       t.text :candidate_description
       # Offer's options
-      t.string :vehicle
-      t.string :home_visiting
-      t.string :health_facility_visiting
-      t.string :housing
-      t.string :secretariat
+      t.string :daily_medical_acts_number
+      t.boolean :on_call
+      t.boolean :vehicle_required
+      t.string :visit
       t.string :sector
-      t.string :software
-      t.string :on_call
+      t.string :secretariat
+      t.string :software_used
+      t.boolean :housing_possibility
       t.string :size
       t.string :price
       t.string :rent
       t.boolean :furnished
-      t.string :patients
       # Offer's premium option
       t.string :offer_type
 

@@ -118,7 +118,7 @@
 
                 <h3 class="h6 mt-3">Déplacements</h2>
 
-                <% if @offer.vehicle == true %>
+                <% if @offer.vehicle_required == true %>
                     <div class="d-flex align-items-center">
                         <div class="offer-data-icon">
                             <i class="fas fa-car"></i>
@@ -140,7 +140,7 @@
                     </div>
                 <% end %>
 
-                <% if @offer.home_visiting == true %>
+                <% if @offer.home_visit == true %>
                     <div class="d-flex align-items-center">
                         <div class="offer-data-icon">
                             <i class="fas fa-home"></i>
@@ -162,7 +162,7 @@
                     </div>
                 <% end %>
 
-                <% if @offer.health_facility_visiting == true %>
+                <% if @offer.health_facility_visit == true %>
                     <div class="d-flex align-items-center">
                         <div class="offer-data-icon">
                             <i class="fas fa-hospital"></i>
@@ -186,7 +186,7 @@
 
                 <h3 class="h6 mt-3">Commodités</h2>
 
-                <% if @offer.housing == true %>
+                <% if @offer.housing_possibility == true %>
                     <div class="d-flex align-items-center">
                         <div class="offer-data-icon">
                             <i class="fas fa-bed"></i>

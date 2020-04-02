@@ -13,8 +13,13 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact', as: :contact
   get 'terms', to: 'pages#terms', as: :terms
   get 'privacy', to: 'pages#privacy', as: :privacy
+  get 'offers/new_offer', to: 'pages#new_offer', as: :new_offer
   
-  resources :offers , only: [:index, :show, :new, :create]
+  resources :offers , only: [:index, :show]
+  resources :replacements, controller: :offers, type: 'Replacement', only: [:new, :create]
+  resources :employments, controller: :offers, type: 'Employment', only: [:new, :create]
+  resources :collaborations, controller: :offers, type: 'Collaboration', only: [:new, :create]
+  resources :rooms, controller: :offers, type: 'Room', only: [:new, :create]
 
   namespace :account do
     resources :offers,  only: [:index, :edit, :update, :destroy]

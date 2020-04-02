@@ -61,8 +61,8 @@
                         <i class="fas fa-file-contract"></i>
                     </div>
                     <div class="offer-data-content">
-                        <div class="offer-data-content-label">Type</div>
-                        <div class="offer-data-content-value"><%= OFFER_TYPES[@offer.offer_type] %></div>
+                        <div class="offer-data-content-label">Type de contrat</div>
+                        <div class="offer-data-content-value"></div>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -71,7 +71,7 @@
                     </div>
                     <div class="offer-data-content">
                         <div class="offer-data-content-label">Rétrocession</div>
-                        <div class="offer-data-content-value"><%= @offer.retrocession %> / <%= 100 - @offer.retrocession %></div>
+                        <div class="offer-data-content-value"><%= @offer.retrocession %> / <%= 100 - @offer.retrocession.to_i %></div>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -118,7 +118,7 @@
 
                 <h3 class="h6 mt-3">Déplacements</h2>
 
-                <% if @offer.vehicle == true %>
+                <% if @offer.vehicle_required == true %>
                     <div class="d-flex align-items-center">
                         <div class="offer-data-icon">
                             <i class="fas fa-car"></i>
@@ -140,7 +140,7 @@
                     </div>
                 <% end %>
 
-                <% if @offer.home_visiting == true %>
+                <% if @offer.home_visit == true %>
                     <div class="d-flex align-items-center">
                         <div class="offer-data-icon">
                             <i class="fas fa-home"></i>
@@ -162,7 +162,7 @@
                     </div>
                 <% end %>
 
-                <% if @offer.medical_institution_visiting == true %>
+                <% if @offer.health_facility_visit == true %>
                     <div class="d-flex align-items-center">
                         <div class="offer-data-icon">
                             <i class="fas fa-hospital"></i>
@@ -186,7 +186,7 @@
 
                 <h3 class="h6 mt-3">Commodités</h2>
 
-                <% if @offer.housing == true %>
+                <% if @offer.housing_possibility == true %>
                     <div class="d-flex align-items-center">
                         <div class="offer-data-icon">
                             <i class="fas fa-bed"></i>

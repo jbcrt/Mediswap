@@ -1,25 +1,20 @@
 <%= link_to offer_path(offer), :action => 'go', :class => "offer-card col-xs-12 col-sm-6 col-md-4" do %>
 
         <div class="col-xs-12 offer-card-avatar">
-        <% if offer.user.avatar.attached? %>
-            <%= cl_image_tag offer.user.avatar.key, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar-big mb-3" %>
-        <% elsif offer.user.title == "mr" %>
-            <%= image_tag "avatars/doctor_m", class: "avatar-big mb-3" %>
-        <% else %>
-            <%= image_tag "avatars/doctor_f", class: "avatar-big mb-3" %>
-        <% end %>
+            <% if offer.user.avatar.attached? %>
+                <%= cl_image_tag offer.user.avatar.key, height: 48, width: 48, crop: :thumb, gravity: :face, class: "avatar-big mb-3" %>
+            <% elsif offer.user.title == "mr" %>
+                <%= image_tag "avatars/doctor_m", class: "avatar-big mb-3" %>
+            <% else %>
+                <%= image_tag "avatars/doctor_f", class: "avatar-big mb-3" %>
+            <% end %>
         </div>
 
         <div class="w-100">
 
             <h5 class="offer-card-title">
-                <% if offer.urgent? %>
-                    <span class="badge badge-warning">
-                        <i class="fas fa-exclamation-circle"></i> Urgent
-                    </span>
-                <% end %>
                 <%= offer.title %>
-                <% if offer.premium? %>
+                <% if offer.offer_type == "premium" %>
                     <span class="">
                         <i class="fas fa-award"></i>
                     </span> 

@@ -1,5 +1,7 @@
 fr:
   simple_form:
+    "yes": "Oui"
+    "no": "Non"
     labels:
       user:
         email: 'Adresse email'
@@ -33,22 +35,80 @@ fr:
           password_confirmation: 'Retapez le nouveau mot de passe'
           current_password: 'Mot de passe actuel'
       offer:
-        title: "Titre de l'annonce"
-        offer_type: "Type d'annonce"
-        starts_at: "À partir du"
-        ends_at: "Jusqu'au"
-        profession: "Profession"
         location: "Localisation"
         distance: "Distance"
-        offer_address: "Adresse"
-        offer_additional_address: "Complément d'adresse"
-        offer_postal_code_address: "Code postal"
-        offer_city_address: "Ville"
+      replacement:
+        title: "Titre de l'annonce"
+        contract_type: "Type de remplacement"
+        working_time: "Temps de travail"
+        starts_at: "À partir du"
+        ends_at: "Jusqu'au"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
         description: "Description de l'annonce"
         retrocession: "Taux de rétrocession"
-        vehicle: "Véhicule obligatoire ?"
-        housing: "Logement fourni ?"
-        secretariat: "Secrétariat de cabinet ?"
+        daily_medical_acts_number: "Nombre d'actes journalier"
+        on_call: "Gardes"
+        vehicle_required: "Véhicule obligatoire ?"
+        visit: "Visites à domicile et/ou en établissement de santé ?"
+        sector: "Secteur"
+        secretariat: "Secrétariat"
+        software_used: "Logiciel utilisé"
+        housing_possibility: "Possibilité de logement ?"
+        offer_type: "Type d'offre"
+      employment:
+        title: "Titre de l'annonce"
+        contract_type: "Type de contrat"
+        working_time: "Temps de travail"
+        profession: "Profession"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
+        description: "Description de l'annonce"
+        has_salary_set: "Le salaire est-il déterminé ?"
+        salary: "Salaire brut"
+        salary_period: "Par"
+        candidate_job_experience: "Expérience requise"
+        candidate_description: "Profil du candidat"
+        offer_type: "Type d'offre"
+      collaboration:
+        title: "Titre de l'annonce"
+        contract_type: "Type de contrat"
+        description: "Description de l'annonce"
+        retrocession: "Taux de rétrocession"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
+        daily_medical_acts_number: "Nombre d'actes journalier"
+        on_call: "Gardes"
+        vehicle_required: "Véhicule obligatoire ?"
+        visit: "Visites à domicile et/ou en établissement de santé ?"
+        sector: "Secteur"
+        secretariat: "Secrétariat"
+        software_used: "Logiciel utilisé"
+        housing_possibility: "Possibilité de logement ?"
+        offer_type: "Type d'offre"
+      room:
+        title: "Titre de l'annonce"
+        contract_type: "Type de contrat"
+        description: "Description de l'annonce"
+        size: "Surface du local"
+        price: "Prix de vente"
+        rent: "Prix du loyer"
+        furnished: "Le local est-il meublé ?"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
+        offer_type: "Type d'offre"
       facility:
         name: "Raison sociale"
         category: "Catégorie d'établissement"
@@ -59,6 +119,7 @@ fr:
         department: "Département"
         zipcode: "Code postal"
         city: "Ville"
+        same_address: "Utiliser cette adresse dans toutes les offres"
         photos: "Photos"
     options:
       user:
@@ -68,14 +129,86 @@ fr:
         user_type:
           health_professional: "Un(e) professionnel(le) de santé"
           health_facility_recruiter: "Une(e) recruteur(euse) pour un établissement de santé"
+      replacement:
+        contract_type:
+          remplacement_liberal_occasionnel: "Remplacement libéral occasionnel"
+          remplacement_liberal_regulier: "Remplacement libéral régulier"
+        working_time:
+          full_time: "Temps plein"
+          part_time:  "Temps partiel"
+        visit:
+          no_visits: "Aucune visite"
+          home_visits: "Visites à domicile"
+          facility_visits: "Visites en établissement de santé"
+          home_and_facility_visits: "Visites à domicile et en établissement de santé"
+        sector:
+          irrelevant: "Non concerné (ne pas afficher)"
+          sector_1: "Secteur 1"
+          sector_2: "Secteur 2"
+          sector_3: "Secteur 3"
+        secretariat:
+          no_secretariat: "Aucun secrétariat"
+          in_situ: "Sur place"
+          switchboard: "Standard téléphonique"
+      employment:
+        contract_type:
+          contrat_assitant_hopitaux: "Assistant des hopitaux"
+          contrat_duree_determinee: "Contrat à durée déterminée"
+          contrat_duree_indeterminee: "Contrat à durée indéterminée"
+          contrat_clinicien_hospitalier: "Clinicien hospitalier"
+          contrat_exercice_liberal: "Exercice à titre libéral"
+          contrat_assitant_hopitaux: "Praticien attaché"
+          contrat_praticien_hospitalier_contractuel: "Praticien hospitalier contractuel"
+        working_time:
+          full_time: "Temps plein"
+          part_time:  "Temps partiel"
+        salary_period:
+          hour: "Heure"
+          day: "Jour"
+          week: "Semaine"
+          month: "Mois"
+          year: "An"
+        candidate_job_experience:
+          without_preference: "Sans préférence"
+          junior: "Débutant (0 à 2 ans)"
+          intermediate: "Intermédiaire (entre 2 et 5 ans)"
+          senior: "Confirmé (5 ans et plus)"
+      collaboration:
+        contract_type:
+          assistanat: "Assistanat libéral"
+          collaboration: "Collaboration"
+        visit:
+          no_visits: "Aucune visite"
+          home_visits: "Visites à domicile"
+          facility_visits: "Visites en établissement de santé"
+          home_and_facility_visits: "Visites à domicile et en établissement de santé"
+        sector:
+          irrelevant: "Non concerné (ne pas afficher)"
+          sector_1: "Secteur 1"
+          sector_2: "Secteur 2"
+          sector_3: "Secteur 3"
+        secretariat:
+          no_secretariat: "Aucun secrétariat"
+          in_situ: "Sur place"
+          switchboard: "Standard téléphonique"
+      room:
+        contract_type:
+          cession_local: "Cession de local"
+          location_local: "Location de local"
     hints:
       user:
         password: '8 caractères minimum'
       offer:
         retrocession: "Représente la part qui sera reversé au remplaçant en %"
-        vehicle: "Cochez la case si un véhicule est nécessaire"
-        housing: "Cochez la case si un logement est fourni"
+        vehicle_required: "Cochez la case si un véhicule est nécessaire"
+        housing_possibility: "Cochez la case si un logement est fourni"
         secretariat: "Cochez la case si un secrétariat est présent dans votre cabinet"
+      replacement:
+        retrocession: "Représente la part du remplaçant"
+      employment:
+        has_salary_set: "En activant ce bouton, vous pourrez définir le salaire. À défaut, le salaire apparaitra comme étant \"à négocier\"."
+      collaboration:
+        retrocession: "Représente la part du candidat"
       facility:
         finess_number: "Numéro d'identification unique de votre établissement (9 chiffres)"
         street: "Selectionnez une adresse suggerée par le moteur de recherche. Si votre adresse n'apparait pas, choisissez une adresse proche."

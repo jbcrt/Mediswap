@@ -28,6 +28,6 @@ class Account::FacilitiesController < ApplicationController
     end
 
     def facility_params
-        params.require(:facility).permit(:name, :category, :finess_number, :description, :street, :additional_address, :department, :zipcode, :city, photos: [])
+        params.require(:facility).permit(:name, :category, :finess_number, :description, :street, :additional_address, :department, :zipcode, :city, :same_address, photos: [])
     end
 end

@@ -151,3 +151,96 @@
         color: $dark-gray;
     }
 }
+
+.new-offer-link-card {
+    @include card;
+    color: $darkest-gray;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+    &-icon {
+        display:inline-block;
+        font-size: 1.7rem;
+        color: $light-medigreen;
+        line-height: 50px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        vertical-align: bottom;
+        margin-right: 0.9rem;
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+    
+    p {
+        color: $dark-gray;
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        text-decoration: none;
+
+        h3 {
+            color: $darkest-gray;
+        }
+
+        .new-offer-link-card-icon {
+            color: $medigreen;
+        }
+    }
+}
+
+label.radio-btn-card {
+    width: 100%;
+    font-size: 1rem;
+  
+  .card-input-element+.card {
+    // height: calc(36px + 2*1rem);
+    padding: 1rem;
+    color: var(--primary);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 2px solid transparent;
+    border-radius: 4px;
+  }
+  
+  .card-input-element+.card:hover {
+    cursor: pointer;
+  }
+  
+  
+  .radio-btn-card-title {
+      color: $gray;
+      font-size: 0.80rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .radio-btn-card-price {
+        font-size: 1.8rem;
+    }
+    
+    i {
+        font-size: 2rem;
+
+        &.fa-check-circle {
+            display: none;
+            transition: border .5s;
+        }
+    }
+
+    .card-input-element:checked+.card {
+        border: 2px solid var(--primary);
+        -webkit-transition: border .3s;
+        -o-transition: border .3s;
+        transition: border .3s;
+    }
+    
+    .card-input-element:checked+.card i.fa-check-circle {
+        display: inline-block;
+    }
+
+    .card-input-element:checked+.card i.fa-circle {
+        display: none;
+    }
+
+}

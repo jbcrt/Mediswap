@@ -14,6 +14,7 @@ class CreateFacilities < ActiveRecord::Migration[6.0]
       t.string :city
       t.float :latitude
       t.float :longitude
+      t.boolean :same_address
 
       t.timestamps
     end

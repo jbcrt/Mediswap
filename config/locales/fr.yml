@@ -51,8 +51,8 @@ fr:
           offer_city_address: "Ville"
           description: "Description de l'annonce"
           retrocession: "Taux de rétrocession"
-          vehicle: "Véhicule obligatoire ?"
-          housing: "Logement fourni ?"
+          vehicle_required: "Véhicule obligatoire ?"
+          housing_possibility: "Logement fourni ?"
           secretariat: "Secrétariat de cabinet ?"
   date:
     abbr_day_names:

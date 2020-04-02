@@ -1,0 +1,53 @@
+<div class="container my-4">
+    <h2>Publier une annonce</h2>
+    <div class="d-flex flex-column mt-4">
+        <%= link_to new_replacement_path, class: "new-offer-link-card my-2" do %>
+            <div class="d-flex align-items-center">
+                <div class="new-offer-link-card-icon d-none d-md-block">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div>
+                    <h3 class="h5">Remplacement libéral</h3>
+                    <p>Selectionnez ce type d'annonce si vous souhaitez vous faire remplacer de manière ponctuelle ou régulière.</p>
+                </div>
+            </div>
+        <% end %>
+        <%= link_to new_employment_path, class: "new-offer-link-card my-2" do %>
+            <div class="d-flex align-items-center">
+                <div class="new-offer-link-card-icon d-none d-md-block">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <div>
+                    <h3 class="h5">Emploi salarié</h3>
+                    <% if current_user.user_type == "health_professional" %>
+                        <p>Selectionnez ce type d'annonce si vous souhaitez recruter quelqu'un en CDD ou en CDI.</p>
+                    <% elsif current_user.user_type == "health_facility_recruiter" %>
+                        <p>Selectionnez ce type d'annonce si vous souhaitez recruter quelqu'un en CDD, en CDI ou via un type de contrat spécifique à la fonction publique hospitalière.</p>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+        <%= link_to new_collaboration_path, class: "new-offer-link-card my-2" do %>
+            <div class="d-flex align-items-center">
+                <div class="new-offer-link-card-icon d-none d-md-block">
+                    <i class="far fa-handshake"></i>
+                </div>
+                <div>
+                    <h3 class="h5">Collaboration / Association</h3>
+                    <p>Selectionnez ce type d'annonce si vous souhaitez vous associer avec un autre professionnel de santé.</p>
+                </div>
+            </div>
+        <% end %>
+        <%= link_to new_room_path, class: "new-offer-link-card my-2" do %>
+            <div class="d-flex align-items-center">
+                <div class="new-offer-link-card-icon d-none d-md-block">
+                    <i class="far fa-hospital"></i>
+                </div>
+                <div>
+                    <h3 class="h5">Cession / Location de local</h3>
+                    <p>Selectionnez ce type d'annonce si vous souhaitez céder votre patientèle ou vos locaux.</p>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

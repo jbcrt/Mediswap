@@ -88,10 +88,12 @@ ActiveRecord::Schema.define(version: 2020_02_24_190824) do
     t.string "secretariat"
     t.string "software_used"
     t.boolean "housing_possibility"
-    t.string "size"
-    t.string "price"
-    t.string "rent"
-    t.boolean "furnished"
+    t.string "selling_price"
+    t.string "room_availability"
+    t.string "room_size"
+    t.string "room_price"
+    t.string "room_rent"
+    t.boolean "room_furnished"
     t.string "offer_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

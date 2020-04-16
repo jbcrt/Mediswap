@@ -36,10 +36,12 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.string :secretariat
       t.string :software_used
       t.boolean :housing_possibility
-      t.string :size
-      t.string :price
-      t.string :rent
-      t.boolean :furnished
+      t.string :selling_price
+      t.string :room_availability
+      t.string :room_size
+      t.string :room_price
+      t.string :room_rent
+      t.boolean :room_furnished
       # Offer's premium option
       t.string :offer_type
 

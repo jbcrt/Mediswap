@@ -1,6 +1,6 @@
-const dynamicsRoomOfferFormFields = () => {
-    if (document.body.contains(document.querySelector('.js-roomOfferForm'))) {
-        const contractTypeRadios = document.querySelectorAll('.js-contractTypeRadio');
+const dynamicsEstablishmentOfferFormFields = () => {
+    if (document.body.contains(document.querySelector('.js-establishmentOfferForm'))) {
+        const roomAvailabilityTypeRadios = document.querySelectorAll('.js-roomAvailabilityRadio');
         const priceField = document.querySelector('.js-priceField');
         const priceFieldWrapper = document.querySelector('.js-priceFieldWrapper');
         const rentField = document.querySelector('.js-rentField');
@@ -36,28 +36,28 @@ const dynamicsRoomOfferFormFields = () => {
             rentField.value = "";
         };
 
-        // Affichage initial ou après un render "new" des champs liés au type de contrat
-        if ((contractTypeRadios[0].checked === false) && (contractTypeRadios[1].checked === false)) { // Si aucun type de contrat n'est selectionné
+        // Affichage initial ou après un render "new" des champs liés au type de disponibilité du local 
+        if ((roomAvailabilityTypeRadios[0].checked === false) && (roomAvailabilityTypeRadios[1].checked === false)) { // Si aucun type de disponibilité n'est selectionné
             hidePriceField();
             hideRentField();
-        } else if (contractTypeRadios[0].checked) { // Si cession de local est selectionnée
+        } else if (roomAvailabilityTypeRadios[0].checked) { // Si cession de local est selectionnée
             displayPriceField();
             hideRentField();
-        } else if (contractTypeRadios[1].checked) { // Si location de local est selectionnée
+        } else if (roomAvailabilityTypeRadios[1].checked) { // Si location de local est selectionnée
             hidePriceField();
             displayRentField();
         }
         
-        let prevContractType = null;
-        for (var i = 0; i < contractTypeRadios.length; i++) {
-            contractTypeRadios[i].addEventListener('change', function() {
-                if (this !== prevContractType) {
-                    prevContractType = this;
+        let prevRoomAvailability = null;
+        for (var i = 0; i < roomAvailabilityTypeRadios.length; i++) {
+            roomAvailabilityTypeRadios[i].addEventListener('change', function() {
+                if (this !== prevRoomAvailability) {
+                    prevRoomAvailability = this;
                 }
-                if (this.value === "cession_local") {
+                if (this.value === "room_cession") {
                     displayPriceField();
                     hideRentField();
-                } else if (this.value === "location_local") {
+                } else if (this.value === "room_location") {
                     hidePriceField();
                     displayRentField();
                 }
@@ -67,4 +67,4 @@ const dynamicsRoomOfferFormFields = () => {
     }
 }
 
-export { dynamicsRoomOfferFormFields };
+export { dynamicsEstablishmentOfferFormFields };

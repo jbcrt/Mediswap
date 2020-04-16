@@ -20,7 +20,7 @@ import { profileEditNavbar } from '../components/nav';
 import { dynamicsSignUpFormFields } from '../components/sign_up_form';
 import { dynamicsReplacementsOfferFormFields } from '../forms/replacements_offer_form';
 import { dynamicsEmploymentOfferFormFields } from '../forms/employment_offer_form';
-import { dynamicsRoomOfferFormFields } from '../forms/room_offer_form';
+import { dynamicsEstablishmentOfferFormFields } from '../forms/establishment_offer_form';
 import { cleanOffersFiltersForm } from '../components/offers_filters_form';
 import { autoResizeTextarea } from '../components/auto_resize_textarea';
 import { autoCalculateRetrocession } from '../components/auto_calculate_retrocession';
@@ -33,7 +33,7 @@ document.addEventListener('turbolinks:load', function() {
     dynamicsSignUpFormFields();
     dynamicsReplacementsOfferFormFields();
     dynamicsEmploymentOfferFormFields();
-    dynamicsRoomOfferFormFields();
+    dynamicsEstablishmentOfferFormFields();
     cleanOffersFiltersForm();
     initAddressSearch();
     initAddressAutocomplete();

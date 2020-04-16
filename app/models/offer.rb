@@ -11,7 +11,8 @@ class Offer < ApplicationRecord
   scope :replacements, -> { where(type: "Replacement") }
   scope :employments, -> { where(type: "Employment") }
   scope :collaborations, -> { where(type: "Collaboration") }
-  scope :rooms, -> { where(type: "Room") }
+  scope :associations, -> { where(type: "Association") }
+  scope :establishments, -> { where(type: "Establishment") }
 
   # Before validation communs
   before_validation :set_profession, on: :create, if: ->(obj){ obj.set_profession? }

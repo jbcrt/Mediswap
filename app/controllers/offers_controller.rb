@@ -34,7 +34,6 @@ class OffersController < ApplicationController
 
     def create
       @offer = current_user.send(set_type.pluralize).create(offer_params(set_type))
-
       authorize @offer, policy_class: OfferPolicy
       if @offer.save
         redirect_to offer_path(@offer)
@@ -53,8 +52,10 @@ class OffersController < ApplicationController
         "employment"
       when "Collaboration"
         "collaboration"
-      when "Room"
-        "room"
+      when "Association"
+        "association"
+      when "Establishment"
+        "establishment"
       end
     end
 
@@ -124,20 +125,37 @@ class OffersController < ApplicationController
           :housing_possibility,
           :offer_type
         )
-      when "room"
-        params.require(:room).permit(
+      when "association"
+        params.require(:association).permit(
           :title,
           :contract_type,
           :description,
-          :size,
-          :price,
-          :rent,
-          :furnished,
+          :room_size,
+          :room_price,
+          :room_rent,
+          :room_furnished,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
+          :offer_type
+        )
+      when "establishment"
+        params.require(:establishment).permit(
+          :title,
+          :profession,
+          :description,
+          :street,
+          :additional_address,
+          :department,
+          :zipcode,
+          :city,
+          :room_availability,
+          :room_size,
+          :room_price,
+          :room_rent,
+          :room_furnished,
           :offer_type
         )
       end

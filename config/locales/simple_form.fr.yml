@@ -95,14 +95,14 @@ fr:
         software_used: "Logiciel utilisé"
         housing_possibility: "Possibilité de logement ?"
         offer_type: "Type d'offre"
-      room:
+      association:
         title: "Titre de l'annonce"
         contract_type: "Type de contrat"
         description: "Description de l'annonce"
-        size: "Surface du local"
-        price: "Prix de vente"
-        rent: "Prix du loyer"
-        furnished: "Le local est-il meublé ?"
+        room_size: "Surface du local"
+        room_price: "Prix de vente"
+        room_rent: "Prix du loyer"
+        room_furnished: "Le local est-il meublé ?"
         street: "Adresse"
         additional_address: "Complément d'adresse"
         department: "Département"
@@ -191,7 +191,7 @@ fr:
           no_secretariat: "Aucun secrétariat"
           in_situ: "Sur place"
           switchboard: "Standard téléphonique"
-      room:
+      association:
         contract_type:
           cession_local: "Cession de local"
           location_local: "Location de local"

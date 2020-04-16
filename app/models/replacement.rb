@@ -28,10 +28,12 @@ class Replacement < Offer
     validates :salary_period, absence: true
     validates :candidate_job_experience, absence: true
     validates :candidate_description, absence: true
-    validates :size, absence: true
-    validates :price, absence: true
-    validates :rent, absence: true
-    validates :furnished, absence: true
+    validates :selling_price, absence: true
+    validates :room_availability, absence: true
+    validates :room_size, absence: true
+    validates :room_price, absence: true
+    validates :room_rent, absence: true
+    validates :room_furnished, absence: true
 
     ## Les validations qui sont conditionnées au type de de contrat de remplacement selectionné
     with_options if: Proc.new { |a| a.contract_type == "remplacement_liberal_occasionnel" } do |replacement_offer|

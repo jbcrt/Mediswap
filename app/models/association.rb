@@ -1,15 +1,15 @@
-class Room < Offer
+class Association < Offer
     belongs_to :user
 
+    before_validation :set_association_contract, on: :create
+
     enum contract_type: { 
-        cession_local: "Cession de local",
-        location_local: "Location de local"
+        association: "Association",
+        cession_patientele: "Cession de patientèle"
     }
 
     ## Les champs obligatoires pour les offres de cession
-    validates :contract_type, inclusion: { in: Room.contract_types.keys }
-    validates :size, presence: true, numericality: { greater_than: 0 }
-    validates :furnished, inclusion: [true, false]
+    validates :contract_type, inclusion: { in: Association.contract_types.keys }
     
     ## Les champs qui ne doivent pas apparaitre dans les offres de cession
     validates :working_time, absence: true
@@ -29,16 +29,17 @@ class Room < Offer
     validates :secretariat, absence: true
     validates :software_used, absence: true
     validates :housing_possibility, absence: true
+    validates :selling_price, absence: true
+    validates :room_availability, absence: true
+    validates :room_size, absence: true
+    validates :room_price, absence: true
+    validates :room_rent, absence: true
+    validates :room_furnished, absence: true
 
-    # Les validations qui sont conditionnées par le type de contrat
-    with_options if: Proc.new { |a| a.contract_type == "cession_local" } do |cession_local_offer|
-        cession_local_offer.validates :price, presence: true, numericality: { greater_than: 0 }
-        cession_local_offer.validates :rent, absence: true
-    end
+    private
 
-    with_options if: Proc.new { |a| a.contract_type == "location_local" } do |location_local_offer|
-        location_local_offer.validates :price, absence: true
-        location_local_offer.validates :rent, presence: true, numericality: { greater_than: 0 }
+    def set_association_contract
+        self.contract_type = "association"
     end
 
 end

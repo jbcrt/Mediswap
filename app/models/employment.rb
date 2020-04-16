@@ -46,11 +46,13 @@ class Employment < Offer
     validates :sector, absence: true
     validates :secretariat, absence: true
     validates :software_used, absence: true
+    validates :selling_price, absence: true
     validates :housing_possibility, absence: true
-    validates :size, absence: true
-    validates :price, absence: true
-    validates :rent, absence: true
-    validates :furnished, absence: true
+    validates :room_availability, absence: true
+    validates :room_size, absence: true
+    validates :room_price, absence: true
+    validates :room_rent, absence: true
+    validates :room_furnished, absence: true
 
     # Les validations qui sont conditionnées à la valeur de "has_salary_set"
     with_options if: Proc.new { |a| a.has_salary_set } do |employment_offer_with_salary_set|

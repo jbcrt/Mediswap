@@ -99,16 +99,33 @@ fr:
         title: "Titre de l'annonce"
         contract_type: "Type de contrat"
         description: "Description de l'annonce"
-        room_size: "Surface du local"
-        room_price: "Prix de vente"
-        room_rent: "Prix du loyer"
-        room_furnished: "Le local est-il meublé ?"
+        premises_size: "Surface du local"
+        premises_price: "Prix de vente"
+        premises_rent: "Prix du loyer"
+        premises_furnished: "Le local est-il meublé ?"
         street: "Adresse"
         additional_address: "Complément d'adresse"
         department: "Département"
         zipcode: "Code postal"
         city: "Ville"
         offer_type: "Type d'offre"
+      establishment:
+        title: "Titre de l'annonce"
+        contract_type: "Type de contrat"
+        profession: "Profession visée"
+        description: "Description de l'annonce"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
+        premises_size: "Surface du local"
+        premises_rooms_number: "Nombre de pièces"
+        premises_price: "Prix de vente"
+        premises_rent: "Loyer mensuel"
+        premises_furnished: "Le local est-il meublé et/ou équipé ?"
+        premises_has_parking: "Le local dispose-t-il d'un parking ?"
+        accessible_premises: "Le local répond-il aux normes d'accessibilité ?"
       facility:
         name: "Raison sociale"
         category: "Catégorie d'établissement"
@@ -195,6 +212,10 @@ fr:
         contract_type:
           cession_local: "Cession de local"
           location_local: "Location de local"
+      establishment:
+        contract_type:
+          premises_cession: "Cession de local"
+          premises_location: "Location de local"
     hints:
       user:
         password: '8 caractères minimum'

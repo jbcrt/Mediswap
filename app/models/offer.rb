@@ -77,7 +77,7 @@ class Offer < ApplicationRecord
   end
 
   def set_profession?
-    self.user.user_type == "health_professional"
+    self.user.user_type == "health_professional" && self.type != "Establishment"
   end
 
   private

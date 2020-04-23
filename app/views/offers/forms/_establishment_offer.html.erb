@@ -22,25 +22,54 @@
 
                     <%= f.input :title %>
 
-                    <% if current_user.health_facility_recruiter? %>
-                        <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, label_method: :second, value_method: :first, required: true %>
-                    <% end %>
+                    <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, label_method: :second, value_method: :first, required: true %>
 
-                    <%= f.input :room_availability, as: :radio_buttons, collection: Establishment.room_availabilities.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-roomAvailabilityRadio" }, required: true %>
+                    <%= f.input :contract_type, as: :radio_buttons, collection: Establishment.contract_types.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-establishmentContractTypeRadio" }, required: true %>
+
+                    <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
+
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="far fa-hospital"></i> Informations sur le local</legend>
+                    <hr>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+
 
                     <div class="row form-row">
                         <div class="col-xs-12 col-md-6">
-                            <%= f.input :room_size, wrapper: :input_group, append: "m²" %>
+                            <%= f.input :premises_size, wrapper: :input_group, append: "m²" %>
                         </div>
+                    </div>
+                    <div class="row form-row">
                         <div class="col-xs-12 col-md-6">
-                            <%= f.input :room_price, input_html: { class: "js-priceField" }, wrapper: :input_group, append: "€", wrapper_html: { class: "js-priceFieldWrapper" }, required: true %>
-                            <%= f.input :room_rent, input_html: { class: "js-rentField" }, wrapper: :input_group, append: "€ / mois", wrapper_html: { class: "js-rentFieldWrapper" }, required: true %>
+                            <%= f.input :premises_rooms_number, wrapper: :input_group, append: "pièce(s)" %>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-xs-12 col-md-6">
+                            <%= f.input :premises_price, input_html: { class: "js-priceField" }, wrapper: :input_group, append: "€", wrapper_html: { class: "js-priceFieldWrapper" }, required: true %>
+                            <%= f.input :premises_rent, input_html: { class: "js-rentField" }, wrapper: :input_group, append: "€ / mois", wrapper_html: { class: "js-rentFieldWrapper" }, required: true %>
                         </div>
                     </div>
 
-                    <%= f.input :room_furnished, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <%= f.input :premises_furnished, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
 
-                    <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
+                    <%= f.input :premises_has_parking, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+
+                    <%= f.input :accessible_premises, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
 
                 </div>
 

@@ -30,11 +30,11 @@ class Association < Offer
     validates :software_used, absence: true
     validates :housing_possibility, absence: true
     validates :selling_price, absence: true
-    validates :room_availability, absence: true
-    validates :room_size, absence: true
-    validates :room_price, absence: true
-    validates :room_rent, absence: true
-    validates :room_furnished, absence: true
+    validates :premises_availability, absence: true
+    validates :premises_size, absence: true
+    validates :premises_price, absence: true
+    validates :premises_rent, absence: true
+    validates :premises_furnished, absence: true
 
     private
 

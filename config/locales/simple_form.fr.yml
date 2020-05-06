@@ -95,20 +95,44 @@ fr:
         software_used: "Logiciel utilisé"
         housing_possibility: "Possibilité de logement ?"
         offer_type: "Type d'offre"
-      room:
+      patient_transfer:
         title: "Titre de l'annonce"
-        contract_type: "Type de contrat"
         description: "Description de l'annonce"
-        size: "Surface du local"
-        price: "Prix de vente"
-        rent: "Prix du loyer"
-        furnished: "Le local est-il meublé ?"
+        has_selling_price_set: "Le prix de vente de la patientèle est-il déterminé ?"
+        selling_price: "Prix de vente de la patientèle"
+        revenues: "Chiffre d'affaire annuel"
+        premises_availability: "Disponibilité du local"
+        premises_price: "Prix de vente du local"
+        premises_rent: "Loyer mensuel"
+        premises_size: "Surface du local"
+        premises_rooms_number: "Nombre de pièces"
+        premises_furnished: "Le local est-il meublé et/ou équipé ?"
+        premises_equipment: "Équipements présents"
+        premises_has_parking: "Le local dispose-t-il d'un parking ?"
+        accessible_premises: "Le local répond-il aux normes d'accessibilité ?"
         street: "Adresse"
         additional_address: "Complément d'adresse"
         department: "Département"
         zipcode: "Code postal"
         city: "Ville"
         offer_type: "Type d'offre"
+      establishment:
+        title: "Titre de l'annonce"
+        contract_type: "Type de contrat"
+        profession: "Profession visée"
+        description: "Description de l'annonce"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
+        premises_size: "Surface du local"
+        premises_rooms_number: "Nombre de pièces"
+        premises_price: "Prix de vente"
+        premises_rent: "Loyer mensuel"
+        premises_furnished: "Le local est-il meublé et/ou équipé ?"
+        premises_has_parking: "Le local dispose-t-il d'un parking ?"
+        accessible_premises: "Le local répond-il aux normes d'accessibilité ?"
       facility:
         name: "Raison sociale"
         category: "Catégorie d'établissement"
@@ -191,10 +215,14 @@ fr:
           no_secretariat: "Aucun secrétariat"
           in_situ: "Sur place"
           switchboard: "Standard téléphonique"
-      room:
+      patient_transfer:
+        premises_availability:
+          rental: "Location du local"
+          sale: "Vente du local"
+      establishment:
         contract_type:
-          cession_local: "Cession de local"
-          location_local: "Location de local"
+          premises_cession: "Cession de local"
+          premises_location: "Location de local"
     hints:
       user:
         password: '8 caractères minimum'
@@ -209,6 +237,9 @@ fr:
         has_salary_set: "En activant ce bouton, vous pourrez définir le salaire. À défaut, le salaire apparaitra comme étant \"à négocier\"."
       collaboration:
         retrocession: "Représente la part du candidat"
+      patient_transfer:
+        has_selling_price_set: "En activant ce bouton, vous pourrez définir le prix de vente de votre patientèle. À défaut, le prix de vente apparaitra comme étant \"à négocier\"."
+        selling_price: "Si vous souhaitez céder votre patientèle à titre gratuit, vous pouvez indiquer \"0\""
       facility:
         finess_number: "Numéro d'identification unique de votre établissement (9 chiffres)"
         street: "Selectionnez une adresse suggerée par le moteur de recherche. Si votre adresse n'apparait pas, choisissez une adresse proche."

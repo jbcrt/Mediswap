@@ -4,7 +4,7 @@
         <%= link_to new_replacement_path, class: "new-offer-link-card my-2" do %>
             <div class="d-flex align-items-center">
                 <div class="new-offer-link-card-icon d-none d-md-block">
-                    <i class="fas fa-exchange-alt"></i>
+                    <i class="fas fa-sync-alt"></i>
                 </div>
                 <div>
                     <h3 class="h5">Remplacement libéral</h3>
@@ -15,7 +15,7 @@
         <%= link_to new_employment_path, class: "new-offer-link-card my-2" do %>
             <div class="d-flex align-items-center">
                 <div class="new-offer-link-card-icon d-none d-md-block">
-                    <i class="fas fa-user-plus"></i>
+                    <i class="fas fa-file-contract"></i>
                 </div>
                 <div>
                     <h3 class="h5">Emploi salarié</h3>
@@ -30,22 +30,33 @@
         <%= link_to new_collaboration_path, class: "new-offer-link-card my-2" do %>
             <div class="d-flex align-items-center">
                 <div class="new-offer-link-card-icon d-none d-md-block">
-                    <i class="far fa-handshake"></i>
+                    <i class="fas fa-user-plus"></i>
                 </div>
                 <div>
-                    <h3 class="h5">Collaboration / Association</h3>
-                    <p>Selectionnez ce type d'annonce si vous souhaitez vous associer avec un autre professionnel de santé.</p>
+                    <h3 class="h5">Collaboration ou Assistanat</h3>
+                    <p>Selectionnez ce type d'annonce si vous souhaitez collaborer avec un autre professionnel de santé.</p>
                 </div>
             </div>
         <% end %>
-        <%= link_to new_room_path, class: "new-offer-link-card my-2" do %>
+        <%= link_to new_patient_transfer_path, class: "new-offer-link-card my-2" do %>
             <div class="d-flex align-items-center">
                 <div class="new-offer-link-card-icon d-none d-md-block">
-                    <i class="far fa-hospital"></i>
+                    <i class="far fa-handshake"></i>
                 </div>
                 <div>
-                    <h3 class="h5">Cession / Location de local</h3>
-                    <p>Selectionnez ce type d'annonce si vous souhaitez céder votre patientèle ou vos locaux.</p>
+                    <h3 class="h5">Cession de patientèle</h3>
+                    <p>Selectionnez ce type d'annonce si vous souhaitez céder votre patientèle.</p>
+                </div>
+            </div>
+        <% end %>
+        <%= link_to new_establishment_path, class: "new-offer-link-card my-2" do %>
+            <div class="d-flex align-items-center">
+                <div class="icon-div d-none d-md-flex">
+                    <%= image_tag("icons/health_facility.svg", class: "img-fluid", alt: "Icone d'établissement de santé") %>
+                </div>
+                <div>
+                    <h3 class="h5">Local pour installation</h3>
+                    <p>Selectionnez ce type d'annonce si vous avez un local à proposer à un professionnel de santé pour une installation.</p>
                 </div>
             </div>
         <% end %>

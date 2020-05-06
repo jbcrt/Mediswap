@@ -34,7 +34,6 @@ class OffersController < ApplicationController
 
     def create
       @offer = current_user.send(set_type.pluralize).create(offer_params(set_type))
-
       authorize @offer, policy_class: OfferPolicy
       if @offer.save
         redirect_to offer_path(@offer)
@@ -53,8 +52,10 @@ class OffersController < ApplicationController
         "employment"
       when "Collaboration"
         "collaboration"
-      when "Room"
-        "room"
+      when "PatientTransfer"
+        "patient_transfer"
+      when "Establishment"
+        "establishment"
       end
     end
 
@@ -64,16 +65,16 @@ class OffersController < ApplicationController
         params.require(:replacement).permit(
           :title,
           :contract_type,
-          :working_time,
-          :starts_at,
-          :ends_at,
           :description,
-          :retrocession,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
+          :working_time,
+          :starts_at,
+          :ends_at,
+          :retrocession,
           :daily_medical_acts_number,
           :on_call,
           :vehicle_required,
@@ -87,18 +88,18 @@ class OffersController < ApplicationController
       when "employment"
         params.require(:employment).permit(
           :title,
-          :profession,
           :contract_type,
-          :working_time,
+          :profession,
           :description,
-          :has_salary_set,
-          :salary,
-          :salary_period,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
+          :working_time,
+          :has_salary_set,
+          :salary,
+          :salary_period,
           :candidate_job_experience,
           :candidate_description,
           :offer_type
@@ -108,12 +109,12 @@ class OffersController < ApplicationController
           :title,
           :contract_type,
           :description,
-          :retrocession,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
+          :retrocession,
           :daily_medical_acts_number,
           :on_call,
           :vehicle_required,
@@ -124,20 +125,47 @@ class OffersController < ApplicationController
           :housing_possibility,
           :offer_type
         )
-      when "room"
-        params.require(:room).permit(
+      when "patient_transfer"
+        params.require(:patient_transfer).permit(
           :title,
-          :contract_type,
           :description,
-          :size,
-          :price,
-          :rent,
-          :furnished,
+          :has_selling_price_set,
+          :selling_price,
+          :revenues,
+          :premises_size,
+          :premises_rooms_number,
+          :premises_availability,
+          :premises_price,
+          :premises_rent,
+          :premises_furnished,
+          :premises_equipment,
+          :premises_has_parking,
+          :accessible_premises,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
+          :offer_type
+        )
+      when "establishment"
+        params.require(:establishment).permit(
+          :title,
+          :contract_type,
+          :profession,
+          :description,
+          :street,
+          :additional_address,
+          :department,
+          :zipcode,
+          :city,
+          :premises_size,
+          :premises_rooms_number,
+          :premises_price,
+          :premises_rent,
+          :premises_furnished,
+          :premises_has_parking,
+          :accessible_premises,
           :offer_type
         )
       end

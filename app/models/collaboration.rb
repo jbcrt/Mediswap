@@ -29,9 +29,11 @@ class Collaboration < Offer
     validates :salary_period, absence: true
     validates :candidate_job_experience, absence: true
     validates :candidate_description, absence: true
-    validates :size, absence: true
-    validates :price, absence: true
-    validates :rent, absence: true
-    validates :furnished, absence: true
+    validates :selling_price, absence: true
+    validates :premises_availability, absence: true
+    validates :premises_size, absence: true
+    validates :premises_price, absence: true
+    validates :premises_rent, absence: true
+    validates :premises_furnished, absence: true
 
 end

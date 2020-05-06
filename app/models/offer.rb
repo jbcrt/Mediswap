@@ -11,7 +11,8 @@ class Offer < ApplicationRecord
   scope :replacements, -> { where(type: "Replacement") }
   scope :employments, -> { where(type: "Employment") }
   scope :collaborations, -> { where(type: "Collaboration") }
-  scope :rooms, -> { where(type: "Room") }
+  scope :patient_transfers, -> { where(type: "PatientTransfer") }
+  scope :establishments, -> { where(type: "Establishment") }
 
   # Before validation communs
   before_validation :set_profession, on: :create, if: ->(obj){ obj.set_profession? }
@@ -76,7 +77,7 @@ class Offer < ApplicationRecord
   end
 
   def set_profession?
-    self.user.user_type == "health_professional"
+    self.user.user_type == "health_professional" && self.type != "Establishment"
   end
 
   private

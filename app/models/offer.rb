@@ -11,7 +11,7 @@ class Offer < ApplicationRecord
   scope :replacements, -> { where(type: "Replacement") }
   scope :employments, -> { where(type: "Employment") }
   scope :collaborations, -> { where(type: "Collaboration") }
-  scope :associations, -> { where(type: "Association") }
+  scope :patient_transfers, -> { where(type: "PatientTransfer") }
   scope :establishments, -> { where(type: "Establishment") }
 
   # Before validation communs

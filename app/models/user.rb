@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :replacements, class_name: 'Replacement', dependent: :destroy
   has_many :employments, class_name: 'Employment', dependent: :destroy
   has_many :collaborations, class_name: 'Collaboration', dependent: :destroy
-  has_many :associations, class_name: 'Association', dependent: :destroy
+  has_many :patient_transfers, class_name: 'PatientTransfer', dependent: :destroy
   has_many :establishments, class_name: 'Establishment', dependent: :destroy
 
   has_one :facility, dependent: :destroy

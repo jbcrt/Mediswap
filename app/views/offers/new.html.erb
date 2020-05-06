@@ -5,8 +5,8 @@
         <%= render 'offers/forms/employment_offer', offer: @offer %>
     <% elsif @offer.type == "Collaboration" %>
         <%= render 'offers/forms/collaboration_offer', offer: @offer %>
-    <% elsif @offer.type == "Association" %>
-        <%= render 'offers/forms/association_offer', offer: @offer %>
+    <% elsif @offer.type == "PatientTransfer" %>
+        <%= render 'offers/forms/patient_transfer_offer', offer: @offer %>
     <% elsif @offer.type == "Establishment" %>
         <%= render 'offers/forms/establishment_offer', offer: @offer %>
     <% end %>

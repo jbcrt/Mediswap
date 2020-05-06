@@ -52,8 +52,8 @@ class OffersController < ApplicationController
         "employment"
       when "Collaboration"
         "collaboration"
-      when "Association"
-        "association"
+      when "PatientTransfer"
+        "patient_transfer"
       when "Establishment"
         "establishment"
       end
@@ -125,20 +125,27 @@ class OffersController < ApplicationController
           :housing_possibility,
           :offer_type
         )
-      when "association"
-        params.require(:association).permit(
+      when "patient_transfer"
+        params.require(:patient_transfer).permit(
           :title,
-          :contract_type,
           :description,
+          :has_selling_price_set,
+          :selling_price,
+          :revenues,
+          :premises_size,
+          :premises_rooms_number,
+          :premises_availability,
+          :premises_price,
+          :premises_rent,
+          :premises_furnished,
+          :premises_equipment,
+          :premises_has_parking,
+          :accessible_premises,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
-          :premises_size,
-          :premises_price,
-          :premises_rent,
-          :premises_furnished,
           :offer_type
         )
       when "establishment"

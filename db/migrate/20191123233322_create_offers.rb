@@ -20,7 +20,7 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.string :retrocession
       t.string :candidate_job_experience
       t.text :candidate_description
-
+      
       # Offer's contracts specific fields (optional)
       t.string :daily_medical_acts_number
       t.boolean :on_call
@@ -30,14 +30,20 @@ class CreateOffers < ActiveRecord::Migration[6.0]
       t.string :secretariat
       t.string :software_used
       t.boolean :housing_possibility
-      t.string :selling_price
 
+      # Offer's patient transfer specific fields
+      t.boolean :has_selling_price_set
+      t.string :selling_price
+      t.string :revenues
+      
       # Offer's establishment specific fields
       t.string :premises_size
       t.string :premises_rooms_number
+      t.string :premises_availability
       t.string :premises_price
       t.string :premises_rent
       t.boolean :premises_furnished
+      t.text :premises_equipment
       t.boolean :premises_has_parking
       t.boolean :accessible_premises
 

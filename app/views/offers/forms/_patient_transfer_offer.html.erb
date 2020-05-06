@@ -1,7 +1,7 @@
-<h2>Publier une annonce d'association</h2>
+<h2>Publier une annonce de cession de patientèle</h2>
 <div class="row">
     <div class="col-12">
-        <%= simple_form_for offer, url: associations_path, html: { class: "js-associationOfferForm" } do |f| %>
+        <%= simple_form_for offer, url: patient_transfers_path, html: { class: "js-patientTransferOfferForm" } do |f| %>
 
             <%= f.error_notification %>
 
@@ -21,19 +21,88 @@
                 <div class="col-xs-12 col-md-8">
                     <%= f.input :title %>
 
-                    <div class="row form-row">
-                        <div class="col-xs-12 col-md-6">
-                            <%= f.input :premises_size, wrapper: :input_group, append: "m²" %>
+                    <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="fas fa-user-injured"></i></i> Informations sur la patientèle</legend>
+                    <hr>
+                </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-8">
+
+                        <%= f.input :has_selling_price_set, hint: true, input_html: { class: "js-hasSellingPriceSetBool" }, wrapper: :custom_boolean_switch, item_wrapper_class: 'custom-control custom-radio' %>
+
+                        <div class="row form-row">
+                            <div class="col-xs-12 col-md-6">
+                                <%= f.input :selling_price, wrapper: :input_group, append: "€", input_html: { class: "js-sellingPriceField" }, wrapper_html: { class: "js-sellingPriceWrapper" }, required: true %>
+                            </div>
                         </div>
+                        
+                        <div class="row form-row">
+                            <div class="col-xs-12 col-md-6">
+                                <%= f.input :revenues, wrapper: :input_group, append: "€ / an", required: true %>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="far fa-hospital"></i> Informations sur le local</legend>
+                    <hr>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+
+                    <%= f.input :premises_availability, as: :radio_buttons, collection: PatientTransfer.premises_availabilities.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-premisesAvailabilityRadio" }, required: true %>
+
+                    <div class="row form-row">
                         <div class="col-xs-12 col-md-6">
                             <%= f.input :premises_price, input_html: { class: "js-priceField" }, wrapper: :input_group, append: "€", wrapper_html: { class: "js-priceFieldWrapper" }, required: true %>
                             <%= f.input :premises_rent, input_html: { class: "js-rentField" }, wrapper: :input_group, append: "€ / mois", wrapper_html: { class: "js-rentFieldWrapper" }, required: true %>
                         </div>
                     </div>
 
-                    <%= f.input :premises_furnished, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+                    <div class="row form-row">
+                        <div class="col-xs-12 col-md-6">
+                            <%= f.input :premises_size, wrapper: :input_group, append: "m²", required: true %>
+                        </div>
+                    </div>
 
-                    <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
+                    <div class="row form-row">
+                        <div class="col-xs-12 col-md-6">
+                            <%= f.input :premises_rooms_number, wrapper: :input_group, append: "pièce(s)", required: true %>
+                        </div>
+                    </div>
+
+                    <%= f.input :premises_furnished, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-premisesFurnishedRadio" }, required: true %>
+
+                    <%= f.input :premises_equipment, as: :text, input_html: { class: "js-premisesEquipmentField"}, wrapper_html: { class: "js-premisesEquipmentFieldWrapper" }, required: true %>
+
+                    <%= f.input :premises_has_parking, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+
+                    <%= f.input :accessible_premises, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+
                 </div>
 
             </div>
@@ -113,10 +182,10 @@
 
                 <div class="col-xs-12 col-md-8">
 
-                    <fieldset class="form-group radio_buttons required association_offer_type">
-                        <input type="hidden" name="association[offer_type]" value="">
-                        <label for="association_offer_type_standard" class="radio-btn-card mb-2">
-                            <input type="radio" name="association[offer_type]" value="standard" id="association_offer_type_standard" class="card-input-element d-none required">
+                    <fieldset class="form-group radio_buttons required patient_transfer_offer_type">
+                        <input type="hidden" name="patient_transfer[offer_type]" value="">
+                        <label for="patient_transfer_offer_type_standard" class="radio-btn-card mb-2">
+                            <input type="radio" name="patient_transfer[offer_type]" value="standard" id="patient_transfer_offer_type_standard" class="card-input-element d-none required">
                             <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
                                 <div>
                                     <div class="radio-btn-card-title">Annonce standard</div>
@@ -128,8 +197,8 @@
                                 </div>
                             </div>
                         </label>
-                        <label for="association_offer_type_premium" class="radio-btn-card">
-                            <input type="radio" name="association[offer_type]" value="premium" id="association_offer_type_premium" class="card-input-element d-none required">
+                        <label for="patient_transfer_offer_type_premium" class="radio-btn-card">
+                            <input type="radio" name="patient_transfer[offer_type]" value="premium" id="patient_transfer_offer_type_premium" class="card-input-element d-none required">
                             <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
                                 <div>
                                     <div class="radio-btn-card-title">Annonce premium</div>

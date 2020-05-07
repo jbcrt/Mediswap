@@ -12,7 +12,8 @@ const initSelect2 = () => {
       theme: "bootstrap",
       width: "100%",
       placeholder: select2.data("placeholder"),
-      allowClear: true
+      allowClear: true,
+      minimumResultsForSearch: -1
     });
   };
 };

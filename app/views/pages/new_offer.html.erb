@@ -64,10 +64,9 @@
     </div>
     <% else %>
         <div class="mt-5 d-flex flex-column align-items-center">
-            <div class="h2 text-center">Oups ... Vous n'avez pas encore complété les informations de votre établissement</div>
+            <%= image_tag("illustrations/health_facility_illustration.svg", class: "health-facility-missed-background-illustration", alt: "Illustration établissement de santé manquant") %>
             <div class="lead text-center">Afin de pouvoir poster une annonce, vous devez compléter les informations sur votre établissement (croyez-nous, cela vous fera gagner du temps par la suite)</div>
-            <%= image_tag("illustrations/health_facility_illustration.svg", class: "health-facility-missed-background-illustration d-none d-md-block", alt: "Illustration établissement de santé manquant") %>
-            <%= link_to "Compléter les informations de mon établissement", edit_account_facility_path(current_user.facility.id), class: "mt-3 btn btn-lg btn-primary" %>
+            <%= link_to "Compléter les informations de mon établissement", edit_account_facility_path(current_user.facility.id), class: "mt-3 btn btn-link" %>
         </div>
     <% end %>
 </div>

@@ -4,3 +4,10 @@
     margin: -48px 0;
     z-index: -48;
 }
+
+@media (max-width: 576px) {
+    .health-facility-missed-background-illustration {
+        height: 300px;
+        margin-bottom: -24px;
+    }
+}

@@ -36,7 +36,6 @@ class Offer < ApplicationRecord
   }
 
   enum sector: {
-    irrelevant: "Irrelevant",
     sector_1: "Sector 1",
     sector_2: "Sector 2",
     sector_3: "Sector 3"
@@ -44,7 +43,7 @@ class Offer < ApplicationRecord
 
   enum secretariat: {
     no_secretariat: "No secretariat",
-    in_situ: "In situ",
+    secretariat_in_situ: "Secretariat in situ",
     switchboard: "Switchboard"
   }
 
@@ -54,14 +53,14 @@ class Offer < ApplicationRecord
   }
 
   # Validations des champs obligatoires pour tous les types d'offre
-  validates :title, presence: true, length: { in: 1..50 }
+  validates :title, length: { in: 1..50 }
   validates :profession, inclusion: { in: PROFESSIONS.keys }
-  validates :description, presence: true, length: { in: 1..2500 }
-  validates :street, presence: true, length: { in: 1..50 }
+  validates :description, length: { in: 1..2500 }
+  validates :street, length: { in: 1..50 }
   validates :additional_address, length: { in: 1..50 }, allow_blank: true
   validates :department, inclusion: { in: DEPARTMENTS }
-  validates :zipcode, presence: true, length: { is: 5 }, format: { with: /\A^(?:[0-8]\d|9[0-8])\d{3}$\z/ }
-  validates :city, presence: true, length: { in: 1..50 }
+  validates :zipcode, length: { is: 5 }, format: { with: /\A^(?:[0-8]\d|9[0-8])\d{3}$\z/ }
+  validates :city, length: { in: 1..50 }
   validates :offer_type, inclusion: { in: Offer.offer_types.keys }
 
   def address

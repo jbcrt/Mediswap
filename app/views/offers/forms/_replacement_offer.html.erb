@@ -19,28 +19,115 @@
                 </div>
 
                 <div class="col-xs-12 col-md-8">
-                    <%= f.input :title %>
+                    <%= f.input :title, required: true %>
 
-                    <% if current_user.user_type == "health_facility_recruiter" %>
-                        <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, label_method: :second, value_method: :first, required: true %>
-                    <% end %>
-                    
                     <%= f.input :contract_type, as: :radio_buttons, collection: Replacement.contract_types.symbolize_keys.keys, input_html: { class: "js-contractTypeRadio" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    
-                    <%= f.input :working_time, as: :radio_buttons, collection: Offer.working_times.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    
+
+                    <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="fas fa-file-contract"></i> Contrat de remplacement</legend>
+                    <hr>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+
                     <div class="row form-row">
                         <div class="col-xs-12 col-md-6">
                             <%= f.input :starts_at, as: :date, html5: true, required: true %>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <div class="js-endsAtFieldWrapper">
-                                <%= f.input :ends_at, as: :date, html5: true, input_html: { class: "js-endsAtField" }, required: true %>
-                            </div>
+                            <%= f.input :ends_at, as: :date, html5: true, input_html: { class: "js-endsAtField" }, wrapper_html: { class: "js-endsAtFieldWrapper" }, required: true %>
                         </div>
                     </div>
 
-                    <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
+                    <%= f.input :working_time, as: :radio_buttons, collection: Offer.working_times.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+
+                    <div class="row form-row">
+                        <div class="col-12 col-md-6">
+                            <%= f.input :retrocession, wrapper: :input_group, append: "%", required: true %>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12">
+                    <legend class="h5"><i class="fas fa-info-circle"></i> Informations complémentaires</legend>
+                    <hr>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+
+                    <div class="form-row">
+                        <div class="col-12 col-md-6">
+                                <%= f.input :daily_medical_acts_number, type: :number, wrapper: :input_group, append: "actes par jour" %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-12 col-md-6">
+                            <%= f.input :on_call, as: :select, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-12 col-md-6">
+                            <%= f.input :vehicle_required, as: :select, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <%= f.label :visit, class: "margin-left-5" %>
+                        <div class="col-12 col-md-6">
+                            <%= f.input :visit, as: :select, label: false, collection: Offer.visits.symbolize_keys.keys, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-12 col-md-6">
+                            <%= f.input :sector, as: :select, collection: Offer.sectors.symbolize_keys.keys, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-12 col-md-6">
+                            <%= f.input :secretariat, as: :select, collection: Offer.secretariats.symbolize_keys.keys, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-12 col-md-6">
+                            <%= f.input :software_used %>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-12 col-md-6">
+                            <%= f.input :housing_possibility, as: :select, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -84,95 +171,24 @@
                     <div class="col-xs-12 col-md-8">
 
                         <div class="mb-3">
-                            <%= f.input :street, input_html: { class: "js-streetInput" }, wrapper_html: { class: "mb-0" }, error: false %>
+                            <%= f.input :street, input_html: { class: "js-streetInput" }, wrapper_html: { class: "mb-0" }, error: false, required: true %>
                             <%= f.error :street, class: "invalid-feedback d-block" %>
                         </div>
 
                         <%= f.input :additional_address %>
 
-                        <%= f.input :department, collection: [""]+DEPARTMENTS, input_html: { class: "js-select2Searchable js-departmentInput", data: { placeholder: "Selectionner un département" } }, required: true %>
+                        <%= f.input :department, collection: DEPARTMENTS, input_html: { class: "js-select2Searchable js-departmentInput", data: { placeholder: "Selectionner un département" } }, required: true %>
                         <div class="row form-row">
                             <div class="col-12 col-md-3">
-                                <%= f.input :zipcode, input_html: { class: "js-zipcodeInput" } %>
+                                <%= f.input :zipcode, input_html: { class: "js-zipcodeInput" }, required: true %>
                             </div>
                             <div class="col-12 col-md-9">
-                                <%= f.input :city, input_html: { class: "js-cityInput" } %>
+                                <%= f.input :city, input_html: { class: "js-cityInput" }, required: true %>
                             </div>
                         </div>
                     </div>
 
                 <% end %>
-
-            </div>
-            
-            <div class="row mt-4">
-
-                <div class="col-12">
-                    <legend class="h5"><i class="fas fa-wallet"></i> Rémunération</legend>
-                    <hr>
-                </div>
-
-                <div class="col-xs-12 col-md-4">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-
-                <div class="col-xs-12 col-md-8">
-
-                    <%= f.label :retrocession %>
-                    <div class="row form-row">
-                        <div class="col-6 col-sm-4 col-lg-3">
-                            <%= f.input :retrocession, label: false, error: false, hint: false, wrapper: :input_group, wrapper_html: { class: "mb-0" }, append: "%" %>
-                        </div>
-                    </div>
-                    <%= f.error :retrocession, class: "invalid-feedback d-block" %>
-                    <%= f.hint :retrocession %>
-
-                </div>
-
-            </div>
-
-            <div class="row mt-4">
-
-                <div class="col-12">
-                    <legend class="h5"><i class="fas fa-info-circle"></i> Informations complémentaires</legend>
-                    <hr>
-                </div>
-
-                <div class="col-xs-12 col-md-4">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-
-                <div class="col-xs-12 col-md-8">
-
-                    <div class="mb-3">
-                        <%= f.label :daily_medical_acts_number %>
-                        <div class="row">
-                            <div class="col-6 col-sm-4 col-lg-3">
-                                    <%= f.input :daily_medical_acts_number, label: false, error: false, wrapper_html: { class: "mb-0" } %>
-                            </div>
-                        </div>
-                        <%= f.error :daily_medical_acts_number, class: "invalid-feedback d-block" %>
-                    </div>
-
-                    <%= f.input :on_call, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :vehicle_required, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :visit, as: :radio_buttons, collection: Offer.visits.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :sector, as: :radio_buttons, collection: Offer.sectors.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-                    <%= f.input :secretariat, as: :radio_buttons, collection: Offer.secretariats.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <%= f.input :software_used %>
-                        </div>
-                    </div>
-
-                    <%= f.input :housing_possibility, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-
-                </div>
 
             </div>
 

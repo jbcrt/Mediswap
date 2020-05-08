@@ -53,7 +53,7 @@ class Replacement < Offer
 
     def starts_at_must_be_before_ends_at
       return unless starts_at and ends_at
-      errors.add(:ends_at, "doit être après la date de début") unless
+      errors.add(:ends_at, "doit être postérieure à la date de début") unless
          starts_at < ends_at
     end 
 

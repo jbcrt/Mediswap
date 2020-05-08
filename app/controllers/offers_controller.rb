@@ -107,13 +107,13 @@ class OffersController < ApplicationController
       when "collaboration"
         params.require(:collaboration).permit(
           :title,
-          :contract_type,
           :description,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
+          :contract_type,
           :retrocession,
           :daily_medical_acts_number,
           :on_call,

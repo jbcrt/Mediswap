@@ -78,14 +78,9 @@ fr:
         offer_type: "Type d'offre"
       collaboration:
         title: "Titre de l'annonce"
-        contract_type: "Type de contrat"
         description: "Description de l'annonce"
+        contract_type: "Type de contrat"
         retrocession: "Taux de rétrocession"
-        street: "Adresse"
-        additional_address: "Complément d'adresse"
-        department: "Département"
-        zipcode: "Code postal"
-        city: "Ville"
         daily_medical_acts_number: "Nombre d'actes journalier"
         on_call: "Gardes"
         vehicle_required: "Véhicule obligatoire ?"
@@ -94,6 +89,11 @@ fr:
         secretariat: "Secrétariat"
         software_used: "Logiciel utilisé"
         housing_possibility: "Possibilité de logement ?"
+        street: "Adresse"
+        additional_address: "Complément d'adresse"
+        department: "Département"
+        zipcode: "Code postal"
+        city: "Ville"
         offer_type: "Type d'offre"
       patient_transfer:
         title: "Titre de l'annonce"
@@ -171,7 +171,7 @@ fr:
           sector_3: "Secteur 3"
         secretariat:
           no_secretariat: "Aucun secrétariat"
-          secretariat_in_situ: "Sur place"
+          secretariat_in_situ: "Secrétariat sur place"
           switchboard: "Standard téléphonique"
       employment:
         contract_type:
@@ -211,7 +211,7 @@ fr:
           sector_3: "Secteur 3"
         secretariat:
           no_secretariat: "Aucun secrétariat"
-          secretariat_in_situ: "Sur place"
+          secretariat_in_situ: "Secrétariat sur place"
           switchboard: "Standard téléphonique"
       patient_transfer:
         premises_availability:

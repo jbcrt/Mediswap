@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="col-xs-12 col-md-8">
-                    <%= f.input :title %>
+                    <%= f.input :title, required: true %>
 
                     <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
                 </div>
@@ -97,7 +97,7 @@
 
                     <%= f.input :premises_furnished, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-premisesFurnishedRadio" }, required: true %>
 
-                    <%= f.input :premises_equipment, as: :text, input_html: { class: "js-premisesEquipmentField"}, wrapper_html: { class: "js-premisesEquipmentFieldWrapper" }, required: true %>
+                    <%= f.input :premises_equipment, as: :text, input_html: { class: "js-autoResizeTextarea js-premisesEquipmentField"}, wrapper_html: { class: "js-premisesEquipmentFieldWrapper" }, required: true %>
 
                     <%= f.input :premises_has_parking, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
 
@@ -146,19 +146,19 @@
                     <div class="col-xs-12 col-md-8">
 
                         <div class="mb-3">
-                            <%= f.input :street, input_html: { class: "js-streetInput" }, wrapper_html: { class: "mb-0" }, error: false %>
+                            <%= f.input :street, error: false, input_html: { class: "js-streetInput" }, wrapper_html: { class: "mb-0" }, required: true %>
                             <%= f.error :street, class: "invalid-feedback d-block" %>
                         </div>
 
                         <%= f.input :additional_address %>
 
-                        <%= f.input :department, collection: [""]+DEPARTMENTS, input_html: { class: "js-select2Searchable js-departmentInput", data: { placeholder: "Selectionner un département" } } %>
+                        <%= f.input :department, collection: [""]+DEPARTMENTS, input_html: { class: "js-select2Searchable js-departmentInput", data: { placeholder: "Selectionner un département" } }, required: true %>
                         <div class="row form-row">
                             <div class="col-12 col-md-3">
-                                <%= f.input :zipcode, input_html: { class: "js-zipcodeInput" } %>
+                                <%= f.input :zipcode, input_html: { class: "js-zipcodeInput" }, required: true %>
                             </div>
                             <div class="col-12 col-md-9">
-                                <%= f.input :city, input_html: { class: "js-cityInput" } %>
+                                <%= f.input :city, input_html: { class: "js-cityInput" }, required: true %>
                             </div>
                         </div>
                     </div>

@@ -26,16 +26,25 @@ class Employment < Offer
         senior: "Senior"
     }
 
-    # Les champs obligatoires pour les offres de salariat
+    # Les champs autorisés pour les offres de salariat
     validates :contract_type, inclusion: { in: Employment.contract_types.keys }
     validates :working_time, inclusion: { in: Offer.working_times.keys }
     validates :has_salary_set, inclusion: [true, false]
     validates :candidate_job_experience, inclusion: { in: Employment.candidate_job_experiences.keys }
-    
-    # Les champs optionnels pour les offres de salariat
     validates :candidate_description, length: { in: 1..2500 }, allow_blank: true
-    
-    # Les champs qui ne doivent pas apparaitre dans les offres de salariat
+
+    # Les champs dont les validations sont conditionnées à la valeur de "has_salary_set"
+    with_options if: Proc.new { |a| a.has_salary_set } do |employment_offer_with_salary_set|
+        employment_offer_with_salary_set.validates :salary, numericality: { greater_than: 0 }
+        employment_offer_with_salary_set.validates :salary_period, inclusion: { in: Employment.salary_periods.keys }
+    end
+  
+    with_options if: Proc.new { |a| a.has_salary_set == false } do |employment_offer_without_salary_set|
+        employment_offer_without_salary_set.validates :salary, absence: true
+        employment_offer_without_salary_set.validates :salary_period, absence: true
+    end
+
+    # Les champs interdits pour les offres de salariat
     validates :starts_at, absence: true
     validates :ends_at, absence: true
     validates :retrocession, absence: true
@@ -48,21 +57,17 @@ class Employment < Offer
     validates :software_used, absence: true
     validates :selling_price, absence: true
     validates :housing_possibility, absence: true
-    validates :premises_availability, absence: true
+    validates :has_selling_price_set, absence: true
+    validates :selling_price, absence: true
+    validates :revenues, absence: true
     validates :premises_size, absence: true
+    validates :premises_rooms_number, absence: true
+    validates :premises_availability, absence: true
     validates :premises_price, absence: true
     validates :premises_rent, absence: true
     validates :premises_furnished, absence: true
-
-    # Les validations qui sont conditionnées à la valeur de "has_salary_set"
-    with_options if: Proc.new { |a| a.has_salary_set } do |employment_offer_with_salary_set|
-        employment_offer_with_salary_set.validates :salary, presence: true, numericality: { only_integer: true, greater_than: 0 }
-        employment_offer_with_salary_set.validates :salary_period, inclusion: { in: Employment.salary_periods.keys }
-    end
-  
-    with_options if: Proc.new { |a| a.has_salary_set == false } do |employment_offer_without_salary_set|
-        employment_offer_without_salary_set.validates :salary, absence: true
-        employment_offer_without_salary_set.validates :salary_period, absence: true
-    end
+    validates :premises_equipment, absence: true
+    validates :premises_has_parking, absence: true
+    validates :accessible_premises, absence: true
 
 end

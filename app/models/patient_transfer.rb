@@ -43,7 +43,7 @@ class PatientTransfer < Offer
     end
 
     with_options if: Proc.new { |a| a.premises_furnished? } do |offer|
-        offer.validates :premises_equipment, presence: true
+        offer.validates :premises_equipment, length: { in: 1..250 }
     end
     
     with_options if: Proc.new { |a| a.premises_furnished == false } do |offer|

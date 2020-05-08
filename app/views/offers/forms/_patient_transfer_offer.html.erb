@@ -97,7 +97,7 @@
 
                     <%= f.input :premises_furnished, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-premisesFurnishedRadio" }, required: true %>
 
-                    <%= f.input :premises_equipment, as: :text, input_html: { class: "js-premisesEquipmentField"}, wrapper_html: { class: "js-premisesEquipmentFieldWrapper" }, required: true %>
+                    <%= f.input :premises_equipment, as: :text, input_html: { class: "js-autoResizeTextarea js-premisesEquipmentField"}, wrapper_html: { class: "js-premisesEquipmentFieldWrapper" }, required: true %>
 
                     <%= f.input :premises_has_parking, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
 

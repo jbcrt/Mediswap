@@ -21,8 +21,6 @@
                 <div class="col-xs-12 col-md-8">
                     <%= f.input :title, required: true %>
 
-                    <%= f.input :contract_type, as: :radio_buttons, collection: Replacement.contract_types.symbolize_keys.keys, input_html: { class: "js-contractTypeRadio" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-
                     <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
                 </div>
 
@@ -42,6 +40,8 @@
                 </div>
 
                 <div class="col-xs-12 col-md-8">
+
+                    <%= f.input :contract_type, as: :radio_buttons, collection: Replacement.contract_types.symbolize_keys.keys, input_html: { class: "js-contractTypeRadio" }, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
 
                     <div class="row form-row">
                         <div class="col-xs-12 col-md-6">

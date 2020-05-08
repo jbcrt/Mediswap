@@ -64,13 +64,13 @@ class OffersController < ApplicationController
       when "replacement"
         params.require(:replacement).permit(
           :title,
-          :contract_type,
           :description,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
+          :contract_type,
           :starts_at,
           :ends_at,
           :working_time,
@@ -88,14 +88,14 @@ class OffersController < ApplicationController
       when "employment"
         params.require(:employment).permit(
           :title,
-          :contract_type,
-          :profession,
           :description,
           :street,
           :additional_address,
           :department,
           :zipcode,
           :city,
+          :profession,
+          :contract_type,
           :working_time,
           :has_salary_set,
           :salary,

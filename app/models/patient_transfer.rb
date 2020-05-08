@@ -4,7 +4,7 @@ class PatientTransfer < Offer
     before_validation :set_contract_type, on: :create
 
     enum contract_type: { 
-        patient_transfer: "Patient Transfer"
+        cession_patientele: "Cession de patientèle"
     }
 
     enum premises_availability: { 
@@ -51,9 +51,9 @@ class PatientTransfer < Offer
     end
     
     ## Les champs qui ne doivent pas apparaitre dans les offres de cession
-    validates :working_time, absence: true
     validates :starts_at, absence: true
     validates :ends_at, absence: true
+    validates :working_time, absence: true
     validates :has_salary_set, absence: true
     validates :salary, absence: true
     validates :salary_period, absence: true
@@ -72,7 +72,7 @@ class PatientTransfer < Offer
     private
 
     def set_contract_type
-        self.contract_type = "patient_transfer"
+        self.contract_type = "cession_patientele"
     end
 
 end

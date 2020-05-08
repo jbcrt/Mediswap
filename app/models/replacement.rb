@@ -6,7 +6,7 @@ class Replacement < Offer
         remplacement_liberal_regulier: "Remplacement libéral régulier"
     }
 
-    ## Les champs autorisés pour les offres de remplacement
+    # Les champs autorisés pour les offres de remplacement
     validates :contract_type, inclusion: { in: Replacement.contract_types.keys }
     validates_date :starts_at, :on_or_after => :today
     validates :working_time, inclusion: { in: Offer.working_times.keys }
@@ -20,7 +20,7 @@ class Replacement < Offer
     validates :software_used, length: { in: 1..30 }, allow_blank: true
     validates :housing_possibility, inclusion: [true, false], allow_blank: true
 
-    ## Les champs dont les validations sont conditionnées au type de contrat de remplacement selectionné
+    # Les champs dont les validations sont conditionnées au type de contrat de remplacement selectionné
     with_options if: Proc.new { |a| a.contract_type == "remplacement_liberal_occasionnel" } do |replacement_offer|
       replacement_offer.validates_date :ends_at, :after => :today
       replacement_offer.validate :starts_at_must_be_before_ends_at
@@ -30,7 +30,7 @@ class Replacement < Offer
       replacement_offer.validates :ends_at, absence: true
     end
 
-    ## Les champs interdits pour les offres de remplacement
+    # Les champs interdits pour les offres de remplacement
     validates :has_salary_set, absence: true
     validates :salary, absence: true
     validates :salary_period, absence: true

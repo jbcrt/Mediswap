@@ -6,7 +6,7 @@ class Establishment < Offer
         premises_location: "Location de local"
     }
 
-    # Validations globales
+    # Les champs autorisés pour les offres d'installation
     validates :contract_type, inclusion: { in: Establishment.contract_types.keys }
     validates :premises_size, numericality: { greater_than: 0 }
     validates :premises_rooms_number, numericality: { greater_than: 0, only_integer: true }
@@ -14,7 +14,7 @@ class Establishment < Offer
     validates :premises_has_parking, inclusion: [true, false]
     validates :accessible_premises, inclusion: [true, false]
     
-    # Validations conditionnelles
+    # Les champs dont les validations sont conditionnées à la disponibilité du local
     with_options if: Proc.new { |a| a.premises_cession? } do |offer|
         offer.validates :premises_price, numericality: { greater_than: 0 }
         offer.validates :premises_rent, absence: true
@@ -25,6 +25,7 @@ class Establishment < Offer
         offer.validates :premises_rent, numericality: { greater_than: 0 }
     end
 
+    # Les champs dont les validations sont conditionnées à la valeur de "premises_furnished"
     with_options if: Proc.new { |a| a.premises_furnished? } do |offer|
         offer.validates :premises_equipment, length: { in: 1..250 }
     end
@@ -33,7 +34,7 @@ class Establishment < Offer
         offer.validates :premises_equipment, absence: true
     end
 
-    ## Les champs qui ne doivent pas apparaitre dans les offres de cession
+    # Les champs interdits pour les offres d'installation
     validates :starts_at, absence: true
     validates :ends_at, absence: true
     validates :working_time, absence: true

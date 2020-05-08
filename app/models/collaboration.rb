@@ -6,7 +6,7 @@ class Collaboration < Offer
         collaboration: "Collaboration"
     }
 
-    ## Les champs obligatoires pour les offres de collaboration
+    # Les champs autorisés pour les offres de collaboration
     validates :contract_type, inclusion: { in: Collaboration.contract_types.keys }
     validates :retrocession, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
     validates :daily_medical_acts_number, numericality: { greater_than: 0, only_integer: true }, allow_blank: true
@@ -18,7 +18,7 @@ class Collaboration < Offer
     validates :software_used, length: { in: 1..30 }, allow_blank: true
     validates :housing_possibility, inclusion: [true, false], allow_blank: true
 
-    ## Les champs qui ne doivent pas apparaitre dans les offres de collaboration
+    # Les champs interdits pour les offres de collaboration
     validates :working_time, absence: true
     validates :starts_at, absence: true
     validates :ends_at, absence: true

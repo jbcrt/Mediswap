@@ -15,12 +15,12 @@ class Establishment < Offer
     validates :accessible_premises, inclusion: [true, false]
     
     # Les champs dont les validations sont conditionnées à la disponibilité du local
-    with_options if: Proc.new { |a| a.premises_cession? } do |offer|
+    with_options if: Proc.new { |a| a.cession_local? } do |offer|
         offer.validates :premises_price, numericality: { greater_than: 0 }
         offer.validates :premises_rent, absence: true
     end
 
-    with_options if: Proc.new { |a| a.premises_location? } do |offer|
+    with_options if: Proc.new { |a| a.location_local? } do |offer|
         offer.validates :premises_price, absence: true
         offer.validates :premises_rent, numericality: { greater_than: 0 }
     end

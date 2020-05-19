@@ -2,8 +2,8 @@ class Establishment < Offer
     belongs_to :user
 
     enum contract_type: {
-        premises_cession: "Cession de local",
-        premises_location: "Location de local"
+        cession_local: "Cession de local",
+        location_local: "Location de local"
     }
 
     # Les champs autorisés pour les offres d'installation

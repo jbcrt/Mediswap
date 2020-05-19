@@ -173,7 +173,7 @@ class OffersController < ApplicationController
     end
 
     def filter_params
-      params.slice(:profession, :type, :begins, :ends)
+      params.slice(:profession, :contract_type, :begins, :ends)
     end
 
 end

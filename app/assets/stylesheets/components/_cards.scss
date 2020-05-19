@@ -77,9 +77,10 @@
     }
 }
 
+// Card d'offre dans l'index des offres
+
 .offer-card {
     @include card;
-    display: flex;
     margin-bottom: 1rem;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     &:hover {
@@ -87,70 +88,26 @@
         text-decoration: none;
     }
 
-    .offer-card-badges {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-    }
-
-    .offer-card-left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100px;
-    }
-
-    .offer-card-content-top {
-        display: flex;
-        flex-direction: column;
-
-        .offer-card-title {
-            color: $darkest-gray;
-            margin-bottom: 0.15rem;
-        }
-
-        .offer-card-facility-info {
-            color: $gray;
-            font-weight: 600;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
+    .offer-card-title {
+        color: $darkest-gray;
+        margin-bottom: 0.15rem;
     }
     
-    .offer-card-content-middle {
-        color: $darkest-gray;
-
-        .offer-card-data-icon {
-            display:inline-block;
-            font-size: 1rem;
-            color: $dark-gray;
-            flex: 0 0 28px;
-            height: 24px;
-            line-height: 24px;
-            text-align: center;
-            vertical-align: bottom;
-        }
-
-        .offer-card-data-content {
-            font-size: 0.85rem;
-            font-weight: 400;
-        }
+    .offer-card-facility-info {
+        color: $gray;
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-transform: uppercase;
     }
 
-    .offer-card-content-bottom {
+    .offer-card-bottom {
         color: $light-gray;
         font-size: 0.75rem;
     }
 
 }
 
-.custom-card {
-    @include card;
-    
-    p {
-        color: $dark-gray;
-    }
-}
+// Card de selection du type d'offre à créer
 
 .new-offer-link-card {
     @include card;
@@ -183,6 +140,8 @@
         }
     }
 }
+
+// Bouton custom offre premium/standard dans la création des offres
 
 label.radio-btn-card {
     width: 100%;

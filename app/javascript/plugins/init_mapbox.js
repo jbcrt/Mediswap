@@ -27,7 +27,7 @@ const fitMapToMarkers = (map, markers) => {
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
-  if (document.body.contains(mapElement)) {
+  if (document.body.contains(mapElement) && screen.width >= 1200 && mapElement.hasChildNodes() === false) {
     const map = buildMap(mapElement);
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);

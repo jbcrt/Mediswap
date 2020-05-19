@@ -3,7 +3,7 @@ class Offer < ApplicationRecord
 
   # Filtres de recherche
   scope :filter_by_profession, -> (profession) { where profession: profession }
-  scope :filter_by_type, -> (type) { where type: type }
+  scope :filter_by_contract_type, -> (contract_type) { where contract_type: contract_type }
   scope :filter_by_begins, -> (begins) { where("starts_at >= ?", begins) }
   scope :filter_by_ends, -> (ends) { where("ends_at <= ?", ends) }
 

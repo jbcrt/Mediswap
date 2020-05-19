@@ -1,17 +1,33 @@
+@mixin badge-alt {
+    padding: 0.3rem;
+    font-size: 80%;
+}
+
 .badge-primary-alt {
+    @include badge-alt;
     color: $medigreen;
     background-color: $lightest-medigreen;
-    font-size: 80%;
 }
 
 .badge-secondary-alt {
+    @include badge-alt;
     color: $gray;
     background-color: $lightest-gray;
-    font-size: 80%;
 }
 
 .badge-warning-alt {
+    @include badge-alt;
     color: $yellow;
     background-color: $lightest-yellow;
+}
+
+.badge-info-alt {
+    @include badge-alt;
+    color: $blue;
+    background-color: $lightest-blue;
+}
+
+.badge-big {
+    padding: 0.5rem;
     font-size: 80%;
 }

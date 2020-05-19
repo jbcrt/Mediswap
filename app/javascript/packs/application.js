@@ -44,4 +44,5 @@ document.addEventListener('turbolinks:load', function() {
     autoResizeTextarea();
     autoCalculateRetrocession();
     initMapbox();
+    window.addEventListener('resize', initMapbox);
 })

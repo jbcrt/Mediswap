@@ -46,8 +46,8 @@
                                 <%= f.input :distance, hint: "En kilomètres", label: "Périmètre de recherche", input_html: { name: "distance", value: "#{params[:distance]}" } %>
                             </div>
                             <div class="form-group">
-                                <%= f.label :type, "Type d'annonce" %>
-                                <%= f.input :type, collection: {"" => ""}.merge(OFFER_TYPES), selected: params[:type], input_html: { name: "type", class: "js-select2Searchable", data: { placeholder: "Selectionner un type d'offre" } }, label_method: :second, value_method: :first %>
+                                <%= f.label :contract_type, "Type d'annonce" %>
+                                <%= f.input :contract_type, collection: {"" => ""}.merge(OFFERS["offer_types"]), selected: params[:contract_type], input_html: { name: "contract_type", class: "js-select2Searchable js-select2ContractType", data: { placeholder: "Selectionner un type d'offre" } }, label_method: :second, value_method: :second %>
                             </div>
                             <div class="form-group">
                                 <%= f.label :begins, "A partir du" %>
@@ -73,9 +73,11 @@
         <div class="h5"><%= @offers.length %> <%= @offers.length > 1 ? "annonces disponibles" : "annonce disponible" %></div>
         <hr>
 
-        <div id="offersList" class="row mx-0">
+        <div id="offersList" class="mx-0">
 
-            <%= render 'offers/partials/index_card', offers: @offers %>
+            <% @offers.each do |offer| %>
+                <%= render 'offers/partials/offer_card', offer: offer %>
+            <% end %>
 
         </div>
         

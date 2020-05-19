@@ -1,0 +1,45 @@
+offer_types:
+  remplacement_liberal_occasionnel: "Remplacement libéral occasionnel"
+  remplacement_liberal_regulier: "Remplacement libéral régulier"
+  contrat_assitant_hopitaux: "Assistant des hopitaux"
+  contrat_duree_determinee: "Contrat à durée déterminée"
+  contrat_duree_indeterminee: "Contrat à durée indéterminée"
+  contrat_clinicien_hospitalier: "Clinicien hospitalier"
+  contrat_exercice_liberal: "Exercice à titre libéral"
+  contrat_assitant_hopitaux: "Praticien attaché"
+  contrat_praticien_hospitalier_contractuel: "Praticien hospitalier contractuel"
+  assistanat: "Assistanat libéral"
+  collaboration: "Collaboration"
+  cession_patientele: "Cession de patientèle"
+  cession_local: "Cession de local"
+  location_local: "Location de local"
+working_times:
+  full_time: "Temps plein"
+  part_time: "Temps partiel"
+visits_options:
+  no_visits: "Aucun"
+  home_visits: "Domicile"
+  facility_visits: "Établissement de santé"
+  home_and_facility_visits: "Domicile et établissement de santé"
+sectors:
+  sector_1: "Secteur 1"
+  sector_2: "Secteur 2"
+  sector_3: "Secteur 3"
+secretariat_options:
+  no_secretariat: "Aucun"
+  secretariat_in_situ: "Sur place"
+  switchboard: "Standard téléphonique"
+salary_periods:
+  hour: "par heure"
+  day: "par jour"
+  week: "par semaine"
+  month: "par mois"
+  year: "par an"
+candidate_job_experiences:
+  without_preference: "Aucune préférence"
+  junior: "Junior (0 à 2 ans)"
+  intermediate: "Intermédiaire (2 à 5 ans)"
+  senior: "Confirmé (5 ans et plus)"
+premises_availabilities:
+  rental: "Location"
+  sale: "Vente"

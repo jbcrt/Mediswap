@@ -60,10 +60,10 @@ const dynamicsEstablishmentOfferFormFields = () => {
                 if (this !== prevContractType) {
                     prevContractType = this;
                 }
-                if (this.value === "premises_cession") {
+                if (this.value === "cession_local") {
                     displayPriceField();
                     hideRentField();
-                } else if (this.value === "premises_location") {
+                } else if (this.value === "location_local") {
                     hidePriceField();
                     displayRentField();
                 }

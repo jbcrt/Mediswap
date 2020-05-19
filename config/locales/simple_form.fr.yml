@@ -120,7 +120,7 @@ fr:
         title: "Titre de l'annonce"
         description: "Description de l'annonce"
         profession: "Profession visée"
-        contract_type: "Disponibilité du local"
+        contract_type: "Type d'offre"
         premises_size: "Surface du local"
         premises_rooms_number: "Nombre de pièces"
         premises_price: "Prix de vente"
@@ -220,8 +220,8 @@ fr:
           sale: "Vente du local"
       establishment:
         contract_type:
-          premises_cession: "Cession de local"
-          premises_location: "Location de local"
+          cession_local: "Cession de local"
+          location_local: "Location de local"
     hints:
       user:
         password: '8 caractères minimum'

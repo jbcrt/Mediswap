@@ -131,7 +131,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <% end  %>
+                            <% end %>
 
                             <% if !@offer.has_selling_price_set.nil? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
@@ -149,7 +149,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <% end  %>
+                            <% end %>
 
                             <% if !@offer.revenues.blank? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
@@ -406,7 +406,7 @@
                                         </div>
                                         <div class="offer-data-content">
                                             <div class="offer-data-content-label">Secteur</div>
-                                            <div class="offer-data-content-value"><%= @offer.sector %></div>
+                                            <div class="offer-data-content-value"><%= OFFERS["sectors"][@offer.sector] %></div>
                                         </div>
                                     </div>
                                 </div>

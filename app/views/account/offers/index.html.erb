@@ -1,11 +1,64 @@
-<div class="container">
-    <h1>Offers#index</h1>
-    <hr>
-    <ul>
-        <% @offers.each do |offer| %>
-            <li>
-                <%= link_to offer.title, edit_my_offer_path(offer) %>
-            </li>
-        <% end %>
-    </ul>
+<div class="container my-4">
+    <h2 class="mb-4">Mes offres</h2>
+    <div class="accordion" id="accordionExample">
+        <div class="">
+            <div class="card card-header" id="headingOne">
+                <button class="btn btn-link btn-block d-flex justify-content-between align-items-center text-decoration-none text-body" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h5 class="mb-0">
+                        Offre(s) active(s)
+                    </h5>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <% if @offers.empty? %>
+                    <div class="card-body">
+                        <div class="d-flex flex-column justify-content-center align-items-center my-4 p-4">
+                            <%= image_tag("illustrations/empty_illustration.svg", class: "empty-illustration", alt: "Illustration contenu vide") %>
+                            <p class="lead text-center  mt-4">Vous n'avez pas d'annonces actives.</p>
+                        </div>
+                    </div>
+                <% else %>
+                    <ul class="list-group">
+                        <% @offers.each do |offer| %>
+                            <li class="list-group-item d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center <%= "no-border-top" if offer == @offers.first %><%= "no-border-bottom" if offer == @offers.last %>">
+                                <div class="offer-infos my-2">
+                                    <h6 class="mb-1"><%= offer.title %> <% if offer.offer_type == "premium" %><span><i class="fas fa-crown text-warning"></i><span><% end %></h6>
+                                    <div class="text-gray font-weight-light fs90">
+                                        Offre de <span class="font-weight-normal"><%= OFFERS["offer_types"][offer.contract_type] %></span> pour <span class="font-weight-normal"><%= PROFESSIONS[offer.profession] %></span> postée le <span class="font-weight-normal"><%= l offer.created_at.to_date, format: :long %></span>.
+                                    </div>
+                                </div>
+                                <div class="offer-controls">
+                                    <%= link_to edit_account_offer_path(offer), class: "btn btn-outline-primary btn-sm" do %>
+                                        <i class="far fa-edit"></i> Editer
+                                    <% end %>
+                                    <%= link_to account_offer_path(offer), method: "delete", class: "btn btn-outline-danger btn-sm", data: { confirm: "Are you sure?" } do %>
+                                        <i class="far fa-trash-alt"></i> Supprimer
+                                    <% end %>
+                                </div>
+                            </li>
+                        <% end %>
+                    </ul>
+                <% end %>
+            </div>
+        </div>
+        <div class="">
+            <div class="card card-header" id="headingTwo">
+                <button class="btn btn-link btn-block collapsed d-flex justify-content-between align-items-center text-decoration-none text-body" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h5 class="mb-0">
+                        Offre(s) archivée(s)
+                    </h5>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="d-flex flex-column justify-content-center align-items-center my-4 p-4">
+                        <%= image_tag("illustrations/empty_illustration.svg", class: "empty-illustration", alt: "Illustration contenu vide") %>
+                        <p class="lead text-center mt-4">Vous n'avez pas d'annonces archivées.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -87,7 +87,7 @@
                                 </div>
                             <% end  %>
 
-                            <% if !@offer.has_salary_set.blank? %>
+                            <% if !@offer.has_salary_set.nil? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
                                     <div class="d-flex align-items-center my-1">
                                         <div class="offer-data-icon">
@@ -133,7 +133,7 @@
                                 </div>
                             <% end  %>
 
-                            <% if @offer.has_selling_price_set != nil %>
+                            <% if !@offer.has_selling_price_set.nil? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
                                     <div class="d-flex align-items-center my-1">
                                         <div class="offer-data-icon">
@@ -165,7 +165,7 @@
                                 </div>
                             <% end %>
                             
-                            <% if !@offer.vehicle_required.blank? %>
+                            <% if !@offer.vehicle_required.nil? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
                                     <div class="d-flex align-items-center my-1">
                                         <div class="offer-data-icon">
@@ -211,7 +211,7 @@
                                 </div>
                             <% end %>
 
-                            <% if !@offer.on_call.blank? %>
+                            <% if !@offer.on_call.nil? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
                                     <div class="d-flex align-items-center my-1">
                                         <div class="offer-data-icon">
@@ -310,7 +310,7 @@
                                 </div>
                             <% end %>
 
-                            <% if !@offer.premises_furnished.blank? %>
+                            <% if !@offer.premises_furnished.nil? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
                                     <div class="d-flex align-items-center my-1">
                                         <div class="offer-data-icon">
@@ -328,7 +328,7 @@
                                 </div>
                             <% end %>
 
-                            <% if !@offer.premises_has_parking.blank? %>
+                            <% if !@offer.premises_has_parking.nil? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
                                     <div class="d-flex align-items-center my-1">
                                         <div class="offer-data-icon">
@@ -346,7 +346,7 @@
                                 </div>
                             <% end %>
 
-                            <% if !@offer.accessible_premises.blank? %>
+                            <% if !@offer.accessible_premises.nil? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
                                     <div class="d-flex align-items-center my-1">
                                         <div class="offer-data-icon">
@@ -440,7 +440,7 @@
                                 </div>
                             <% end %>
 
-                            <% if !@offer.housing_possibility.blank? %>
+                            <% if !@offer.housing_possibility.nil? %>
                                 <div class="col-12 col-md-4 col-lg-12 align-self-center">
                                     <div class="d-flex align-items-center my-1">
                                         <div class="offer-data-icon">

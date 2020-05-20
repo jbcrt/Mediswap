@@ -1,1 +1,18 @@
-<h1>Modification de <%= @offer.title %></h1>
+<div class="container my-4">
+    <h2>Modifier votre annonce</h2>
+    <div class="row">
+        <div class="col-12">
+        <% if @offer.type == "Replacement" %>
+            <%= render 'account/offers/forms/edit_replacement_offer', offer: @offer %>
+        <% elsif @offer.type == "Employment" %>
+            <%= render 'account/offers/forms/edit_employment_offer', offer: @offer %>
+        <% elsif @offer.type == "Collaboration" %>
+            <%= render 'account/offers/forms/edit_collaboration_offer', offer: @offer %>
+        <% elsif @offer.type == "PatientTransfer" %>
+            <%= render 'account/offers/forms/edit_patient_transfer_offer', offer: @offer %>
+        <% elsif @offer.type == "Establishment" %>
+            <%= render 'account/offers/forms/edit_establishment_offer', offer: @offer %>
+        <% end %>
+        </div>
+    </div>
+</div>

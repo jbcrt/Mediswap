@@ -16,7 +16,6 @@ const dynamicsReplacementsOfferFormFields = () => {
             endsAtFieldWrapper.classList.remove("d-block");
             endsAtField.required = false;
             endsAtField.disabled = true;
-            endsAtField.value = "";
         };
 
         // Affichage initial ou après un render "new" des champs liés au type de remplacement

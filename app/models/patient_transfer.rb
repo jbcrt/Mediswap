@@ -1,7 +1,7 @@
 class PatientTransfer < Offer
     belongs_to :user
 
-    before_validation :set_contract_type, on: :create
+    before_validation :set_conditional_values
 
     enum contract_type: { 
         cession_patientele: "Cession de patientèle"
@@ -28,7 +28,7 @@ class PatientTransfer < Offer
         offer.validates :selling_price, numericality: { greater_than_or_equal_to: 0 }
     end
     
-    with_options if: Proc.new { |a| a.has_selling_price_set? == false } do |offer|
+    with_options if: Proc.new { |a| a.has_selling_price_set == false } do |offer|
         offer.validates :selling_price, absence: true
     end
     
@@ -73,8 +73,20 @@ class PatientTransfer < Offer
 
     private
 
-    def set_contract_type
-        self.contract_type = "cession_patientele"
+    def set_conditional_values
+        if self.has_selling_price_set == false
+            self.selling_price = nil
+        end
+
+        if self.sale?
+            self.premises_rent = nil
+        elsif self.rental?
+            self.premises_price = nil
+        end
+
+        if self.premises_furnished == false
+            self.premises_equipment = nil
+        end
     end
 
 end

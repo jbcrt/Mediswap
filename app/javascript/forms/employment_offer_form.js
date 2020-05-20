@@ -3,7 +3,7 @@ const dynamicsEmploymentOfferFormFields = () => {
         const hasSalarySetBool = document.querySelector('.js-hasSalarySetBool');
         const salaryField = document.querySelector('.js-salaryField');
         const salaryFieldWrapper = document.querySelector('.js-salaryFieldWrapper');
-        const salaryPeriodField = document.querySelector('.js-salaryPeriodField');
+        const salaryPeriodFields = document.querySelectorAll('.js-salaryPeriodField');
         const salaryPeriodFieldWrapper = document.querySelector('.js-salaryPeriodFieldWrapper');
         
         const displaySalaryField = () => {
@@ -18,22 +18,24 @@ const dynamicsEmploymentOfferFormFields = () => {
             salaryFieldWrapper.classList.remove("d-block");
             salaryField.required = false;
             salaryField.disabled = true;
-            salaryField.value = "";
         };
         
         const displaySalaryPeriodField = () => {
             salaryPeriodFieldWrapper.classList.remove("d-none");
             salaryPeriodFieldWrapper.classList.add("d-block");
-            salaryPeriodField.required = true;
-            salaryPeriodField.disabled = false;
+            salaryPeriodFields.forEach(salaryPeriodField => {
+                salaryPeriodField.required = true;
+                salaryPeriodField.disabled = false;
+            });
         };
         
         const hideSalaryPeriodField = () => {
             salaryPeriodFieldWrapper.classList.add("d-none");
             salaryPeriodFieldWrapper.classList.remove("d-block");
-            salaryPeriodField.required = false;
-            salaryPeriodField.disabled = true;
-            salaryPeriodField.value = "";
+            salaryPeriodFields.forEach(salaryPeriodField => {
+                salaryPeriodField.required = false;
+                salaryPeriodField.disabled = true;
+            });
         };
 
         // Affichage initial ou après un render "new" des champs liés au salaire

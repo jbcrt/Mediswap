@@ -5,9 +5,20 @@
     z-index: -48;
 }
 
+.empty-illustration {
+    height: 350px;
+    opacity: 0.7;
+}
+
 @media (max-width: 576px) {
+
     .health-facility-missed-background-illustration {
         height: 300px;
         margin-bottom: -24px;
     }
+
+    .empty-illustration {
+        height: 200px;
+    }
+
 }

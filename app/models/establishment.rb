@@ -1,6 +1,9 @@
 class Establishment < Offer
     belongs_to :user
 
+    before_validation :set_contract_type_values, on: :create
+    before_validation :set_conditional_values
+
     enum contract_type: {
         cession_local: "Cession de local",
         location_local: "Location de local"
@@ -58,5 +61,19 @@ class Establishment < Offer
     validates :premises_availability, absence: true
 
     private
+
+    def set_contract_type_value
+        if self.cession_local?
+            self.premises_rent = nil
+        elsif self.location_local?
+            self.premises_price = nil
+        end
+    end
+
+    def set_conditional_values
+        if self.premises_furnished == false
+            self.premises_equipment = nil
+        end
+    end
 
 end

@@ -1,6 +1,8 @@
 class Replacement < Offer
     belongs_to :user
 
+    before_validation :set_contract_type_values, on: :create
+
     enum contract_type: { 
         remplacement_liberal_occasionnel: "Remplacement libéral occasionnel",
         remplacement_liberal_regulier: "Remplacement libéral régulier"
@@ -21,12 +23,12 @@ class Replacement < Offer
     validates :housing_possibility, inclusion: [true, false], allow_blank: true
 
     # Les champs dont les validations sont conditionnées au type de contrat de remplacement selectionné
-    with_options if: Proc.new { |a| a.contract_type == "remplacement_liberal_occasionnel" } do |replacement_offer|
+    with_options if: Proc.new { |a| a.remplacement_liberal_occasionnel? } do |replacement_offer|
       replacement_offer.validates_date :ends_at, :after => :today
       replacement_offer.validate :starts_at_must_be_before_ends_at
     end
 
-    with_options if: Proc.new { |a| a.contract_type == "remplacement_liberal_regulier" } do |replacement_offer|
+    with_options if: Proc.new { |a| a.remplacement_liberal_regulier? } do |replacement_offer|
       replacement_offer.validates :ends_at, absence: true
     end
 
@@ -55,6 +57,12 @@ class Replacement < Offer
       return unless starts_at and ends_at
       errors.add(:ends_at, "doit être postérieure à la date de début") unless
          starts_at < ends_at
-    end 
+    end
+    
+    def set_contract_type_values
+      if self.remplacement_liberal_regulier?
+        self.ends_at = nil
+      end
+    end
 
 end

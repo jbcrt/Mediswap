@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -11,14 +11,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column h-100">
 
-    <%= render 'shared/navbar' %>
+    <header>
+      <%= render 'shared/navbar' %>
+    </header>
 
-    <div class="content">
+    <main class="content flex-shrink-0">
       <%= render 'shared/flashes' %>
       <%= yield %>
-    </div>
+    </main>
+
+    <%= render 'shared/footer' unless @skip_footer %>
 
   </body>
 </html>

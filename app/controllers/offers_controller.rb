@@ -20,6 +20,7 @@ class OffersController < ApplicationController
         }
       end
 
+      @skip_footer = true
     end
   
     def show

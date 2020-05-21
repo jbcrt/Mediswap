@@ -1,43 +1,52 @@
-<footer class="footer">
+<footer class="footer border-top mt-auto py-5">
     <div class="container">
-    <div class="footer-logo d-flex align-items-center justify-content-center">
-        <%= image_tag("logo.svg", class: "mr-2",alt: "Mediswap logo") %>
-        <span class="logo-title">MEDISWAP</span>
-    </div>
-    <hr class="my-4">
-    <div class="row">
-        <div class="col-xl-6 d-flex justify-content-center justify-content-xl-start">
-        <ul class="d-flex">
-            <li>
-            <%= link_to 'Mentions légales', terms_path, class: "nav-link" %>
-            </li>
-            <li>
-            <%= link_to 'Vie privée', privacy_path, class: "nav-link" %>
-            </li>
-            <li>
-            <%= link_to 'Contact', contact_path, class: "nav-link" %>
-            </li>
-        </ul>
+        <div class="logo-title text-center mb-5">MEDISWAP</div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center text-sm-left">
+                <h3 class="h5">Notre service</h3>
+                <nav class="flex-column">
+                    <%= link_to 'Mise en relation', root_path(anchor: 'search'), class: "nav-link px-0 text-body" %>
+                    <%= link_to 'Contrat et signature', root_path(anchor: 'contract'), class: "nav-link px-0 text-body" %>
+                    <%= link_to 'Applications mobiles', root_path(anchor: 'mobile-app'), class: "nav-link px-0 text-body" %>
+                    <%= link_to 'Prix', root_path(anchor: 'prices'), class: "nav-link px-0 text-body" %>
+                    <%= link_to 'FAQ', privacy_path, class: "nav-link px-0 text-body" %>
+                </nav>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5 mt-sm-0 text-center text-sm-left">
+                <h3 class="h5">Informations légales</h3>
+                <nav class="flex-column">
+                    <%= link_to 'Mentions légales', terms_path, class: "nav-link px-0 text-body" %>
+                    <%= link_to "Conditions d'utilisation", privacy_path, class: "nav-link px-0 text-body" %>
+                    <%= link_to 'Vie privée', privacy_path, class: "nav-link px-0 text-body" %>
+                    <%= link_to 'Contact', contact_path, class: "nav-link px-0 text-body" %>
+                </nav>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 text-md-left mt-5 mt-md-0 text-center text-md-left">
+                <h3 class="h5">À propos</h3>
+                <p class="text-secondary">Mediswap a pour vocation de faciliter et sécuriser le recrutement et la recherche d'emploi pour tous les professionnels de santé enregistrés dans le RPPS.</p>
+            </div>
+            <div class="col-12 col-lg-2 ml-auto text-lg-left mt-4 mt-lg-0 text-center text-md-left">
+                <h3 class="h5">Suivez-nous</h3>
+                <p class="lead">
+                    <%= link_to root_path, class: "mr-2 text-body text-decoration-none" do %>
+                        <i class="fab fa-facebook-f"></i>
+                    <% end %>
+                    <%= link_to root_path, class: "mx-2 text-body text-decoration-none" do %>
+                        <i class="fab fa-twitter"></i>
+                    <% end %>
+                    <%= link_to root_path, class: "mx-2 text-body text-decoration-none" do %>
+                        <i class="fab fa-linkedin-in"></i>
+                    <% end %>
+                    <%= link_to root_path, class: "mx-2 text-body text-decoration-none" do %>
+                        <i class="fab fa-youtube"></i>
+                    <% end %>
+                </p>
+            </div>
         </div>
-        <div class="col-xl-6 d-flex justify-content-center justify-content-xl-end">
-        <ul class="d-flex">
-            <li>
-            <%= link_to root_path do %>
-                <i class="fab fa-linkedin-in nav-link"></i>
-            <% end %>
-            </li>
-            <li>
-            <%= link_to root_path do %>
-                <i class="fab fa-twitter nav-link"></i>
-            <% end %>
-            </li>
-            <li>
-            <%= link_to root_path do %>
-                <i class="fab fa-youtube nav-link"></i>
-            <% end %>
-            </li>
-        </ul>
+        <div class="row mt-3">
+            <div class="col text-center text-muted">
+                <p>2020 © Mediswap, tous droits réservés</p>
+            </div>
         </div>
-    </div>
     </div>
 </footer>

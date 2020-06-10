@@ -1,7 +1,7 @@
 class Replacement < Offer
     belongs_to :user
 
-    before_validation :set_contract_type_values, on: :create
+    before_validation :set_conditional_values, on: :create
 
     enum contract_type: { 
         remplacement_liberal_occasionnel: "Remplacement libéral occasionnel",
@@ -59,7 +59,7 @@ class Replacement < Offer
          starts_at < ends_at
     end
     
-    def set_contract_type_values
+    def set_conditional_values
       if self.remplacement_liberal_regulier?
         self.ends_at = nil
       end

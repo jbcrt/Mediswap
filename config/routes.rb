@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :offers,  only: [:index, :edit, :update, :destroy]
-    resources :facilities,  only: [:edit, :update]
+    resources :profiles,  only: [:edit, :update]
+    resources :facilities,  only: [:new, :create, :edit, :update]
   end
 
   delete 'account/facilities/:id/delete_facility_attachment/:attachment_id', to: 'account/facilities#delete_facility_attachment', as: :delete_facility_attachment

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_190824) do
+ActiveRecord::Schema.define(version: 2020_06_01_083703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -39,10 +39,8 @@ ActiveRecord::Schema.define(version: 2020_02_24_190824) do
 
   create_table "facilities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
-    t.boolean "completed", default: false
     t.string "name"
     t.string "category"
-    t.string "finess_number"
     t.text "description"
     t.string "street"
     t.string "additional_address"
@@ -51,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_02_24_190824) do
     t.string "city"
     t.float "latitude"
     t.float "longitude"
-    t.boolean "same_address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_facilities_on_user_id"
@@ -107,6 +104,23 @@ ActiveRecord::Schema.define(version: 2020_02_24_190824) do
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
+  create_table "profiles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "avatar_id"
+    t.string "title"
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birth_date"
+    t.string "phone_number"
+    t.string "profession"
+    t.string "professional_id_number"
+    t.string "council_id_number"
+    t.string "council_department"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -126,19 +140,6 @@ ActiveRecord::Schema.define(version: 2020_02_24_190824) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.boolean "admin", default: false, null: false
-    t.string "avatar_id"
-    t.string "user_type"
-    t.boolean "candidate"
-    t.string "title"
-    t.string "first_name"
-    t.string "last_name"
-    t.date "birth_date"
-    t.string "phone_number"
-    t.string "profession"
-    t.string "professional_id_number"
-    t.string "mssante_email"
-    t.string "council_id_number"
-    t.string "council_department"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -150,4 +151,5 @@ ActiveRecord::Schema.define(version: 2020_02_24_190824) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "facilities", "users"
   add_foreign_key "offers", "users"
+  add_foreign_key "profiles", "users"
 end

@@ -1,0 +1,67 @@
+<div class="row mt-4">
+
+    <div class="col-12">
+        <legend class="h5"><i class="fas fa-info-circle"></i> Informations complémentaires</legend>
+        <hr>
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+
+    <div class="col-xs-12 col-md-8">
+
+        <div class="form-row">
+            <div class="col-12 col-md-6">
+                    <%= f.input :daily_medical_acts_number, type: :number, wrapper: :input_group, append: "actes par jour" %>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12 col-md-6">
+                <%= f.input :on_call, as: :select, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12 col-md-6">
+                <%= f.input :vehicle_required, as: :select, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <%= f.label :visit, class: "margin-left-5" %>
+            <div class="col-12 col-md-6">
+                <%= f.input :visit, as: :select, label: false, collection: Offer.visits.symbolize_keys.keys, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12 col-md-6">
+                <%= f.input :sector, as: :select, collection: Offer.sectors.symbolize_keys.keys, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12 col-md-6">
+                <%= f.input :secretariat, as: :select, collection: Offer.secretariats.symbolize_keys.keys, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12 col-md-6">
+                <%= f.input :software_used %>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12 col-md-6">
+                <%= f.input :housing_possibility, as: :select, input_html: { class: "js-select2", data: { placeholder: "Selectionner une option" } } %>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,6 +1,7 @@
 class PatientTransfer < Offer
     belongs_to :user
 
+    before_validation :set_contract_type_values, on: :create
     before_validation :set_conditional_values
 
     enum contract_type: { 
@@ -72,6 +73,10 @@ class PatientTransfer < Offer
     validates :housing_possibility, absence: true
 
     private
+
+    def set_contract_type_values
+        self.contract_type = :cession_patientele
+    end
 
     def set_conditional_values
         if self.has_selling_price_set == false

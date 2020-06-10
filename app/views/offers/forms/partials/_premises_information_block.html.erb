@@ -1,0 +1,26 @@
+<div class="row form-row">
+    <div class="col-xs-12 col-md-6">
+        <%= f.input :premises_price, input_html: { class: "js-priceField" }, wrapper: :input_group, append: "€", wrapper_html: { class: "js-priceFieldWrapper" }, required: true %>
+        <%= f.input :premises_rent, input_html: { class: "js-rentField" }, wrapper: :input_group, append: "€ / mois", wrapper_html: { class: "js-rentFieldWrapper" }, required: true %>
+    </div>
+</div>
+
+<div class="row form-row">
+    <div class="col-xs-12 col-md-6">
+        <%= f.input :premises_size, wrapper: :input_group, append: "m²", required: true %>
+    </div>
+</div>
+
+<div class="row form-row">
+    <div class="col-xs-12 col-md-6">
+        <%= f.input :premises_rooms_number, wrapper: :input_group, append: "pièce(s)", required: true %>
+    </div>
+</div>
+
+<%= f.input :premises_furnished, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-premisesFurnishedRadio" }, required: true %>
+
+<%= f.input :premises_equipment, as: :text, input_html: { class: "js-autoResizeTextarea js-premisesEquipmentField"}, wrapper_html: { class: "js-premisesEquipmentFieldWrapper" }, required: true %>
+
+<%= f.input :premises_has_parking, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+
+<%= f.input :accessible_premises, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>

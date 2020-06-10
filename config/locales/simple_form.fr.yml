@@ -8,32 +8,20 @@ fr:
         password: 'Mot de passe'
         remember_me: "Rester connecter"
         password_confirmation: 'Confirmez le mot de passe'
+        edit:
+          password: 'Nouveau mot de passe'
+          password_confirmation: 'Retapez le nouveau mot de passe'
+          current_password: 'Mot de passe actuel'
+      profile:
         title: 'Titre'
         first_name: 'Prénom'
         last_name: 'Nom'
         birth_date: 'Date de naissance'
         phone_number: "Numéro de téléphone"
-        user_type: "Vous êtes ?"
-        candidate: 'Vous êtes candidat ?'
         profession: 'Profession'
         professional_id_number: "Numéro d'indentification professionnel (RPPS, ADELI, etc)"
-        mssante_email: "Adresse email MSSanté"
         council_id_number: "Numéro ordinal"
         council_department: "Département de l'Ordre"
-        facility_name: "Nom de l'établissement"
-        facility_type: "Type d'établissement"
-        facility_description: "Description de l'établissement"
-        facility_contact_email: "Adresse email de contact"
-        facility_contact_phone_number: "Numéro de téléphone de contact"
-        facility_street: "Adresse"
-        facility_additional_address: "Complément d'adresse"
-        facility_department: "Département"
-        facility_zipcode: "Code postal"
-        facility_city: "Ville"
-        edit:
-          password: 'Nouveau mot de passe'
-          password_confirmation: 'Retapez le nouveau mot de passe'
-          current_password: 'Mot de passe actuel'
       offer:
         location: "Localisation"
         distance: "Distance"
@@ -135,25 +123,20 @@ fr:
         zipcode: "Code postal"
         city: "Ville"
       facility:
-        name: "Raison sociale"
+        name: "Raison sociale de l'établissement"
         category: "Catégorie d'établissement"
-        finess_number: "Numéro FINESS"
         description: "Description"
         street: "Adresse"
         additional_address: "Complément d'adresse"
         department: "Département"
         zipcode: "Code postal"
         city: "Ville"
-        same_address: "Utiliser cette adresse dans toutes les offres"
         photos: "Photos"
     options:
-      user:
+      profile:
         title:
-          mr: "Monsieur"
-          mme: "Madame"
-        user_type:
-          health_professional: "Un(e) professionnel(le) de santé"
-          health_facility_recruiter: "Une(e) recruteur(euse) pour un établissement de santé"
+          mister: "Monsieur"
+          madam: "Madame"
       replacement:
         contract_type:
           remplacement_liberal_occasionnel: "Remplacement libéral occasionnel"
@@ -240,7 +223,6 @@ fr:
         has_selling_price_set: "En activant ce bouton, vous pourrez définir le prix de vente de votre patientèle. À défaut, le prix de vente apparaitra comme étant \"à négocier\"."
         selling_price: "Si vous souhaitez céder votre patientèle à titre gratuit, vous pouvez indiquer \"0\""
       facility:
-        finess_number: "Numéro d'identification unique de votre établissement (9 chiffres)"
         street: "Selectionnez une adresse suggerée par le moteur de recherche. Si votre adresse n'apparait pas, choisissez une adresse proche."
         photos: "Vous pouvez ajouter jusqu'à 3 photos au format jpg, jpeg ou png."
     errors:

@@ -1,9 +1,9 @@
 <div class="container my-5">
-    <h2>Mon établissement</h2>
+    <h2>Créer mon établissement</h2>
 
     <div class="row">
         <div class="col-12">
-            <%= simple_form_for @facility, url: account_facility_path(@facility) do |f| %>
+            <%= simple_form_for @facility, url: account_facilities_path do |f| %>
                 <%= f.error_notification %>
 
                 <div class="row mt-4">
@@ -33,16 +33,7 @@
                     </div>
 
                     <div class="col-xs-12 col-lg-4">
-                        <% if (@facility.latitude == "" || @facility.latitude == nil) && (@facility.longitude == "" || @facility.longitude == nil) %>
-                            <div class="alert alert-warning" role="alert">
-                                <i class="fas fa-exclamation-triangle"></i> Votre établissement n'est pas géolocalisé, vos annonces n'apparaitront donc pas sur la carte.
-                            </div>
-                        <% else %>
-                            <div class="alert alert-primary" role="alert">
-                                <i class="fas fa-check"></i> L'adresse de votre établissement est correctement géolocalisée, vos annonces apparaitront sur la carte à la position indiquée ci-dessous.
-                            </div>
-                            <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+48A9A6(#{@facility.longitude},#{@facility.latitude})/#{@facility.longitude},#{@facility.latitude},14/400x300@2x?access_token=#{ENV['MAPBOX_API_KEY']}", class: "img-fluid img-thumbnail mb-2" %>
-                        <% end %>
+                        <p>Les informations de localisation de votre établissement permettront de pré-remplir la localisation de vos annonces et de les géolocaliser sur la carte.</p>
                     </div>
 
                     <div class="col-xs-12 col-lg-8">
@@ -101,11 +92,11 @@
                 </div>
                 
                 <div class="form-actions d-none d-lg-flex justify-content-end">
-                    <%= f.button :submit, "Enregistrer les modifications", :class => "btn btn-primary" %>
+                    <%= f.button :submit, "Créer mon établissement", :class => "btn btn-primary" %>
                 </div>
 
                 <div class="form-actions d-block d-lg-none">
-                    <%= f.button :submit, "Enregistrer les modifications", :class => "btn btn-primary btn-block" %>
+                    <%= f.button :submit, "Créer mon établissement", :class => "btn btn-primary btn-block" %>
                 </div>
 
             <% end %>

@@ -11,7 +11,7 @@
           <%= simple_form_for :q, url: offers_path, method: :get, wrapper: :inline_form, html: { class: "col-xl-12" } do |f| %>
             <div class="form-row">
                 <div class="col-xl-6 input-group-lg">
-                    <%= f.input :profession, collection: PROFESSIONS, prompt: "Profession", input_html: { class: "custom-select", name: "profession" }, label_method: :second, value_method: :first %>
+                    <%= f.input :profession, collection: PROFESSIONS, prompt: "Profession", input_html: { class: "custom-select", name: "profession" } %>
                 </div>
                 <div class="col-xl-6 mt-3 mt-xl-0">
                     <%= f.input :location, input_html: { class: "js-autoCitySearch form-control", name: "location", placeholder: "Ville ou adresse" } %>

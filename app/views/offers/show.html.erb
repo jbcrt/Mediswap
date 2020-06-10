@@ -3,7 +3,7 @@
     <div class="d-flex flex-column justify-content-center align-items-center mb-5">
         <h1 class="h2 text-center"><%= @offer.title %></h1>
         <div class="d-flex flex-wrap justify-content-center text-secondary">
-            <div class="mx-2 mb-1"><i class="fas fa-user-md mr-1"></i> <%= PROFESSIONS[@offer.profession] %></div>
+            <div class="mx-2 mb-1"><i class="fas fa-user-md mr-1"></i> <%= @offer.profession %></div>
             <div class="mx-2 mb-1"><i class="fas fa-file-contract mr-1"></i> <%= OFFERS["offer_types"][@offer.contract_type] %></div>
             <div class="mx-2 mb-1"><i class="fas fa-map-marker-alt mr-1"></i> <%= @offer.city %> (<%= @offer.zipcode.slice(0,2) %>)</div>
         </div>
@@ -393,7 +393,7 @@
                                     </div>
                                     <div class="offer-data-content">
                                         <div class="offer-data-content-label">Type d'établissement</div>
-                                        <div class="offer-data-content-value"><%= FACILITY_CATEGORIES[@offer.user.facility.category] %></div>
+                                        <div class="offer-data-content-value"><%= @offer.user.facility.category %></div>
                                     </div>
                                 </div>
                             </div>

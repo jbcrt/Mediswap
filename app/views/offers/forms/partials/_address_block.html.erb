@@ -1,0 +1,36 @@
+<div class="row mt-4">
+
+    <div class="col-12">
+        <legend class="h5"><i class="fas fa-map-marker-alt"></i> Localisation</legend>
+        <hr>
+    </div>
+
+        <div class="col-xs-12 col-md-4">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+
+            <div class="mb-3">
+                <%= f.input :street, error: false, input_html: { class: "js-streetInput", value: "#{current_user.facility.street}" }, wrapper_html: { class: "mb-0" }, required: true %>
+                <%= f.error :street, class: "invalid-feedback d-block" %>
+            </div>
+
+            <%= f.input :additional_address, input_html: { value: "#{current_user.facility.additional_address}" } %>
+
+            <%= f.input :department, collection: [""]+DEPARTMENTS, input_html: { class: "js-select2Searchable js-departmentInput", data: { placeholder: "Selectionner un département" } }, selected: current_user.facility.department, required: true %>
+
+            <div class="row form-row">
+                <div class="col-12 col-md-3">
+                    <%= f.input :zipcode, input_html: { class: "js-zipcodeInput", value: "#{current_user.facility.zipcode}" }, required: true %>
+                </div>
+                <div class="col-12 col-md-9">
+                    <%= f.input :city, input_html: { class: "js-cityInput", value: "#{current_user.facility.city}" }, required: true %>
+                </div>
+            </div>
+
+        </div>
+
+</div>

@@ -16,22 +16,17 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 import 'bootstrap';
-import { profileEditNavbar } from '../components/nav';
 import { autoResizeTextarea } from '../components/auto_resize_textarea';
-import { dynamicsSignUpFormFields } from '../components/sign_up_form';
 import { dynamicsReplacementsOfferFormFields } from '../forms/replacements_offer_form';
 import { dynamicsEmploymentOfferFormFields } from '../forms/employment_offer_form';
 import { dynamicsPatientTransferOfferFormFields } from '../forms/patient_transfer_offer_form';
 import { dynamicsEstablishmentOfferFormFields } from '../forms/establishment_offer_form';
 import { cleanOffersFiltersForm } from '../components/offers_filters_form';
-import { autoCalculateRetrocession } from '../components/auto_calculate_retrocession';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAddressSearch, initAddressAutocomplete } from '../plugins/init_algolia_places';
 import { initSelect2Searchable, initSelect2 } from '../plugins/init_select2';
 
 document.addEventListener('turbolinks:load', function() {
-    profileEditNavbar();
-    dynamicsSignUpFormFields();
     dynamicsReplacementsOfferFormFields();
     dynamicsEmploymentOfferFormFields();
     dynamicsPatientTransferOfferFormFields();
@@ -42,7 +37,6 @@ document.addEventListener('turbolinks:load', function() {
     initSelect2();
     initSelect2Searchable();
     autoResizeTextarea();
-    autoCalculateRetrocession();
     initMapbox();
     window.addEventListener('resize', initMapbox);
 })

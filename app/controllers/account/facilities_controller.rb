@@ -1,6 +1,23 @@
 class Account::FacilitiesController < ApplicationController
     before_action :set_facility, only: [:edit, :update, :delete_facility_attachment]
 
+    def new
+        @facility = Facility.new
+        authorize @facility
+      end
+
+      def create
+        @facility = Facility.create(facility_params)
+        @facility.user_id = current_user.id
+        authorize @facility
+        if @facility.save
+            flash[:notice] = "Votre établissement a bien été créé."
+            redirect_to edit_account_facility_path(@facility)
+        else
+            render 'new'
+        end
+      end
+
     def edit
         authorize @facility
     end
@@ -8,6 +25,7 @@ class Account::FacilitiesController < ApplicationController
     def update
         authorize @facility
         if @facility.update(facility_params)
+            flash[:notice] = "Votre établissement a bien été modifié."
             redirect_to edit_account_facility_path(@facility)
         else
             render :edit
@@ -28,6 +46,6 @@ class Account::FacilitiesController < ApplicationController
     end
 
     def facility_params
-        params.require(:facility).permit(:name, :category, :finess_number, :description, :street, :additional_address, :department, :zipcode, :city, :same_address, photos: [])
+        params.require(:facility).permit(:name, :category, :description, :street, :additional_address, :department, :zipcode, :city, photos: [])
     end
 end

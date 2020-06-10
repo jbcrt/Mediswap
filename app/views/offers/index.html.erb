@@ -6,7 +6,7 @@
         
             <div class="form-row p-2 mb-3">
                 <div class="col-12 col-md-4 col-xl-5 mb-2 mb-md-0">
-                    <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), selected: params[:profession], input_html: { name: "profession", class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, label_method: :second, value_method: :first %>
+                    <%= f.input :profession, collection: PROFESSIONS, selected: params[:profession], input_html: { name: "profession", class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } } %>
                 </div>
                 <div class="col-12 col-md-4 col-xl-5 mb-2 mb-md-0">
                     <%= f.input :location, input_html: { name: "location", class: "js-autoCitySearch form-control mr-2", placeholder: "Ville", value: "#{params[:location]}" } %>

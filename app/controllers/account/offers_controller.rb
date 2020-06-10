@@ -11,7 +11,7 @@ class Account::OffersController < ApplicationController
   def update
     if @offer.update(offer_params)
       flash[:notice] = "Votre annonce a bien été modifiée."
-      redirect_to edit_account_offer_path(@offer)
+      redirect_to offer_path(@offer)
     else
       render :edit
     end

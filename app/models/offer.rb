@@ -16,7 +16,6 @@ class Offer < ApplicationRecord
 
   # Before validation communs
   before_validation :set_profession, on: :create, if: ->(obj){ obj.set_profession? }
-  before_validation :set_location, on: :create, if: ->(obj){ obj.same_address? }
 
   # Géolocalisation
   geocoded_by :address
@@ -54,7 +53,7 @@ class Offer < ApplicationRecord
 
   # Validations des champs obligatoires pour tous les types d'offre
   validates :title, length: { in: 1..50 }
-  validates :profession, inclusion: { in: PROFESSIONS.keys }
+  validates :profession, inclusion: { in: PROFESSIONS }
   validates :description, length: { in: 1..2500 }
   validates :street, length: { in: 1..50 }
   validates :additional_address, length: { in: 1..50 }, allow_blank: true
@@ -71,26 +70,14 @@ class Offer < ApplicationRecord
     street_changed? || department_changed? || zipcode_changed? || city_changed?
   end
 
-  def same_address?
-    self.user.facility.same_address
-  end
-
   def set_profession?
-    self.user.user_type == "health_professional" && self.type != "Establishment"
+    self.type != "Establishment"
   end
 
   private
 
-  def set_location
-    self.street = self.user.facility.street
-    self.additional_address = self.user.facility.additional_address
-    self.department = self.user.facility.department
-    self.zipcode = self.user.facility.zipcode
-    self.city = self.user.facility.city
-  end
-
   def set_profession
-    self.profession = self.user.profession
+    self.profession = self.user.profile.profession
   end
 
 end

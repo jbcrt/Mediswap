@@ -34,7 +34,7 @@
     </div>
 
     <div class="offer-card-info d-flex flex-wrap mt-2">
-        <div class="badge badge-primary-alt badge-big fw600 m-1"><i class="fas fa-user-md mr-1"></i><%= PROFESSIONS[offer.profession] %></div>
+        <div class="badge badge-primary-alt badge-big fw600 m-1"><i class="fas fa-user-md mr-1"></i><%= offer.profession %></div>
         <div class="badge badge-primary-alt badge-big fw600 m-1"><i class="fas fa-file-contract mr-1"></i><%= OFFERS["offer_types"][offer.contract_type] %></div>
         <% if !offer.starts_at.nil? %>
             <% if !offer.ends_at.nil? %>

@@ -32,25 +32,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string   :unlock_token # Only if unlock strategy is :email or :both
       t.datetime :locked_at
 
-      ## Admin
+      ## User role
       t.boolean :admin, null: false, default: false
-      
-      ## User informations
-      t.string :avatar_id
-      t.string :user_type
-      t.boolean :candidate
-      ## Personnal informations
-      t.string :title
-      t.string :first_name
-      t.string :last_name
-      t.date :birth_date
-      t.string :phone_number
-      ## professional informations
-      t.string :profession
-      t.string :professional_id_number
-      t.string :mssante_email
-      t.string :council_id_number
-      t.string :council_department
 
       ## Created at & Updated at
       t.timestamps null: false

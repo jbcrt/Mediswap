@@ -2,26 +2,7 @@
 
     <%= f.error_notification %>
 
-    <div class="row mt-4">
-
-        <div class="col-12">
-            <legend class="h5"><i class="far fa-newspaper"></i> Votre annonce</legend>
-            <hr>
-        </div>
-
-        <div class="col-xs-12 col-md-4">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </div>
-
-        <div class="col-xs-12 col-md-8">
-            <%= f.input :title, required: true %>
-
-            <%= f.input :description, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
-        </div>
-
-    </div>
+    <%= render 'offers/forms/partials/offer_block', f: f %>
 
     <div class="row mt-4">
 
@@ -73,103 +54,14 @@
 
             <%= f.input :premises_availability, as: :radio_buttons, collection: PatientTransfer.premises_availabilities.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-premisesAvailabilityRadio" }, required: true %>
 
-            <div class="row form-row">
-                <div class="col-xs-12 col-md-6">
-                    <%= f.input :premises_price, input_html: { class: "js-priceField" }, wrapper: :input_group, append: "€", wrapper_html: { class: "js-priceFieldWrapper" }, required: true %>
-                    <%= f.input :premises_rent, input_html: { class: "js-rentField" }, wrapper: :input_group, append: "€ / mois", wrapper_html: { class: "js-rentFieldWrapper" }, required: true %>
-                </div>
-            </div>
-
-            <div class="row form-row">
-                <div class="col-xs-12 col-md-6">
-                    <%= f.input :premises_size, wrapper: :input_group, append: "m²", required: true %>
-                </div>
-            </div>
-
-            <div class="row form-row">
-                <div class="col-xs-12 col-md-6">
-                    <%= f.input :premises_rooms_number, wrapper: :input_group, append: "pièce(s)", required: true %>
-                </div>
-            </div>
-
-            <%= f.input :premises_furnished, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-premisesFurnishedRadio" }, required: true %>
-
-            <%= f.input :premises_equipment, as: :text, input_html: { class: "js-autoResizeTextarea js-premisesEquipmentField"}, wrapper_html: { class: "js-premisesEquipmentFieldWrapper" }, required: true %>
-
-            <%= f.input :premises_has_parking, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
-
-            <%= f.input :accessible_premises, as: :radio_buttons, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', required: true %>
+            <%= render 'offers/forms/partials/premises_information_block', f: f %>
 
         </div>
 
     </div>
 
-    <div class="row mt-4">
+    <%= render 'offers/forms/partials/address_block', f: f %>
 
-        <div class="col-12">
-            <legend class="h5"><i class="fas fa-map-marker-alt"></i> Localisation</legend>
-            <hr>
-        </div>
-
-        <% if current_user.facility.same_address? %>
-
-            <div class="col-xs-12 col-md-4">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-
-            <div class="col-xs-12 col-md-8">
-
-                <p>
-                    Conformément à vos préférences, votre annonce apparaitra au <b><%= current_user.facility.street %></b> à <b><%= current_user.facility.city %></b>.
-                </p>
-                <div class="row">
-                    <div class="col-12 col-md-8">
-                        <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+48A9A6(#{current_user.facility.longitude},#{current_user.facility.latitude})/#{current_user.facility.longitude},#{current_user.facility.latitude},14/600x450@2x?access_token=#{ENV['MAPBOX_API_KEY']}", class: "img-fluid img-thumbnail mb-2" %>
-                    </div>
-                </div>
-
-            </div>
-
-        <% else %>
-
-            <div class="col-xs-12 col-md-4">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-
-            <div class="col-xs-12 col-md-8">
-
-                <div class="mb-3">
-                    <%= f.input :street, error: false, input_html: { class: "js-streetInput" }, wrapper_html: { class: "mb-0" }, required: true %>
-                    <%= f.error :street, class: "invalid-feedback d-block" %>
-                </div>
-
-                <%= f.input :additional_address %>
-
-                <%= f.input :department, collection: [""]+DEPARTMENTS, input_html: { class: "js-select2Searchable js-departmentInput", data: { placeholder: "Selectionner un département" } }, required: true %>
-                <div class="row form-row">
-                    <div class="col-12 col-md-3">
-                        <%= f.input :zipcode, input_html: { class: "js-zipcodeInput" }, required: true %>
-                    </div>
-                    <div class="col-12 col-md-9">
-                        <%= f.input :city, input_html: { class: "js-cityInput" }, required: true %>
-                    </div>
-                </div>
-            </div>
-
-        <% end %>
-
-    </div>
-
-    <div class="form-actions d-none d-lg-flex justify-content-end">
-        <%= f.button :submit, "Modifier mon annonce", :class => "btn btn-primary" %>
-    </div>
-
-    <div class="form-actions d-block d-lg-none">
-        <%= f.button :submit, "Modifier mon annonce", :class => "btn btn-primary btn-block" %>
-    </div>
+    <%= render 'offers/forms/partials/create_offer_buttons', f: f, action_label: "Modifier mon annonce" %>
 
 <% end %>

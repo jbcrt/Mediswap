@@ -1,43 +1,39 @@
 <div class="container my-5">
-  <div class="row">
+    <div class="row">
     <div class="col-xs-12 col-lg-6 offset-lg-3">
-      
-      <h1>Créez votre compte</h1>
-      <hr>
+        
+        <h1>Créez votre compte</h1>
+        <hr>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "js-signUpForm", name: "signUpForm"}) do |f| %>
 
-          <%= f.error_notification %>
+            <%= f.error_notification %>
 
-          <div class="form-inputs">
-              <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
-              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
-              <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
-              <%= f.input :title, as: :radio_buttons, collection: User.titles.symbolize_keys.keys %>
-              <div class="form-row">
-                <div class="col-xs-12 col-md-6">
-                  <%= f.input :first_name %>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                <%= f.input :last_name %>
-                </div>
-              </div>
-              <%= f.input :user_type, as: :radio_buttons, collection: User.user_types.symbolize_keys.keys, input_html: { class: "js-userTypeRadio" } %>
-              <%= f.input :profession, collection: {"" => ""}.merge(PROFESSIONS), input_html: { class: "js-select2Searchable js-userProfessionField", data: { placeholder: "Selectionner une profession" } }, label_method: :second, value_method: :first, required: true %>
+            <div class="form-inputs">
+                <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+                <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+                <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+                <%= f.fields_for :profile do |profile| %>
+                    <%= profile.input :title, as: :radio_buttons, collection: Profile.titles.symbolize_keys.keys %>
+                    <div class="form-row">
+                        <div class="col-xs-12 col-md-6">
+                            <%= profile.input :first_name %>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <%= profile.input :last_name %>
+                        </div>
+                    </div>
+                    <%= profile.input :profession, collection: PROFESSIONS, input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, required: true %>
+                    <%= profile.input :professional_id_number, required: true %>
+                <% end %>
+            </div>
 
-              <%= f.fields_for :facility do |c| %>
-                <%= c.input :name, input_html: { class: "js-userFacilityNameField" }, required: true %>
-                <%= c.input :category, collection: {"" => ""}.merge(FACILITY_CATEGORIES), input_html: { class: "js-select2Searchable js-userFacilityCategoryField", data: { placeholder: "Selectionner une catégorie d'établissement" } }, label_method: :second, value_method: :first, required: true %>
-                <%= c.input :finess_number, input_html: { class: "js-userFacilityFinessNumberField" }, required: true %>
-              <% end %>
-          </div>
-
-          <div class="form-actions mt-4">
-            <%= f.button :submit, "Créer mon compte", :class => "btn btn-primary btn-block" %>
-          </div>
+            <div class="form-actions mt-4">
+                <%= f.button :submit, "Créer mon compte", :class => "btn btn-primary btn-block" %>
+            </div>
 
         <% end %>
 
-      <%= render "users/shared/links" %>
+        <%= render "users/shared/links" %>
     </div>
-  </div>
+    </div>
 </div>

@@ -62,7 +62,7 @@ class Establishment < Offer
 
     private
 
-    def set_contract_type_value
+    def set_contract_type_values
         if self.cession_local?
             self.premises_rent = nil
         elsif self.location_local?

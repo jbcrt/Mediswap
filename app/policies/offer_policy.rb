@@ -10,7 +10,8 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def create?
-    user.facility.completed == true
+    true
+    # user.facility.completed == true
   end
 
   def show?

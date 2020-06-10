@@ -1,35 +1,20 @@
 class Facility < ApplicationRecord
     belongs_to :user
-
     has_many_attached :photos
 
     geocoded_by :address
     after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
-
-    with_options if: Proc.new { |a| a.user.user_type == "health_professional" } do |health_professional|
-        health_professional.validates :name, presence: true, length: { in: 1..50 }, on: :update
-        health_professional.validates :category, presence: true, inclusion: { in: FACILITY_CATEGORIES.keys }, on: :update
-        health_professional.validates :finess_number, absence: true
-    end
     
-    with_options if: Proc.new { |a| a.user.user_type == "health_facility_recruiter" } do |health_facility_recruiter|
-        health_facility_recruiter.validates :name, presence: true, length: { in: 1..50 }
-        health_facility_recruiter.validates :category, presence: true, inclusion: { in: FACILITY_CATEGORIES.keys }
-        health_facility_recruiter.validates :finess_number, presence: true, length: { is: 9 }, numericality: { only_integer: true }
-    end
-
-    validates :description, presence: true, length: { in: 1..10000 }, on: :update
-    #  validates :phone_number, format: { with: /\A^(?:33|0)\s*[1-9](?:[\.]\d{2}){4}$\z/ }, allow_blank: true
-    #  validates :email_address, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }, allow_blank: true
-    validates :street, presence: true, length: { in: 1..50 }, on: :update
+    validates :name, presence: true, length: { in: 1..50 }
+    validates :category, presence: true, inclusion: { in: FACILITY_CATEGORIES }
+    validates :description, presence: true, length: { in: 1..10000 }
+    validates :street, presence: true, length: { in: 1..50 }
     validates :additional_address, length: { in: 1..50 }, allow_blank: true
-    validates :department, presence: true, inclusion: { in: DEPARTMENTS }, on: :update
-    validates :zipcode, presence: true, length: { is: 5 }, format: { with: /\A^(?:[0-8]\d|9[0-8])\d{3}$\z/ }, on: :update
-    validates :city, presence: true, length: { in: 1..50 }, format: { with: /\A^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$\z/ }, on: :update
+    validates :department, presence: true, inclusion: { in: DEPARTMENTS }
+    validates :zipcode, presence: true, length: { is: 5 }, format: { with: /\A^(?:[0-8]\d|9[0-8])\d{3}$\z/ }
+    validates :city, presence: true, length: { in: 1..50 }, format: { with: /\A^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$\z/ }
     validates :photos, limit: { min: 0, max: 3 },
                        content_type: [:png, :jpg, :jpeg]
-
-    before_update :check_validity
 
     def address
         [street, department, zipcode, city].compact.join(', ')
@@ -37,14 +22,6 @@ class Facility < ApplicationRecord
 
     def address_changed?
         street_changed? || department_changed? || zipcode_changed? || city_changed?
-    end
-
-    private
-    
-    def check_validity
-        if self.valid?
-            self.completed = true
-        end
     end
 
 end

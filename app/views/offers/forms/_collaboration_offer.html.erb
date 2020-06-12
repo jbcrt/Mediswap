@@ -5,7 +5,7 @@
 
             <%= f.error_notification %>
 
-            <%= render 'offers/forms/partials/offer_block', f: f %>
+            <%= render 'partials/offers_forms/offer_block', f: f %>
 
             <div class="row mt-4">
 
@@ -34,13 +34,13 @@
 
             </div>
 
-            <%= render 'offers/forms/partials/additional_information_block', f: f %>
+            <%= render 'partials/offers_forms/additional_information_block', f: f %>
 
-            <%= render 'offers/forms/partials/address_block', f: f %>
+            <%= render 'partials/offers_forms/address_block', f: f %>
 
-            <%= render 'offers/forms/partials/offer_type_block', f: f, offer_type_label: "collaboration" %>
+            <%= render 'partials/offers_forms/offer_type_block', f: f, offer_type_label: "collaboration" %>
 
-            <%= render 'offers/forms/partials/create_offer_buttons', f: f, action_label: "Publier mon annonce" %>
+            <%= render 'partials/offers_forms/create_offer_buttons', f: f, action_label: "Publier mon annonce" %>
 
         <% end %>
     </div>

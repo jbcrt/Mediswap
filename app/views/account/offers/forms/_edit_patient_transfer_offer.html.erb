@@ -2,7 +2,7 @@
 
     <%= f.error_notification %>
 
-    <%= render 'offers/forms/partials/offer_block', f: f %>
+    <%= render 'partials/offers_forms/offer_block', f: f %>
 
     <div class="row mt-4">
 
@@ -54,14 +54,14 @@
 
             <%= f.input :premises_availability, as: :radio_buttons, collection: PatientTransfer.premises_availabilities.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-premisesAvailabilityRadio" }, required: true %>
 
-            <%= render 'offers/forms/partials/premises_information_block', f: f %>
+            <%= render 'partials/offers_forms/premises_information_block', f: f %>
 
         </div>
 
     </div>
 
-    <%= render 'offers/forms/partials/address_block', f: f %>
+    <%= render 'partials/offers_forms/address_block', f: f %>
 
-    <%= render 'offers/forms/partials/create_offer_buttons', f: f, action_label: "Modifier mon annonce" %>
+    <%= render 'partials/offers_forms/create_offer_buttons', f: f, action_label: "Modifier mon annonce" %>
 
 <% end %>

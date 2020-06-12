@@ -2,7 +2,7 @@
 
     <%= f.error_notification %>
 
-    <%= render 'offers/forms/partials/offer_block', f: f %>
+    <%= render 'partials/offers_forms/offer_block', f: f %>
 
     <div class="row mt-4">
 
@@ -59,8 +59,8 @@
 
     </div>
 
-    <%= render 'offers/forms/partials/address_block', f: f %>
+    <%= render 'partials/offers_forms/address_block', f: f %>
 
-    <%= render 'offers/forms/partials/create_offer_buttons', f: f, action_label: "Modifier mon annonce" %>
+    <%= render 'partials/offers_forms/create_offer_buttons', f: f, action_label: "Modifier mon annonce" %>
 
 <% end %>

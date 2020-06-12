@@ -65,7 +65,6 @@ class OffersController < ApplicationController
       case type
       when "replacement"
         params.require(:replacement).permit(
-          :title,
           :description,
           :street,
           :additional_address,
@@ -89,7 +88,6 @@ class OffersController < ApplicationController
         )
       when "employment"
         params.require(:employment).permit(
-          :title,
           :description,
           :street,
           :additional_address,
@@ -108,7 +106,6 @@ class OffersController < ApplicationController
         )
       when "collaboration"
         params.require(:collaboration).permit(
-          :title,
           :description,
           :street,
           :additional_address,
@@ -129,7 +126,6 @@ class OffersController < ApplicationController
         )
       when "patient_transfer"
         params.require(:patient_transfer).permit(
-          :title,
           :description,
           :street,
           :additional_address,
@@ -152,7 +148,6 @@ class OffersController < ApplicationController
         )
       when "establishment"
         params.require(:establishment).permit(
-          :title,
           :description,
           :street,
           :additional_address,

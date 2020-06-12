@@ -1,11 +1,9 @@
 <div class="container offer-show mb-3 mt-5">
 
     <div class="d-flex flex-column justify-content-center align-items-center mb-5">
-        <h1 class="h2 text-center"><%= @offer.title %></h1>
+        <h1 class="h2 text-center"><%= OFFERS["offer_types"][@offer.contract_type] %> • <%= @offer.profession %></h1>
         <div class="d-flex flex-wrap justify-content-center text-secondary">
-            <div class="mx-2 mb-1"><i class="fas fa-user-md mr-1"></i> <%= @offer.profession %></div>
-            <div class="mx-2 mb-1"><i class="fas fa-file-contract mr-1"></i> <%= OFFERS["offer_types"][@offer.contract_type] %></div>
-            <div class="mx-2 mb-1"><i class="fas fa-map-marker-alt mr-1"></i> <%= @offer.city %> (<%= @offer.zipcode.slice(0,2) %>)</div>
+            <div class="mx-1 mb-1"><i class="fas fa-map-marker-alt mr-1"></i> <%= @offer.city %> (<%= @offer.zipcode.slice(0,2) %>)</div>
         </div>
         <div class="d-flex justify-content-center">
             <div class="text-secondary font-weight-light font-italic">

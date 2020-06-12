@@ -6,81 +6,37 @@
 }
 
 .price-card {
-    
-    width: 290px;
-    height: 327px;
-    border-radius: 4px;
-    position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    background-color: $white;
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    
+
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    border-radius: 8px;
+
     .price-card-header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 4px 4px 0 0;
-        font-family: $headers-font;
-        color: $white;
-        background-color: $medigreen;
-        height: 53px;
-        
-        .price-card-title {
-            font-size: 20px;
-        }
-        
-    }
-    
-    .price-card-body {
-        
-        height: max-content;
-        padding: 1rem;
-        text-align: center;
-        
+        padding: 2rem;
+
         .price-card-price {
-            font-size: 28px;
-            font-weight: 500;
-            span {
-                font-size: 18px;
-                color: $gray;
-            }
+            font-size: 3rem;
+            font-weight: 600;
         }
-        
-        .price-card-content {
-            margin-top: 1rem;
-            
-            ul {
-                padding: 0;
-                
-                li {
-                    list-style-type: none;
-                }
-                
-            }
-            
-            span {
-                color: $medigreen;
-            }
-            
-        }
-        
-        .price-card-cta {
-            position: absolute;
-            width: 258px;
-            bottom: 1rem;
-        }
-        
     }
-    
-    &:hover {
-        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+    .price-card-body {
+        flex-grow: 2;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        padding: 2rem;
+        background-color: $lightest-medigreen;
+        color: $dark-gray;
     }
+
 }
 
 // Card d'offre dans l'index des offres
 
 .offer-card {
     @include card;
+    flex-grow: 2;
     margin-bottom: 1rem;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     &:hover {
@@ -93,16 +49,15 @@
         margin-bottom: 0.15rem;
     }
     
-    .offer-card-facility-info {
+    .offer-card-subtitle {
         color: $gray;
         font-weight: 400;
         font-size: 0.8rem;
         text-transform: uppercase;
     }
 
-    .offer-card-bottom {
-        color: $light-gray;
-        font-size: 0.75rem;
+    .offer-card-info {
+        margin-left: -4px;
     }
 
 }

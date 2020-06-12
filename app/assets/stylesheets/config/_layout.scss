@@ -4,8 +4,9 @@ body {
 }
 
 main.content {
-    margin-top: 74px;
+    margin-top: 62px;
 }
+
 
 .offers-index-layout {
     display: flex;
@@ -20,9 +21,9 @@ main.content {
     
     .map {
         position: sticky;
-        top: 74px;
+        top: 62px;
         flex: 0 0 40%;
-        height: calc(100vh - 74px);
+        height: calc(100vh - 62px);
     }
 
 }

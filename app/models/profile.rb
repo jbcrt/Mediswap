@@ -11,8 +11,8 @@ class Profile < ApplicationRecord
     }
 
     validates :title, presence: true, inclusion: { in: Profile.titles.keys }
-    validates :first_name, presence: true, format: { with: /\A^[a-zA-ZÀ-ÿ-.' ]*$\z/ }
-    validates :last_name, presence: true, format: { with: /\A^[a-zA-ZÀ-ÿ-.' ]*$\z/ }
+    validates :first_name, presence: true, format: { with: /\A^[a-zA-ZÀ-ÿ\-.' ]*$\z/ }
+    validates :last_name, presence: true, format: { with: /\A^[a-zA-ZÀ-ÿ\-.' ]*$\z/ }
     validates :profession, presence: true, inclusion: { in: PROFESSIONS }
     validates :professional_id_number, presence: true, numericality: { only_integer: true }, length: { in: 9..11 }
 

@@ -25,6 +25,7 @@ import { cleanOffersFiltersForm } from '../components/offers_filters_form';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAddressSearch, initAddressAutocomplete } from '../plugins/init_algolia_places';
 import { initSelect2Searchable, initSelect2 } from '../plugins/init_select2';
+import { addShadowToSelect2 } from '../views/landing_page';
 
 document.addEventListener('turbolinks:load', function() {
     dynamicsReplacementsOfferFormFields();
@@ -39,4 +40,5 @@ document.addEventListener('turbolinks:load', function() {
     autoResizeTextarea();
     initMapbox();
     window.addEventListener('resize', initMapbox);
+    addShadowToSelect2();
 })

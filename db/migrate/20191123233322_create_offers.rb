@@ -5,7 +5,6 @@ class CreateOffers < ActiveRecord::Migration[6.0]
 
       # Offer's informations
       t.string :type
-      t.string :title
       t.string :contract_type
       t.string :profession
       t.text :description

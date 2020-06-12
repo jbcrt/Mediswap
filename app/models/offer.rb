@@ -52,7 +52,6 @@ class Offer < ApplicationRecord
   }
 
   # Validations des champs obligatoires pour tous les types d'offre
-  validates :title, length: { in: 1..50 }
   validates :profession, inclusion: { in: PROFESSIONS }
   validates :description, length: { in: 1..2500 }
   validates :street, length: { in: 1..50 }

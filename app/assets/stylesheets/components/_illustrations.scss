@@ -1,24 +1,65 @@
 .health-facility-missed-background-illustration {
-    height: 600px;
-    opacity: 0.33;
-    margin: -48px 0;
     z-index: -48;
+    opacity: 0.33;
+    height: 300px;
+    margin-bottom: -24px;
 }
 
 .empty-illustration {
-    height: 350px;
-    opacity: 0.7;
+    height: 200px;
 }
 
-@media (max-width: 576px) {
+.main-landing-illustration {
+    max-width: 100%;
+    height: auto;
+}
+
+.landing-illustration {
+    max-width: 100%;
+    height: auto;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+    .empty-illustration {
+        height: 350px;
+        opacity: 0.7;
+    }
 
     .health-facility-missed-background-illustration {
-        height: 300px;
-        margin-bottom: -24px;
+        height: 600px;
+        margin: -48px 0;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    .main-landing-illustration {
+        max-width: 80%;
     }
 
-    .empty-illustration {
-        height: 200px;
+    .landing-illustration {
+        max-width: 70%;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .main-landing-illustration {
+        max-width: 70%;
+    }
+    .landing-illustration {
+        max-width: 60%;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .main-landing-illustration {
+        max-width: none;
     }
 
+    .landing-illustration {
+        max-width: 100%;
+    }
 }

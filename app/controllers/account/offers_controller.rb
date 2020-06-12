@@ -36,7 +36,6 @@ class Account::OffersController < ApplicationController
   def offer_params
     if params[:replacement]
       params.require(:replacement).permit(
-        :title,
         :description,
         :street,
         :additional_address,
@@ -58,7 +57,6 @@ class Account::OffersController < ApplicationController
       )
     elsif params[:employment]
       params.require(:employment).permit(
-        :title,
         :description,
         :street,
         :additional_address,
@@ -75,7 +73,6 @@ class Account::OffersController < ApplicationController
       )
     elsif params[:collaboration]
       params.require(:collaboration).permit(
-        :title,
         :description,
         :street,
         :additional_address,
@@ -94,7 +91,6 @@ class Account::OffersController < ApplicationController
       )
     elsif params[:patient_transfer]
       params.require(:patient_transfer).permit(
-        :title,
         :description,
         :street,
         :additional_address,
@@ -116,7 +112,6 @@ class Account::OffersController < ApplicationController
       )
     elsif params[:establishment]
       params.require(:establishment).permit(
-        :title,
         :description,
         :street,
         :additional_address,

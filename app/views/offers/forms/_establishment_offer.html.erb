@@ -5,7 +5,7 @@
 
             <%= f.error_notification %>
 
-            <%= render 'offers/forms/partials/offer_block', f: f %>
+            <%= render 'partials/offers_forms/offer_block', f: f %>
 
             <div class="row mt-4">
 
@@ -30,17 +30,17 @@
 
                     <%= f.input :contract_type, as: :radio_buttons, collection: Establishment.contract_types.symbolize_keys.keys, wrapper: :custom_collection, item_wrapper_class: 'custom-control custom-radio', input_html: { class: "js-establishmentContractTypeRadio" }, required: true %>
 
-                    <%= render 'offers/forms/partials/premises_information_block', f: f %>
+                    <%= render 'partials/offers_forms/premises_information_block', f: f %>
 
                 </div>
 
             </div>
 
-            <%= render 'offers/forms/partials/address_block', f: f %>
+            <%= render 'partials/offers_forms/address_block', f: f %>
 
-            <%= render 'offers/forms/partials/offer_type_block', f: f, offer_type_label: "establishment" %>
+            <%= render 'partials/offers_forms/offer_type_block', f: f, offer_type_label: "establishment" %>
 
-            <%= render 'offers/forms/partials/create_offer_buttons', f: f %>
+            <%= render 'partials/offers_forms/create_offer_buttons', f: f, action_label: "Publier mon annonce" %>
 
         <% end %>
     </div>

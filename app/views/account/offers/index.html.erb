@@ -22,9 +22,9 @@
                         <% @offers.each do |offer| %>
                             <li class="list-group-item d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center <%= "no-border-top" if offer == @offers.first %><%= "no-border-bottom" if offer == @offers.last %>">
                                 <div class="offer-infos my-2">
-                                    <h6 class="mb-1"><%= offer.title %> <% if offer.offer_type == "premium" %><span><i class="fas fa-crown text-warning"></i><span><% end %></h6>
+                                    <h6 class="mb-1"><%= OFFERS["offer_types"][offer.contract_type] %> <% if offer.offer_type == "premium" %><span><i class="fas fa-crown text-warning"></i><span><% end %></h6>
                                     <div class="text-gray font-weight-light fs90">
-                                        Offre de <span class="font-weight-normal"><%= OFFERS["offer_types"][offer.contract_type] %></span> pour <span class="font-weight-normal"><%= offer.profession %></span> postée le <span class="font-weight-normal"><%= l offer.created_at.to_date, format: :long %></span>.
+                                        Offre postée le <span class="font-weight-normal"><%= l offer.created_at.to_date, format: :long %></span>.
                                     </div>
                                 </div>
                                 <div class="offer-controls">

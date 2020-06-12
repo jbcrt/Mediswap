@@ -33,6 +33,8 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'active_storage_validations'
 # Validations
 gem 'validates_timeliness', '~> 5.0.0.alpha3'
+# Faker
+gem 'faker'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

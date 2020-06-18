@@ -10,9 +10,11 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   
-  get 'contact', to: 'pages#contact', as: :contact
+  get 'faq', to: 'pages#faq', as: :faq
+  get 'legal', to: 'pages#legal', as: :legal
   get 'terms', to: 'pages#terms', as: :terms
   get 'privacy', to: 'pages#privacy', as: :privacy
+  get 'contact', to: 'pages#contact', as: :contact
   get 'offers/new_offer', to: 'pages#new_offer', as: :new_offer
   
   resources :offers , only: [:index, :show]

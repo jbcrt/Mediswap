@@ -7,13 +7,19 @@ class PagesController < ApplicationController
     @offers = Offer.where(offer_type: "Premium").order(created_at: :desc).first(6)
   end
 
-  def contact
+  def faq
+  end
+
+  def legal
   end
 
   def terms
   end
 
   def privacy
+  end
+
+  def contact
   end
 
   def new_offer

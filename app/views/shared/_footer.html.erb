@@ -5,18 +5,17 @@
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center text-sm-left">
                 <h3 class="h5">Notre service</h3>
                 <nav class="flex-column">
-                    <%= link_to 'Mise en relation', root_path(anchor: 'search'), class: "nav-link px-0 text-body" %>
-                    <%= link_to 'Contrat et signature', root_path(anchor: 'contract'), class: "nav-link px-0 text-body" %>
-                    <%= link_to 'Applications mobiles', root_path(anchor: 'mobile-app'), class: "nav-link px-0 text-body" %>
-                    <%= link_to 'Prix', root_path(anchor: 'prices'), class: "nav-link px-0 text-body" %>
-                    <%= link_to 'FAQ', privacy_path, class: "nav-link px-0 text-body" %>
+                    <%= link_to 'Candidats', root_path(anchor: 'candidates'), class: "nav-link px-0 text-body" %>
+                    <%= link_to 'Professionnels installés', root_path(anchor: 'recruiters'), class: "nav-link px-0 text-body" %>
+                    <%= link_to 'Tarifs', root_path(anchor: 'prices'), class: "nav-link px-0 text-body" %>
+                    <%= link_to 'FAQ', faq_path, class: "nav-link px-0 text-body" %>
                 </nav>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5 mt-sm-0 text-center text-sm-left">
                 <h3 class="h5">Informations légales</h3>
                 <nav class="flex-column">
-                    <%= link_to 'Mentions légales', terms_path, class: "nav-link px-0 text-body" %>
-                    <%= link_to "Conditions d'utilisation", privacy_path, class: "nav-link px-0 text-body" %>
+                    <%= link_to 'Mentions légales', legal_path, class: "nav-link px-0 text-body" %>
+                    <%= link_to "Conditions d'utilisation", terms_path, class: "nav-link px-0 text-body" %>
                     <%= link_to 'Vie privée', privacy_path, class: "nav-link px-0 text-body" %>
                     <%= link_to 'Contact', contact_path, class: "nav-link px-0 text-body" %>
                 </nav>

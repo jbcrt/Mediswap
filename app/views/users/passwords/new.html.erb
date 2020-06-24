@@ -1,8 +1,9 @@
-<div class="container mt-5">
+<div class="container my-5">
+  <h1 class="text-center">Mot de passe oublié</h1>
+  <p class="text-center text-secondary">Saisissez votre adresse email pour recevoir le lien de réinitilisation de votre mot de passe.</p>
   <div class="row">
-    <div class="col-xs-12 col-lg-6 offset-lg-3">
-      <h2>Un oubli de mot de passe ?</h2>
-      <hr>
+    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <div class="custom-card">
       <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= f.error_notification %>
 
@@ -11,11 +12,10 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Réinitialiser mon mot de passe", :class => "btn btn-primary btn-block" %>
+          <%= f.button :submit, "Recevoir l'email de réinitilisation", :class => "btn btn-primary btn-block" %>
         </div>
       <% end %>
-
-      <%= render "users/shared/links" %>
+      </div>
     </div>
   </div>
 </div>

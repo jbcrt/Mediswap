@@ -1,5 +1,6 @@
 <div class="container my-5">
-  <h1 class="text-center mb-3">Mot de passe oublié</h1>
+  <h1 class="text-center">Mot de passe oublié</h1>
+  <p class="text-center text-secondary">Saisissez votre adresse email pour recevoir le lien de réinitilisation de votre mot de passe.</p>
   <div class="row">
     <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
       <div class="custom-card">
@@ -7,11 +8,11 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :email, label: "Saisissez votre adresse email", required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+          <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Réinitialiser mon mot de passe", :class => "btn btn-primary btn-block" %>
+          <%= f.button :submit, "Recevoir l'email de réinitilisation", :class => "btn btn-primary btn-block" %>
         </div>
       <% end %>
       </div>

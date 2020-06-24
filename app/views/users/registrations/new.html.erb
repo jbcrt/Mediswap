@@ -1,39 +1,38 @@
 <div class="container my-5">
+    <h1 class="text-center">Créez votre compte</h1>
+    <p class="text-center text-secondary">ou <%= link_to "connectez-vous", new_session_path(resource_name) %></p>
     <div class="row">
-    <div class="col-xs-12 col-lg-6 offset-lg-3">
-        
-        <h1>Créez votre compte</h1>
-        <hr>
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "js-signUpForm", name: "signUpForm"}) do |f| %>
+        <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+            <div class="custom-card">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "js-signUpForm", name: "signUpForm"}) do |f| %>
 
-            <%= f.error_notification %>
+                <%= f.error_notification %>
 
-            <div class="form-inputs">
-                <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
-                <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
-                <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
-                <%= f.fields_for :profile do |profile| %>
-                    <%= profile.input :title, as: :radio_buttons, collection: Profile.titles.symbolize_keys.keys %>
-                    <div class="form-row">
-                        <div class="col-xs-12 col-md-6">
-                            <%= profile.input :first_name %>
+                <div class="form-inputs">
+                    <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+                    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+                    <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+                    <%= f.fields_for :profile do |profile| %>
+                        <%= profile.input :title, as: :radio_buttons, collection: Profile.titles.symbolize_keys.keys %>
+                        <div class="form-row">
+                            <div class="col-xs-12 col-md-6">
+                                <%= profile.input :first_name %>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <%= profile.input :last_name %>
+                            </div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
-                            <%= profile.input :last_name %>
-                        </div>
-                    </div>
-                    <%= profile.input :profession, collection: PROFESSIONS, input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, required: true %>
-                    <%= profile.input :professional_id_number, required: true %>
-                <% end %>
+                        <%= profile.input :profession, collection: PROFESSIONS, input_html: { class: "js-select2Searchable", data: { placeholder: "Selectionner une profession" } }, required: true %>
+                        <%= profile.input :professional_id_number, required: true %>
+                    <% end %>
+                </div>
+
+                <div class="form-actions mt-4">
+                    <%= f.button :submit, "Créer mon compte", :class => "btn btn-primary btn-block" %>
+                </div>
+
+            <% end %>
             </div>
-
-            <div class="form-actions mt-4">
-                <%= f.button :submit, "Créer mon compte", :class => "btn btn-primary btn-block" %>
-            </div>
-
-        <% end %>
-
-        <%= render "users/shared/links" %>
-    </div>
+        </div>
     </div>
 </div>

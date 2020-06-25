@@ -53,8 +53,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem "letter_opener"
   gem 'dotenv-rails'
-  # Faker
-  gem 'faker'
   # Tests
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'

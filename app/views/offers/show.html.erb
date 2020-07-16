@@ -5,8 +5,8 @@
         <div class="d-flex flex-wrap justify-content-center text-secondary">
             <div class="mx-1 mb-1"><i class="fas fa-map-marker-alt mr-1"></i> <%= @offer.city %> (<%= @offer.zipcode.slice(0,2) %>)</div>
         </div>
-        <div class="d-flex justify-content-center">
-            <div class="text-secondary font-weight-light font-italic">
+        <div class="d-flex justify-content-center flex-column">
+            <div class="text-secondary text-center font-weight-light font-italic">
                 Annonce mise en ligne
                 <% if @offer.created_at.to_date == Date.today  %>
                     aujourd'hui
@@ -14,6 +14,37 @@
                     hier
                 <% else %>
                     il y a <%= (Date.today - @offer.created_at.to_date).to_i %> jours
+                <% end %>
+            </div>
+            <div class="d-flex justify-content-center flex-wrap">
+                <% if current_user %>
+                    <% if current_user.offer_applications.find_by applicable_id: "#{@offer.id}" %>
+                        <% if @offer.type == "Replacement" || @offer.type == "Employment" || @offer.type == "Collaboration" %>
+                        <div class="alert alert-primary my-2" role="alert">
+                            Vous avez postulé à cette annonce le <%= l (current_user.offer_applications.find_by applicable_id: "#{@offer.id}").created_at.to_date, format: :long %>.
+                        </div>
+                        <% elsif @offer.type == "PatientTransfer" || @offer.type == "Establishment" %>
+                        <div class="alert alert-primary my-2" role="alert">
+                            Vous avez pris contact le <%= l (current_user.offer_applications.find_by applicable_id: "#{@offer.id}").created_at.to_date, format: :long %>.
+                        </div>
+                        <% end %>
+                    <% elsif current_user != @offer.user && current_user.profile.profession == @offer.profession %>
+                        <% if @offer.type == "Replacement" || @offer.type == "Employment" || @offer.type == "Collaboration" %>
+                        <button type="button" class="btn btn-primary my-2 mx-2" data-toggle="modal" data-target="#createOfferApplicationModal">Postuler</button>
+                        <% elsif @offer.type == "PatientTransfer" || @offer.type == "Establishment" %>
+                        <button type="button" class="btn btn-primary my-2 mx-2" data-toggle="modal" data-target="#createOfferApplicationModal">Prendre contact</button>
+                        <% end %>
+                    <% else %>
+                        <div class="alert alert-warning my-2" role="alert">
+                            Vous ne pouvez pas postuler à cette annonce car vous n'êtes pas <%= @offer.profession.downcase %>.
+                        </div>
+                    <% end %>
+                <% else %>
+                    <% if @offer.type == "Replacement" || @offer.type == "Employment" || @offer.type == "Collaboration" %>
+                    <%= link_to 'Connectez-vous pour postuler', new_user_session_path, class: "btn btn-primary my-2 mx-2" %>
+                    <% elsif @offer.type == "PatientTransfer" || @offer.type == "Establishment" %>
+                    <%= link_to 'Connectez-vous pour prendre contact', new_user_session_path, class: "btn btn-primary my-2 mx-2" %>
+                    <% end %>
                 <% end %>
             </div>
         </div>
@@ -513,6 +544,12 @@
                         <span class="sr-only">Suivant</span>
                     </a>
                 </div>
+            <% end %>
+
+            <% if current_user %>
+                <% if current_user != @offer.user && current_user.profile.profession == @offer.profession %>
+                <%= render 'partials/offer_application/create_offer_application_modal', offer: @offer, offer_application: @offer_application %>
+                <% end %>
             <% end %>
 
         </div>

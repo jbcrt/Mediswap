@@ -1,5 +1,6 @@
 class Employment < Offer
     belongs_to :user
+    has_many :offer_applications, as: :applicable
 
     before_validation :set_conditional_values
 

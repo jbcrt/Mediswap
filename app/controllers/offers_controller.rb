@@ -27,6 +27,7 @@ class OffersController < ApplicationController
     def show
       @offer = Offer.find(params[:id])
       authorize @offer, policy_class: OfferPolicy
+      @offer_application = @offer.offer_applications.build
     end
 
     def new

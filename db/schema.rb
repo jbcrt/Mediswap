@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_083703) do
+ActiveRecord::Schema.define(version: 2020_06_25_113157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -52,6 +52,20 @@ ActiveRecord::Schema.define(version: 2020_06_01_083703) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_facilities_on_user_id"
+  end
+
+  create_table "offer_applications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "applicable_type"
+    t.uuid "applicable_id"
+    t.string "status"
+    t.text "application_text"
+    t.date "accepted_by_recruiter_at"
+    t.date "declined_by_recruiter_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["applicable_type", "applicable_id"], name: "index_offer_applications_on_applicable_type_and_applicable_id"
+    t.index ["user_id"], name: "index_offer_applications_on_user_id"
   end
 
   create_table "offers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -149,6 +163,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_083703) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "facilities", "users"
+  add_foreign_key "offer_applications", "users"
   add_foreign_key "offers", "users"
   add_foreign_key "profiles", "users"
 end

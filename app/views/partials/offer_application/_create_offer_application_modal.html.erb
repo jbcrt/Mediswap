@@ -1,0 +1,36 @@
+<div class="modal fade bd-example-modal-lg" id="createOfferApplicationModal" tabindex="-1" role="dialog" aria-labelledby="createOfferApplication" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <% if offer.type == "Replacement" || offer.type == "Employment" || offer.type == "Collaboration" %>
+                <h5 class="modal-title" id="createOfferApplicationModalTitle">Postuler</h5>
+                <% elsif offer.type == "PatientTransfer" || offer.type == "Establishment" %>
+                <h5 class="modal-title" id="createOfferApplicationModalTitle">Prendre contact</h5>
+                <% end %>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <%= simple_form_for [offer, offer_application], url: offer_offer_applications_path(offer_id: offer.id) do |f| %>
+                <div class="modal-body">
+                    <div class="alert alert-secondary" role="alert">
+                        <p class="text-secondary">Les informations suivantes seront automatiquement transmises à l'auteur de l'annonce afin qu'il puisse prendre contact avec vous et effectuer les vérifications nécessaires :</p>
+                        <ul class="text-secondary">
+                            <li>Votre prénom</li>
+                            <li>Votre nom</li>
+                            <li>Votre adresse email</li>
+                            <li>Votre numéro de téléphone (si vous l'avez indiqué dans votre profil)</li>
+                            <li>Votre numéro RPPS/ADELI (notamment pour vérifier votre diplôme)</li>
+                        </ul>
+                    </div>
+                    <%= f.error_notification %>
+                    <p class="text-secondary">Veuillez laisser un message afin de vous présenter et d'indiquer les informations qui vous semblent pertinentes (vos disponibilités, vos motivations, etc).</p>
+                    <%= f.input :application_text, label: false, as: :text, input_html: { class: "js-autoResizeTextarea"}, required: true %>
+                </div>
+                <div class="modal-footer">
+                    <%= f.button :submit, "Envoyer", :class => "btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@ const autoResizeTextarea = () => {
     const textareas = document.querySelectorAll('.js-autoResizeTextarea');
     if (textareas.length > 0) {
         textareas.forEach( textarea => {
-            if (textarea.content !== "") {
+            if (textarea.innerHTML !== "") {
                 textarea.style.height = (textarea.scrollHeight)+"px";
             }
             textarea.addEventListener("input" , function() {

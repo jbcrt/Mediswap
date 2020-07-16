@@ -1,5 +1,6 @@
 class Collaboration < Offer
     belongs_to :user
+    has_many :offer_applications, as: :applicable
 
     enum contract_type: { 
         assistanat: "Assistanat libéral",

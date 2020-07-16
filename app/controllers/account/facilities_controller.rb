@@ -4,9 +4,9 @@ class Account::FacilitiesController < ApplicationController
     def new
         @facility = Facility.new
         authorize @facility
-      end
+    end
 
-      def create
+    def create
         @facility = Facility.create(facility_params)
         @facility.user_id = current_user.id
         authorize @facility
@@ -16,7 +16,7 @@ class Account::FacilitiesController < ApplicationController
         else
             render 'new'
         end
-      end
+    end
 
     def edit
         authorize @facility

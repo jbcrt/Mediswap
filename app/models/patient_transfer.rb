@@ -1,5 +1,6 @@
 class PatientTransfer < Offer
     belongs_to :user
+    has_many :offer_applications, as: :applicable
 
     before_validation :set_contract_type_values, on: :create
     before_validation :set_conditional_values

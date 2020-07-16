@@ -1,5 +1,3 @@
-import { autoResizeTextarea } from '../components/auto_resize_textarea';
-
 const dynamicsPatientTransferOfferFormFields = () => {
     if (document.body.contains(document.querySelector('.js-patientTransferOfferForm'))) {
 
@@ -114,16 +112,13 @@ const dynamicsPatientTransferOfferFormFields = () => {
         const displayPremisesEquipmentField = () => {
             premisesEquipmentFieldWrapper.classList.remove("d-none");
             premisesEquipmentFieldWrapper.classList.add("d-block");
-            premisesEquipmentField.classList.add("js-autoResizeTextarea");
             premisesEquipmentField.required = true;
             premisesEquipmentField.disabled = false;
-            autoResizeTextarea();
         };
         
         const hidePremisesEquipmentField = () => {
             premisesEquipmentFieldWrapper.classList.add("d-none");
             premisesEquipmentFieldWrapper.classList.remove("d-block");
-            premisesEquipmentField.classList.remove("js-autoResizeTextarea");
             premisesEquipmentField.required = false;
             premisesEquipmentField.disabled = true;
         };

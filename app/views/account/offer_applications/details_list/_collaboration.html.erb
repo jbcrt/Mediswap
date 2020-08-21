@@ -1,0 +1,60 @@
+<dt class="col-lg-4">Raison sociale</dt>
+<dd class="col-lg-8"><%= application.applicable.user.facility.name %></dd>
+
+<dt class="col-lg-4">Localisation</dt>
+<dd class="col-lg-8"><%= application.applicable.city %></dd>
+
+<dt class="col-lg-4">Retrocession</dt>
+<dd class="col-lg-8"><%= application.applicable.retrocession %> / <%= 100 - application.applicable.retrocession.to_i %></dd>
+
+<% if !application.applicable.vehicle_required.nil? %>
+    <dt class="col-lg-4">Véhicule</dt>
+    <% if application.applicable.vehicle_required == true %>
+        <dd class="col-lg-8">Requis</dd>
+    <% else application.applicable.vehicle_required == false %>
+        <dd class="col-lg-8">Non requis</dd>
+    <% end %>
+<% end %>
+
+<% if !application.applicable.visit.blank? %>
+    <dt class="col-lg-4">Déplacements</dt>
+    <dd class="col-lg-8"><%= OFFERS["visits_options"][application.applicable.visit] %></dd>
+<% end %>
+
+<% if !application.applicable.daily_medical_acts_number.blank? %>
+    <dt class="col-lg-4">Actes journaliers</dt>
+    <dd class="col-lg-8"><%= application.applicable.daily_medical_acts_number %></dd>
+<% end %>
+
+<% if !application.applicable.on_call.nil? %>
+    <dt class="col-lg-4">Gardes</dt>
+    <% if application.applicable.on_call == true %>
+        <dd class="col-lg-8">Oui</dd>
+    <% elsif application.applicable.on_call == false %>
+        <dd class="col-lg-8">Non</dd>
+    <% end %>
+<% end %>
+
+<% if !application.applicable.sector.blank? %>
+    <dt class="col-lg-4">Secteur</dt>
+    <dd class="col-lg-8"><%= OFFERS["sectors"][application.applicable.sector] %></dd>
+<% end %>
+
+<% if !application.applicable.secretariat.blank? %>
+    <dt class="col-lg-4">Secrétariat</dt>
+    <dd class="col-lg-8"><%= OFFERS["secretariat_options"][application.applicable.secretariat] %></dd>
+<% end %>
+
+<% if !application.applicable.software_used.blank? %>
+    <dt class="col-lg-4">Logiciel(s) utilisé(s)</dt>
+    <dd class="col-lg-8"><%= application.applicable.software_used %></dd>
+<% end %>
+
+<% if !application.applicable.housing_possibility.nil? %>
+    <dt class="col-lg-4">Logement</dt>
+    <% if application.applicable.housing_possibility == true %>
+        <dd class="col-lg-8">Oui</dd>
+    <% else application.applicable.housing_possibility == false %>
+        <dd class="col-lg-8">Non</dd>
+    <% end %>
+<% end %>

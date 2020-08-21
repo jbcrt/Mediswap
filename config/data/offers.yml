@@ -32,7 +32,7 @@ salary_periods:
   year: "par an"
 candidate_job_experiences:
   without_preference: "Aucune préférence"
-  junior: "Junior (0 à 2 ans)"
+  junior: "Débutant (0 à 2 ans)"
   intermediate: "Intermédiaire (2 à 5 ans)"
   senior: "Confirmé (5 ans et plus)"
 premises_availabilities:

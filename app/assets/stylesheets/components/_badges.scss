@@ -27,6 +27,12 @@
     background-color: $lightest-blue;
 }
 
+.badge-danger-alt {
+    @include badge-alt;
+    color: $red;
+    background-color: $lightest-red;
+}
+
 .badge-big {
     padding: 0.5rem;
     font-size: 80%;

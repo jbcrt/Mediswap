@@ -1,7 +1,7 @@
 class Account::OfferApplicationsController < ApplicationController
 
     def index
-        @offer_applications = current_user.offer_applications.order(created_at: :desc)
+        @offer_applications = policy_scope(OfferApplication).where(user_id: current_user).order(created_at: :desc)
     end
 
     def create
@@ -17,6 +17,12 @@ class Account::OfferApplicationsController < ApplicationController
             flash[:alert] = "Votre candidature n'a pas été enregistrée."
             render "offers/show"
         end
+    end
+
+    def applications
+        @offer = Offer.find(params[:offer_id])
+        @offer_applications = @offer.offer_applications.order(created_at: :desc)
+        authorize @offer_application, policy_class: OfferApplicationPolicy
     end
 
     private

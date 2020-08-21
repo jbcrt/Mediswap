@@ -1,0 +1,53 @@
+<dt class="col-lg-4">Raison sociale</dt>
+<dd class="col-lg-8"><%= application.applicable.user.facility.name %></dd>
+
+<dt class="col-lg-4">Localisation</dt>
+<dd class="col-lg-8"><%= application.applicable.city %></dd>
+
+<dt class="col-lg-4">Prix de vente</dt>
+<% if application.applicable.has_selling_price_set? %>
+    <dd class="col-lg-8"><%= application.applicable.selling_price %> €</dd>
+<% else %>
+    <dd class="col-lg-8">À négocier</dd>
+<% end %>
+
+<dt class="col-lg-4">Chiffre d'affaire annuel</dt>
+<dd class="col-lg-8"><%= application.applicable.revenues %> €</dd>
+
+<dt class="col-lg-4">Disponibilité du local</dt>
+<dd class="col-lg-8"><%= OFFERS["premises_availabilities"][application.applicable.premises_availability] %></dd>
+
+<% if application.applicable.premises_availability == "sale" %>
+    <dt class="col-lg-4">Prix de vente</dt>
+    <dd class="col-lg-8"><%= application.applicable.premises_price %> €</dd>
+<% elsif application.applicable.premises_availability == "rental" %>
+    <dt class="col-lg-4">Loyer</dt>
+    <dd class="col-lg-8"><%= application.applicable.premises_rent %> € par mois</dd>
+<% end %>
+
+<dt class="col-lg-4">Surface</dt>
+<dd class="col-lg-8"><%= application.applicable.premises_size %> m²</dd>
+
+<dt class="col-lg-4">Nombre de pièces</dt>
+<dd class="col-lg-8"><%= application.applicable.premises_rooms_number %></dd>
+
+<dt class="col-lg-4">Meublé / Équipé</dt>
+<% if application.applicable.premises_furnished == true %>
+    <dd class="col-lg-8">Oui</dd>
+<% else application.applicable.premises_furnished == false %>
+    <dd class="col-lg-8">Non</dd>
+<% end %>
+
+<dt class="col-lg-4">Parking</dt>
+<% if application.applicable.premises_has_parking == true %>
+    <dd class="col-lg-8">Oui</dd>
+<% else application.applicable.premises_has_parking == false %>
+    <dd class="col-lg-8">Non</dd>
+<% end %>
+
+<dt class="col-lg-4">Respect des normes d'accessibilité</dt>
+<% if application.applicable.accessible_premises == true %>
+    <dd class="col-lg-8">Oui</dd>
+<% else application.applicable.accessible_premises == false %>
+    <dd class="col-lg-8">Non</dd>
+<% end %>

@@ -1,0 +1,40 @@
+<div class="custom-card hoverable my-3" data-toggle="modal" data-target="#modalApplication_<%= application.id %>">
+    <div class="d-flex flex-column">
+        <div class="d-flex justify-content-between align-items-start">
+            <h2 class="h5">
+                <%= OFFERS["offer_types"][application.applicable.contract_type] %>
+            </h2>
+            <% if application.sent? %>
+                <span class="badge badge-warning-alt mt-1">
+                    Reçu
+                </span>
+            <% elsif application.accepted? %>
+                <span class="badge badge-valid-alt mt-1">
+                    Acceptée
+                </span>
+            <% elsif application.rejected? %>
+                <span class="badge badge-danger-alt mt-1">
+                    Rejetée
+                </span>
+            <% end %>
+        </div>
+        <div class="d-flex flex-wrap small text-secondary">
+            <div class="mr-2">
+                <i class="fas fa-clinic-medical mr-1"></i><%= application.applicable.user.facility.name %>
+            </div>
+            <div class="mr-2 fw600">
+                •
+            </div>
+            <div class="mr-2">
+                <i class="fas fa-map-marker-alt mr-1"></i><%= application.applicable.city %> (<%= application.applicable.zipcode.slice(0,2) %>)
+            </div>
+            <div class="mr-2 fw600">
+                •
+            </div>
+            <div>
+                <i class="far fa-clock"></i> Candidature déposée
+                <%= render 'partials/date_display', object: application %>
+            </div>
+        </div>
+    </div>
+</div>

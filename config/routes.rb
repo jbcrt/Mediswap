@@ -27,8 +27,10 @@ Rails.application.routes.draw do
   resources :establishments, controller: :offers, type: 'Establishment', only: [:new, :create]
 
   namespace :account do
-    resources :offers, only: [:index, :edit, :update, :destroy]
-    resources :offer_applications, only: [:index, :show]
+    resources :offers, only: [:index, :edit, :update, :destroy] do
+      get 'applications', to: 'offer_applications#applications', as: 'applications_linked'
+    end
+    resources :offer_applications, only: :index
     resources :profiles, only: [:edit, :update]
     resources :facilities, only: [:new, :create, :edit, :update]
   end

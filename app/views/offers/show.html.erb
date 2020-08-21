@@ -8,43 +8,28 @@
         <div class="d-flex justify-content-center flex-column">
             <div class="text-secondary text-center font-weight-light font-italic">
                 Annonce mise en ligne
-                <% if @offer.created_at.to_date == Date.today  %>
-                    aujourd'hui
-                <% elsif @offer.created_at.to_date == Date.today - 1 %>
-                    hier
-                <% else %>
-                    il y a <%= (Date.today - @offer.created_at.to_date).to_i %> jours
-                <% end %>
+                <%= render 'partials/date_display', object: @offer %>
             </div>
             <div class="d-flex justify-content-center flex-wrap">
                 <% if current_user %>
                     <% if current_user.offer_applications.find_by applicable_id: "#{@offer.id}" %>
-                        <% if @offer.type == "Replacement" || @offer.type == "Employment" || @offer.type == "Collaboration" %>
                         <div class="alert alert-primary my-2" role="alert">
                             Vous avez postulé à cette annonce le <%= l (current_user.offer_applications.find_by applicable_id: "#{@offer.id}").created_at.to_date, format: :long %>.
                         </div>
-                        <% elsif @offer.type == "PatientTransfer" || @offer.type == "Establishment" %>
-                        <div class="alert alert-primary my-2" role="alert">
-                            Vous avez pris contact le <%= l (current_user.offer_applications.find_by applicable_id: "#{@offer.id}").created_at.to_date, format: :long %>.
-                        </div>
-                        <% end %>
                     <% elsif current_user != @offer.user && current_user.profile.profession == @offer.profession %>
-                        <% if @offer.type == "Replacement" || @offer.type == "Employment" || @offer.type == "Collaboration" %>
                         <button type="button" class="btn btn-primary my-2 mx-2" data-toggle="modal" data-target="#createOfferApplicationModal">Postuler</button>
-                        <% elsif @offer.type == "PatientTransfer" || @offer.type == "Establishment" %>
-                        <button type="button" class="btn btn-primary my-2 mx-2" data-toggle="modal" data-target="#createOfferApplicationModal">Prendre contact</button>
-                        <% end %>
+                        <%= render 'partials/offer_application/create_offer_application_modal', offer: @offer, offer_application: @offer_application %>
+                    <% elsif current_user == @offer.user %>
+                        <div class="alert alert-warning my-2" role="alert">
+                            Vous ne pouvez pas postuler à votre propre annonce.
+                        </div>
                     <% else %>
                         <div class="alert alert-warning my-2" role="alert">
                             Vous ne pouvez pas postuler à cette annonce car vous n'êtes pas <%= @offer.profession.downcase %>.
                         </div>
                     <% end %>
                 <% else %>
-                    <% if @offer.type == "Replacement" || @offer.type == "Employment" || @offer.type == "Collaboration" %>
                     <%= link_to 'Connectez-vous pour postuler', new_user_session_path, class: "btn btn-primary my-2 mx-2" %>
-                    <% elsif @offer.type == "PatientTransfer" || @offer.type == "Establishment" %>
-                    <%= link_to 'Connectez-vous pour prendre contact', new_user_session_path, class: "btn btn-primary my-2 mx-2" %>
-                    <% end %>
                 <% end %>
             </div>
         </div>
@@ -233,7 +218,7 @@
                                             <i class="fas fa-user-injured"></i>
                                         </div>
                                         <div class="offer-data-content">
-                                            <div class="offer-data-content-label">Nombre d'actes journalier</div>
+                                            <div class="offer-data-content-label">Nombre d'actes journaliers</div>
                                             <div class="offer-data-content-value"><%= @offer.daily_medical_acts_number %></div>
                                         </div>
                                     </div>
@@ -545,14 +530,6 @@
                     </a>
                 </div>
             <% end %>
-
-            <% if current_user %>
-                <% if current_user != @offer.user && current_user.profile.profession == @offer.profession %>
-                <%= render 'partials/offer_application/create_offer_application_modal', offer: @offer, offer_application: @offer_application %>
-                <% end %>
-            <% end %>
-
         </div>
     </div>
-
 </div>

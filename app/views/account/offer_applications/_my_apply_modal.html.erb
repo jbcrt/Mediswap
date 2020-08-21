@@ -1,0 +1,54 @@
+<div class="modal fade" id="modalApplication_<%= application.id %>" tabindex="-1" role="dialog" aria-labelledby="modalApplication_<%= application.id %>_Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex flex-column">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="d-flex flex-column align-items-center w-100">
+                    <h5 class="modal-title text-center"><%= OFFERS["offer_types"][application.applicable.contract_type] %></h5>
+                    <div class="small text-secondary">
+                        <i class="far fa-clock"></i> Candidature déposée
+                        <%= render 'partials/date_display', object: application %>
+                    </div>
+                    <% if application.sent? %>
+                        <span class="badge badge-warning-alt mt-1">
+                            Reçu
+                        </span>
+                    <% elsif application.accepted? %>
+                        <span class="badge badge-valid-alt mt-1">
+                            Acceptée
+                        </span>
+                    <% elsif application.rejected? %>
+                        <span class="badge badge-danger-alt mt-1">
+                            Rejetée
+                        </span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-secondary">
+                    <p>Vous trouverez ci-dessous les principales informations de l'annonce à laquelle vous avez postulé. Pour consulter l'annonce complète, <%= link_to "cliquez ici", offer_path(application.applicable), class: "alert-link", target: "_blank", rel: "noopener noreferrer"%>.</p>
+                    <hr>
+                    <dl class="row w-100 mt-3 mb-0">
+                        <% if application.applicable.type == "Replacement" %>
+                            <%= render 'account/offer_applications/details_list/replacement', application: application %>
+                        <% elsif application.applicable.type == "Employment" %>
+                            <%= render 'account/offer_applications/details_list/employment', application: application %>
+                        <% elsif application.applicable.type == "Collaboration" %>
+                            <%= render 'account/offer_applications/details_list/collaboration', application: application %>
+                        <% elsif application.applicable.type == "PatientTransfer" %>
+                            <%= render 'account/offer_applications/details_list/patient_transfer', application: application %>
+                        <% elsif application.applicable.type == "Establishment" %>
+                            <%= render 'account/offer_applications/details_list/establishment', application: application %>
+                        <% end %>
+                    </dl>
+                </div>
+                <div class="alert alert-muted">
+                    <h5 class="alert-heading"><i class="far fa-comment"></i> Votre message</h5>
+                    <p class="text-secondary mb-0"><%=simple_format h application.application_text %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

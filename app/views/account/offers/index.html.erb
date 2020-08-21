@@ -1,5 +1,5 @@
 <div class="container my-5">
-    <h2 class="mb-4">Mes offres</h2>
+    <h1 class="h2 mb-4">Mes annonces</h1>
 
     <% if @offers.empty? %>
         <div class="card-body">
@@ -9,23 +9,7 @@
         </div>
     <% else %>
         <% @offers.each do |offer| %>
-            <div class="custom-card d-flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center my-3">
-                <div class="offer-infos my-2">
-                    <h6 class="mb-1"><%= OFFERS["offer_types"][offer.contract_type] %> <% if offer.offer_type == "premium" %><span class="badge badge-warning-alt font-weight-normal">Premium</span><% end %></h6>
-                    <div class="text-gray font-weight-light fs90">
-                        Offre postée le <span class="font-weight-normal"><%= l offer.created_at.to_date, format: :long %></span>.
-                    </div>
-                </div>
-                <div class="offer-controls">
-                    <%= link_to edit_account_offer_path(offer), class: "btn btn-outline-primary btn-sm" do %>
-                        <i class="far fa-edit"></i> Editer
-                    <% end %>
-                    <%= link_to account_offer_path(offer), method: "delete", class: "btn btn-outline-danger btn-sm", data: { confirm: "Are you sure?" } do %>
-                        <i class="far fa-trash-alt"></i> Supprimer
-                    <% end %>
-                </div>
-            </div>
+            <%= render 'account/offers/offer_card', offer: offer %>
         <% end %>
     <% end %>
-
 </div>

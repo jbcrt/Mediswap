@@ -1,37 +1,48 @@
 <div class="container offer-show mb-3 mt-5">
 
     <div class="d-flex flex-column justify-content-center align-items-center mb-5">
-        <h1 class="h2 text-center"><%= OFFERS["offer_types"][@offer.contract_type] %> • <%= @offer.profession %></h1>
+        <h1 class="h2 text-center"><%= OFFERS["offer_types"][@offer.contract_type] %></h1>
         <div class="d-flex flex-wrap justify-content-center text-secondary">
-            <div class="mx-1 mb-1"><i class="fas fa-map-marker-alt mr-1"></i> <%= @offer.city %> (<%= @offer.zipcode.slice(0,2) %>)</div>
-        </div>
-        <div class="d-flex justify-content-center flex-column">
-            <div class="text-secondary text-center font-weight-light font-italic">
-                <i class="far fa-clock"></i> Annonce mise en ligne <span class="js-sinceDuration"><%= @offer.created_at.strftime("%FT%T") %></span>
+            <div class="mr-2 ">
+                <i class="fas fa-user-md mr-1"></i><%= @offer.profession %>
             </div>
-            <div class="d-flex justify-content-center flex-wrap">
-                <% if current_user %>
-                    <% if current_user.offer_applications.find_by applicable_id: "#{@offer.id}" %>
-                        <div class="alert alert-primary my-2" role="alert">
-                            Vous avez postulé à cette annonce le <%= l (current_user.offer_applications.find_by applicable_id: "#{@offer.id}").created_at.to_date, format: :long %>.
-                        </div>
-                    <% elsif current_user != @offer.user && current_user.profile.profession == @offer.profession %>
-                        <button type="button" class="btn btn-primary my-2 mx-2" data-toggle="modal" data-target="#createOfferApplicationModal">Postuler</button>
-                        <%= render 'partials/offer_application/create_offer_application_modal', offer: @offer, offer_application: @offer_application %>
-                    <% elsif current_user == @offer.user %>
-                        <div class="alert alert-warning my-2" role="alert">
-                            Vous ne pouvez pas postuler à votre propre annonce.
-                        </div>
-                    <% else %>
-                        <div class="alert alert-warning my-2" role="alert">
-                            Vous ne pouvez pas postuler à cette annonce car vous n'êtes pas <%= @offer.profession.downcase %>.
-                        </div>
-                    <% end %>
+            <div class="mr-2  fw600">
+                •
+            </div>
+            <div class="mr-2 ">
+                <i class="fas fa-map-marker-alt mr-1"></i><%= @offer.city %> (<%= @offer.zipcode.slice(0,2) %>)
+            </div>
+            <div class="mr-2  fw600">
+                •
+            </div>
+            <div class="">
+                <i class="far fa-clock"></i> Postée <span class="js-sinceDuration"><%= @offer.created_at.strftime("%FT%T") %></span>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center flex-wrap">
+            <% if current_user %>
+                <% if current_user.offer_applications.find_by applicable_id: "#{@offer.id}" %>
+                    <div class="alert alert-primary mt-3 mb-0" role="alert">
+                        Vous avez postulé à cette annonce le <%= l (current_user.offer_applications.find_by applicable_id: "#{@offer.id}").created_at.to_date, format: :long %>.
+                    </div>
+                <% elsif current_user != @offer.user && current_user.profile.profession == @offer.profession %>
+                    <button type="button" class="btn btn-primary mt-3 mb-0" data-toggle="modal" data-target="#createOfferApplicationModal">Postuler</button>
+                    <%= render 'partials/offer_application/create_offer_application_modal', offer: @offer, offer_application: @offer_application %>
+                <% elsif current_user == @offer.user %>
+                    <div class="alert alert-warning mt-3 mb-0" role="alert">
+                        Vous ne pouvez pas postuler à votre propre annonce.
+                    </div>
                 <% else %>
-                    <%= link_to 'Connectez-vous pour postuler', new_user_session_path, class: "btn btn-primary my-2 mx-2" %>
+                    <div class="alert alert-warning mt-3 mb-0" role="alert">
+                        Vous ne pouvez pas postuler à cette annonce car vous n'êtes pas <%= @offer.profession.downcase %>.
+                    </div>
                 <% end %>
-            </div>
+            <% else %>
+                <%= link_to 'Connectez-vous pour postuler', new_user_session_path, class: "btn btn-primary my-2 mx-2" %>
+            <% end %>
         </div>
+
     </div>
 
     <div class="row my-4">

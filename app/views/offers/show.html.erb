@@ -7,8 +7,7 @@
         </div>
         <div class="d-flex justify-content-center flex-column">
             <div class="text-secondary text-center font-weight-light font-italic">
-                Annonce mise en ligne
-                <%= render 'partials/date_display', object: @offer %>
+                <i class="far fa-clock"></i> Annonce mise en ligne <span class="js-sinceDuration"><%= @offer.created_at.strftime("%FT%T") %></span>
             </div>
             <div class="d-flex justify-content-center flex-wrap">
                 <% if current_user %>

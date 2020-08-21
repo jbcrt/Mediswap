@@ -3,8 +3,7 @@
         <div class="offer-infos">
             <h2 class="h5 mb-1"><%= OFFERS["offer_types"][offer.contract_type] %></h2>
             <div class="small text-secondary">
-                <i class="far fa-clock"></i> Offre postée
-                <%= render 'partials/date_display', object: offer %>
+                <i class="far fa-clock"></i> Offre postée <span class="js-sinceDuration"><%= offer.created_at.strftime("%FT%T") %></span>
             </div>
         </div>
         <div class="btn-group">

@@ -1,7 +1,7 @@
 <%= link_to offer_path(offer), :action => 'go', :class => "offer-card d-flex flex-column flex-wrap" do %>
     <div class="offer-card-badges d-block d-md-none mb-2">
         <% if current_page?(controller: 'offers', action: 'index') %>
-            <% if offer.created_at.to_date == Date.today  %>
+            <% if offer.created_at.to_date == Date.current %>
                 <span class="badge badge-info-alt mr-1">
                     Nouveau
                 </span>

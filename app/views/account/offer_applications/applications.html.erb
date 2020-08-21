@@ -1,0 +1,16 @@
+<div class="container my-5">
+    <h1 class="h2 mb-4">Candidature(s)</h1>
+
+    <% if !@offer_applications.empty? %>
+        <% @offer_applications.each do |application| %>
+            <%= render 'account/offer_applications/application_card', application: application %>
+            <%= render 'account/offer_applications/application_modal', application: application %>
+        <% end %>
+    <% else %>
+        <div class="card-body">
+            <div class="d-flex flex-column justify-content-center align-items-center my-4 p-4">
+                <%= image_tag("illustrations/empty_illustration.svg", class: "empty-illustration", alt: "Illustration contenu vide") %>
+            </div>
+        </div>
+    <% end %>
+</div>

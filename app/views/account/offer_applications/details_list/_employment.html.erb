@@ -1,0 +1,18 @@
+<dt class="col-lg-4">Raison sociale</dt>
+<dd class="col-lg-8"><%= application.applicable.user.facility.name %></dd>
+
+<dt class="col-lg-4">Localisation</dt>
+<dd class="col-lg-8"><%= application.applicable.city %></dd>
+
+<dt class="col-lg-4">Salaire</dt>
+<% if application.applicable.has_salary_set? %>
+    <dd class="col-lg-8"><%= application.applicable.salary %>€ <%= OFFERS["salary_periods"][application.applicable.salary_period] %></dd>
+<% else %>
+    <dd class="col-lg-8">À négocier</dd>
+<% end %>
+
+<dt class="col-lg-4">Temps de travail</dt>
+<dd class="col-lg-8"><%= OFFERS["working_times"][application.applicable.working_time] %></dd>
+
+<dt class="col-lg-4">Expérience</dt>
+<dd class="col-lg-8"><%= OFFERS["candidate_job_experiences"][application.applicable.candidate_job_experience] %></dd>

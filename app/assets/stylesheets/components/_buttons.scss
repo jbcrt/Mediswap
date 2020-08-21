@@ -19,3 +19,11 @@
     top: -8px;
     right: -8px;
 }
+
+.btn-icon {
+    padding: 0;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}

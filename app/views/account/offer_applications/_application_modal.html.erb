@@ -1,0 +1,66 @@
+<div class="modal fade" id="modalApplication_<%= application.id %>" tabindex="-1" role="dialog" aria-labelledby="modalApplication_<%= application.id %>_Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex flex-column">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="d-flex flex-column align-items-center w-100">
+                    <% if application.user.profile.avatar.attached? %>
+                        <%= cl_image_tag application.user.profile.avatar.key, height: 250, width: 250, crop: :thumb, gravity: :face, class: "avatar-big" %>
+                    <% elsif application.user.profile.madam? %>
+                        <%= image_tag "avatars/doctor_f", class: "avatar-big" %>
+                    <% else %>
+                        <%= image_tag "avatars/doctor_m", class: "avatar-big" %>
+                    <% end %>
+                    <h5 class="modal-title mt-2" id="modalApplication_<%= application.id %>_Label"><%= application.user.profile.first_name %> <%= application.user.profile.last_name %></h5>
+                    <div class="small text-secondary">
+                        <i class="far fa-clock"></i> Candidature reçue
+                        <%= render 'partials/date_display', object: application %>
+                    </div>
+                    <% if application.sent? %>
+                        <span class="badge badge-warning-alt mt-1">
+                            En attente
+                        </span>
+                    <% elsif application.accepted? %>
+                        <span class="badge badge-valid-alt mt-1">
+                            Acceptée
+                        </span>
+                    <% elsif application.rejected? %>
+                        <span class="badge badge-danger-alt mt-1">
+                            Rejetée
+                        </span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-secondary">
+                    <p>Vous trouverez ci-dessous les différentes informations vous permettant de rentrer en contact avec la personne candidate et de vérifier ses informations grâce à son numéro RPPS/ADELI sur le site <%= link_to "Annuaire Santé", "https://annuaire.sante.fr/web/site-pro", class: "alert-link", target: "_blank", rel: "noopener noreferrer"%>.</p>
+                    <hr>
+                    <dl class="row w-100 mt-3 mb-0">
+                        <dt class="col-lg-4">Profession</dt>
+                        <dd class="col-lg-8"><%= application.user.profile.profession %></dd>
+                        <dt class="col-lg-4">Adresse email</dt>
+                        <dd class="col-lg-8"><%= application.user.email %></dd>
+                        <dt class="col-lg-4">Numéro de téléphone</dt>
+                        <% if application.user.profile.phone_number.nil? %>
+                            <dd class="col-lg-8">Non communiqué</dd>
+                        <% else %>
+                            <dd class="col-lg-8"><%= application.user.profile.phone_number %></dd>
+                        <% end %>
+                        <dt class="col-lg-4">Numéro ADELI/RPPS</dt>
+                        <dd class="col-lg-8"><%= application.user.profile.professional_id_number %></dd>
+                    </dl>
+                </div>
+                <div class="alert alert-muted">
+                    <h5 class="alert-heading"><i class="far fa-comment"></i> Message de <%= application.user.profile.first_name %></h5>
+                    <p class="text-secondary mb-0"><%=simple_format h application.application_text %></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="far fa-times-circle"></i> Refuser</button>
+                <button type="button" class="btn btn-primary"><i class="far fa-check-circle"></i> Accepter</button>
+            </div>
+        </div>
+    </div>
+</div>

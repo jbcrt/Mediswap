@@ -30,6 +30,7 @@
                     <% end %>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <%= link_to 'Mes annonces', account_offers_path, class: "dropdown-item" %>
+                        <%= link_to 'Mes candidatures', account_offer_applications_path, class: "dropdown-item" %>
                         <div class="dropdown-divider"></div>
                         <%= link_to "Mon compte", edit_user_registration_path, class: "dropdown-item" %>
                         <%= link_to "Mon profil", edit_account_profile_path(current_user.profile.id), class: "dropdown-item" %>
@@ -52,6 +53,10 @@
 
                 <li class="nav-item d-xl-none">
                     <%= link_to "Mes annonces", account_offers_path, class: "dropdown-item" %>
+                </li>
+
+                <li class="nav-item d-xl-none">
+                    <%= link_to "Mes candidatures", account_offer_applications_path, class: "dropdown-item" %>
                 </li>
 
                 <div class="dropdown-divider"></div>

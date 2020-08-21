@@ -2,6 +2,7 @@ require 'faker'
 
 pwd = "password"
 
+OfferApplication.destroy_all
 Offer.destroy_all
 Profile.destroy_all
 Facility.destroy_all
@@ -167,6 +168,60 @@ kine_establishment.save!
 kine.save!
 
 puts "👍  Création du kiné et de ses annonces"
+puts ""
+puts "Création des kinés et de leurs candidatures"
+
+all_kine_offers = [
+    kine_replacement,
+    kine_employment,
+    kine_collaboration,
+    kine_patient_transfer,
+    kine_establishment
+]
+
+kines = [
+    { user: { email: "kine_1@mediswap.com", password: pwd }, profile: { title: "mister", first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } },
+    { user: { email: "kine_2@mediswap.com", password: pwd }, profile: { title: "mister", first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } },
+    { user: { email: "kine_3@mediswap.com", password: pwd }, profile: { title: "mister", first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } },
+    { user: { email: "kine_4@mediswap.com", password: pwd }, profile: { title: "mister", first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } },
+    { user: { email: "kine_5@mediswap.com", password: pwd }, profile: { title: "mister", first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } },
+    { user: { email: "kine_6@mediswap.com", password: pwd }, profile: { title: "madam", first_name: Faker::Name.female_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } },
+    { user: { email: "kine_7@mediswap.com", password: pwd }, profile: { title: "madam", first_name: Faker::Name.female_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } },
+    { user: { email: "kine_8@mediswap.com", password: pwd }, profile: { title: "madam", first_name: Faker::Name.female_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } },
+    { user: { email: "kine_9@mediswap.com", password: pwd }, profile: { title: "madam", first_name: Faker::Name.female_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } },
+    { user: { email: "kine_10@mediswap.com", password: pwd }, profile: { title: "madam", first_name: Faker::Name.female_first_name, last_name: Faker::Name.last_name, profession: "Masseur-Kinésithérapeute", professional_id_number: rand(10 ** 11).to_s }, offer_application: { application_text: Faker::Lorem.paragraph_by_chars(number: 600, supplemental: false) } }
+]
+
+kines_avatars = [
+    "https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80.jpg",
+    "https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1522&q=80.jpg",
+    "https://images.unsplash.com/photo-1561677843-39dee7a319ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80.jpg",
+    "https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80.jpg",
+    "https://images.unsplash.com/photo-1553837851-341a0c2509e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80.jpg",
+    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80.jpg",
+    "https://images.unsplash.com/photo-1504911539020-cfb0f7887a5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80.jpg",
+    "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80.jpg",
+    "https://images.unsplash.com/photo-1498551172505-8ee7ad69f235?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80.jpg",
+    "https://images.unsplash.com/photo-1503983469989-e2cbfd3bfeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80.jpg"
+]
+
+kines.each_with_index do |kine, index|
+    user = User.new(kine[:user])
+    user.skip_confirmation!
+    user.save!
+    profile = Profile.new(kine[:profile])
+    profile.user = user
+    file = open(kines_avatars[index])
+    profile.avatar.attach(io: file, filename: kines_avatars[index])
+    profile.save!
+    offer_application = OfferApplication.new(kine[:offer_application])
+    offer_application.applicable = all_kine_offers.sample
+    offer_application.user = user
+    offer_application.save!
+    puts "#{kine[:user][:email]} et sa candidature ont été créés"
+end
+
+puts "Tous les kinés candidats et leurs candidatures ont été créés"
 puts ""
 puts "👨‍⚕️‍ Création d'un médecin gé et de ses annonces ..."
 

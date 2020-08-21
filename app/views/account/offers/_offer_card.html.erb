@@ -1,0 +1,55 @@
+<div class="custom-card d-flex flex-column my-3">
+    <div class="d-flex justify-content-between align-items-start">
+        <div class="offer-infos">
+            <h2 class="h5 mb-1"><%= OFFERS["offer_types"][offer.contract_type] %></h2>
+            <div class="small text-secondary">
+                <i class="far fa-clock"></i> Offre postée
+                <%= render 'partials/date_display', object: offer %>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-link text-secondary btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <%= link_to edit_account_offer_path(offer), class: "dropdown-item" do %>
+                    <i class="far fa-edit"></i> Editer
+                <% end %>
+                <%= link_to account_offer_path(offer), method: "delete", class: "dropdown-item", data: { confirm: "Are you sure?" } do %>
+                    <i class="far fa-trash-alt"></i> Supprimer
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <% if !offer.offer_applications.empty? %>
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-start mt-4 mt-sm-3">
+            <div class="avatar-row">
+                <% offer.offer_applications.first(5).each do |offer_application| %>
+                    <% if offer_application.user.profile.avatar.attached? %>
+                        <div class="avatar-item">
+                            <%= cl_image_tag offer_application.user.profile.avatar.key, height: 250, width: 250, crop: :thumb, gravity: :face, class: "avatar" %>
+                        </div>
+                    <% elsif offer_application.user.profile.madam? %>
+                        <div class="avatar-item">
+                            <%= image_tag "avatars/doctor_f", class: "avatar" %>
+                        </div>
+                    <% else %>
+                        <div class="avatar-item">
+                            <%= image_tag "avatars/doctor_m", class: "avatar" %>
+                        </div>
+                    <% end %>
+                <% end %>
+                <% if offer.offer_applications.length > 5 %>
+                    <div class="avatar-item">
+                        <div class="avatar">+ <%= offer.offer_applications.length - 5 %></div>
+                    </div>
+                <% end %>
+            </div>
+            <% if offer.offer_applications.length == 1 %>
+                <%= link_to "Voir la candidature", account_offer_applications_linked_path(offer), class: "ml-3" %>
+            <% else %>
+                <%= link_to "Voir les #{offer.offer_applications.length} candidatures", account_offer_applications_linked_path(offer), class: "ml-3" %>
+            <% end %>
+        </div>
+    <% end %>
+</div>

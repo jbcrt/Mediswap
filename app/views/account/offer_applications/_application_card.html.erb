@@ -13,8 +13,7 @@
                     <%= application.user.profile.first_name %> <%= application.user.profile.last_name %>
                 </span>
                 <div class="small text-secondary">
-                    <i class="far fa-clock"></i> Candidature reçue
-                    <%= render 'partials/date_display', object: application %>
+                    <i class="far fa-clock"></i> Candidature reçue <span class="js-sinceDuration"><%= application.created_at.strftime("%FT%T") %></span>
                 </div>
             </div>
             <% if application.sent? %>

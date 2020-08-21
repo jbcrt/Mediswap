@@ -32,8 +32,7 @@
                 •
             </div>
             <div>
-                <i class="far fa-clock"></i> Candidature déposée
-                <%= render 'partials/date_display', object: application %>
+                <i class="far fa-clock"></i> Candidature déposée <span class="js-sinceDuration"><%= application.created_at.strftime("%FT%T") %></span>
             </div>
         </div>
     </div>

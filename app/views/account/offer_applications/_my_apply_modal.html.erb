@@ -8,8 +8,7 @@
                 <div class="d-flex flex-column align-items-center w-100">
                     <h5 class="modal-title text-center"><%= OFFERS["offer_types"][application.applicable.contract_type] %></h5>
                     <div class="small text-secondary">
-                        <i class="far fa-clock"></i> Candidature déposée
-                        <%= render 'partials/date_display', object: application %>
+                        <i class="far fa-clock"></i> Candidature déposée <span class="js-sinceDuration"><%= application.created_at.strftime("%FT%T") %></span>
                     </div>
                     <% if application.sent? %>
                         <span class="badge badge-warning-alt mt-1">

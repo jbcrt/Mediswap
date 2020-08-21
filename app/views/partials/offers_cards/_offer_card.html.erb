@@ -47,8 +47,7 @@
             •
         </div>
         <div class="mt-1">
-            <i class="far fa-clock"></i> Postée
-            <%= render 'partials/date_display', object: offer %>
+            <i class="far fa-clock"></i> Postée <span class="js-sinceDuration"><%= offer.created_at.strftime("%FT%T") %></span>
         </div>
     </div>
 

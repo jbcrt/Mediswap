@@ -17,4 +17,12 @@ class OfferApplicationPolicy < ApplicationPolicy
     true
   end
 
+  def recruiter_accept?
+    user == record.applicable.user && OfferApplication.where(applicable: record.applicable, status: "accepted").empty?
+  end
+  
+  def recruiter_refuse?
+    user == record.applicable.user
+  end
+
 end

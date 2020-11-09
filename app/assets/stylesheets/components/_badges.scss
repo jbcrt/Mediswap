@@ -15,6 +15,12 @@
     background-color: $lightest-gray;
 }
 
+.badge-valid-alt {
+    @include badge-alt;
+    color: $green;
+    background-color: $lightest-green;
+}
+
 .badge-warning-alt {
     @include badge-alt;
     color: $yellow;

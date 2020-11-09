@@ -1,5 +1,18 @@
 <div class="container my-5">
-    <h1 class="h2 mb-4">Candidature(s)</h1>
+    <% if OFFERS["offer_types"][@offer.contract_type] == "Assistanat libéral" %>
+    <h1 class="h2 mb-4">Candidature(s) pour votre offre d'<%= OFFERS["offer_types"][@offer.contract_type].downcase %></h1>
+    <% else %>
+    <h1 class="h2 mb-4">Candidature(s) pour votre offre de <%= OFFERS["offer_types"][@offer.contract_type].downcase %></h1>
+    <% end %>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <%= link_to "Mes annonces", account_offers_path %>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Candidature(s)</li>
+        </ol>
+    </nav>
 
     <% if !@offer_applications.empty? %>
         <% @offer_applications.each do |application| %>

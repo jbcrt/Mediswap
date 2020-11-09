@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   namespace :account do
     resources :offers, only: [:index, :edit, :update, :destroy] do
       get 'applications', to: 'offer_applications#applications', as: 'applications_linked'
+      post 'recruiter_accept', to: 'offer_applications#recruiter_accept', as: 'recruiter_accept'
+      post 'recruiter_refuse', to: 'offer_applications#recruiter_refuse', as: 'recruiter_refuse'
     end
     resources :offer_applications, only: :index
     resources :profiles, only: [:edit, :update]
